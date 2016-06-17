@@ -1,0 +1,9 @@
+{
+  "name": "NewTab",
+  "description": "Override the new tab page",
+  "version": "0.1",
+  "chrome_url_overrides": {
+    "newtab": "newpage.html"
+  },
+  "manifest_version": 2
+}
