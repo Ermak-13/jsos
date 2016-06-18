@@ -1,7 +1,7 @@
 var React = require('react');
 var _ = require('underscore');
 
-var settings = require('./settings');
+var settings = require('../settings');
 
 var Widget = React.createClass({
   getDefaultProps: function () {

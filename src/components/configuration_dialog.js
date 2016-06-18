@@ -3,7 +3,7 @@ var React = require('react');
 var ConfigurationDialog = React.createClass({
   getInitialState: function () {
     return {
-      open: true
+      open: false
     };
   },
 
