@@ -7,8 +7,8 @@ var settings = require('./settings');
 var Widget = React.createClass({
   getDefaultProps: function () {
     return {
-      closingWidgetEnabled: false,
-      configuratingWidgetEnabled: false,
+      closingWidgetEnabled: true,
+      configuratingWidgetEnabled: true,
     };
   },
 
@@ -33,7 +33,7 @@ var Widget = React.createClass({
           { this.props.closingWidgetEnabled && this.getClosingWidgetIconHTML() }
           { this.props.configuratingWidgetEnabled && this.getConfigurationIconHTML() }
 
-          <h2>{ this.props.header }</h2>
+          <h4>{ this.props.header }</h4>
         </div>
 
         <div className="widget-body">
@@ -46,7 +46,7 @@ var Widget = React.createClass({
   getClosingWidgetIconHTML: function () {
     return (
       <a className="icon">
-        <i className="fa fa-close" aria-hidden="true"></i>
+        <span className="glyphicon glyphicon-minus" aria-hidden="true"></span>
       </a>
     );
   },
@@ -54,7 +54,7 @@ var Widget = React.createClass({
   getConfigurationIconHTML: function () {
     return (
       <a className="icon" onClick={ this.handleClickConfigurationIcon }>
-        <i className="fa fa-wrench" aria-hidden="true"></i>
+        <span className="glyphicon glyphicon-cog" aria-hidden="true"></span>
       </a>
     );
   }

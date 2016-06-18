@@ -26,7 +26,7 @@ var ConfigurationDialog = React.createClass({
           <div className="widget-header">
             { this.getClosingWidgetIconHTML() }
 
-            <h2>{ this.props.header } - Settings</h2>
+            <h4>{ this.props.header } - Settings</h4>
           </div>
 
           <div className="widget-body">
@@ -40,7 +40,7 @@ var ConfigurationDialog = React.createClass({
   getClosingWidgetIconHTML: function () {
     return (
       <a className="icon" onClick={ this.handleClosingIcon }>
-        <i className="fa fa-close" aria-hidden="true"></i>
+        <span className="glyphicon glyphicon-remove" aria-hidden="true"></span>
       </a>
     );
   }
