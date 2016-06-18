@@ -40,6 +40,10 @@ body {
   margin: 0 2px;
 }
 
+.widget-body {
+  padding: 10px;
+}
+
 .modal-dialog {
   position: fixed;
   z-index: 1;

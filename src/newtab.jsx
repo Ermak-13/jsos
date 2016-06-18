@@ -2,7 +2,7 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 
 var Widget = require('./widget');
-var ConfigurationDialog = require('./configuration_dialog');
+var DefaultConfigurationDialog = require('./default_configuration_dialog');
 
 ReactDOM.render(
   <Widget
@@ -12,6 +12,6 @@ ReactDOM.render(
 );
 
 ReactDOM.render(
-  <ConfigurationDialog />,
+  <DefaultConfigurationDialog />,
   document.getElementById('configuration-dialogs-container')
 );
