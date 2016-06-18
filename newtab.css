@@ -14,3 +14,32 @@ body {
     width: 100%;
     height: 100%;
 }
+
+.widget {
+  background-color: white;
+  border-radius: 5px;
+}
+
+.widget-header {
+  padding: 10px 5px;
+  border-bottom: 1px solid #BBB;
+}
+
+.widget-header h2 {
+  display: inline;
+}
+
+.widget-header .icon {
+  cursor: pointer;
+  float: right;
+  width: 18px;
+  height: 18px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 18px;
+
+  border: solid 1px black;
+  border-radius: 9px;
+
+  margin: 0 2px;
+}

@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "react": "^15.1.0",
-    "react-dom": "^15.1.0"
+    "react-dom": "^15.1.0",
+    "underscore": "^1.8.3"
   }
 }
