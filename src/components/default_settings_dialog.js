@@ -1,13 +1,13 @@
 var React = require('react');
 
-var ConfigurationDialog = require('./configuration_dialog');
+var SettingsDialog = require('./settings_dialog');
 var Input = require('./input');
 var Submit = require('./submit');
 
-var DefaultConfigurationDialog = React.createClass({
+var DefaultSettingsDialog = React.createClass({
   render: function () {
     return (
-      <ConfigurationDialog>
+      <SettingsDialog>
         <form className="form-horizontal">
           <div className="form-group">
             <Label text="width:" />
@@ -55,7 +55,7 @@ var DefaultConfigurationDialog = React.createClass({
             </div>
           </div>
         </form>
-      </ConfigurationDialog>
+      </SettingsDialog>
     );
   }
 });
@@ -70,4 +70,4 @@ var Label = React.createClass({
   }
 });
 
-module.exports = DefaultConfigurationDialog;
+module.exports = DefaultSettingsDialog;

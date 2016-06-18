@@ -2,7 +2,7 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 
 var Widget = require('./components/widget');
-var DefaultConfigurationDialog = require('./components/default_configuration_dialog');
+var DefaultSettingsDialog = require('./components/default_settings_dialog');
 
 ReactDOM.render(
   <Widget

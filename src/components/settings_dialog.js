@@ -1,6 +1,6 @@
 var React = require('react');
 
-var ConfigurationDialog = React.createClass({
+var SettingsDialog = React.createClass({
   getInitialState: function () {
     return {
       open: false
@@ -46,4 +46,4 @@ var ConfigurationDialog = React.createClass({
   }
 });
 
-module.exports = ConfigurationDialog;
+module.exports = SettingsDialog;
