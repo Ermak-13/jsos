@@ -5,6 +5,13 @@ var settings = require('./settings');
 
 
 var Widget = React.createClass({
+  getDefaultProps: function () {
+    return {
+      closingWidgetEnabled: false,
+      configuratingWidgetEnabled: false,
+    };
+  },
+
   getInitialState: function () {
     return {
       widgetStyles: settings.DEFAULT_WIDGET_STYLES
@@ -23,13 +30,8 @@ var Widget = React.createClass({
     return (
       <div className="widget" style={ this.getWidgetStyles() }>
         <div className="widget-header">
-          <a className="icon">
-            <i className="fa fa-close" aria-hidden="true"></i>
-          </a>
-
-          <a className="icon" onClick={ this.handleClickConfigurationIcon }>
-            <i className="fa fa-wrench" aria-hidden="true"></i>
-          </a>
+          { this.props.closingWidgetEnabled && this.getClosingWidgetIconHTML() }
+          { this.props.configuratingWidgetEnabled && this.getConfigurationIconHTML() }
 
           <h2>{ this.props.header }</h2>
         </div>
@@ -38,6 +40,22 @@ var Widget = React.createClass({
           { this.props.children }
         </div>
       </div>
+    );
+  },
+
+  getClosingWidgetIconHTML: function () {
+    return (
+      <a className="icon">
+        <i className="fa fa-close" aria-hidden="true"></i>
+      </a>
+    );
+  },
+
+  getConfigurationIconHTML: function () {
+    return (
+      <a className="icon" onClick={ this.handleClickConfigurationIcon }>
+        <i className="fa fa-wrench" aria-hidden="true"></i>
+      </a>
     );
   }
 });
