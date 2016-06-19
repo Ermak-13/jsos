@@ -1,4 +1,8 @@
-var React = require('react');
+var React = require('react'),
+    s = require('underscore.string'),
+
+    AppDispatcher = require('../app_dispatcher'),
+    Events = require('../events');
 
 var SettingsDialog = React.createClass({
   getInitialState: function () {
@@ -8,6 +12,14 @@ var SettingsDialog = React.createClass({
   },
 
   handleClosingIcon: function () {
+    this.close();
+  },
+
+  open: function () {
+    this.setState({ open: true });
+  },
+
+  close: function () {
     this.setState({ open: false });
   },
 
@@ -19,14 +31,21 @@ var SettingsDialog = React.createClass({
     }
   },
 
+  getHeader: function () {
+    var header = this.props.header || s.capitalize(this.props.name);
+    return s.sprintf('%s - Settings', header);
+  },
+
   render: function () {
     return (
       <div className="modal-dialog" style={ this.getModalDialogStyles() }>
         <div className="widget modal-dialog-content">
           <div className="widget-header">
-            { this.getClosingWidgetIconHTML() }
+            <div className="icons-container">
+              { this.getClosingWidgetIconHTML() }
+            </div>
 
-            <h4>{ this.props.header } - Settings</h4>
+            <h4>{ this.getHeader() }</h4>
           </div>
 
           <div className="widget-body">

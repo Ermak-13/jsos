@@ -1,17 +1,16 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 
-var Widget = require('./components/widget');
-var DefaultSettingsDialog = require('./components/default_settings_dialog');
+var Clock = require('./components/widgets/clock');
 
 ReactDOM.render(
-  <Widget
+  <Clock.Widget
     header="Welcome Widget"
   />,
   document.getElementById('widgets-container')
 );
 
 ReactDOM.render(
-  <DefaultConfigurationDialog />,
+  <Clock.SettingsDialog />,
   document.getElementById('configuration-dialogs-container')
 );

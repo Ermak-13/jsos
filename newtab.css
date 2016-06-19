@@ -21,8 +21,8 @@ body {
 }
 
 .widget-header {
-  padding: 10px 5px;
   border-bottom: 1px solid #BBB;
+  padding: 10px 5px;
 }
 
 .widget-header h1,
@@ -34,8 +34,21 @@ body {
   display: inline;
 }
 
-.widget-header .icon {
+.icons-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px 5px;
+  z-index: 9999;
+}
+
+.widget-header > .icons-container {
+  position: initial;
   float: right;
+  padding: 0;
+}
+
+.icons-container .icon {
   cursor: pointer;
   margin: 0 2px;
 }
