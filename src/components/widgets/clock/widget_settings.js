@@ -1,7 +1,7 @@
 var _ = require('underscore'),
 
     OS = require('os'),
-    globalSettings = OS.Settings,
+    globalSettings = OS.settings,
     Events = OS.Events;
 
 var WIDGET_NAME = 'clock';

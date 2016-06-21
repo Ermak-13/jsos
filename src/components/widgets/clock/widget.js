@@ -75,7 +75,4 @@ var _Widget = React.createClass({
   }
 });
 
-module.exports = {
-  Widget: _Widget,
-  SettingsDialog: _SettingsDialog
-}
+module.exports = _Widget;
