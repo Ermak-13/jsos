@@ -6,12 +6,15 @@ var React = require('react'),
     Events = OS.Events,
     SettingsDialog = OS.SettingsDialog,
     WidgetStylesForm = OS.WidgetStylesForm,
+    Mixins = OS.Mixins,
 
     widgetSettings = require('./widget_settings'),
     TimeConfigsForm = require('./time_configs_form'),
     TimeStylesForm = require('./time_styles_form');
 
 var _SettingsDialog = React.createClass({
+  mixins: [Mixins.NavHelper],
+
   getInitialState: function () {
     return {
       tab: 'timeConfigs',
@@ -20,10 +23,6 @@ var _SettingsDialog = React.createClass({
         timeStyles: {}
       }
     };
-  },
-
-  handleNavTab: function (tab) {
-    this.setState({ tab: tab });
   },
 
   update: function (settings) {
@@ -38,27 +37,32 @@ var _SettingsDialog = React.createClass({
     AppDispatcher.trigger(event, this.state.settings);
   },
 
+  getSubmitHandler: function (tab) {
+    var handlers = {
+      timeConfigs: function (settings) {
+        this.update(settings);
+      }.bind(this),
+
+      widgetStyles: function(widgetStyles) {
+        var settings = this.state.settings;
+        settings.widgetStyles = widgetStyles;
+
+        this.update(settings);
+      }.bind(this),
+
+      timeStyles: function (timeStyles) {
+        var settings = this.state.settings;
+        settings.timeStyles = timeStyles;
+
+        this.update(settings);
+      }.bind(this)
+    };
+
+    return handlers[tab];
+  },
+
   getTabs: function () {
-    var settings = this.state.settings,
-        handlers = {
-          timeConfigs: function (settings) {
-            this.update(settings);
-          }.bind(this),
-
-          widgetStyles: function(widgetStyles) {
-            var settings = this.state.settings;
-            settings.widgetStyles = widgetStyles;
-
-            this.update(settings);
-          }.bind(this),
-
-          timeStyles: function (timeStyles) {
-            var settings = this.state.settings;
-            settings.timeStyles = timeStyles;
-
-            this.update(settings);
-          }.bind(this)
-        };
+    var settings = this.state.settings;
 
     return {
       timeConfigs: {
@@ -66,7 +70,7 @@ var _SettingsDialog = React.createClass({
         content: function () {
           return (
             <TimeConfigsForm
-              onSubmit={ handlers.timeConfigs }
+              onSubmit={ this.getSubmitHandler('timeConfigs') }
               settings={ settings }
             />
           );
@@ -78,7 +82,7 @@ var _SettingsDialog = React.createClass({
         content: function () {
           return (
             <WidgetStylesForm
-              onSubmit={ handlers.widgetStyles }
+              onSubmit={ this.getSubmitHandler('timeConfigs') }
               settings={ settings.widgetStyles }
             />
           );
@@ -90,17 +94,13 @@ var _SettingsDialog = React.createClass({
         content: function () {
           return (
             <TimeStylesForm
-              onSubmit={ handlers.timeStyles }
+              onSubmit={ this.getSubmitHandler('timeStyles') }
               settings={ settings.timeStyles }
             />
           );
         }.bind(this) ()
       }
     };
-  },
-
-  isActive: function (tab) {
-    return tab === this.state.tab;
   },
 
   componentDidMount: function () {
@@ -128,30 +128,6 @@ var _SettingsDialog = React.createClass({
         </div>
       </SettingsDialog>
     );
-  },
-
-  getNavHTML: function () {
-    var liHTML = _.map(this.getTabs(), function (options, tab) {
-      var className = this.isActive(tab) ? 'active' : '';
-
-      return (
-        <li key={ tab } className={ className }>
-          <a href="#" onClick={ this.handleNavTab.bind(this, tab) }>
-            { options.navText }
-          </a>
-        </li>
-      );
-    }.bind(this));
-
-    return (
-      <ul className="nav nav-tabs mini-nav">
-        { liHTML }
-      </ul>
-    );
-  },
-
-  getContentHTML: function () {
-    return this.getTabs()[this.state.tab].content;
   }
 });
 

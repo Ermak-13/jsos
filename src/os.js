@@ -11,6 +11,8 @@ var OS = {
   HForm: require('./os/components/hform'),
   Input: require('./os/components/input'),
   Submit: require('./os/components/submit'),
+
+  Mixins: require('./os/mixins')
 };
 
 global.OS = OS;
