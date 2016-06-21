@@ -1,3 +1,5 @@
+require('./globals');
+
 var OS = {
   AppDispatcher: require('./os/app_dispatcher'),
   Events: require('./os/events'),
@@ -10,3 +12,5 @@ var OS = {
   Input: require('./os/components/input'),
   Submit: require('./os/components/submit'),
 };
+
+global.OS = OS;
