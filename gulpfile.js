@@ -1,5 +1,9 @@
 var gulp = require('gulp'),
-    browserify = require('gulp-browserify');
+    browserify = require('gulp-browserify'),
+    jshint = require('gulp-jshint');
+
+gulp.task('dev', ['watch', 'build']);
+gulp.task('release', ['build']);
 
 gulp.task('build', function () {
   gulp.src('./src/newtab.js')
@@ -18,4 +22,8 @@ gulp.task('build', function () {
       }
     }))
     .pipe(gulp.dest('./dist'));
+});
+
+gulp.task('watch', function () {
+  gulp.watch('./src/**/*.js', ['build']);
 });
