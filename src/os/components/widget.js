@@ -13,7 +13,7 @@ var Widget = React.createClass({
   },
 
   getWidgetStyles: function () {
-    return this.props.widgetStyles;
+    return _.clone(this.props.widgetStyles);
   },
 
   handleClickConfigurationIcon: function (e) {

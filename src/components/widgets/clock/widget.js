@@ -29,6 +29,10 @@ var _Widget = React.createClass({
     );
   },
 
+  getTimeStyles: function () {
+    return _.clone(this.state.timeStyles);
+  },
+
   updateMoment: function () {
     this.setState({
       _moment: moment()
@@ -71,7 +75,7 @@ var _Widget = React.createClass({
         widgetStyles={ this.state.widgetStyles }
         openSettingsDialog={ this.openSettingsDialog }>
 
-        <div style={ this.state.timeStyles }>
+        <div style={ this.getTimeStyles() }>
           { this.getTime() }
         </div>
       </Widget>
