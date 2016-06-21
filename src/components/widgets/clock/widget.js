@@ -5,6 +5,7 @@ var React = require('react'),
 
     settings = OS.settings,
     AppDispatcher = OS.AppDispatcher,
+    Events = OS.Events,
     Widget = OS.Widget,
 
     widgetSettings = require('./widget_settings'),
@@ -35,7 +36,9 @@ var _Widget = React.createClass({
   },
 
   openSettingsDialog: function () {
-    AppDispatcher.trigger(widgetSettings.OPEN_SETTINGS_DIALOG_EVENT, {
+    var event = Events.openSettingsDialog(widgetSettings.WIDGET_NAME);
+
+    AppDispatcher.trigger(event, {
       format: this.state.format,
       updatedInterval: this.state.updatedInterval,
       widgetStyles: this.state.widgetStyles,
@@ -49,7 +52,8 @@ var _Widget = React.createClass({
       this.state.updatedInterval
     );
 
-    AppDispatcher.bind(widgetSettings.SAVE_SETTINGS_EVENT, function (settings) {
+    var event = Events.saveSettings(widgetSettings.WIDGET_NAME);
+    AppDispatcher.bind(event, function (settings) {
       this.setState({
         format: settings.format,
         updatedInterval: settings.updatedInterval,

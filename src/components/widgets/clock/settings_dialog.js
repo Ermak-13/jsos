@@ -3,6 +3,7 @@ var React = require('react'),
 
     OS = require('os'),
     AppDispatcher = OS.AppDispatcher,
+    Events = OS.Events,
     SettingsDialog = OS.SettingsDialog,
     WidgetStylesForm = OS.WidgetStylesForm,
 
@@ -33,10 +34,8 @@ var _SettingsDialog = React.createClass({
   },
 
   save: function () {
-    AppDispatcher.trigger(
-      widgetSettings.SAVE_SETTINGS_EVENT,
-      this.state.settings
-    );
+    var event = Events.saveSettings(widgetSettings.WIDGET_NAME);
+    AppDispatcher.trigger(event, this.state.settings);
   },
 
   getTabs: function () {
@@ -105,10 +104,12 @@ var _SettingsDialog = React.createClass({
   },
 
   componentDidMount: function () {
-    AppDispatcher.bind(widgetSettings.OPEN_SETTINGS_DIALOG_EVENT, function (settings) {
-      this.refs.dialog.open();
+    var event = Events.openSettingsDialog(widgetSettings.WIDGET_NAME);
 
-      this.setState({ settings: settings });
+    AppDispatcher.bind(event, function (settings) {
+      this.setState({ settings: settings }, function () {
+        this.refs.dialog.open();
+      }.bind(this));
     }.bind(this));
   },
 

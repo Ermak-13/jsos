@@ -25,10 +25,7 @@ var settings = {
     lineHeight: '80px',
     textAlign: 'center',
     fontSize: '28px'
-  },
-
-  OPEN_SETTINGS_DIALOG_EVENT: Events.openSettingsDialog(WIDGET_NAME),
-  SAVE_SETTINGS_EVENT: Events.saveSettings(WIDGET_NAME)
+  }
 };
 
 module.exports = settings;
