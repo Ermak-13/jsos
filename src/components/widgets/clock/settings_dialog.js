@@ -25,6 +25,13 @@ var _SettingsDialog = React.createClass({
     this.setState({ tab: tab });
   },
 
+  update: function (settings) {
+    this.setState(
+      { settings: settings },
+      function () { this.save(); }.bind(this)
+    );
+  },
+
   save: function () {
     AppDispatcher.trigger(
       widgetSettings.SAVE_SETTINGS_EVENT,
@@ -36,22 +43,21 @@ var _SettingsDialog = React.createClass({
     var settings = this.state.settings,
         handlers = {
           timeConfigs: function (settings) {
-            this.updateSettings(settings);
+            this.update(settings);
           }.bind(this),
 
           widgetStyles: function(widgetStyles) {
             var settings = this.state.settings;
             settings.widgetStyles = widgetStyles;
 
-            this.updateSettings(settings);
+            this.update(settings);
           }.bind(this),
 
           timeStyles: function (timeStyles) {
             var settings = this.state.settings;
             settings.timeStyles = timeStyles;
-            console.log(settings);
 
-            this.updateSettings(settings);
+            this.update(settings);
           }.bind(this)
         };
 
