@@ -74,3 +74,7 @@ body {
   width: 400px;
   margin: 15% auto;
 }
+
+.mini-nav > li > a {
+  padding: 5px 10px;
+}

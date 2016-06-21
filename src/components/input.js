@@ -20,11 +20,17 @@ var Input = React.createClass({
   },
 
   getDefaultValue: function () {
-    return this.props.value || this.props.defaultValue;
+    return this.props.value || this.props.defaultValue || '';
   },
 
   getValue: function () {
     return this.state.value;
+  },
+
+  componentWillReceiveProps: function (nextProps) {
+    if (this.props.value !== nextProps.value) {
+      this.setState({ value: nextProps.value });
+    }
   },
 
   render: function () {
