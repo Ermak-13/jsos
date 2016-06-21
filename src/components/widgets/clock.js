@@ -1,15 +1,16 @@
 var React = require('react'),
     moment = require('moment'),
     _ = require('underscore'), 
-    settings = require('../../settings'),
-    AppDispatcher = require('../../app_dispatcher'),
-    Events = require('../../events'),
+    OS = require('os'),
 
-    Widget = require('../widget'),
-    SettingsDialog = require('../settings_dialog'),
-    WidgetStylesForm = require('../widget_styles_form'),
-    HForm = require('../hform'),
-    Input = require('../input');
+    settings = OS.settings,
+    AppDispatcher = OS.AppDispatcher,
+    Events = OS.Events,
+    Widget = OS.Widget,
+    SettingsDialog = OS.SettingsDialog,
+    WidgetStylesForm = OS.WidgetStylesForm,
+    HForm = OS.HForm,
+    Input = OS.Input;
 
 var WIDGET_NAME = 'clock',
     OPEN_SETTINGS_DIALOG_EVENT = Events.openSettingsDialog(WIDGET_NAME),
@@ -105,13 +106,6 @@ var _SettingsDialog = React.createClass({
 
   handleNavTab: function (tab) {
     this.setState({ tab: tab });
-  },
-
-  updateSettings: (settings) {
-    this.setState(
-      { settings: settings },
-      function () { this.save(); }.bind(this)
-    );
   },
 
   save: function () {

@@ -1,4 +1,4 @@
-var MicroEvent = require('./microevent');
+var MicroEvent = require('microevent');
 
 var AppDispatcher = function () {
   var _this = this;

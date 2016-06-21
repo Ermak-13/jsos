@@ -1,7 +1,6 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-
-var Clock = require('./components/widgets/clock');
+var React = require('react'),
+    ReactDOM = require('react-dom'),
+    Clock = require('./components/widgets/clock');
 
 ReactDOM.render(
   <Clock.Widget
