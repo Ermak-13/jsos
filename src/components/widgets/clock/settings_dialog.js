@@ -13,7 +13,8 @@ var React = require('react'),
     TimeStylesForm = require('./time_styles_form');
 
 var _SettingsDialog = React.createClass({
-  mixins: [Mixins.NavHelper],
+  name: widgetSettings.WIDGET_NAME,
+  mixins: [Mixins.NavHelper, Mixins.SettingsDialogHelper],
 
   getInitialState: function () {
     return {
@@ -23,18 +24,6 @@ var _SettingsDialog = React.createClass({
         timeStyles: {}
       }
     };
-  },
-
-  update: function (settings) {
-    this.setState(
-      { settings: settings },
-      function () { this.save(); }.bind(this)
-    );
-  },
-
-  save: function () {
-    var event = Events.saveSettings(widgetSettings.WIDGET_NAME);
-    AppDispatcher.trigger(event, this.state.settings);
   },
 
   getSubmitHandler: function (tab) {
@@ -82,7 +71,7 @@ var _SettingsDialog = React.createClass({
         content: function () {
           return (
             <WidgetStylesForm
-              onSubmit={ this.getSubmitHandler('timeConfigs') }
+              onSubmit={ this.getSubmitHandler('widgetStyles') }
               settings={ settings.widgetStyles }
             />
           );
@@ -103,21 +92,19 @@ var _SettingsDialog = React.createClass({
     };
   },
 
-  componentDidMount: function () {
-    var event = Events.openSettingsDialog(widgetSettings.WIDGET_NAME);
+  open: function () {
+    this.refs.dialog.open();
+  },
 
-    AppDispatcher.bind(event, function (settings) {
-      this.setState({ settings: settings }, function () {
-        this.refs.dialog.open();
-      }.bind(this));
-    }.bind(this));
+  componentDidMount: function () {
+    this.bindOpenDialog();
   },
 
   render: function () {
     return (
       <SettingsDialog
         ref="dialog"
-        name="clock">
+        name={ this.name }>
 
         { this.getNavHTML() }
 
