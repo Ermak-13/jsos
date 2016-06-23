@@ -14,12 +14,26 @@ var _Widget = React.createClass({
   getInitialState: function () {
     return {
       _moment: moment(),
+      updatedInterval: settings.DEFAULT_UPDATED_INTERVAL,
 
       widgetStyles: settings.DEFAULT_WIDGET_STYLES,
       calendarStyles: settings.DEFAULT_CALENDAR_STYLES,
       monthStyles: settings.DEFAULT_MONTH_STYLES,
       dayStyles: settings.DEFAULT_DAY_STYLES
     };
+  },
+
+  updateMoment: function () {
+    this.setState({
+      _moment: moment()
+    });
+  },
+
+  componentDidMount: function () {
+    setInterval(
+      this.updateMoment,
+      this.state.updatedInterval
+    );
   },
 
   render: function () {

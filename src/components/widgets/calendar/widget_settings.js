@@ -5,6 +5,8 @@ var _ = require('underscore'),
 
 var settings = {
   WIDGET_NAME: 'calendar',
+  DEFAULT_UPDATED_INTERVAL: 60 * 1000,
+
   DEFAULT_WIDGET_STYLES: _.extend(
     _.clone(globalSettings.DEFAULT_WIDGET_STYLES),
     {
