@@ -1,5 +1,6 @@
 var React = require('react'),
     ReactDOM = require('react-dom'),
+    OS = require('os'),
     Clock = require('./components/widgets/clock'),
     Calendar = require('./components/widgets/calendar');
 
@@ -9,6 +10,6 @@ ReactDOM.render(
 );
 
 ReactDOM.render(
-  <Clock.SettingsDialog />,
+  <OS.DefaultSettingsDialog />,
   document.getElementById('configuration-dialogs-container')
 );

@@ -9,7 +9,9 @@ var settings = {
 
   NAV_ACTIVE_TAB_CLASS_NAME: 'active',
   NAV_INACTIVE_TAB_CLASS_NAME: '',
-  NAV_CLASS_NAME: 'nav nav-tabs mini-nav'
+  NAV_CLASS_NAME: 'nav nav-tabs mini-nav',
+
+  DEFAULT_SETTINGS_DIALOG_NAME: 'default'
 };
 
 module.exports = settings;

@@ -2,6 +2,9 @@ var React = require('react'),
     moment = require('moment'),
 
     OS = require('os'),
+    globalSettings = OS.settings,
+    AppDispatcher = OS.AppDispatcher,
+    Events = OS.Events,
     Widget = OS.Widget,
 
     settings = require('./widget_settings');
@@ -29,11 +32,24 @@ var _Widget = React.createClass({
     });
   },
 
+  openSettingsDialog: function () {
+    AppDispatcher.openDefaultSettingsDialog(this.name, {
+      widgetStyles: this.state.widgetStyles
+    });
+  },
+
   componentDidMount: function () {
     setInterval(
       this.updateMoment,
       this.state.updatedInterval
     );
+
+    var event = Events.saveSettings(globalSettings.DEFAULT_SETTINGS_DIALOG_NAME);
+    AppDispatcher.bind(event, function (settings) {
+      this.setState({
+        widgetStyles: settings.widgetStyles
+      });
+    }.bind(this));
   },
 
   render: function () {
@@ -41,7 +57,8 @@ var _Widget = React.createClass({
       <Widget
         name={ this.name }
         widgetHeaderDisabled={ true }
-        widgetStyles={ this.state.widgetStyles }>
+        widgetStyles={ this.state.widgetStyles }
+        openSettingsDialog={ this.openSettingsDialog }>
 
         <div style={ this.state.calendarStyles }>
           <div style={ this.state.monthStyles }>
