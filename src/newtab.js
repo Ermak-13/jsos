@@ -1,11 +1,10 @@
 var React = require('react'),
     ReactDOM = require('react-dom'),
-    Clock = require('./components/widgets/clock');
+    Clock = require('./components/widgets/clock'),
+    Calendar = require('./components/widgets/calendar');
 
 ReactDOM.render(
-  <Clock.Widget
-    header="Welcome Widget"
-  />,
+  <Calendar.Widget/>,
   document.getElementById('widgets-container')
 );
 

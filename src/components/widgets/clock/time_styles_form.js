@@ -8,7 +8,7 @@ var TimeStylesForm = React.createClass({
   handleSubmit: function (e) {
     e.preventDefault();
     var settings = _.extend(
-      this.props.settings,
+      _.clone(this.props.settings),
       {
         height: this.refs.height.getValue(),
         lineHeight: this.refs.lineHeight.getValue(),

@@ -8,7 +8,7 @@ var TimeConfigsForm = React.createClass({
   handleSubmit: function (e) {
     e.preventDefault();
     var settings = _.extend(
-      this.props.settings,
+      _.clone(this.props.settings),
       {
         format: this.refs.format.getValue(),
         updatedInterval: this.refs.updatedInterval.getValue()

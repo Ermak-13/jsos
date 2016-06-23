@@ -13,7 +13,7 @@ var settings = {
   DEFAULT_UPDATED_INTERVAL: 60 * 1000,
 
   DEFAULT_WIDGET_STYLES: _.extend(
-    globalSettings.DEFAULT_WIDGET_STYLES,
+    _.clone(globalSettings.DEFAULT_WIDGET_STYLES),
     {
       width: '150px',
       height: '100px'
