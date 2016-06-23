@@ -2,6 +2,7 @@ var gulp = require('gulp'),
     browserify = require('gulp-browserify'),
     jshint = require('gulp-jshint');
 
+gulp.task('default', ['dev']);
 gulp.task('dev', ['watch', 'build']);
 gulp.task('release', ['build']);
 
