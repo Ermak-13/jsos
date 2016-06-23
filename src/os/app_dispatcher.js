@@ -6,6 +6,11 @@ var MicroEvent = require('microevent'),
 var AppDispatcher = function () {
   var _this = this;
 
+  this.openSettingsDialog = function (name, settings) {
+    var event = Events.openSettingsDialog(name);
+    _this.trigger(event, settings);
+  };
+
   this.openDefaultSettingsDialog = function (widgetName, settings) {
     var event = Events.openSettingsDialog(DEFAULT_SETTINGS_DIALOG_NAME);
     _this.trigger(event, widgetName, settings);

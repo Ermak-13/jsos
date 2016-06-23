@@ -3,23 +3,26 @@ var React = require('react'),
     _ = require('underscore'), 
     OS = require('os'),
 
-    settings = OS.settings,
-    AppDispatcher = OS.AppDispatcher,
-    Events = OS.Events,
     Widget = OS.Widget,
+    Mixins = OS.Mixins,
 
-    widgetSettings = require('./widget_settings'),
+    settings = require('./widget_settings'),
     _SettingsDialog = require('./settings_dialog');
 
 var _Widget = React.createClass({
+  name: settings.WIDGET_NAME,
+  settingsDialogName: settings.SETTINGS_DIALOG_NAME,
+
+  mixins: [Mixins.WidgetHelper],
+
   getInitialState: function () {
     return {
       _moment: moment(),
-      format: widgetSettings.DEFAULT_FORMAT,
-      updatedInterval: widgetSettings.DEFAULT_UPDATED_INTERVAL,
+      format: settings.DEFAULT_FORMAT,
+      updatedInterval: settings.DEFAULT_UPDATED_INTERVAL,
 
-      widgetStyles: widgetSettings.DEFAULT_WIDGET_STYLES,
-      timeStyles: widgetSettings.DEFAULT_TIME_STYLES
+      widgetStyles: settings.DEFAULT_WIDGET_STYLES,
+      timeStyles: settings.DEFAULT_TIME_STYLES
     };
   },
 
@@ -40,9 +43,7 @@ var _Widget = React.createClass({
   },
 
   openSettingsDialog: function () {
-    var event = Events.openSettingsDialog(widgetSettings.WIDGET_NAME);
-
-    AppDispatcher.trigger(event, {
+    this._openSettingsDialog({
       format: this.state.format,
       updatedInterval: this.state.updatedInterval,
       widgetStyles: this.state.widgetStyles,
@@ -56,8 +57,7 @@ var _Widget = React.createClass({
       this.state.updatedInterval
     );
 
-    var event = Events.saveSettings(widgetSettings.WIDGET_NAME);
-    AppDispatcher.bind(event, function (settings) {
+    this.updateSettings(function (settings) {
       this.setState({
         format: settings.format,
         updatedInterval: settings.updatedInterval,
@@ -70,7 +70,7 @@ var _Widget = React.createClass({
   render: function () {
     return (
       <Widget
-        name={ widgetSettings.WIDGET_NAME }
+        name={ this.name }
         widgetHeaderDisabled={ true }
         widgetStyles={ this.state.widgetStyles }
         openSettingsDialog={ this.openSettingsDialog }>

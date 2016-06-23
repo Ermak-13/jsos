@@ -10,7 +10,7 @@ var SettingsDialogHelper = {
   },
 
   save: function () {
-    var event = Events.saveSettings(this.name);
+    var event = Events.updateSettings(this.name);
     AppDispatcher.trigger(event, this.state.settings);
   },
 
