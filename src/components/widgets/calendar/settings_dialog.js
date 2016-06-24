@@ -1,5 +1,4 @@
 var React = require('react'),
-    _ = require('underscore'),
 
     OS = require('os'),
     SettingsDialog = OS.SettingsDialog,
@@ -7,8 +6,7 @@ var React = require('react'),
     Mixins = OS.Mixins,
 
     settings = require('./widget_settings'),
-    TimeConfigsForm = require('./time_configs_form'),
-    TimeStylesForm = require('./time_styles_form');
+    CalendarConfigsForm = require('./calendar_configs_form');
 
 var _SettingsDialog = React.createClass({
   name: settings.SETTINGS_DIALOG_NAME,
@@ -16,30 +14,25 @@ var _SettingsDialog = React.createClass({
 
   getInitialState: function () {
     return {
-      tab: 'timeConfigs',
+      tab: 'calendarConfigs',
       settings: {
         widgetStyles: {},
-        timeStyles: {}
+        calendarStyles: {},
+        monthStyles: {},
+        dayStyles: {}
       }
     };
   },
 
   getSubmitHandler: function (tab) {
     var handlers = {
-      timeConfigs: function (settings) {
+      calendarConfigs: function (settings) {
         this.update(settings);
       }.bind(this),
 
-      widgetStyles: function(widgetStyles) {
+      widgetStyles: function (widgetStyles) {
         var settings = this.state.settings;
         settings.widgetStyles = widgetStyles;
-
-        this.update(settings);
-      }.bind(this),
-
-      timeStyles: function (timeStyles) {
-        var settings = this.state.settings;
-        settings.timeStyles = timeStyles;
 
         this.update(settings);
       }.bind(this)
@@ -52,16 +45,16 @@ var _SettingsDialog = React.createClass({
     var settings = this.state.settings;
 
     return {
-      timeConfigs: {
-        navText: 'Time Configs',
+      calendarConfigs: {
+        navText: 'Calendar Configs',
         content: function () {
           return (
-            <TimeConfigsForm
-              onSubmit={ this.getSubmitHandler('timeConfigs') }
+            <CalendarConfigsForm
+              onSubmit={ this.getSubmitHandler('calendarConfigs') }
               settings={ settings }
             />
           );
-        }.bind(this) (),
+        }.bind(this) ()
       },
 
       widgetStyles: {
@@ -71,18 +64,6 @@ var _SettingsDialog = React.createClass({
             <WidgetStylesForm
               onSubmit={ this.getSubmitHandler('widgetStyles') }
               settings={ settings.widgetStyles }
-            />
-          );
-        }.bind(this) ()
-      },
-
-      timeStyles: {
-        navText: 'Time Styles',
-        content: function () {
-          return (
-            <TimeStylesForm
-              onSubmit={ this.getSubmitHandler('timeStyles') }
-              settings={ settings.timeStyles }
             />
           );
         }.bind(this) ()

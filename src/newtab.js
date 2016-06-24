@@ -10,6 +10,6 @@ ReactDOM.render(
 );
 
 ReactDOM.render(
-  <OS.DefaultSettingsDialog />,
+  <Calendar.SettingsDialog />,
   document.getElementById('configuration-dialogs-container')
 );

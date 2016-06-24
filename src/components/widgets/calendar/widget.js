@@ -32,6 +32,15 @@ var _Widget = React.createClass({
     });
   },
 
+  openSettingsDialog: function () {
+    this._openSettingsDialog({
+      widgetStyles: this.state.widgetStyles,
+      calendarStyles: this.state.calendarStyles,
+      monthStyles: this.state.monthStyles,
+      dayStyles: this.state.dayStyles
+    });
+  },
+
   componentDidMount: function () {
     setInterval(
       this.updateMoment,
@@ -40,7 +49,10 @@ var _Widget = React.createClass({
 
     this.updateSettings(function (settings) {
       this.setState({
-        widgetStyles: settings.widgetStyles
+        widgetStyles: settings.widgetStyles,
+        calendarStyles: settings.calendarStyles,
+        monthStyles: settings.monthStyles,
+        dayStyles: settings.dayStyles
       });
     }.bind(this));
   },
@@ -51,7 +63,7 @@ var _Widget = React.createClass({
         name={ this.name }
         widgetHeaderDisabled={ true }
         widgetStyles={ this.state.widgetStyles }
-        openSettingsDialog={ this.openDefaultSettingsDialog }>
+        openSettingsDialog={ this.openSettingsDialog }>
 
         <div style={ this.state.calendarStyles }>
           <div style={ this.state.monthStyles }>
