@@ -5,11 +5,11 @@ var React = require('react'),
     Calendar = require('./components/widgets/calendar');
 
 ReactDOM.render(
-  <Clock.Widget/>,
+  <Calendar.Widget/>,
   document.getElementById('widgets-container')
 );
 
 ReactDOM.render(
-  <Clock.SettingsDialog />,
+  <OS.DefaultSettingsDialog />,
   document.getElementById('configuration-dialogs-container')
 );

@@ -1,8 +1,6 @@
 var React = require('react'),
 
     settings = require('../settings'),
-    AppDispatcher = require('../app_dispatcher'),
-    Events = require('../events'),
     Mixins = require('../mixins'),
     SettingsDialog = require('./settings_dialog'),
     WidgetStylesForm = require('./widget_styles_form');
@@ -13,7 +11,7 @@ var _SettingsDialog = React.createClass({
 
   getInitialState: function () {
     return {
-      name: null,
+      widgetName: null,
       settings: {
         widgetStyles: {}
       }
@@ -27,19 +25,16 @@ var _SettingsDialog = React.createClass({
     this.update(settings);
   },
 
-  open: function () {
-    this.refs.dialog.open();
-  },
-
   componentDidMount: function () {
-    var event = Events.openSettingsDialog(this.name);
-    AppDispatcher.bind(event, function (widgetName, settings) {
+    this.open(function (widgetName, settings) {
+      var callback = function () {
+        this.refs.dialog.open();
+      }.bind(this);
+
       this.setState({
-        name: widgetName,
+        widgetName: widgetName,
         settings: settings
-      }, function () {
-        this.open();
-      });
+      }, callback);
     }.bind(this));
   },
 
@@ -49,7 +44,7 @@ var _SettingsDialog = React.createClass({
     return (
       <SettingsDialog
         ref="dialog"
-        name={ this.state.name }>
+        name={ this.state.widgetName }>
 
         <WidgetStylesForm
           onSubmit={ this.handleSubmit }

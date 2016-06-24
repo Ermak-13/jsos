@@ -2,18 +2,16 @@ var React = require('react'),
     _ = require('underscore'),
 
     OS = require('os'),
-    AppDispatcher = OS.AppDispatcher,
-    Events = OS.Events,
     SettingsDialog = OS.SettingsDialog,
     WidgetStylesForm = OS.WidgetStylesForm,
     Mixins = OS.Mixins,
 
-    widgetSettings = require('./widget_settings'),
+    settings = require('./widget_settings'),
     TimeConfigsForm = require('./time_configs_form'),
     TimeStylesForm = require('./time_styles_form');
 
 var _SettingsDialog = React.createClass({
-  name: widgetSettings.WIDGET_NAME,
+  name: settings.WIDGET_NAME,
   mixins: [Mixins.NavHelper, Mixins.SettingsDialogHelper],
 
   getInitialState: function () {
@@ -92,12 +90,16 @@ var _SettingsDialog = React.createClass({
     };
   },
 
-  open: function () {
-    this.refs.dialog.open();
-  },
-
   componentDidMount: function () {
-    this.bindOpenDialog();
+    this.open(function (settings) {
+      var callback = function () {
+        this.refs.dialog.open();
+      }.bind(this);
+
+      this.setState({
+        settings: settings
+      }, callback);
+    }.bind(this));
   },
 
   render: function () {
