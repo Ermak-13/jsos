@@ -3,13 +3,10 @@ var _ = require('underscore'),
     OS = require('os'),
     globalSettings = OS.settings;
 
-var WIDGET_NAME = 'clock';
-
 var settings = {
-  WIDGET_NAME: WIDGET_NAME,
-  SETTINGS_DIALOG_NAME: WIDGET_NAME,
+  WIDGET_NAME: 'calendar',
+  SETTINGS_DIALOG_NAME: 'calendar',
 
-  DEFAULT_FORMAT: 'HH:mm',
   DEFAULT_UPDATED_INTERVAL: 60 * 1000,
 
   DEFAULT_WIDGET_STYLES: _.extend(
@@ -20,11 +17,22 @@ var settings = {
     }
   ),
 
-  DEFAULT_TIME_STYLES: {
-    height: '80px',
-    lineHeight: '80px',
+  DEFAULT_CALENDAR_STYLES: {
+    width: '100px',
     textAlign: 'center',
-    fontSize: '28px'
+    margin: 'auto'
+  },
+
+  DEFAULT_MONTH_STYLES: {
+    background: '#EE0',
+    fontWeight: 'bold',
+    border: 'solid 1px',
+    borderBottom: 'none'
+  },
+
+  DEFAULT_DAY_STYLES: {
+    fontSize: '32px',
+    border: 'solid 1px'
   }
 };
 

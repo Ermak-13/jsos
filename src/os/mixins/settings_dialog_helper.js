@@ -3,25 +3,29 @@ var AppDispatcher = require('../app_dispatcher'),
 
 var SettingsDialogHelper = {
   update: function (settings) {
+    var callback = function () {
+      this.save();
+    }.bind(this);
+
     this.setState(
       { settings: settings },
-      function () { this.save(); }.bind(this)
+      callback
     );
   },
 
   save: function () {
-    var event = Events.saveSettings(this.name);
+    var event = Events.updateSettings(
+      this.name
+    );
     AppDispatcher.trigger(event, this.state.settings);
   },
 
-  bindOpenDialog: function () {
-    var event = Events.openSettingsDialog(this.name);
+  open: function (callback) {
+    var event = Events.openSettingsDialog(
+      this.name
+    );
 
-    AppDispatcher.bind(event, function (settings) {
-      this.setState({ settings: settings }, function () {
-        this.open();
-      }.bind(this));
-    }.bind(this));
+    AppDispatcher.bind(event, callback);
   }
 };
 

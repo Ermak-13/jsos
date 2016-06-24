@@ -1,7 +1,20 @@
-var MicroEvent = require('microevent');
+var MicroEvent = require('microevent'),
+    Events = require('./events'),
+    settings = require('./settings'),
+    DEFAULT_SETTINGS_DIALOG_NAME = settings.DEFAULT_SETTINGS_DIALOG_NAME;
 
 var AppDispatcher = function () {
   var _this = this;
+
+  this.openSettingsDialog = function (name, settings) {
+    var event = Events.openSettingsDialog(name);
+    _this.trigger(event, settings);
+  };
+
+  this.openDefaultSettingsDialog = function (widgetName, settings) {
+    var event = Events.openSettingsDialog(DEFAULT_SETTINGS_DIALOG_NAME);
+    _this.trigger(event, widgetName, settings);
+  };
 };
 MicroEvent.mixin(AppDispatcher);
 

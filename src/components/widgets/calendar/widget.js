@@ -1,13 +1,12 @@
 var React = require('react'),
     moment = require('moment'),
-    _ = require('underscore'), 
-    OS = require('os'),
 
+    OS = require('os'),
+    globalSettings = OS.settings,
     Widget = OS.Widget,
     Mixins = OS.Mixins,
 
-    settings = require('./widget_settings'),
-    _SettingsDialog = require('./settings_dialog');
+    settings = require('./widget_settings');
 
 var _Widget = React.createClass({
   name: settings.WIDGET_NAME,
@@ -18,22 +17,13 @@ var _Widget = React.createClass({
   getInitialState: function () {
     return {
       _moment: moment(),
-      format: settings.DEFAULT_FORMAT,
       updatedInterval: settings.DEFAULT_UPDATED_INTERVAL,
 
       widgetStyles: settings.DEFAULT_WIDGET_STYLES,
-      timeStyles: settings.DEFAULT_TIME_STYLES
+      calendarStyles: settings.DEFAULT_CALENDAR_STYLES,
+      monthStyles: settings.DEFAULT_MONTH_STYLES,
+      dayStyles: settings.DEFAULT_DAY_STYLES
     };
-  },
-
-  getTime: function () {
-    return this.state._moment.format(
-      this.state.format
-    );
-  },
-
-  getTimeStyles: function () {
-    return _.clone(this.state.timeStyles);
   },
 
   updateMoment: function () {
@@ -44,10 +34,10 @@ var _Widget = React.createClass({
 
   openSettingsDialog: function () {
     this._openSettingsDialog({
-      format: this.state.format,
-      updatedInterval: this.state.updatedInterval,
       widgetStyles: this.state.widgetStyles,
-      timeStyles: this.state.timeStyles
+      calendarStyles: this.state.calendarStyles,
+      monthStyles: this.state.monthStyles,
+      dayStyles: this.state.dayStyles
     });
   },
 
@@ -59,10 +49,10 @@ var _Widget = React.createClass({
 
     this.updateSettings(function (settings) {
       this.setState({
-        format: settings.format,
-        updatedInterval: settings.updatedInterval,
         widgetStyles: settings.widgetStyles,
-        timeStyles: settings.timeStyles
+        calendarStyles: settings.calendarStyles,
+        monthStyles: settings.monthStyles,
+        dayStyles: settings.dayStyles
       });
     }.bind(this));
   },
@@ -75,9 +65,16 @@ var _Widget = React.createClass({
         widgetStyles={ this.state.widgetStyles }
         openSettingsDialog={ this.openSettingsDialog }>
 
-        <div style={ this.getTimeStyles() }>
-          { this.getTime() }
+        <div style={ this.state.calendarStyles }>
+          <div style={ this.state.monthStyles }>
+            { this.state._moment.format('MMMM') }
+          </div>
+
+          <div style={ this.state.dayStyles }>
+            { this.state._moment.format('D') }
+          </div>
         </div>
+
       </Widget>
     );
   }
