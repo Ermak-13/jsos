@@ -22,6 +22,7 @@ gulp.task('build', function () {
         }
       }
     }))
+    .on('error', console.log)
     .pipe(gulp.dest('./dist'));
 });
 
