@@ -15,6 +15,7 @@ var OS = {
   Submit: require('./os/components/submit'),
 
   Mixins: require('./os/mixins'),
+  storage: require('./os/storage'),
 
   log: require('./os/actions/log'),
   request: require('./os/actions/request'),
