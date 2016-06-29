@@ -13,7 +13,10 @@ var OS = {
   Input: require('./os/components/input'),
   Submit: require('./os/components/submit'),
 
-  Mixins: require('./os/mixins')
+  Mixins: require('./os/mixins'),
+
+  log: require('./os/actions/log'),
+  request: require('./os/actions/request')
 };
 
 global.OS = OS;
