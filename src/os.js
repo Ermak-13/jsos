@@ -16,7 +16,8 @@ var OS = {
   Mixins: require('./os/mixins'),
 
   log: require('./os/actions/log'),
-  request: require('./os/actions/request')
+  request: require('./os/actions/request'),
+  download: require('./os/actions/download')
 };
 
 global.OS = OS;

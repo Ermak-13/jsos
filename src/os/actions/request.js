@@ -4,6 +4,8 @@ var _ = require('underscore'),
     log = require('./log');
 
 var request = function (method, url, callbacks, options) {
+  log('info', 'OS request - begin');
+
   callbacks = callbacks || {};
   options = _.extend(
     { async: true },
@@ -11,7 +13,7 @@ var request = function (method, url, callbacks, options) {
   );
 
   var logReadyState = function (code) {
-        log('info', sprintf('xhr ready state - %s', code));
+        log('info', sprintf('OS request - xhr ready state - %s', code));
       },
 
       getDefaultCallback = function (code) {
@@ -76,6 +78,8 @@ var request = function (method, url, callbacks, options) {
     options.password
   );
   xhr.send();
+
+  log('info', 'OS request - end');
 };
 
 module.exports = request;
