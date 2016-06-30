@@ -6,8 +6,8 @@ var OS = {
   settings: require('./os/settings'),
 
   Desktop: require('./os/components/desktop'),
-  _Widget: require('./os/components/_widget'),
-  Widget: require('./os/components/widget'),
+  _Widget: require('./os/components/widget'),
+  Widget: require('./os/components/old_widget'),
   SettingsDialog: require('./os/components/settings_dialog'),
   DefaultSettingsDialog: require('./os/components/default_settings_dialog'),
   WidgetStylesForm: require('./os/components/widget_styles_form'),
