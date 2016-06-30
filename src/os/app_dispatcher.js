@@ -10,6 +10,10 @@ var AppDispatcher = function () {
     _this.trigger(Events.addWidget, WidgetClass);
   };
 
+  this.removeWidget = function (widgetId) {
+    _this.trigger(Events.removeWidget, widgetId);
+  };
+
   this.openSettingsDialog = function (name, settings) {
     var event = Events.openSettingsDialog(name);
     _this.trigger(event, settings);

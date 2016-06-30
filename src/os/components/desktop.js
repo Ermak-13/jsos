@@ -5,32 +5,46 @@ var React = require('react'),
 var Desktop = React.createClass({
   getInitialState: function () {
     return {
-      widgets: []
+      widgets: [],
+      lastWidgetId: 0
     };
   },
 
   addWidget: function (WidgetClass) {
     var widgets = this.state.widgets,
-        id = widgets.length;
+        lastWidgetId = this.state.lastWidgetId;
 
     widgets.push(
       React.createElement(
         WidgetClass,
         {
-          key: id,
-          id: id
+          key: lastWidgetId,
+          widgetId: lastWidgetId
         }
       )
     );
 
     this.setState({
-      widgets: widgets
+      widgets: widgets,
+      lastWidgetId: lastWidgetId + 1
     });
+  },
+
+  removeWidget: function (widgetId) {
+    var widgets = _.filter(this.state.widgets, function (widget) {
+      return widget.props.widgetId !== widgetId;
+    });
+
+    this.setState({ widgets: widgets });
   },
 
   componentDidMount: function () {
     AppDispatcher.bind(Events.addWidget, function (WidgetClass) {
       this.addWidget(WidgetClass);
+    }.bind(this));
+
+    AppDispatcher.bind(Events.removeWidget, function (widgetId) {
+      this.removeWidget(widgetId);
     }.bind(this));
   },
 

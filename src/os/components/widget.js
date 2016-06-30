@@ -1,6 +1,7 @@
 var React = require('react'),
     _ = require('underscore'),
     s = require('underscore.string'),
+
     settings = require('../settings');
 
 var Widget = React.createClass({
@@ -19,6 +20,11 @@ var Widget = React.createClass({
   handleClickConfigurationIcon: function (e) {
     e.preventDefault();
     this.props.openSettingsDialog();
+  },
+
+  handleClickCloseIcon: function (e) {
+    e.preventDefault();
+    this.props.closeWidget();
   },
 
   getHeader: function () {
@@ -58,8 +64,8 @@ var Widget = React.createClass({
 
   getClosingWidgetIconHTML: function () {
     return (
-      <a className="icon">
-        <span className="glyphicon glyphicon-minus" aria-hidden="true"></span>
+      <a className="icon" onClick={ this.handleClickCloseIcon }>
+        <span className="glyphicon glyphicon-remove" aria-hidden="true"></span>
       </a>
     );
   },

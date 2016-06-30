@@ -2,6 +2,7 @@ var sprintf = require('underscore.string/sprintf');
 
 var Events = {
   addWidget: 'add-widget',
+  removeWidget: 'remove-widget',
 
   openSettingsDialog: function (name) {
     return sprintf('open-%s-settings-dialog', name);

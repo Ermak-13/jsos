@@ -19,6 +19,10 @@ var WidgetHelper = {
     AppDispatcher.openDefaultSettingsDialog(this.name, settings);
   },
 
+  closeWidget: function () {
+    AppDispatcher.removeWidget(this.props.widgetId);
+  },
+
   updateSettings: function (callback) {
     var event = Events.updateSettings(
       this.getSettingsDialogName()

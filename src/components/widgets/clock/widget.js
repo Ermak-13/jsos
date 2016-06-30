@@ -73,7 +73,8 @@ var _Widget = React.createClass({
         name={ this.name }
         widgetHeaderDisabled={ true }
         widgetStyles={ this.state.widgetStyles }
-        openSettingsDialog={ this.openSettingsDialog }>
+        openSettingsDialog={ this.openSettingsDialog }
+        closeWidget={ this.closeWidget }>
 
         <div style={ this.getTimeStyles() }>
           { this.getTime() }
