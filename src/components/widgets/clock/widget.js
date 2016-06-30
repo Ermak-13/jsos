@@ -3,16 +3,14 @@ var React = require('react'),
     _ = require('underscore'), 
     OS = require('os'),
 
-    Widget = OS.Widget,
+    Widget = OS._Widget,
     Mixins = OS.Mixins,
 
     settings = require('./widget_settings'),
-    _SettingsDialog = require('./settings_dialog');
+    SettingsDialog = require('./settings_dialog');
 
 var _Widget = React.createClass({
   name: settings.WIDGET_NAME,
-  settingsDialogName: settings.SETTINGS_DIALOG_NAME,
-
   mixins: [Mixins.WidgetHelper],
 
   getInitialState: function () {
@@ -32,22 +30,9 @@ var _Widget = React.createClass({
     );
   },
 
-  getTimeStyles: function () {
-    return _.clone(this.state.timeStyles);
-  },
-
   updateMoment: function () {
     this.setState({
       _moment: moment()
-    });
-  },
-
-  openSettingsDialog: function () {
-    this._openSettingsDialog({
-      format: this.state.format,
-      updatedInterval: this.state.updatedInterval,
-      widgetStyles: this.state.widgetStyles,
-      timeStyles: this.state.timeStyles
     });
   },
 
@@ -57,34 +42,34 @@ var _Widget = React.createClass({
       this.state.updatedInterval
     );
     this.setState({ intervalId: intervalId });
-
-    this.updateSettings(function (settings) {
-      this.setState({
-        format: settings.format,
-        updatedInterval: settings.updatedInterval,
-        widgetStyles: settings.widgetStyles,
-        timeStyles: settings.timeStyles
-      });
-    }.bind(this));
   },
 
   componentWillUnmount: function () {
     clearInterval(this.state.intervalId);
   },
-
+  
+  openConfigurator: function () {
+    this.refs.configurator._open();
+  },
+  
   render: function () {
     return (
-      <Widget
-        name={ this.name }
-        widgetHeaderDisabled={ true }
-        widgetStyles={ this.state.widgetStyles }
-        openSettingsDialog={ this.openSettingsDialog }
-        closeWidget={ this.closeWidget }>
+      <Widget.Widget widgetStyles={ this.state.widgetStyles }>
+        <Widget.DefaultIconsContainer
+          onClickCloseBtn={ this.close }
+          onClickConfigureBtn={ this.openConfigurator }
+        />
 
-        <div style={ this.getTimeStyles() }>
-          { this.getTime() }
-        </div>
-      </Widget>
+        <Widget.Body>
+          <div style={ this.state.timeStyles }>
+            { this.getTime() }
+          </div>
+        </Widget.Body>
+
+        <SettingsDialog
+          ref="configurator"
+        />
+      </Widget.Widget>
     );
   }
 });

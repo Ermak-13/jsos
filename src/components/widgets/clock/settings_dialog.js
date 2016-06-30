@@ -90,6 +90,10 @@ var _SettingsDialog = React.createClass({
     };
   },
 
+  _open: function () {
+    this.refs.dialog.open();
+  },
+
   componentDidMount: function () {
     this.open(function (settings) {
       var callback = function () {
