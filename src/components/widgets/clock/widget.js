@@ -52,10 +52,11 @@ var _Widget = React.createClass({
   },
 
   componentDidMount: function () {
-    setInterval(
+    var intervalId = setInterval(
       this.updateMoment,
       this.state.updatedInterval
     );
+    this.setState({ intervalId: intervalId });
 
     this.updateSettings(function (settings) {
       this.setState({
@@ -65,6 +66,10 @@ var _Widget = React.createClass({
         timeStyles: settings.timeStyles
       });
     }.bind(this));
+  },
+
+  componentWillUnmount: function () {
+    clearInterval(this.state.intervalId);
   },
 
   render: function () {
