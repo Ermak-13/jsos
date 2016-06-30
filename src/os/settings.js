@@ -11,7 +11,9 @@ var settings = {
   NAV_INACTIVE_TAB_CLASS_NAME: '',
   NAV_CLASS_NAME: 'nav nav-tabs mini-nav',
 
-  DEFAULT_SETTINGS_DIALOG_NAME: 'default'
+  DEFAULT_SETTINGS_DIALOG_NAME: 'default',
+
+  DESKTOP_STORAGE_KEY: 'widgets'
 };
 
 module.exports = settings;

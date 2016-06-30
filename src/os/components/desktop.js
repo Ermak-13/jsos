@@ -2,6 +2,7 @@ var React = require('react'),
     _ = require('underscore'),
     sprintf = require('sprintf-js').sprintf,
 
+    settings = require('../settings'),
     AppDispatcher = require('../app_dispatcher'),
     Events = require('../events'),
     storage = require('../storage'),
@@ -23,7 +24,7 @@ var Desktop = React.createClass({
       };
     });
 
-    storage.set('widgets', serializedWidgets);
+    storage.set(settings.DESKTOP_STORAGE_KEY, serializedWidgets);
     log('info', 'Desktop is saved.');
   },
 
@@ -86,7 +87,7 @@ var Desktop = React.createClass({
       this.saveDesktop();
     }.bind(this));
 
-    storage.get('widgets', this.loadDesktop);
+    storage.get(settings.DESKTOP_STORAGE_KEY, this.loadDesktop);
 
     AppDispatcher.bind(Events.addWidget, function (WidgetClass) {
       this.addWidget(WidgetClass);
