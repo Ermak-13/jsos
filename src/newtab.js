@@ -1,8 +1,8 @@
 var React = require('react'),
     ReactDOM = require('react-dom'),
 
-    OS = require('os');
-    require('./components/widgets/clock');
+    OS = require('os'),
+    Widgets = require('./widgets');
 
 ReactDOM.render(
   <OS.Desktop />,
