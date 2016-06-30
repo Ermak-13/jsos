@@ -1,12 +1,11 @@
-var sprintf = require('underscore.string/sprintf'),
+var sprintf = require('sprintf-js').sprintf,
     log = require('./actions/log');
 
 var storage = {
   set: function (key, value) {
     var record = {},
         callback = function () {
-          var message = sprintf('OS storage - set %s', key);
-          log('info', message);
+          log('info', sprintf('OS storage - set %s.', key));
         };
 
     record[key] = value;
@@ -16,6 +15,7 @@ var storage = {
   get: function (key, callback) {
     var wrappedCallback = function (result) {
       callback(result[key]);
+      log('info', sprintf('OS storage - get %s.', key));
     };
 
     chrome.storage.local.get(key, wrappedCallback);
