@@ -7,3 +7,4 @@ var Clock = {
 };
 
 module.exports = Clock;
+window.Clock = Clock;

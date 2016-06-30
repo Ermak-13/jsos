@@ -1,17 +1,10 @@
 var React = require('react'),
     ReactDOM = require('react-dom'),
 
-    OS = require('os'),
-    Desktop = OS.Desktop,
-    Clock = require('./components/widgets/clock'),
-    Calendar = require('./components/widgets/calendar');
-
-var modules = [
-  Clock,
-  Calendar
-];
+    OS = require('os');
+    require('./components/widgets/clock');
 
 ReactDOM.render(
-  <Desktop modules={ modules } />,
+  <OS.Desktop />,
   document.getElementById('desktop-container')
 );
