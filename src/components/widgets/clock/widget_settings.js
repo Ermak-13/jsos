@@ -3,11 +3,9 @@ var _ = require('underscore'),
     OS = require('os'),
     globalSettings = OS.settings;
 
-var WIDGET_NAME = 'clock';
-
 var settings = {
-  WIDGET_NAME: WIDGET_NAME,
-  SETTINGS_DIALOG_NAME: WIDGET_NAME,
+  WIDGET_NAME: 'clock',
+  CONFIGURATOR_REF_NAME: 'configurator',
 
   DEFAULT_FORMAT: 'HH:mm',
   DEFAULT_UPDATED_INTERVAL: 60 * 1000,

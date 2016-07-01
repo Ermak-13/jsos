@@ -7,11 +7,17 @@ var React = require('react'),
     Mixins = OS.Mixins,
 
     settings = require('./widget_settings'),
-    SettingsDialog = require('./settings_dialog');
+    Configurator = require('./configurator');
 
 var _Widget = React.createClass({
-  name: settings.WIDGET_NAME,
   mixins: [Mixins.WidgetHelper],
+
+  getDefaultProps: function () {
+    return {
+      name: settings.WIDGET_NAME,
+      configuratorRefName: settings.CONFIGURATOR_REF_NAME
+    };
+  },
 
   getInitialState: function () {
     return {
@@ -21,6 +27,24 @@ var _Widget = React.createClass({
 
       widgetStyles: settings.DEFAULT_WIDGET_STYLES,
       timeStyles: settings.DEFAULT_TIME_STYLES
+    };
+  },
+
+  handleConfigure: function (settings) {
+    this.setState({
+      format: settings.format,
+      updatedInterval: settings.updatedInterval,
+      widgetStyles: settings.widgetStyles,
+      timeStyles: settings.timeStyles
+    });
+  },
+
+  getSettings: function () {
+    return {
+      format: this.state.format,
+      updatedInterval: this.state.updatedInterval,
+      widgetStyles: _.clone(this.state.widgetStyles),
+      timeStyles: _.clone(this.state.timeStyles)
     };
   },
 
@@ -47,11 +71,7 @@ var _Widget = React.createClass({
   componentWillUnmount: function () {
     clearInterval(this.state.intervalId);
   },
-  
-  openConfigurator: function () {
-    this.refs.configurator._open();
-  },
-  
+
   render: function () {
     return (
       <Widget.Widget widgetStyles={ this.state.widgetStyles }>
@@ -66,8 +86,11 @@ var _Widget = React.createClass({
           </div>
         </Widget.Body>
 
-        <SettingsDialog
-          ref="configurator"
+        <Configurator
+          ref={ this.props.configuratorRefName }
+          name={ this.props.name }
+          settings={ this.getSettings() }
+          onSubmit={ this.handleConfigure }
         />
       </Widget.Widget>
     );

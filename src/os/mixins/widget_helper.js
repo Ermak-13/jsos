@@ -2,41 +2,15 @@ var AppDispatcher = require('../app_dispatcher'),
     Events = require('../events');
 
 var WidgetHelper = {
-  _openSettingsDialog: function (settings) {
-    AppDispatcher.openSettingsDialog(
-      this.getSettingsDialogName(),
-      settings
-    );
-  },
-
-  openDefaultSettingsDialog: function () {
-    this._openDefaultSettingsDialog({
-      widgetStyles: this.state.widgetStyles
-    });
-  },
-
-  _openDefaultSettingsDialog: function (settings) {
-    AppDispatcher.openDefaultSettingsDialog(this.name, settings);
-  },
-
   close: function () {
     AppDispatcher.removeWidget(this.props.widgetId);
   },
 
-  closeWidget: function () {
-    this.close();
-  },
+  openConfigurator: function () {
+    var refName = this.props.configuratorRefName,
+        ref = this.refs[refName];
 
-  updateSettings: function (callback) {
-    var event = Events.updateSettings(
-      this.getSettingsDialogName()
-    );
-
-    AppDispatcher.bind(event, callback);
-  },
-
-  getSettingsDialogName: function () {
-    return this.settingsDialogName || this.name;
+    ref.open();
   }
 };
 

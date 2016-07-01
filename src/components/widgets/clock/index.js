@@ -1,5 +1,5 @@
 var Widget = require('./widget'),
-    SettingsDialog = require('./settings_dialog');
+    SettingsDialog = require('./configurator');
 
 var Clock = {
   Widget: Widget,

@@ -3,7 +3,6 @@ var React = require('react'),
 
     OS = require('os'),
     Configurator = OS.Configurator,
-    SettingsDialog = OS.SettingsDialog,
     WidgetStylesForm = OS.WidgetStylesForm,
     Mixins = OS.Mixins,
 
@@ -11,38 +10,37 @@ var React = require('react'),
     TimeConfigsForm = require('./time_configs_form'),
     TimeStylesForm = require('./time_styles_form');
 
-var _SettingsDialog = React.createClass({
-  name: settings.SETTINGS_DIALOG_NAME,
-  mixins: [Mixins.NavHelper, Mixins.SettingsDialogHelper],
+var _Configurator = React.createClass({
+  mixins: [Mixins.NavHelper, Mixins.ConfiguratorHelper],
+
+  getDefaultProps: function () {
+    return {
+      refName: settings.CONFIGURATOR_REF_NAME
+    };
+  },
 
   getInitialState: function () {
     return {
-      tab: 'timeConfigs',
-      settings: {
-        widgetStyles: {},
-        timeStyles: {}
-      }
+      tab: 'timeConfigs'
     };
   },
 
   getSubmitHandler: function (tab) {
     var handlers = {
       timeConfigs: function (settings) {
-        this.update(settings);
+        this.props.onSubmit(settings);
       }.bind(this),
 
       widgetStyles: function(widgetStyles) {
-        var settings = this.state.settings;
+        var settings = _.clone(this.props.settings);
         settings.widgetStyles = widgetStyles;
-
-        this.update(settings);
+        this.props.onSubmit(settings);
       }.bind(this),
 
       timeStyles: function (timeStyles) {
-        var settings = this.state.settings;
+        var settings = _.clone(this.props.settings);
         settings.timeStyles = timeStyles;
-
-        this.update(settings);
+        this.props.onSubmit(settings);
       }.bind(this)
     };
 
@@ -50,7 +48,7 @@ var _SettingsDialog = React.createClass({
   },
 
   getTabs: function () {
-    var settings = this.state.settings;
+    var settings = this.props.settings;
 
     return {
       timeConfigs: {
@@ -91,27 +89,11 @@ var _SettingsDialog = React.createClass({
     };
   },
 
-  _open: function () {
-    this.refs.configurator.open();
-  },
-
-  componentDidMount: function () {
-    this.open(function (settings) {
-      var callback = function () {
-        this.refs.dialog.open();
-      }.bind(this);
-
-      this.setState({
-        settings: settings
-      }, callback);
-    }.bind(this));
-  },
-
   render: function () {
     return (
       <Configurator.DefaultDialog
-        ref="configurator"
-        name={ this.name }>
+        ref={ this.props.refName }
+        name={ this.props.name }>
 
         { this.getNavHTML() }
 
@@ -125,4 +107,4 @@ var _SettingsDialog = React.createClass({
   }
 });
 
-module.exports = _SettingsDialog;
+module.exports = _Configurator;
