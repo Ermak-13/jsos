@@ -2,7 +2,7 @@ var React = require('react'),
     moment = require('moment'),
 
     OS = require('os'),
-    Widget = OS._Widget,
+    Widget = OS.Widget,
     Mixins = OS.Mixins,
 
     settings = require('./widget_settings');

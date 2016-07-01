@@ -3,7 +3,7 @@ var React = require('react'),
     _ = require('underscore'), 
     OS = require('os'),
 
-    Widget = OS._Widget,
+    Widget = OS.Widget,
     Mixins = OS.Mixins,
 
     settings = require('./widget_settings'),
