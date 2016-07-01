@@ -1,6 +1,7 @@
 var Widget = require('../widget');
 
 var Configurator = {
+  Default: require('./default'),
   Dialog: require('./dialog'),
   DefaultDialog: require('./default_dialog'),
   Header: Widget.Header,

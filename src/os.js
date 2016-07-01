@@ -9,7 +9,6 @@ var OS = {
   Widget: require('./os/components/widget'),
   Configurator: require('./os/components/configurator'),
   SettingsDialog: require('./os/components/settings_dialog'),
-  DefaultSettingsDialog: require('./os/components/default_settings_dialog'),
   WidgetStylesForm: require('./os/components/widget_styles_form'),
   HForm: require('./os/components/hform'),
   Input: require('./os/components/input'),
