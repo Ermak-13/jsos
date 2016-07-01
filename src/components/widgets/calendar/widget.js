@@ -2,17 +2,20 @@ var React = require('react'),
     moment = require('moment'),
 
     OS = require('os'),
-    globalSettings = OS.settings,
-    Widget = OS.Widget,
+    Widget = OS._Widget,
     Mixins = OS.Mixins,
 
     settings = require('./widget_settings');
 
 var _Widget = React.createClass({
-  name: settings.WIDGET_NAME,
-  settingsDialogName: settings.SETTINGS_DIALOG_NAME,
-
   mixins: [Mixins.WidgetHelper],
+
+  getDefaultProps: function () {
+    return {
+      name: settings.WIDGET_NAME,
+      configuratorRefName: settings.CONFIGURATOR_REF_NAME
+    };
+  },
 
   getInitialState: function () {
     return {
@@ -32,14 +35,14 @@ var _Widget = React.createClass({
     });
   },
 
-  openSettingsDialog: function () {
-    this._openSettingsDialog({
-      widgetStyles: this.state.widgetStyles,
-      calendarStyles: this.state.calendarStyles,
-      monthStyles: this.state.monthStyles,
-      dayStyles: this.state.dayStyles
-    });
-  },
+  //openSettingsDialog: function () {
+  //  this._openSettingsDialog({
+  //    widgetStyles: this.state.widgetStyles,
+  //    calendarStyles: this.state.calendarStyles,
+  //    monthStyles: this.state.monthStyles,
+  //    dayStyles: this.state.dayStyles
+  //  });
+  //},
 
   componentDidMount: function () {
     var intervalId = setInterval(
@@ -48,14 +51,14 @@ var _Widget = React.createClass({
     );
     this.setState({ intervalId: intervalId });
 
-    this.updateSettings(function (settings) {
-      this.setState({
-        widgetStyles: settings.widgetStyles,
-        calendarStyles: settings.calendarStyles,
-        monthStyles: settings.monthStyles,
-        dayStyles: settings.dayStyles
-      });
-    }.bind(this));
+    //this.updateSettings(function (settings) {
+    //  this.setState({
+    //    widgetStyles: settings.widgetStyles,
+    //    calendarStyles: settings.calendarStyles,
+    //    monthStyles: settings.monthStyles,
+    //    dayStyles: settings.dayStyles
+    //  });
+    //}.bind(this));
   },
 
   componentWillUnmount: function () {
@@ -64,23 +67,24 @@ var _Widget = React.createClass({
 
   render: function () {
     return (
-      <Widget
-        name={ this.name }
-        widgetHeaderDisabled={ true }
-        widgetStyles={ this.state.widgetStyles }
-        openSettingsDialog={ this.openSettingsDialog }>
+      <Widget.Widget widgetStyles={ this.state.widgetStyles }>
+        <Widget.DefaultIconsContainer
+          onClickCloseBtn={ this.close }
+          onClickConfigureBtn={ this.openConfigurator }
+        />
 
-        <div style={ this.state.calendarStyles }>
-          <div style={ this.state.monthStyles }>
-            { this.state._moment.format('MMMM') }
+        <Widget.Body>
+          <div style={ this.state.calendarStyles }>
+            <div style={ this.state.monthStyles }>
+              { this.state._moment.format('MMMM') }
+            </div>
+
+            <div style={ this.state.dayStyles }>
+              { this.state._moment.format('D') }
+            </div>
           </div>
-
-          <div style={ this.state.dayStyles }>
-            { this.state._moment.format('D') }
-          </div>
-        </div>
-
-      </Widget>
+        </Widget.Body>
+      </Widget.Widget>
     );
   }
 });

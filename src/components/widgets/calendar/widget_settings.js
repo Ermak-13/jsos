@@ -5,7 +5,7 @@ var _ = require('underscore'),
 
 var settings = {
   WIDGET_NAME: 'calendar',
-  SETTINGS_DIALOG_NAME: 'calendar',
+  CONFIGURATOR_REF_NAME: 'configurator',
 
   DEFAULT_UPDATED_INTERVAL: 60 * 1000,
 
