@@ -20,7 +20,8 @@ var Desktop = React.createClass({
   saveDesktop: function () {
     var serializedWidgets = _.map(this.state.widgets, function (widget) {
       return {
-        widgetName: widget.props.widgetName
+        widgetName: widget.props.widgetName,
+        widgetId: widget.props.widgetId
       };
     });
 
@@ -33,12 +34,13 @@ var Desktop = React.createClass({
         nextWidgetId = this.state.nextWidgetId;
 
     _.each(serializedWidgets, function (serializedWidget) {
-      var widgetName = serializedWidget.widgetName;
+      var widgetName = serializedWidget.widgetName,
+          widgetId = serializedWidget.widgetId;
 
       widgets.push(
-        this._createWidget(widgetName, nextWidgetId)
+        this._createWidget(widgetName, widgetId)
       );
-      nextWidgetId += 1;
+      nextWidgetId = widgetId + 1;
     }.bind(this));
 
     this.setState({
