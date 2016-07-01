@@ -5,7 +5,8 @@ var React = require('react'),
     Widget = OS.Widget,
     Mixins = OS.Mixins,
 
-    settings = require('./widget_settings');
+    settings = require('./widget_settings'),
+    Configurator = require('./configurator');
 
 var _Widget = React.createClass({
   mixins: [Mixins.WidgetHelper],
@@ -29,20 +30,29 @@ var _Widget = React.createClass({
     };
   },
 
+  handleConfigure: function (settings) {
+    this.setState({
+      widgetStyles: settings.widgetStyles,
+      calendarStyles: settings.calendarStyles,
+      monthStyles: settings.monthStyles,
+      dayStyles: settings.dayStyles
+    });
+  },
+
+  getSettings: function () {
+    return {
+      widgetStyles: _.clone(this.state.widgetStyles),
+      calendarStyles: _.clone(this.state.calendarStyles),
+      monthStyles: _.clone(this.state.monthStyles),
+      dayStyles: _.clone(this.state.dayStyles)
+    };
+  },
+
   updateMoment: function () {
     this.setState({
       _moment: moment()
     });
   },
-
-  //openSettingsDialog: function () {
-  //  this._openSettingsDialog({
-  //    widgetStyles: this.state.widgetStyles,
-  //    calendarStyles: this.state.calendarStyles,
-  //    monthStyles: this.state.monthStyles,
-  //    dayStyles: this.state.dayStyles
-  //  });
-  //},
 
   componentDidMount: function () {
     var intervalId = setInterval(
@@ -50,15 +60,6 @@ var _Widget = React.createClass({
       this.state.updatedInterval
     );
     this.setState({ intervalId: intervalId });
-
-    //this.updateSettings(function (settings) {
-    //  this.setState({
-    //    widgetStyles: settings.widgetStyles,
-    //    calendarStyles: settings.calendarStyles,
-    //    monthStyles: settings.monthStyles,
-    //    dayStyles: settings.dayStyles
-    //  });
-    //}.bind(this));
   },
 
   componentWillUnmount: function () {
@@ -84,6 +85,13 @@ var _Widget = React.createClass({
             </div>
           </div>
         </Widget.Body>
+
+        <Configurator
+          ref={ this.props.configuratorRefName }
+          name={ this.props.name }
+          settings={ this.getSettings() }
+          onSubmit={ this.handleConfigure }
+        />
       </Widget.Widget>
     );
   }

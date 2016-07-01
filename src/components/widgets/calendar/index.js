@@ -1,9 +1,9 @@
 var Widget = require('./widget'),
-    SettingsDialog = require('./settings_dialog');
+    Configurator = require('./configurator');
 
 var Calendar = {
   Widget: Widget,
-  SettingsDialog: SettingsDialog
+  Configurator: Configurator
 };
 
 module.exports = Calendar;
