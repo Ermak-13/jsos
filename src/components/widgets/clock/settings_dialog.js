@@ -2,6 +2,7 @@ var React = require('react'),
     _ = require('underscore'),
 
     OS = require('os'),
+    Configurator = OS.Configurator,
     SettingsDialog = OS.SettingsDialog,
     WidgetStylesForm = OS.WidgetStylesForm,
     Mixins = OS.Mixins,
@@ -91,7 +92,7 @@ var _SettingsDialog = React.createClass({
   },
 
   _open: function () {
-    this.refs.dialog.open();
+    this.refs.configurator.open();
   },
 
   componentDidMount: function () {
@@ -108,8 +109,8 @@ var _SettingsDialog = React.createClass({
 
   render: function () {
     return (
-      <SettingsDialog
-        ref="dialog"
+      <Configurator.DefaultDialog
+        ref="configurator"
         name={ this.name }>
 
         { this.getNavHTML() }
@@ -119,7 +120,7 @@ var _SettingsDialog = React.createClass({
             { this.getContentHTML() }
           </div>
         </div>
-      </SettingsDialog>
+      </Configurator.DefaultDialog>
     );
   }
 });

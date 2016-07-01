@@ -6,7 +6,6 @@ var Configurator = {
   Header: Widget.Header,
   DefaultHeader: require('./default_header'),
   Body: Widget.Body,
-  DefaultBody: require('./default_body'),
 
   IconsContainer: Widget.IconsContainer,
   CloseBtn: Widget.CloseBtn

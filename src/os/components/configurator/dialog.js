@@ -33,3 +33,5 @@ var Dialog = React.createClass({
     );
   }
 });
+
+module.exports = Dialog;

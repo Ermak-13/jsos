@@ -14,3 +14,5 @@ var DefaultHeader = React.createClass({
     );
   }
 });
+
+module.exports = DefaultHeader;

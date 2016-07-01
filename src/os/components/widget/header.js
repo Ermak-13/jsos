@@ -4,7 +4,7 @@ var Header = React.createClass({
   render: function () {
     return (
       <div className="widget-header">
-        { this.pros.children }
+        { this.props.children }
       </div>
     );
   }

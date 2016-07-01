@@ -3,16 +3,20 @@ var React = require('react'),
     sprintf = require('sprintf-js').sprintf,
 
     Dialog = require('./dialog'),
-    DefaultHeader = require('./default_header'),
-    DefaultBody = require('./default_body');
+    DefaultHeader = require('./default_header');
+    Body = require('../widget').Body;
 
 var DefaultDialog = React.createClass({
-  getDefaultProps: function () {
-    return {
-      onClickCloseBtn: function () {
-        this.refs.dialog.close();
-      }.bind(this)
-    };
+  handleClickCloseBtn: function () {
+    this.refs.dialog.close();
+  },
+
+  open: function () {
+    this.refs.dialog.open();
+  },
+
+  close: function () {
+    this.refs.dialog.close();
   },
 
   getTitle: function () {
@@ -26,12 +30,12 @@ var DefaultDialog = React.createClass({
       <Dialog ref="dialog">
         <DefaultHeader
           title={ this.getTitle() }
-          onClickCloseBtn={ this.props.onClickCloseBtn }
+          onClickCloseBtn={ this.handleClickCloseBtn }
         />
 
-        <DefaultBody>
+        <Body>
           { this.props.children }
-        </DefaultBody>
+        </Body>
       </Dialog>
     );
   }
