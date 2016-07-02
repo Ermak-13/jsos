@@ -135,7 +135,11 @@ var _Widget = React.createClass({
             <div className="col-md-4">
               <div className="btn-group">
                 { this.getPlayOrStopBtnHTML() }
-                <RecordBtn onClick={ this.handleRecord } />
+
+                <RecordBtn
+                  disabled={ !this.state.isPlaying }
+                  onClick={ this.handleRecord }
+                />
               </div>
             </div>
 
@@ -220,9 +224,16 @@ var StopBtn = React.createClass({
 
 var RecordBtn = React.createClass({
   render: function () {
+    var btnClassName;
+    if (this.props.disabled) {
+      btnClassName = 'btn btn-default btn-xs disabled';
+    } else {
+      btnClassName = 'btn btn-default btn-xs';
+    }
+
     return (
       <button
-        className="btn btn-default btn-xs"
+        className={ btnClassName }
         onClick={ this.props.onClick }>
 
         <span className="glyphicon glyphicon-check" />
