@@ -21,6 +21,14 @@ var storage = {
     chrome.storage.local.get(key, wrappedCallback);
   },
 
+  remove: function (key) {
+    var callback = function () {
+      log('info', sprintf('OS storage - remove %s.', key));
+    };
+
+    chrome.storage.local.remove(key, callback);
+  },
+
   clear: function () {
     chrome.storage.local.clear();
   }
