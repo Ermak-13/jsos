@@ -1,10 +1,3 @@
-var Widget = require('./widget'),
-    SettingsDialog = require('./configurator');
+var Widget = require('./widget');
 
-var Clock = {
-  Widget: Widget,
-  SettingsDialog: SettingsDialog
-};
-
-module.exports = Clock;
-window.Clock = Clock;
+module.exports = Widget;

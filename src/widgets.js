@@ -1,6 +1,6 @@
 var Widgets = {
-  Calendar: require('./components/widgets/calendar').Widget,
-  Clock: require('./components/widgets/clock').Widget
+  Calendar: require('./components/widgets/calendar'),
+  Clock: require('./components/widgets/clock')
 };
 
 global.Widgets = Widgets;
