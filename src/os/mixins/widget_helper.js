@@ -7,6 +7,7 @@ var sprintf = require('sprintf-js').sprintf,
 
 var WidgetHelper = {
   close: function () {
+    storage.remove(this.getStorageKey());
     AppDispatcher.removeWidget(this.props.widgetId);
   },
 

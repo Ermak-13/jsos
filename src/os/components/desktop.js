@@ -81,38 +81,9 @@ var Desktop = React.createClass({
       return widget.props.widgetId !== widgetId;
     });
 
-    var storageKey = this.getWidgetStorageKey(widgetId);
-    OS.storage.remove(storageKey);
-
     this.setState({
       widgets: widgets
     }, AppDispatcher.saveDesktop);
-  },
-
-  //changedWidget: function (widgetId, settings) {
-  //  var widget = _.find(this.state.widgets, function (widget) {
-  //        return widget.props.widgetId === widgetId;
-  //      });
-
-  //  if (_.isUndefined(widget)) {
-  //    log('error', sprintf('Change widget %s - is not found', widgetId));
-  //    return;
-  //  }
-
-  //  var widgetName = widget.props.widgetName,
-  //      storageKey = this.getWidgetStorageKey(widgetId);
-
-  //  OS.storage.set(storageKey, {
-  //    widgetName: widgetName,
-  //    settings: settings
-  //  });
-  //},
-
-  getWidgetStorageKey: function (widgetId) {
-    return sprintf(
-      globalSettings.WIDGET_STORAGE_KEY,
-      { id: widgetId }
-    );
   },
 
   componentDidMount: function () {
@@ -129,10 +100,6 @@ var Desktop = React.createClass({
     AppDispatcher.bind(Events.removeWidget, function (widgetId) {
       this.removeWidget(widgetId);
     }.bind(this));
-
-    //AppDispatcher.bind(Events.changedWidget, function (widgetId, settings) {
-    //  this.changedWidget(widgetId, settings);
-    //}.bind(this));
   },
 
   render: function () {

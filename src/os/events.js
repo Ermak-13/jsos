@@ -4,8 +4,7 @@ var Events = {
   saveDesktop: 'save-desktop',
 
   addWidget: 'add-widget',
-  removeWidget: 'remove-widget',
-  //changedWidget: 'changed-widget'
+  removeWidget: 'remove-widget'
 };
 
 module.exports = Events;
