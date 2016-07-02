@@ -30,17 +30,13 @@ var _Widget = React.createClass({
     };
   },
 
-  handleConfigure: function (settings) {
-    this.setSettings(settings);
-  },
-
   setSettings: function (settings) {
     this.setState({
       widgetStyles: settings.widgetStyles,
       calendarStyles: settings.calendarStyles,
       monthStyles: settings.monthStyles,
       dayStyles: settings.dayStyles
-    });
+    }, this.save);
   },
 
   getSettings: function () {

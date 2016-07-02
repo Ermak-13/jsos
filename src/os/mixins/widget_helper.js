@@ -11,6 +11,17 @@ var WidgetHelper = {
         ref = this.refs[refName];
 
     ref.open();
+  },
+
+  handleConfigure: function (settings) {
+    this.setSettings(settings);
+  },
+
+  save: function () {
+    AppDispatcher.changedWidget(
+      this.props.widgetId,
+      this.getSettings()
+    );
   }
 };
 

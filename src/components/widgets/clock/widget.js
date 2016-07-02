@@ -31,22 +31,13 @@ var _Widget = React.createClass({
     };
   },
 
-  handleConfigure: function (settings) {
-    this.setSettings(settings);
-  },
-
   setSettings: function (settings) {
     this.setState({
       format: settings.format,
       updatedInterval: settings.updatedInterval,
       widgetStyles: settings.widgetStyles,
       timeStyles: settings.timeStyles
-    }, function () {
-      AppDispatcher.changedWidget(
-        this.props.widgetId,
-        this.getSettings()
-      );
-    }.bind(this));
+    }, this.save);
   },
 
   getSettings: function () {
