@@ -37,7 +37,10 @@ var _Widget = React.createClass({
       updatedInterval: settings.updatedInterval,
       widgetStyles: settings.widgetStyles,
       timeStyles: settings.timeStyles
-    }, this.save);
+    }, function () {
+      this.refreshInterval();
+      this.save();
+    });
   },
 
   getSettings: function () {
@@ -55,6 +58,23 @@ var _Widget = React.createClass({
     );
   },
 
+  refreshInterval: function () {
+    this.clearInterval();
+    this.setInterval();
+  },
+
+  setInterval: function () {
+    var intervalId = setInterval(
+      this.updateMoment,
+      this.state.updatedInterval
+    );
+    this.setState({ intervalId: intervalId });
+  },
+
+  clearInterval: function () {
+    clearInterval(this.state.intervalId);
+  },
+
   updateMoment: function () {
     this.setState({
       _moment: moment()
@@ -66,15 +86,11 @@ var _Widget = React.createClass({
   },
 
   componentDidMount: function () {
-    var intervalId = setInterval(
-      this.updateMoment,
-      this.state.updatedInterval
-    );
-    this.setState({ intervalId: intervalId });
+    this.setInterval();
   },
 
   componentWillUnmount: function () {
-    clearInterval(this.state.intervalId);
+    this.clearInterval();
   },
 
   render: function () {
