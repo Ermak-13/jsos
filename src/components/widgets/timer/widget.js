@@ -25,6 +25,7 @@ var _Widget = React.createClass({
     return {
       startedMoment: null,
       duration: moment.duration(),
+      records: [],
       isPlaying: false,
 
       widgetStyles: settings.DEFAULT_WIDGET_STYLES,
@@ -60,6 +61,17 @@ var _Widget = React.createClass({
       duration: moment.duration(),
       isPlaying: false,
       intervalId: null
+    });
+  },
+
+  handleRecord: function (e) {
+    e.preventDefault();
+
+    var records = this.state.records;
+    records.push(this.state.duration);
+
+    this.setState({
+      records: records
     });
   },
 
@@ -123,7 +135,7 @@ var _Widget = React.createClass({
             <div className="col-md-4">
               <div className="btn-group">
                 { this.getPlayOrStopBtnHTML() }
-                <CheckBtn />
+                <RecordBtn onClick={ this.handleRecord } />
               </div>
             </div>
 
@@ -136,25 +148,7 @@ var _Widget = React.createClass({
 
           <hr style={ this.state.hrStyles }/>
 
-          <div className="row">
-            <div className="col-md-offset-4 col-md-8"
-              style={ this.state.recordContainerStyles }>
-
-              <span style={ this.state.recordStyles }>
-                00:00:00.000
-              </span>
-            </div>
-          </div>
-
-          <div className="row">
-            <div className="col-md-offset-4 col-md-8"
-              style={ this.state.recordContainerStyles }>
-
-              <span style={ this.state.recordStyles }>
-                00:00:00.000
-              </span>
-            </div>
-          </div>
+          { this.getRecordsHTML() }
         </Widget.Body>
 
         <Configurator.Default
@@ -177,6 +171,24 @@ var _Widget = React.createClass({
         <PlayBtn onClick={ this.handlePlay }/>
       );
     }
+  },
+
+  getRecordsHTML: function () {
+    var recordsHTML = _.map(this.state.records, function (record) {
+      return (
+        <div className="row" key={ record }>
+          <div className="col-md-offset-4 col-md-8"
+            style={ this.state.recordContainerStyles }>
+
+            <span style={ this.state.recordStyles }>
+              { this.getTimerText(record) }
+            </span>
+          </div>
+        </div>
+      );
+    }.bind(this))
+
+    return recordsHTML;
   }
 });
 
@@ -206,7 +218,7 @@ var StopBtn = React.createClass({
   }
 });
 
-var CheckBtn = React.createClass({
+var RecordBtn = React.createClass({
   render: function () {
     return (
       <button
