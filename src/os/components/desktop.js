@@ -61,7 +61,7 @@ var Desktop = React.createClass({
     this.setState({
       widgets: widgets,
       nextWidgetId: nextWidgetId + 1
-    });
+    }, AppDispatcher.saveDesktop);
   },
 
   _createWidget: function (widgetName, nextWidgetId) {
@@ -81,7 +81,12 @@ var Desktop = React.createClass({
       return widget.props.widgetId !== widgetId;
     });
 
-    this.setState({ widgets: widgets });
+    var storageKey = this.getWidgetStorageKey(widgetId);
+    OS.storage.remove(storageKey);
+
+    this.setState({
+      widgets: widgets
+    }, AppDispatcher.saveDesktop);
   },
 
   changedWidget: function (widgetId, settings) {
@@ -95,12 +100,19 @@ var Desktop = React.createClass({
     }
 
     var widgetName = widget.props.widgetName,
-        storageKey = sprintf(globalSettings.WIDGET_STORAGE_KEY, { id: widgetId });
+        storageKey = this.getWidgetStorageKey(widgetId);
 
     OS.storage.set(storageKey, {
       widgetName: widgetName,
       settings: settings
     });
+  },
+
+  getWidgetStorageKey: function (widgetId) {
+    return sprintf(
+      globalSettings.WIDGET_STORAGE_KEY,
+      { id: widgetId }
+    );
   },
 
   componentDidMount: function () {

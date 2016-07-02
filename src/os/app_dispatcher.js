@@ -6,6 +6,10 @@ var MicroEvent = require('microevent'),
 var AppDispatcher = function () {
   var _this = this;
 
+  this.saveDesktop = function () {
+    _this.trigger(Events.saveDesktop);
+  };
+
   this.addWidget = function (WidgetClass) {
     _this.trigger(Events.addWidget, WidgetClass);
   };
