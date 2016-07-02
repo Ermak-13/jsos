@@ -1,6 +1,7 @@
 var React = require('react'),
     _ = require('underscore'),
     s = require('underscore.string'),
+    sprintf = require('sprintf-js').sprintf,
 
     OS = require('os'),
     Mixins = OS.Mixins,
@@ -15,18 +16,48 @@ var _Widget = React.createClass({
   getDefaultProps: function () {
     return {
       name: settings.WIDGET_NAME,
-      configuratorRefName: settings.CONFIGURATOR_REF_NAME
+      configuratorRefName: settings.CONFIGURATOR_REF_NAME,
+      updatedInterval: settings.DEFAULT_UPDATED_INTERVAL
     };
   },
 
   getInitialState: function () {
     return {
+      startedMoment: null,
+      duration: moment.duration(),
+
       widgetStyles: settings.DEFAULT_WIDGET_STYLES,
       timerStyles: settings.DEFAULT_TIMER_STYLES,
       hrStyles: settings.DEFAULT_HR_STYLES,
       recordContainerStyles: settings.DEFAULT_RECORD_CONTAINER_STYLES,
       recordStyles: settings.DEFAULT_RECORD_STYLES
     };
+  },
+
+  handlePlay: function (e) {
+    e.preventDefault();
+
+    var startedMoment = moment(),
+        intervalId = setInterval(
+          this.updateDuration,
+          this.props.updatedInterval
+        );
+
+    this.setState({
+      startedMoment: startedMoment,
+      intervalId: intervalId
+    });
+  },
+
+  updateDuration: function () {
+    var startedMoment = this.state.startedMoment,
+        duration = moment.duration(
+          moment() - startedMoment
+        );
+
+    this.setState({
+      duration: duration
+    });
   },
 
   setSettings: function (settings) {
@@ -39,6 +70,29 @@ var _Widget = React.createClass({
     return {
       widgetStyles: _.clone(this.state.widgetStyles)
     };
+  },
+
+  getTimerText: function (duration) {
+    return sprintf(
+      '%(hours)s:%(minutes)s:%(seconds)s.%(milliseconds)s',
+      {
+        hours: this.formatNumber(duration.hours(), 2),
+        minutes: this.formatNumber(duration.minutes(), 2),
+        seconds: this.formatNumber(duration.seconds(), 2),
+        milliseconds: this.formatNumber(duration.milliseconds(), 3)
+      }
+    );
+  },
+
+  formatNumber: function (value, length) {
+    var numberArray = value.toString().split(''),
+        numberLength = numberArray.length;
+
+    _.times(length - numberLength, function () {
+      numberArray.unshift('0');
+    });
+
+    return numberArray.join('');
   },
 
   render: function () {
@@ -54,14 +108,14 @@ var _Widget = React.createClass({
           <div className="row">
             <div className="col-md-4">
               <div className="btn-group">
-                <PlayBtn />
+                <PlayBtn onClick={ this.handlePlay }/>
                 <CheckBtn />
               </div>
             </div>
 
             <div className="col-md-8">
               <span style={ this.state.timerStyles }>
-                00:00:00.000
+                { this.getTimerText(this.state.duration) }
               </span>
             </div>
           </div>

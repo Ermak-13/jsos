@@ -6,6 +6,7 @@ var _ = require('underscore'),
 var settings = {
   WIDGET_NAME: 'timer',
   CONFIGURATOR_REF_NAME: 'configurator',
+  DEFAULT_UPDATED_INTERVAL: 100,
 
   DEFAULT_WIDGET_STYLES: _.extend(
     _.clone(globalSettings.DEFAULT_WIDGET_STYLES),
