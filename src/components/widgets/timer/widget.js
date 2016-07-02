@@ -25,6 +25,7 @@ var _Widget = React.createClass({
     return {
       startedMoment: null,
       duration: moment.duration(),
+      isPlaying: false,
 
       widgetStyles: settings.DEFAULT_WIDGET_STYLES,
       timerStyles: settings.DEFAULT_TIMER_STYLES,
@@ -45,7 +46,20 @@ var _Widget = React.createClass({
 
     this.setState({
       startedMoment: startedMoment,
-      intervalId: intervalId
+      intervalId: intervalId,
+      isPlaying: true
+    });
+  },
+
+  handleStop: function (e) {
+    e.preventDefault();
+
+    clearInterval(this.state.intervalId);
+    this.setState({
+      startedMoment: null,
+      duration: moment.duration(),
+      isPlaying: false,
+      intervalId: null
     });
   },
 
@@ -108,7 +122,7 @@ var _Widget = React.createClass({
           <div className="row">
             <div className="col-md-4">
               <div className="btn-group">
-                <PlayBtn onClick={ this.handlePlay }/>
+                { this.getPlayOrStopBtnHTML() }
                 <CheckBtn />
               </div>
             </div>
@@ -151,6 +165,18 @@ var _Widget = React.createClass({
         />
       </Widget.Widget>
     );
+  },
+
+  getPlayOrStopBtnHTML: function () {
+    if (this.state.isPlaying) {
+      return (
+        <StopBtn onClick={ this.handleStop }/>
+      );
+    } else {
+      return (
+        <PlayBtn onClick={ this.handlePlay }/>
+      );
+    }
   }
 });
 
@@ -159,9 +185,22 @@ var PlayBtn = React.createClass({
     return (
       <button
         className="btn btn-default btn-xs"
-        onClick={ this.props.onClick }
-      >
+        onClick={ this.props.onClick }>
+
         <span className="glyphicon glyphicon-play" />
+      </button>
+    );
+  }
+});
+
+var StopBtn = React.createClass({
+  render: function () {
+    return (
+      <button
+        className="btn btn-default btn-xs"
+        onClick={ this.props.onClick }>
+
+        <span className="glyphicon glyphicon-stop" />
       </button>
     );
   }
@@ -172,8 +211,8 @@ var CheckBtn = React.createClass({
     return (
       <button
         className="btn btn-default btn-xs"
-        onClick={ this.props.onClick }
-      >
+        onClick={ this.props.onClick }>
+
         <span className="glyphicon glyphicon-check" />
       </button>
     )
