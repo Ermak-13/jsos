@@ -2,7 +2,7 @@ var React = require('react'),
     _ = require('underscore'),
     sprintf = require('sprintf-js').sprintf,
 
-    settings = require('../settings'),
+    globalSettings = require('../settings'),
     AppDispatcher = require('../app_dispatcher'),
     Events = require('../events'),
     storage = require('../storage'),
@@ -25,7 +25,7 @@ var Desktop = React.createClass({
       };
     });
 
-    storage.set(settings.DESKTOP_STORAGE_KEY, serializedWidgets);
+    storage.set(globalSettings.DESKTOP_STORAGE_KEY, serializedWidgets);
     log('info', 'Desktop is saved.');
   },
 
@@ -84,12 +84,31 @@ var Desktop = React.createClass({
     this.setState({ widgets: widgets });
   },
 
+  changedWidget: function (widgetId, settings) {
+    var widget = _.find(this.state.widgets, function (widget) {
+          return widget.props.widgetId === widgetId;
+        });
+
+    if (_.isUndefined(widget)) {
+      log('error', sprintf('Change widget %s - is not found', widgetId));
+      return;
+    }
+
+    var widgetName = widget.props.widgetName,
+        storageKey = sprintf(globalSettings.WIDGET_STORAGE_KEY, { id: widgetId });
+
+    OS.storage.set(storageKey, {
+      widgetName: widgetName,
+      settings: settings
+    });
+  },
+
   componentDidMount: function () {
     AppDispatcher.bind(Events.saveDesktop, function () {
       this.saveDesktop();
     }.bind(this));
 
-    storage.get(settings.DESKTOP_STORAGE_KEY, this.loadDesktop);
+    storage.get(globalSettings.DESKTOP_STORAGE_KEY, this.loadDesktop);
 
     AppDispatcher.bind(Events.addWidget, function (WidgetClass) {
       this.addWidget(WidgetClass);
@@ -97,6 +116,10 @@ var Desktop = React.createClass({
 
     AppDispatcher.bind(Events.removeWidget, function (widgetId) {
       this.removeWidget(widgetId);
+    }.bind(this));
+
+    AppDispatcher.bind(Events.changedWidget, function (widgetId, settings) {
+      this.changedWidget(widgetId, settings);
     }.bind(this));
   },
 

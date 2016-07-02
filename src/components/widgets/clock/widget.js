@@ -5,6 +5,7 @@ var React = require('react'),
 
     Widget = OS.Widget,
     Mixins = OS.Mixins,
+    AppDispatcher= OS.AppDispatcher,
 
     settings = require('./widget_settings'),
     Configurator = require('./configurator');
@@ -40,7 +41,12 @@ var _Widget = React.createClass({
       updatedInterval: settings.updatedInterval,
       widgetStyles: settings.widgetStyles,
       timeStyles: settings.timeStyles
-    });
+    }, function () {
+      AppDispatcher.changedWidget(
+        this.props.widgetId,
+        this.getSettings()
+      );
+    }.bind(this));
   },
 
   getSettings: function () {

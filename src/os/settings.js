@@ -13,7 +13,8 @@ var settings = {
 
   DEFAULT_SETTINGS_DIALOG_NAME: 'default',
 
-  DESKTOP_STORAGE_KEY: 'widgets'
+  DESKTOP_STORAGE_KEY: 'widgets',
+  WIDGET_STORAGE_KEY: 'widget-%(id)s'
 };
 
 module.exports = settings;

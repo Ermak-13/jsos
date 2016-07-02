@@ -14,14 +14,8 @@ var AppDispatcher = function () {
     _this.trigger(Events.removeWidget, widgetId);
   };
 
-  this.openSettingsDialog = function (name, settings) {
-    var event = Events.openSettingsDialog(name);
-    _this.trigger(event, settings);
-  };
-
-  this.openDefaultSettingsDialog = function (widgetName, settings) {
-    var event = Events.openSettingsDialog(DEFAULT_SETTINGS_DIALOG_NAME);
-    _this.trigger(event, widgetName, settings);
+  this.changedWidget = function (widgetId, settings) {
+    _this.trigger(Events.changedWidget, widgetId, settings);
   };
 };
 MicroEvent.mixin(AppDispatcher);
