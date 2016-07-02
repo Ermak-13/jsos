@@ -89,24 +89,24 @@ var Desktop = React.createClass({
     }, AppDispatcher.saveDesktop);
   },
 
-  changedWidget: function (widgetId, settings) {
-    var widget = _.find(this.state.widgets, function (widget) {
-          return widget.props.widgetId === widgetId;
-        });
+  //changedWidget: function (widgetId, settings) {
+  //  var widget = _.find(this.state.widgets, function (widget) {
+  //        return widget.props.widgetId === widgetId;
+  //      });
 
-    if (_.isUndefined(widget)) {
-      log('error', sprintf('Change widget %s - is not found', widgetId));
-      return;
-    }
+  //  if (_.isUndefined(widget)) {
+  //    log('error', sprintf('Change widget %s - is not found', widgetId));
+  //    return;
+  //  }
 
-    var widgetName = widget.props.widgetName,
-        storageKey = this.getWidgetStorageKey(widgetId);
+  //  var widgetName = widget.props.widgetName,
+  //      storageKey = this.getWidgetStorageKey(widgetId);
 
-    OS.storage.set(storageKey, {
-      widgetName: widgetName,
-      settings: settings
-    });
-  },
+  //  OS.storage.set(storageKey, {
+  //    widgetName: widgetName,
+  //    settings: settings
+  //  });
+  //},
 
   getWidgetStorageKey: function (widgetId) {
     return sprintf(
@@ -130,9 +130,9 @@ var Desktop = React.createClass({
       this.removeWidget(widgetId);
     }.bind(this));
 
-    AppDispatcher.bind(Events.changedWidget, function (widgetId, settings) {
-      this.changedWidget(widgetId, settings);
-    }.bind(this));
+    //AppDispatcher.bind(Events.changedWidget, function (widgetId, settings) {
+    //  this.changedWidget(widgetId, settings);
+    //}.bind(this));
   },
 
   render: function () {

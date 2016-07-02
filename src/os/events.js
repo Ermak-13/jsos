@@ -5,7 +5,7 @@ var Events = {
 
   addWidget: 'add-widget',
   removeWidget: 'remove-widget',
-  changedWidget: 'changed-widget'
+  //changedWidget: 'changed-widget'
 };
 
 module.exports = Events;

@@ -61,6 +61,10 @@ var _Widget = React.createClass({
     });
   },
 
+  componentWillMount: function () {
+    this.load();
+  },
+
   componentDidMount: function () {
     var intervalId = setInterval(
       this.updateMoment,

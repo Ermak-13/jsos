@@ -18,9 +18,9 @@ var AppDispatcher = function () {
     _this.trigger(Events.removeWidget, widgetId);
   };
 
-  this.changedWidget = function (widgetId, settings) {
-    _this.trigger(Events.changedWidget, widgetId, settings);
-  };
+  //this.changedWidget = function (widgetId, settings) {
+  //  _this.trigger(Events.changedWidget, widgetId, settings);
+  //};
 };
 MicroEvent.mixin(AppDispatcher);
 
