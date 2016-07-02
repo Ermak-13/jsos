@@ -1,5 +1,6 @@
 var React = require('react'),
 
+    Header = require('./header'),
     DefaultIconsContainer = require('./default_icons_container');
 
 var DefaultHeader = React.createClass({
