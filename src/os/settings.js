@@ -1,3 +1,10 @@
+var DESKTOP_CONFIGURE_BTN_STYLES = {
+  fontSize: '48px',
+  position: 'absolute',
+  right: '10px',
+  bottom: '10px'
+};
+
 var settings = {
   DEFAULT_WIDGET_STYLES: {
     position: 'absolute',
@@ -20,7 +27,17 @@ var settings = {
     background: "url('images/minion-hitman-rain-fog-dark.jpg') no-repeat center fixed",
     width: '100%',
     height: '100%'
-  }
+  },
+
+  DESKTOP_CONFIGURE_BTN_STYLES: _.extend(
+    _.clone(DESKTOP_CONFIGURE_BTN_STYLES),
+    { color: 'rgba(255, 255, 255, 0.7)' }
+  ),
+
+  DESKTOP_HOVER_CONFIGURE_BTN_STYLES: _.extend(
+    _.clone(DESKTOP_CONFIGURE_BTN_STYLES),
+    { color: 'rgba(255, 255, 255, 0.85)' }
+  )
 };
 
 module.exports = settings;
