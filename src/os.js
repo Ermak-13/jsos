@@ -8,7 +8,6 @@ var OS = {
   Desktop: require('./os/components/desktop'),
   Widget: require('./os/components/widget'),
   Configurator: require('./os/components/configurator'),
-  SettingsDialog: require('./os/components/settings_dialog'),
   WidgetStylesForm: require('./os/components/widget_styles_form'),
   HForm: require('./os/components/hform'),
   Input: require('./os/components/input'),
