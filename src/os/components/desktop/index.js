@@ -2,14 +2,27 @@ var React = require('react'),
     _ = require('underscore'),
     sprintf = require('sprintf-js').sprintf,
 
-    globalSettings = require('../settings'),
-    AppDispatcher = require('../app_dispatcher'),
-    Events = require('../events'),
-    storage = require('../storage'),
+    globalSettings = require('../../settings'),
+    AppDispatcher = require('../../app_dispatcher'),
+    Events = require('../../events'),
+    Mixins = require('../../mixins'),
+    storage = require('../../storage'),
 
-    log = require('../actions/log');
+    log = require('../../actions/log'),
+
+    Configurator = require('./configurator'),
+    ConfigureBtn = require('./configure_btn');
 
 var Desktop = React.createClass({
+  mixins: [Mixins.WidgetHelper],
+
+  getDefaultProps: function () {
+    return {
+      name: 'desktop',
+      configuratorRefName: 'configurator'
+    };
+  },
+
   getInitialState: function () {
     return {
       widgets: [],
@@ -114,56 +127,14 @@ var Desktop = React.createClass({
         <ConfigureBtn
           style={ this.state.configureBtnStyles }
           hoverStyle={ this.state.hoverConfigureBtnStyles }
+          onClick={ this.openConfigurator }
+        />
+
+        <Configurator
+          ref={ this.props.configuratorRefName }
+          name={ this.props.name }
         />
       </div>
-    );
-  }
-});
-
-var ConfigureBtn = React.createClass({
-  getInitialState: function () {
-    return {
-      hover: false
-    };
-  },
-
-  handleClick: function (e) {
-    e.preventDefault();
-    this.props.onClick();
-  },
-
-  handleMouseEnter: function () {
-    this.toogleHover();
-  },
-
-  handleMouseLeave: function () {
-    this.toogleHover();
-  },
-
-  toogleHover: function () {
-    this.setState({
-      hover: !this.state.hover
-    });
-  },
-
-  getStyles: function () {
-    if (this.state.hover) {
-      return this.props.hoverStyle;
-    } else {
-      return this.props.style;
-    }
-  },
-
-  render: function () {
-    return (
-      <a href="#"
-        style={ this.getStyles() }
-        onClick={ this.handleClick}
-        onMouseEnter={ this.handleMouseEnter }
-        onMouseLeave={ this.handleMouseLeave }>
-
-        <span className="glyphicon glyphicon-cog" />
-      </a>
     );
   }
 });
