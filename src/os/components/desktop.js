@@ -13,7 +13,8 @@ var Desktop = React.createClass({
   getInitialState: function () {
     return {
       widgets: [],
-      nextWidgetId: 0
+      nextWidgetId: 0,
+      desktopStyles: globalSettings.DESKTOP_STYLES
     };
   },
 
@@ -104,7 +105,7 @@ var Desktop = React.createClass({
 
   render: function () {
     return (
-      <div id="desktop">
+      <div id="desktop" style={ this.state.desktopStyles }>
         <div id="widgets-container">
           { this.state.widgets }
         </div>
