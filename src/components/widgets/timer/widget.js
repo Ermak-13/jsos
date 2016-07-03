@@ -49,7 +49,7 @@ var _Widget = React.createClass({
       startedMoment: startedMoment,
       intervalId: intervalId,
       isPlaying: true
-    });
+    }, this.save);
   },
 
   handleStop: function (e) {
@@ -119,6 +119,10 @@ var _Widget = React.createClass({
     });
 
     return numberArray.join('');
+  },
+
+  componentWillMount: function () {
+    this.load();
   },
 
   render: function () {
