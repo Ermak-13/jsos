@@ -19,6 +19,7 @@ var Desktop = React.createClass({
   getDefaultProps: function () {
     return {
       name: 'desktop',
+      storageKey: 'desktop',
       configuratorRefName: 'configurator'
     };
   },
@@ -31,6 +32,22 @@ var Desktop = React.createClass({
       desktopStyles: globalSettings.DESKTOP_STYLES,
       configureBtnStyles: globalSettings.DESKTOP_CONFIGURE_BTN_STYLES,
       hoverConfigureBtnStyles: globalSettings.DESKTOP_HOVER_CONFIGURE_BTN_STYLES
+    };
+  },
+
+  setSettings: function (settings) {
+    this.setState({
+      desktopStyles: settings.desktopStyles,
+      configureBtnStyles: settings.configureBtnStyles,
+      hoverConfigureBtnStyles: settings.hoverConfigureBtnStyles
+    }, this.save);
+  },
+
+  getSettings: function () {
+    return {
+      desktopStyles: _.clone(this.state.desktopStyles),
+      configureBtnStyles: _.clone(this.state.configureBtnStyles),
+      hoverConfigureBtnStyles: _.clone(this.state.hoverConfigureBtnStyles)
     };
   },
 
@@ -103,6 +120,10 @@ var Desktop = React.createClass({
     }, AppDispatcher.saveDesktop);
   },
 
+  componentWillMount: function () {
+    this.load();
+  },
+
   componentDidMount: function () {
     AppDispatcher.bind(Events.saveDesktop, function () {
       this.saveDesktop();
@@ -133,6 +154,8 @@ var Desktop = React.createClass({
         <Configurator
           ref={ this.props.configuratorRefName }
           name={ this.props.name }
+          settings={ this.getSettings() }
+          onSubmit={ this.handleConfigure }
         />
       </div>
     );

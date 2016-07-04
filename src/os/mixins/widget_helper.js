@@ -41,6 +41,14 @@ var WidgetHelper = {
   },
 
   getStorageKey: function () {
+    if (this.props.storageKey) {
+      return this.props.storageKey;
+    } else {
+      return this._getDefaultStorageKey();
+    }
+  },
+
+  _getDefaultStorageKey: function () {
     return sprintf(
       globalSettings.WIDGET_STORAGE_KEY,
       { id: this.props.widgetId }

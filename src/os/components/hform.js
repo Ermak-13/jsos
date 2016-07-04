@@ -25,7 +25,7 @@ var HFormField = React.createClass({
     return {
       containerClassName: 'form-group',
       labelClassName: 'control-label col-md-4',
-      controlContainerClassName: 'col-md-6'
+      controlContainerClassName: 'col-md-8'
     };
   },
 
