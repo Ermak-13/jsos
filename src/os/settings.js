@@ -20,9 +20,12 @@ var settings = {
 
   DEFAULT_SETTINGS_DIALOG_NAME: 'default',
 
-  DESKTOP_STORAGE_KEY: 'widgets',
+  DESKTOP_STORAGE_KEY: 'desktop',
+  DESKTOP_WIDGETS_STORAGE_KEY: 'widgets',
   WIDGET_STORAGE_KEY: 'widget-%(id)s',
 
+  DESKTOP_NAME: 'desktop',
+  DESKTOP_CONFIGURATOR_REF_NAME: 'configurator',
   DESKTOP_STYLES: {
     background: "url('images/minion-hitman-rain-fog-dark.jpg') no-repeat center fixed",
     width: '100%',

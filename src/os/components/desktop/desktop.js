@@ -18,9 +18,10 @@ var Desktop = React.createClass({
 
   getDefaultProps: function () {
     return {
-      name: 'desktop',
-      storageKey: 'desktop',
-      configuratorRefName: 'configurator'
+      name: globalSettings.DESKTOP_NAME,
+      storageKey: globalSettings.DESKTOP_STORAGE_KEY,
+      widgetsStorageKey: globalSettings.DESKTOP_WIDGETS_STORAGE_KEY,
+      configuratorRefName: globalSettings.DESKTOP_CONFIGURATOR_REF_NAME
     };
   },
 
@@ -59,7 +60,7 @@ var Desktop = React.createClass({
       };
     });
 
-    storage.set(globalSettings.DESKTOP_STORAGE_KEY, serializedWidgets);
+    storage.set(this.props.widgetsStorageKey, serializedWidgets);
     log('info', 'Desktop is saved.');
   },
 
@@ -129,7 +130,7 @@ var Desktop = React.createClass({
       this.saveDesktop();
     }.bind(this));
 
-    storage.get(globalSettings.DESKTOP_STORAGE_KEY, this.loadDesktop);
+    storage.get(this.props.widgetsStorageKey, this.loadDesktop);
 
     AppDispatcher.bind(Events.addWidget, function (WidgetClass) {
       this.addWidget(WidgetClass);
