@@ -1,7 +1,9 @@
 var React = require('react'),
 
     Mixins = require('../../mixins'),
-    Configurator = require('../configurator');
+    Configurator = require('../configurator'),
+    HForm = require('../hform'),
+    Input = require('../input');
 
 var _Configurator = React.createClass({
   mixins: [Mixins.ConfiguratorHelper],
@@ -17,6 +19,9 @@ var _Configurator = React.createClass({
       <Configurator.DefaultDialog
         ref={ this.props.refName }
         name={ this.props.name }>
+
+          <HForm.Submit value="Save" />
+        </HForm.Form>
 
       </Configurator.DefaultDialog>
     );
