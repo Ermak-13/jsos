@@ -14,6 +14,9 @@ var DEFAULT_SHORTCUT_STYLES = {
 };
 
 var settings = {
+  WIDGET_NAME: 'panel',
+  CONFIGURATOR_REF_NAME: 'configurator',
+
   DEFAULT_WIDGET_STYLES: _.extend(
     globalSettings.DEFAULT_WIDGET_STYLES,
     {
