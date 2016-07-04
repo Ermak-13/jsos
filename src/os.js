@@ -11,6 +11,7 @@ var OS = {
   WidgetStylesForm: require('./os/components/widget_styles_form'),
   HForm: require('./os/components/hform'),
   Input: require('./os/components/input'),
+  Textarea: require('./os/components/textarea'),
   Submit: require('./os/components/submit'),
 
   Mixins: require('./os/mixins'),
