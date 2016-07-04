@@ -10,7 +10,8 @@ var React = require('react'),
     settings = require('./widget_settings'),
     Configurator = require('./configurator'),
     BookmarksShortcut = require('./bookmarks_shortcut'),
-    HistoryShortcut = require('./history_shortcut');
+    HistoryShortcut = require('./history_shortcut'),
+    DownloadsShortcut = require('./downloads_shortcut');
 
 var _Widget = React.createClass({
   mixins: [Mixins.WidgetHelper],
@@ -51,6 +52,11 @@ var _Widget = React.createClass({
         />
 
         <HistoryShortcut
+          style={ this.state.shortcutStyles }
+          hoverStyle={ this.state.hoverShortcutStyles }
+        />
+
+        <DownloadsShortcut
           style={ this.state.shortcutStyles }
           hoverStyle={ this.state.hoverShortcutStyles }
         />
