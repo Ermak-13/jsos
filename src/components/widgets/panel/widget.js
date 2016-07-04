@@ -8,7 +8,8 @@ var React = require('react'),
     Link = OS.Link,
 
     settings = require('./widget_settings'),
-    Configurator = require('./configurator');
+    Configurator = require('./configurator'),
+    BookmarksShortcut = require('./bookmarks_shortcut');
 
 var _Widget = React.createClass({
   mixins: [Mixins.WidgetHelper],
@@ -43,6 +44,11 @@ var _Widget = React.createClass({
   render: function () {
     return (
       <Widget.Widget widgetStyles={ this.state.widgetStyles }>
+        <BookmarksShortcut
+          style={ this.state.shortcutStyles }
+          hoverStyle={ this.state.hoverShortcutStyles }
+        />
+
         <Link
           style={ this.state.shortcutStyles }
           hoverStyle={ this.state.hoverShortcutStyles }
