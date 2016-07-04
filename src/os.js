@@ -9,6 +9,8 @@ var OS = {
   Widget: require('./os/components/widget'),
   Configurator: require('./os/components/configurator'),
   WidgetStylesForm: require('./os/components/widget_styles_form'),
+
+  Link: require('./os/components/link'),
   HForm: require('./os/components/hform'),
   Input: require('./os/components/input'),
   Textarea: require('./os/components/textarea'),
