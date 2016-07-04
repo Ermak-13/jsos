@@ -30,6 +30,11 @@ body {
   background-color: rgba(255, 255, 255, 0.85);
 }
 
+.modal-dialog .widget,
+.modal-dialog .widget {
+  background-color: rgb(255, 255, 255);
+}
+
 .widget-header {
   border-bottom: 1px solid #BBB;
   padding: 10px 5px;
