@@ -8,7 +8,7 @@ var React = require('react'),
     Widget = OS.Widget,
     Configurator = OS.Configurator,
 
-    settings = require('./widget_settings');
+    settings = require('./settings');
 
 var _Widget = React.createClass({
   mixins: [Mixins.WidgetHelper],

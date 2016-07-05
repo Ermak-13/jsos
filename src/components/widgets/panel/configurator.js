@@ -5,7 +5,7 @@ var React = require('react'),
     Configurator = OS.Configurator,
     WidgetStylesForm = OS.WidgetStylesForm,
 
-    settings = require('./widget_settings');
+    settings = require('./settings');
 
 var _Configurator = React.createClass({
   mixins: [Mixins.ConfiguratorHelper, Mixins.NavHelper],

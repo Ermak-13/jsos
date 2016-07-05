@@ -7,7 +7,7 @@ var React = require('react'),
     Configurator = OS.Configurator,
     Link = OS.Link,
 
-    settings = require('./widget_settings'),
+    settings = require('./settings'),
     Configurator = require('./configurator'),
     BookmarksShortcut = require('./bookmarks_shortcut'),
     HistoryShortcut = require('./history_shortcut'),

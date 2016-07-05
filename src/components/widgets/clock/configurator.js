@@ -6,7 +6,7 @@ var React = require('react'),
     WidgetStylesForm = OS.WidgetStylesForm,
     Mixins = OS.Mixins,
 
-    settings = require('./widget_settings'),
+    settings = require('./settings'),
     TimeConfigsForm = require('./time_configs_form'),
     TimeStylesForm = require('./time_styles_form');
 

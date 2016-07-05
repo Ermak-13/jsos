@@ -5,7 +5,7 @@ var React = require('react'),
     WidgetStylesForm = OS.WidgetStylesForm,
     Mixins = OS.Mixins,
 
-    settings = require('./widget_settings'),
+    settings = require('./settings'),
     CalendarConfigsForm = require('./calendar_configs_form');
 
 var _Configurator = React.createClass({
