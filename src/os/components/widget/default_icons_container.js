@@ -8,8 +8,8 @@ var DefaultIconsContainer = React.createClass({
   render: function () {
     return (
       <IconsContainer>
-        <CloseBtn onClick={ this.props.onClickCloseBtn } />
         <ConfigureBtn onClick={ this.props.onClickConfigureBtn } />
+        <CloseBtn onClick={ this.props.onClickCloseBtn } />
       </IconsContainer>
     );
   }
