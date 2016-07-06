@@ -1,10 +1,11 @@
 var React = require('react'),
 
-    Mixins = require('../../mixins'),
-    Configurator = require('../configurator'),
-    HForm = require('../hform'),
-    Input = require('../input'),
-    Textarea = require('../textarea');
+    OS = require('os'),
+    Mixins = OS.Mixins,
+    Configurator = OS.Configurator,
+    HForm = OS.HForm,
+    Input = OS.Input,
+    Textarea = OS.Textarea;
 
 var _Configurator = React.createClass({
   mixins: [Mixins.ConfiguratorHelper],

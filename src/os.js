@@ -1,11 +1,8 @@
-require('./globals');
-
 var OS = {
   AppDispatcher: require('./os/app_dispatcher'),
   Events: require('./os/events'),
   settings: require('./os/settings'),
 
-  Desktop: require('./os/components/desktop'),
   Widget: require('./os/components/widget'),
   Configurator: require('./os/components/configurator'),
   WidgetStylesForm: require('./os/components/widget_styles_form'),
@@ -23,5 +20,3 @@ var OS = {
   request: require('./os/actions/request'),
   download: require('./os/actions/download')
 };
-
-global.OS = OS;

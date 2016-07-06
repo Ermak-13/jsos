@@ -2,13 +2,13 @@ var React = require('react'),
     _ = require('underscore'),
     sprintf = require('sprintf-js').sprintf,
 
-    globalSettings = require('../../settings'),
-    AppDispatcher = require('../../app_dispatcher'),
-    Events = require('../../events'),
-    Mixins = require('../../mixins'),
-    storage = require('../../storage'),
-
-    log = require('../../actions/log'),
+    OS = require('os'),
+    globalSettings = OS.settings,
+    AppDispatcher = OS.AppDispatcher,
+    Events = OS.Events,
+    Mixins = OS.Mixins,
+    storage = OS.storage,
+    log = OS.log,
 
     Configurator = require('./configurator'),
     ConfigureBtn = require('./configure_btn');

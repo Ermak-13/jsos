@@ -1,3 +1,5 @@
+var _ = require('underscore');
+
 var DESKTOP_CONFIGURE_BTN_STYLES = {
   fontSize: '48px',
   position: 'absolute',

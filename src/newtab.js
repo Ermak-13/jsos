@@ -1,10 +1,6 @@
-var React = require('react'),
-    ReactDOM = require('react-dom'),
-
-    OS = require('os'),
-    Widgets = require('./widgets');
+require('./globals');
 
 ReactDOM.render(
-  <OS.Desktop />,
+  <Desktop />,
   document.getElementById('desktop-container')
 );

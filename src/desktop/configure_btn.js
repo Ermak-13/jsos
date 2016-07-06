@@ -1,5 +1,7 @@
 var React = require('react'),
-    Link = require('../link');
+
+    OS = require('os'),
+    Link = OS.Link;
 
 var ConfigureBtn = React.createClass({
   render: function () {
