@@ -5,27 +5,28 @@ var gulp = require('gulp'),
     jshint = require('gulp-jshint');
 
 gulp.task('default', ['dev']);
-gulp.task('dev', ['build', 'sass', 'watch']);
-gulp.task('release', ['build']);
+gulp.task('dev', ['js', 'sass', 'watch']);
+gulp.task('release', ['js']);
 
-gulp.task('build', function () {
-  gulp.src('./src/newtab.js')
+gulp.task('js', function () {
+  gulp.src('./javascripts/index.js')
     .pipe(browserify({
       transform: ['reactify'],
       extensions: ['.js'],
       shim: {
         microevent: {
-          path: './src/microevent.js',
+          path: './javascripts/microevent.js',
           exports: 'MicroEvent'
         },
         os: {
-          path: './src/os.js',
+          path: './javascripts/os.js',
           exports: 'OS',
         }
       }
     }))
     .on('error', console.log)
-    .pipe(gulp.dest('./dist'));
+    .pipe(rename('jsos.js'))
+    .pipe(gulp.dest('.'));
 });
 
 gulp.task('sass', function () {
@@ -38,6 +39,6 @@ gulp.task('sass', function () {
 });
 
 gulp.task('watch', function () {
-  gulp.watch('./src/**/*.js', ['build']);
+  gulp.watch('./src/**/*.js', ['js']);
   gulp.watch('./stylesheets/**/*.scss', ['sass']);
 });

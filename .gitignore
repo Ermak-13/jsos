@@ -4,4 +4,6 @@ node_modules
 dist
 .DS_Store
 images
+
 jsos.css
+jsos.js
