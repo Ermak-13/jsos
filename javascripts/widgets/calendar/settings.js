@@ -18,21 +18,21 @@ var settings = {
   ),
 
   DEFAULT_CALENDAR_STYLES: {
-    width: '100px',
+    width: '100%',
     textAlign: 'center',
     margin: 'auto'
   },
 
   DEFAULT_MONTH_STYLES: {
-    background: '#EE0',
+    fontSize: '24px',
+    lineHeight: '24px',
     fontWeight: 'bold',
-    border: 'solid 1px',
-    borderBottom: 'none'
+    marginTop: '5px'
   },
 
   DEFAULT_DAY_STYLES: {
-    fontSize: '32px',
-    border: 'solid 1px'
+    fontSize: '36px',
+    lineHeight: '36px'
   }
 };
 

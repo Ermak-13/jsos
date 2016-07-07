@@ -80,12 +80,12 @@ var _Widget = React.createClass({
 
         <Widget.Body>
           <div style={ this.state.calendarStyles }>
-            <div style={ this.state.monthStyles }>
-              { this.state._moment.format('MMMM') }
-            </div>
-
             <div style={ this.state.dayStyles }>
               { this.state._moment.format('D') }
+            </div>
+
+            <div style={ this.state.monthStyles }>
+              { this.state._moment.format('MMMM') }
             </div>
           </div>
         </Widget.Body>

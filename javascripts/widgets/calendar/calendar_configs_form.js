@@ -10,14 +10,9 @@ var CalendarConfigsForm = React.createClass({
 
     var settings = this.props.settings;
 
-        calendarStyles = _.extend(
-          _.clone(settings.calendarStyles),
-          { width: this.refs.calendarWidth.getValue() }
-        ),
-
         monthStyles = _.extend(
           _.clone(settings.monthStyles),
-          { background: this.refs.monthBackground.getValue() }
+          { fontSize: this.refs.monthFontSize.getValue() }
         ),
 
         dayStyles = _.extend(
@@ -28,7 +23,6 @@ var CalendarConfigsForm = React.createClass({
     settings = _.extend(
       _.clone(this.props.settings),
       {
-        calendarStyles: calendarStyles,
         monthStyles: monthStyles,
         dayStyles: dayStyles
       }
@@ -43,26 +37,18 @@ var CalendarConfigsForm = React.createClass({
     return (
       <HForm.Form onSubmit={ this.handleSubmit }>
         <HForm.Field
-          labelText="calendar width:">
-          <Input
-            ref="calendarWidth"
-            value={ settings.calendarStyles.width }
-          />
-        </HForm.Field>
-
-        <HForm.Field
-          labelText="month background:">
-          <Input
-            ref="monthBackground"
-            value={ settings.monthStyles.background }
-          />
-        </HForm.Field>
-
-        <HForm.Field
           labelText="day font size:">
           <Input
             ref="dayFontSize"
             value={ settings.dayStyles.fontSize }
+          />
+        </HForm.Field>
+
+        <HForm.Field
+          labelText="month font size:">
+          <Input
+            ref="monthFontSize"
+            value={ settings.monthStyles.fontSize }
           />
         </HForm.Field>
 
