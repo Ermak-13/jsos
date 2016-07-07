@@ -12,7 +12,8 @@ var React = require('react'),
     BookmarksShortcut = require('./bookmarks_shortcut'),
     HistoryShortcut = require('./history_shortcut'),
     DownloadsShortcut = require('./downloads_shortcut'),
-    DefaultShortcut = require('./default_shortcut');
+    DefaultShortcut = require('./default_shortcut'),
+    ConfigureBtn = require('./configure_btn');
 
 var _Widget = React.createClass({
   mixins: [Mixins.WidgetHelper],
@@ -33,8 +34,48 @@ var _Widget = React.createClass({
       vertical: true,
       horizontal: false,
 
-      shortcutStyles: settings.DEFAULT_SHORTCUT_STYLES
+      shortcuts: this.getDefaultShortcuts()
     };
+  },
+
+  getDefaultShortcuts: function () {
+    var shortcuts = [];
+
+    _.each([
+      BookmarksShortcut,
+      HistoryShortcut,
+      DownloadsShortcut
+    ], function (ShortcutClass) {
+      shortcuts.push(
+        React.createElement(ShortcutClass, {
+          key: shortcuts.length,
+          className: 'shortcut'
+        })
+      );
+    });
+
+    _.each(global.Widgets, function (Widget, widgetName) {
+      if (widgetName !== 'Panel') {
+        var ShortcutClass = Widget.ShortcutClass || DefaultShortcut;
+        shortcuts.push(
+          React.createElement(ShortcutClass, {
+            key: shortcuts.length,
+            className: 'shortcut',
+            onClick: function () {
+              OS.AppDispatcher.addWidget(widgetName);
+            }
+          })
+        );
+      }
+    });
+
+    shortcuts.push(React.createElement(ConfigureBtn, {
+      key: shortcuts.length,
+      className: 'shortcut',
+      onClick: this.handleConfigure
+    }));
+
+    return shortcuts;
   },
 
   getPanelStyles: function () {
@@ -92,28 +133,7 @@ var _Widget = React.createClass({
   render: function () {
     return (
       <div className="panel" style={ this.getPanelStyles() }>
-        <BookmarksShortcut
-          className="shortcut"
-        />
-
-        <HistoryShortcut
-          className="shortcut"
-        />
-
-        <DownloadsShortcut
-          className="shortcut"
-        />
-
-        <DefaultShortcut
-          className="shortcut"
-        />
-
-        <Link
-          className="shortcut"
-          onClick={ this.openConfigurator }>
-
-          <span className="glyphicon glyphicon-cog" />
-        </Link>
+        { this.state.shortcuts }
 
         <Configurator
           ref={ this.props.configuratorRefName }
