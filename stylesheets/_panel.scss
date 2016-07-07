@@ -1,12 +1,14 @@
 @import 'globals';
 
 .panel {
+  position: absolute;
   background-color: $panel-bg-color;
   width: $panel-vertical-width;
   height: $panel-horizontal-height;
 
   border: $panel-border;
   border-radius: $panel-border-radius;
+  margin: 0;
 
   &:hover {
     background-color: $panel-hover-bg-color;

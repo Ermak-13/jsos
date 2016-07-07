@@ -5,7 +5,6 @@ var settings = {
   CONFIGURATOR_REF_NAME: 'configurator',
 
   DEFAULT_PANEL_STYLES: {
-    position: 'absolute',
     height: '100%',
     top: 0,
     left: 0

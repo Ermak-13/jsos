@@ -1,5 +1,6 @@
 var React = require('react'),
     _ = require('underscore'),
+    sprintf = require('sprintf-js').sprintf,
 
     OS = require('os'),
     Mixins = OS.Mixins,
@@ -24,26 +25,87 @@ var _Widget = React.createClass({
 
   getInitialState: function () {
     return {
-      panelStyles: settings.DEFAULT_PANEL_STYLES,
+      left: true,
+      top: false,
+      right: false,
+      bottom: false,
+      vertical: true,
+      horizontal: false,
+
       shortcutStyles: settings.DEFAULT_SHORTCUT_STYLES
     };
   },
 
+  getPanelStyles: function () {
+    return {
+      'left-vertical': {
+        height: '100%',
+        left: 0,
+        top: 0
+      },
+
+      'right-vertical': {
+        height: '100%',
+        right: 0,
+        top: 0
+      },
+
+      'top-horizontal': {
+        width: '100%',
+        left: 0,
+        top: 0
+      },
+
+      'bottom-horizontal': {
+        width: '100%',
+        left: 0,
+        bottom: 0
+      }
+    }[this.getPanelKey()];
+  },
+
+  getPanelKey: function () {
+    var _this = this,
+        finder = function (keys) {
+          return _.find(keys, function (key) {
+            return _this.state[key];
+          });
+        },
+
+        key = sprintf(
+          '%s-%s',
+          finder(['left', 'top', 'right', 'bottom']),
+          finder(['vertical', 'horizontal'])
+        );
+
+    return key;
+  },
+
   setSettings: function (settings) {
     this.setState({
-      panelStyles: settings.panelStyles
+      left: settings.left,
+      top: settings.top,
+      right: settings.right,
+      bottom: settings.bottom,
+      vertical: settings.vertical,
+      horizontal: settings.horizontal
     });
   },
 
   getSettings: function () {
     return {
-      panelStyles: _.clone(this.state.panelStyles)
+      left: this.state.left,
+      top: this.state.top,
+      right: this.state.right,
+      bottom: this.state.bottom,
+      vertical: this.state.vertical,
+      horizontal: this.state.horizontal
     };
   },
 
   render: function () {
     return (
-      <div className="panel" style={ this.state.panelStyles }>
+      <div className="panel" style={ this.getPanelStyles() }>
         <BookmarksShortcut
           className="shortcut"
           style={ this.state.shortcutStyles }
