@@ -11,6 +11,7 @@
 
     .configure-btn {
       position: absolute;
+      line-height: $desktop-configure-btn-size;
       font-size: $desktop-configure-btn-size;
       color: $desktop-configure-btn-bg-color;
 
