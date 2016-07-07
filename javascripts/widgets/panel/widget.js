@@ -72,7 +72,7 @@ var _Widget = React.createClass({
     shortcuts.push(React.createElement(ConfigureBtn, {
       key: shortcuts.length,
       className: 'shortcut',
-      onClick: this.handleConfigure
+      onClick: this.openConfigurator
     }));
 
     return shortcuts;
