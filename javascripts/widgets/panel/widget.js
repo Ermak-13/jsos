@@ -62,7 +62,7 @@ var _Widget = React.createClass({
             key: shortcuts.length,
             className: 'shortcut',
             onClick: function () {
-              OS.AppDispatcher.addWidget(widgetName);
+              OS.addWidget(widgetName);
             }
           })
         );
