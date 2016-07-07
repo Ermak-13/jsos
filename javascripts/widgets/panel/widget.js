@@ -38,29 +38,10 @@ var _Widget = React.createClass({
 
   getPanelStyles: function () {
     return {
-      'left-vertical': {
-        height: '100%',
-        left: 0,
-        top: 0
-      },
-
-      'right-vertical': {
-        height: '100%',
-        right: 0,
-        top: 0
-      },
-
-      'top-horizontal': {
-        width: '100%',
-        left: 0,
-        top: 0
-      },
-
-      'bottom-horizontal': {
-        width: '100%',
-        left: 0,
-        bottom: 0
-      }
+      'left-vertical': settings.LEFT_VERTICAL_PANEL_STYLES,
+      'right-vertical': settings.RIGHT_VERTICAL_PANEL_STYLES,
+      'top-horizontal': settings.TOP_HORIZONTAL_PANEL_STYLES,
+      'bottom-horizontal': settings.BOTTOM_HORIZONTAL_PANEL_STYLES
     }[this.getPanelKey()];
   },
 
@@ -108,22 +89,18 @@ var _Widget = React.createClass({
       <div className="panel" style={ this.getPanelStyles() }>
         <BookmarksShortcut
           className="shortcut"
-          style={ this.state.shortcutStyles }
         />
 
         <HistoryShortcut
           className="shortcut"
-          style={ this.state.shortcutStyles }
         />
 
         <DownloadsShortcut
           className="shortcut"
-          style={ this.state.shortcutStyles }
         />
 
         <Link
           className="shortcut"
-          style={ this.state.shortcutStyles }
           onClick={ this.openConfigurator }>
 
           <span className="glyphicon glyphicon-cog" />

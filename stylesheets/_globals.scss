@@ -16,12 +16,11 @@ $widget-body-padding: 10px;
 
 $panel-bg-color: $widget-bg-color;
 $panel-hover-bg-color: $widget-hover-bg-color;
-$panel-vertical-width: 60px;
-$panel-horizontal-height: 60px;
 $panel-border: none;
 $panel-border-radius: 0;
 
-$panel-shortcut-size: $desktop-configure-btn-size;
+$panel-shortcut-size: 60px;
+$panel-shortcut-font-size: $desktop-configure-btn-size;
 $panel-shortcut-hover-size: $desktop-configure-btn-hover-size;
 $panel-shortcut-color: #333;
 $panel-shortcut-hover-color: #111;

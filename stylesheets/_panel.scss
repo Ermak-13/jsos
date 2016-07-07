@@ -2,9 +2,9 @@
 
 .panel {
   position: absolute;
+  width: $panel-shortcut-size;
+  height: $panel-shortcut-size;
   background-color: $panel-bg-color;
-  width: $panel-vertical-width;
-  height: $panel-horizontal-height;
 
   border: $panel-border;
   border-radius: $panel-border-radius;
@@ -15,16 +15,22 @@
   }
 
   .shortcut {
+    width: $panel-shortcut-size;
+    height: $panel-shortcut-size;
+
     display: inline-block;
     text-align: center;
-    line-height: $panel-shortcut-size;
-    font-size: $panel-shortcut-size;
-    color: $panel-shortcut-color;
+    vertical-align: middle;
 
-    &:hover {
-      line-height: $panel-shortcut-hover-size;
-      font-size: $panel-shortcut-hover-size;
-      color: $panel-shortcut-hover-color;
+    & > span {
+      line-height: $panel-shortcut-size;
+      font-size: $panel-shortcut-font-size;
+      color: $panel-shortcut-color;
+
+      &:hover {
+        font-size: $panel-shortcut-hover-size;
+        color: $panel-shortcut-hover-color;
+      }
     }
   }
 }
