@@ -1,3 +1,5 @@
 var Widget = require('./widget');
 
-module.exports = Widget;
+module.exports = {
+  Widget: Widget
+};

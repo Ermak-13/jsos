@@ -8,8 +8,8 @@ var settings = {
     position: 'absolute',
     width: '300px',
     height: '200px',
-    top: '50px',
-    left: '50px'
+    top: '10px',
+    left: '70px'
   },
 
   NAV_ACTIVE_TAB_CLASS_NAME: 'active',

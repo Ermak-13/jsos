@@ -97,7 +97,7 @@ var Desktop = React.createClass({
   },
 
   _createWidget: function (widgetName, nextWidgetId) {
-    var WidgetClass = global.Widgets[widgetName];
+    var WidgetClass = global.Widgets[widgetName].Widget;
     return React.createElement(
       WidgetClass,
       {
