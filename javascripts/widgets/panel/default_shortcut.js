@@ -9,8 +9,8 @@ var DefaultShortcut = React.createClass({
       <Link
         className={ this.props.className }
         onClick={ this.props.onClick }>
-        
-        <span className="glyphicon glyphicon-asterisk" />
+
+        <span className="fa fa-asterisk" />
       </Link>
     );
   }
