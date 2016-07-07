@@ -11,7 +11,8 @@ var React = require('react'),
     Configurator = require('./configurator'),
     BookmarksShortcut = require('./bookmarks_shortcut'),
     HistoryShortcut = require('./history_shortcut'),
-    DownloadsShortcut = require('./downloads_shortcut');
+    DownloadsShortcut = require('./downloads_shortcut'),
+    DefaultShortcut = require('./default_shortcut');
 
 var _Widget = React.createClass({
   mixins: [Mixins.WidgetHelper],
@@ -100,6 +101,10 @@ var _Widget = React.createClass({
         />
 
         <DownloadsShortcut
+          className="shortcut"
+        />
+
+        <DefaultShortcut
           className="shortcut"
         />
 
