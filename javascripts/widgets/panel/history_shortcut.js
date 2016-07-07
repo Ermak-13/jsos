@@ -16,7 +16,7 @@ var HistoryShortcut = React.createClass({
         className={ this.props.className }
         onClick={ this.handleClick }>
 
-        <span className="glyphicon glyphicon-time" />
+        <span className="fa fa-history" />
       </Link>
     );
   }

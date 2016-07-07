@@ -16,7 +16,7 @@ var DownloadsShortcut = React.createClass({
         className={ this.props.className }
         onClick={ this.handleClick }>
 
-        <span className="glyphicon glyphicon-download" />
+        <span className="fa fa-download" />
       </Link>
     );
   }

@@ -16,7 +16,7 @@ var BookmarksShortcut = React.createClass({
         className={ this.props.className }
         onClick={ this.handleClick }>
 
-        <span className="glyphicon glyphicon-bookmark" />
+        <span className="fa fa-bookmark" />
       </Link>
     );
   }
