@@ -31,24 +31,21 @@ var Desktop = React.createClass({
       nextWidgetId: 0,
 
       desktopStyles: globalSettings.DESKTOP_STYLES,
-      configureBtnStyles: globalSettings.DESKTOP_CONFIGURE_BTN_STYLES,
-      hoverConfigureBtnStyles: globalSettings.DESKTOP_HOVER_CONFIGURE_BTN_STYLES
+      configureBtnStyles: globalSettings.DESKTOP_CONFIGURE_BTN_STYLES
     };
   },
 
   setSettings: function (settings) {
     this.setState({
       desktopStyles: settings.desktopStyles,
-      configureBtnStyles: settings.configureBtnStyles,
-      hoverConfigureBtnStyles: settings.hoverConfigureBtnStyles
+      configureBtnStyles: settings.configureBtnStyles
     }, this.save);
   },
 
   getSettings: function () {
     return {
       desktopStyles: _.clone(this.state.desktopStyles),
-      configureBtnStyles: _.clone(this.state.configureBtnStyles),
-      hoverConfigureBtnStyles: _.clone(this.state.hoverConfigureBtnStyles)
+      configureBtnStyles: _.clone(this.state.configureBtnStyles)
     };
   },
 
@@ -143,12 +140,11 @@ var Desktop = React.createClass({
 
   render: function () {
     return (
-      <div id="desktop" style={ this.state.desktopStyles }>
+      <div className="desktop" style={ this.state.desktopStyles }>
         { this.state.widgets }
 
         <ConfigureBtn
           style={ this.state.configureBtnStyles }
-          hoverStyle={ this.state.hoverConfigureBtnStyles }
           onClick={ this.openConfigurator }
         />
 

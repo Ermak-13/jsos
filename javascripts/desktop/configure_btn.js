@@ -7,8 +7,8 @@ var ConfigureBtn = React.createClass({
   render: function () {
     return (
       <Link
+        className="configure-btn"
         style={ this.props.style }
-        hoverStyle={ this.props.hoverStyle }
         onClick={ this.props.onClick }>
 
         <span className="glyphicon glyphicon-cog" />

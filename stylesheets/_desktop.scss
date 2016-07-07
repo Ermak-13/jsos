@@ -4,4 +4,20 @@
   position: absolute;
   width: $desktop-width;
   height: $desktop-height;
+
+  .desktop {
+    width: 100%;
+    height: 100%;
+
+    .configure-btn {
+      position: absolute;
+      font-size: $desktop-configure-btn-size;
+      color: $desktop-configure-btn-bg-color;
+
+      &:hover {
+        font-size: $desktop-configure-btn-hover-size;
+        color: $desktop-configure-btn-hover-bg-color;
+      }
+    }
+  }
 }

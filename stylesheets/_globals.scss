@@ -1,8 +1,12 @@
 $desktop-width: 100%;
 $desktop-height: 100%;
+$desktop-configure-btn-size: 48px;
+$desktop-configure-btn-bg-color: rgba(255, 255, 255, 0.7);
+$desktop-configure-btn-hover-size: 50px;
+$desktop-configure-btn-hover-bg-color: rgba(255, 255, 255, 0.85);
 
-$widget-bg-color: rgba(255, 255, 255, 0.7);
-$widget-hover-bg-color: rgba(255, 255, 255, 0.85);
+$widget-bg-color: $desktop-configure-btn-bg-color;
+$widget-hover-bg-color: $desktop-configure-btn-hover-bg-color;
 $widget-border-radius: 5px;
 $border-color: #BBB;
 $widget-header-border: 1px solid $border-color;
