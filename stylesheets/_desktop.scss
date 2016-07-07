@@ -1,0 +1,7 @@
+@import 'globals';
+
+#desktop-container {
+  position: absolute;
+  width: $desktop-width;
+  height: $desktop-height;
+}

@@ -26,7 +26,7 @@ var Dialog = React.createClass({
   render: function () {
     return (
       <div className="modal-dialog" style={ this.getModalDialogStyles() }>
-        <div className="widget modal-dialog-content">
+        <div className="widget content">
           { this.props.children }
         </div>
       </div>

@@ -1,0 +1,44 @@
+@import 'globals';
+
+.widget {
+  background-color: $widget-bg-color;
+  border-radius: $widget-border-radius;
+
+  &:hover {
+    background-color: $widget-hover-bg-color;
+  }
+
+  .header {
+    border-bottom: $widget-header-border;
+    padding: $widget-header-padding;
+
+    h1, h2, h3,
+    h4, h5, h6 {
+      display: inline;
+    }
+  }
+
+  .icons-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    padding: $widget-header-padding;
+    z-index: 9999;
+
+    .icon {
+      cursor: pointer;
+      margin: $widget-icon-margin;
+    }
+  }
+
+  .header > .icons-container {
+    position: initial;
+    float: right;
+    padding: 0;
+  }
+
+  .body {
+    padding: $widget-body-padding;
+  }
+}
