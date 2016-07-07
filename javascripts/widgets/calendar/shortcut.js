@@ -10,7 +10,7 @@ var Shortcut = React.createClass({
         className={ this.props.className }
         onClick={ this.props.onClick }>
 
-        <span className="glyphicon glyphicon-calendar" />
+        <span className="fa fa-calendar" />
       </Link>
     );
   }

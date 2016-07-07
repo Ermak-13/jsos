@@ -10,7 +10,7 @@ var ConfigureBtn = React.createClass({
         className={ this.props.className }
         onClick={ this.props.onClick }>
 
-        <span className="glyphicon glyphicon-cog" />
+        <span className="fa fa-cog" />
       </Link>
     );
   }
