@@ -70,7 +70,7 @@ var _Widget = React.createClass({
       bottom: settings.bottom,
       vertical: settings.vertical,
       horizontal: settings.horizontal
-    });
+    }, this.save);
   },
 
   getSettings: function () {
@@ -82,6 +82,10 @@ var _Widget = React.createClass({
       vertical: this.state.vertical,
       horizontal: this.state.horizontal
     };
+  },
+
+  componentWillMount: function () {
+    this.load();
   },
 
   render: function () {
