@@ -1,0 +1,28 @@
+@import 'globals';
+
+.panel {
+  background-color: $panel-bg-color;
+  width: $panel-vertical-width;
+  height: $panel-horizontal-height;
+
+  border: $panel-border;
+  border-radius: $panel-border-radius;
+
+  &:hover {
+    background-color: $panel-hover-bg-color;
+  }
+
+  .shortcut {
+    display: inline-block;
+    text-align: center;
+    line-height: $panel-shortcut-size;
+    font-size: $panel-shortcut-size;
+    color: $panel-shortcut-color;
+
+    &:hover {
+      line-height: $panel-shortcut-hover-size;
+      font-size: $panel-shortcut-hover-size;
+      color: $panel-shortcut-hover-color;
+    }
+  }
+}

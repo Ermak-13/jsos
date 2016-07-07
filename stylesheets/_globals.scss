@@ -1,8 +1,8 @@
 $desktop-width: 100%;
 $desktop-height: 100%;
 $desktop-configure-btn-size: 48px;
+$desktop-configure-btn-hover-size: 52px;
 $desktop-configure-btn-bg-color: rgba(255, 255, 255, 0.7);
-$desktop-configure-btn-hover-size: 50px;
 $desktop-configure-btn-hover-bg-color: rgba(255, 255, 255, 0.85);
 
 $widget-bg-color: $desktop-configure-btn-bg-color;
@@ -13,6 +13,18 @@ $widget-header-border: 1px solid $border-color;
 $widget-header-padding: 10px 5px;
 $widget-icon-margin: 0 2px;
 $widget-body-padding: 10px;
+
+$panel-bg-color: $widget-bg-color;
+$panel-hover-bg-color: $widget-hover-bg-color;
+$panel-vertical-width: 60px;
+$panel-horizontal-height: 60px;
+$panel-border: none;
+$panel-border-radius: 0;
+
+$panel-shortcut-size: $desktop-configure-btn-size;
+$panel-shortcut-hover-size: $desktop-configure-btn-hover-size;
+$panel-shortcut-color: #333;
+$panel-shortcut-hover-color: #111;
 
 $modal-dialog-bg-color: rgba(0, 0, 0, 0.8);
 $modal-dialog-content-bg-color: white;

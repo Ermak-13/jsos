@@ -4,7 +4,6 @@ var React = require('react'),
     OS = require('os'),
     Mixins = OS.Mixins,
     Widget = OS.Widget,
-    Configurator = OS.Configurator,
     Link = OS.Link,
 
     settings = require('./settings'),
@@ -25,45 +24,44 @@ var _Widget = React.createClass({
 
   getInitialState: function () {
     return {
-      widgetStyles: settings.DEFAULT_WIDGET_STYLES,
-      shortcutStyles: settings.DEFAULT_SHORTCUT_STYLES,
-      hoverShortcutStyles: settings.DEFAULT_HOVER_SHORTCUT_STYLES
+      panelStyles: settings.DEFAULT_PANEL_STYLES,
+      shortcutStyles: settings.DEFAULT_SHORTCUT_STYLES
     };
   },
 
   setSettings: function (settings) {
     this.setState({
-      widgetStyles: settings.widgetStyles
+      panelStyles: settings.panelStyles
     });
   },
 
   getSettings: function () {
     return {
-      widgetStyles: _.clone(this.state.widgetStyles)
+      panelStyles: _.clone(this.state.panelStyles)
     };
   },
 
   render: function () {
     return (
-      <Widget.Widget widgetStyles={ this.state.widgetStyles }>
+      <div className="panel" style={ this.state.panelStyles }>
         <BookmarksShortcut
+          className="shortcut"
           style={ this.state.shortcutStyles }
-          hoverStyle={ this.state.hoverShortcutStyles }
         />
 
         <HistoryShortcut
+          className="shortcut"
           style={ this.state.shortcutStyles }
-          hoverStyle={ this.state.hoverShortcutStyles }
         />
 
         <DownloadsShortcut
+          className="shortcut"
           style={ this.state.shortcutStyles }
-          hoverStyle={ this.state.hoverShortcutStyles }
         />
 
         <Link
+          className="shortcut"
           style={ this.state.shortcutStyles }
-          hoverStyle={ this.state.hoverShortcutStyles }
           onClick={ this.openConfigurator }>
 
           <span className="glyphicon glyphicon-cog" />
@@ -75,7 +73,7 @@ var _Widget = React.createClass({
           settings={ this.getSettings() }
           onSubmit={ this.handleConfigure }
         />
-      </Widget.Widget>
+      </div>
     );
   }
 });

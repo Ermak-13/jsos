@@ -5,7 +5,7 @@ var gulp = require('gulp'),
     jshint = require('gulp-jshint');
 
 gulp.task('default', ['dev']);
-gulp.task('dev', ['js', 'sass', 'watch']);
+gulp.task('dev', ['watch', 'js', 'sass']);
 gulp.task('release', ['js']);
 
 gulp.task('js', function () {
@@ -39,6 +39,6 @@ gulp.task('sass', function () {
 });
 
 gulp.task('watch', function () {
-  gulp.watch('./src/**/*.js', ['js']);
+  gulp.watch('./javascripts/**/*.js', ['js']);
   gulp.watch('./stylesheets/**/*.scss', ['sass']);
 });
