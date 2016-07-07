@@ -1,5 +1,7 @@
-var Widget = require('./widget');
+var Widget = require('./widget'),
+    Shortcut = require('./shortcut');
 
 module.exports = {
-  Widget: Widget
-}
+  Widget: Widget,
+  Shortcut: Shortcut
+};

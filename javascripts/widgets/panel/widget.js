@@ -56,7 +56,7 @@ var _Widget = React.createClass({
 
     _.each(global.Widgets, function (Widget, widgetName) {
       if (widgetName !== 'Panel') {
-        var ShortcutClass = Widget.ShortcutClass || DefaultShortcut;
+        var ShortcutClass = Widget.Shortcut || DefaultShortcut;
         shortcuts.push(
           React.createElement(ShortcutClass, {
             key: shortcuts.length,
