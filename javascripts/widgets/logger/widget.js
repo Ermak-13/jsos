@@ -3,9 +3,14 @@ var React = require('react'),
 
     OS = require('os'),
     globalSettings = OS.settings,
+    AppDispatcher = OS.AppDispatcher,
+    Events = OS.Events,
+
     Mixins = OS.Mixins,
     Widget = OS.Widget,
     Configurator = OS.Configurator,
+
+    HForm = OS.HForm,
 
     settings = require('./settings');
 
@@ -42,9 +47,19 @@ var _Widget = React.createClass({
     this.load();
   },
 
+  componentDidMount: function () {
+    AppDispatcher.bind(Events.log, function (level, message) {
+      var logs = this.state.logs;
+      logs.push({
+        level: level,
+        message: message
+      });
+
+      this.setState({ logs: logs });
+    }.bind(this));
+  },
+
   render: function () {
-    console.log(this.props);
-    console.log(s.capitalize(this.props.name));
     return (
       <Widget.Widget widgetStyles={ this.state.widgetStyles }>
         <Widget.DefaultHeader
@@ -54,7 +69,30 @@ var _Widget = React.createClass({
         />
 
         <Widget.Body>
-          Oops
+          <HForm.Form>
+            <HForm.Field
+              labelText="Filter:"
+              labelClassName="control-label col-md-2"
+              controlContainerClassName="col-md-10">
+
+              <select className="form-control">
+                <option>any</option>
+              </select>
+            </HForm.Field>
+          </HForm.Form>
+
+          <table className="table table-hover">
+            <thead>
+              <tr>
+                <th>level</th>
+                <th>message</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              { this.getLogsTrHTML() }
+            </tbody>
+          </table>
         </Widget.Body>
 
         <Configurator.Default
@@ -65,6 +103,20 @@ var _Widget = React.createClass({
         />
       </Widget.Widget>
     );
+  },
+
+  getLogsTrHTML: function () {
+    var logs = _.clone(this.state.logs).reverse(),
+        logsTrHTML = _.map(logs, function (log, i) {
+          return (
+            <tr key={ i }>
+              <td>{ log.level }</td>
+              <td>{ log.message }</td>
+            </tr>
+          );
+        });
+
+    return logsTrHTML;
   }
 });
 
