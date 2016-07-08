@@ -17,6 +17,10 @@ var AppDispatcher = function () {
   this.removeWidget = function (widgetId) {
     _this.trigger(Events.removeWidget, widgetId);
   };
+
+  this.log = function (level, message) {
+    _this.trigger(Events.log, level, message);
+  };
 };
 MicroEvent.mixin(AppDispatcher);
 

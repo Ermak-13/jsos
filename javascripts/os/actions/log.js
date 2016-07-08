@@ -1,13 +1,7 @@
-var sprintf = require('underscore.string/sprintf');
+var AppDispatcher = require('../app_dispatcher');
 
 var log = function (level, message) {
-  var result = sprintf(
-    '%s: %s',
-    level.toUpperCase(),
-    message
-  );
-
-  console.log(result);
+  AppDispatcher.log(level.toLowerCase(), message);
 };
 
 module.exports = log;

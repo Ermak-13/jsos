@@ -2,7 +2,10 @@ var OS = {
   AppDispatcher: require('./os/app_dispatcher'),
   Events: require('./os/events'),
   settings: require('./os/settings'),
+  Logger: require('./os/logger'),
+  storage: require('./os/storage'),
 
+  Mixins: require('./os/mixins'),
   Widget: require('./os/components/widget'),
   Configurator: require('./os/components/configurator'),
   WidgetStylesForm: require('./os/components/widget_styles_form'),
@@ -12,9 +15,6 @@ var OS = {
   Input: require('./os/components/input'),
   Textarea: require('./os/components/textarea'),
   Submit: require('./os/components/submit'),
-
-  Mixins: require('./os/mixins'),
-  storage: require('./os/storage'),
 
   log: require('./os/actions/log'),
   request: require('./os/actions/request'),
