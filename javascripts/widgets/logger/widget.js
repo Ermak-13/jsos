@@ -1,5 +1,6 @@
 var React = require('react'),
     s = require('underscore.string'),
+    sprintf = require('sprintf-js').sprintf,
 
     OS = require('os'),
     globalSettings = OS.settings,
@@ -142,10 +143,28 @@ var _Widget = React.createClass({
           );
         }.bind(this))
 
+        convertLabelClassName = function (level) {
+          var converter = {
+            info: 'info',
+            warning: 'warning',
+            error: 'danger'
+          };
+
+          return converter[level] || 'default';
+        },
+
         logsTrHTML = _.map(logs, function (log, i) {
+          var labelClassName = sprintf(
+            'label label-%s', convertLabelClassName(log.level)
+          );
+
           return (
             <tr key={ i }>
-              <td>{ log.level }</td>
+              <td>
+                <span className={ labelClassName }>
+                  { log.level.toUpperCase() }
+                </span>
+              </td>
               <td>{ log.message }</td>
             </tr>
           );
