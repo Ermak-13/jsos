@@ -1,7 +1,7 @@
 var AppDispatcher = require('../app_dispatcher');
 
-var addWidget = function (widget) {
-  AppDispatcher.addWidget(widget);
+var addWidget = function (WidgetClass) {
+  AppDispatcher.addWidget(WidgetClass);
 };
 
 module.exports = addWidget;

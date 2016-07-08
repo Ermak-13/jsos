@@ -19,5 +19,6 @@ var OS = {
   log: require('./os/actions/log'),
   request: require('./os/actions/request'),
   download: require('./os/actions/download'),
-  addWidget: require('./os/actions/add_widget')
+  addWidget: require('./os/actions/add_widget'),
+  removeWidget: require('./os/actions/remove_widget')
 };
