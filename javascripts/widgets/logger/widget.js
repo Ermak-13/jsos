@@ -11,6 +11,8 @@ var React = require('react'),
     Configurator = OS.Configurator,
 
     HForm = OS.HForm,
+    Select = OS.Select,
+    Option = OS.Option,
 
     settings = require('./settings');
 
@@ -27,8 +29,13 @@ var _Widget = React.createClass({
   getInitialState: function () {
     return {
       logs: [],
+      filterLevel: settings.DEFAULT_FILTER_LEVEL,
       widgetStyles: settings.DEFAULT_WIDGET_STYLES
     };
+  },
+
+  handleFilter: function (level) {
+    this.setState({ filterLevel: level });
   },
 
   setSettings: function (settings) {
@@ -75,9 +82,9 @@ var _Widget = React.createClass({
               labelClassName="control-label col-md-2"
               controlContainerClassName="col-md-10">
 
-              <select className="form-control">
-                <option>any</option>
-              </select>
+              <Select onChange={ this.handleFilter }>
+                { this.getLevelOptionsHTML() }
+              </Select>
             </HForm.Field>
           </HForm.Form>
 
@@ -105,8 +112,36 @@ var _Widget = React.createClass({
     );
   },
 
+  getLevelOptionsHTML: function () {
+    var levels = _.map(this.state.logs, function (log) {
+      return log.level;
+    });
+
+    levels.unshift(settings.DEFAULT_FILTER_LEVEL);
+    levels = _.uniq(levels);
+
+    var levelOptionsHTML = _.map(levels, function (level) {
+      return (
+        <Option
+          key={ level }
+          text={ level }
+          value={ level }
+        />
+      );
+    });
+
+    return levelOptionsHTML;
+  },
+
   getLogsTrHTML: function () {
-    var logs = _.clone(this.state.logs).reverse(),
+    var logs = _.clone(this.state.logs);
+        logs = _.filter(logs, function (log) {
+          return (
+            this.state.filterLevel === settings.DEFAULT_FILTER_LEVEL ||
+            log.level === this.state.filterLevel
+          );
+        }.bind(this))
+
         logsTrHTML = _.map(logs, function (log, i) {
           return (
             <tr key={ i }>
@@ -115,6 +150,7 @@ var _Widget = React.createClass({
             </tr>
           );
         });
+
 
     return logsTrHTML;
   }
