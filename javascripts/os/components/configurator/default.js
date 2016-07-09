@@ -2,8 +2,8 @@ var React = require('react'),
     _ = require('underscore'),
 
     Mixins = require('../../mixins'),
-    DefaultDialog = require('./default_dialog'),
-    WidgetStylesForm = require('../widget_styles_form');
+    WidgetStylesForm = require('../widget_styles_form'),
+    DefaultDialog = require('./default_dialog');
 
 var Default = React.createClass({
   mixins: [Mixins.ConfiguratorHelper],

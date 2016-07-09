@@ -1,3 +1,2 @@
-var Dialog = require('../dialog');
-
+var Dialog = require('../dialog/dialog');
 module.exports = Dialog;

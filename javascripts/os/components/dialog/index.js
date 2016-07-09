@@ -1,7 +1,6 @@
-var Configurator = {
+var Dialog = {
   Default: require('./default'),
   Dialog: require('./dialog'),
-  DefaultDialog: require('./default_dialog'),
   Header: require('./header'),
   DefaultHeader: require('./default_header'),
   Body: require('./body'),
@@ -10,4 +9,4 @@ var Configurator = {
   CloseBtn: require('./close_btn')
 };
 
-module.exports = Configurator;
+module.exports = Dialog;
