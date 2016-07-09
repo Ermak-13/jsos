@@ -7,6 +7,7 @@ var OS = {
 
   Mixins: require('./os/mixins'),
   Widget: require('./os/components/widget'),
+  Dialog: require('./os/components/dialog'),
   Configurator: require('./os/components/configurator'),
   WidgetStylesForm: require('./os/components/widget_styles_form'),
 
