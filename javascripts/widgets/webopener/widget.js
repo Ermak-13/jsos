@@ -22,10 +22,10 @@ var _Widget = React.createClass({
 
   getInitialState: function () {
     return {
-      websites: [],
+      links: [],
 
       widgetStyles: settings.DEFAULT_WIDGET_STYLES,
-      websiteStyles: settings.DEFAULT_WEBSITE_STYLES,
+      linkStyles: settings.DEFAULT_LINK_STYLES,
       iconStyles: settings.DEFAULT_ICON_STYLES,
       textStyles: settings.DEFAULT_TEXT_STYLES
     };
@@ -53,9 +53,9 @@ var _Widget = React.createClass({
         />
 
         <Widget.Body>
-          { this.getWebsitesHTML() }
+          { this.getLinksHTML() }
 
-          { this.getAddWebsiteBtnHTML() }
+          { this.getLinkCreatorBtnHTML() }
         </Widget.Body>
 
         <Configurator.Default
@@ -68,38 +68,36 @@ var _Widget = React.createClass({
     );
   },
 
-  getWebsitesHTML: function () {
-    var websitesHTML = _.map([0,1,2,3,4], function () {
+  getLinksHTML: function () {
+    var linksHTML = _.map([0,1,2,3,4], function () {
       return (
-        <div style={ this.state.websiteStyles }>
-          <Link>
-            <img
-              style={ this.state.iconStyles }
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/VK.com-logo.svg/2000px-VK.com-logo.svg.png"
-            />
+        <Link style={ this.state.linkStyles }>
+          <img
+            style={ this.state.iconStyles }
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/VK.com-logo.svg/2000px-VK.com-logo.svg.png"
+          />
 
-            <span style={ this.state.textStyles }>
-              vk.com
-            </span>
-          </Link>
-        </div>
+          <span style={ this.state.textStyles }>
+            vk.com
+          </span>
+        </Link>
       );
 
     }.bind(this));
 
-    return websitesHTML;
+    return linksHTML;
   },
 
-  getAddWebsiteBtnHTML: function () {
+  getLinkCreatorBtnHTML: function () {
     return (
-      <div style={ this.state.websiteStyles }>
+      <div style={ this.state.linkStyles }>
         <Link>
           <span
             style={ this.state.iconStyles }
             className="fa fa-plus-square-o" />
 
           <span style={ this.state.textStyles }>
-            add website
+            add link
           </span>
         </Link>
       </div>

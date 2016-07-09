@@ -15,7 +15,8 @@ var settings = {
     }
   ),
 
-  DEFAULT_WEBSITE_STYLES: {
+  DEFAULT_LINK_STYLES: {
+    display: 'block',
     width: '120px',
     textAlign: 'center',
     float: 'left',
