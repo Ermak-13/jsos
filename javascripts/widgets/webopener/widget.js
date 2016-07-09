@@ -21,7 +21,9 @@ var _Widget = React.createClass({
 
   getInitialState: function () {
     return {
-      widgetStyles: settings.DEFAULT_WIDGET_STYLES
+      widgetStyles: settings.DEFAULT_WIDGET_STYLES,
+      webpageStyles: settings.DEFAULT_WEBPAGE_STYLES,
+      iconStyles: settings.DEFAULT_ICON_STYLES
     };
   },
 
@@ -46,6 +48,10 @@ var _Widget = React.createClass({
           onClickConfigureBtn={ this.openConfigurator }
         />
 
+        <Widget.Body>
+          { this.getWebpagesHTML() }
+        </Widget.Body>
+
         <Configurator.Default
           ref={ this.props.configuratorRefName }
           name={ this.props.name }
@@ -54,6 +60,26 @@ var _Widget = React.createClass({
         />
       </Widget.Widget>
     );
+  },
+
+  getWebpagesHTML: function () {
+    var webpagesHTML = _.map([0,1,2,3,4], function () {
+      return (
+        <div style={ this.state.webpageStyles }>
+          <img
+            style={ this.state.iconStyles }
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/VK.com-logo.svg/2000px-VK.com-logo.svg.png"
+          />
+
+          <span>
+            vk.com
+          </span>
+        </div>
+      );
+
+    }.bind(this));
+
+    return webpagesHTML;
   }
 });
 
