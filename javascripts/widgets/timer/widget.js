@@ -182,7 +182,10 @@ var _Widget = React.createClass({
   },
 
   getRecordsHTML: function () {
-    var recordsHTML = _.map(this.state.records, function (record) {
+    var records = _.clone(this.state.records),
+        records = records.reverse();
+
+    var recordsHTML = _.map(records, function (record) {
       return (
         <div className="row" key={ record }>
           <div className="col-md-offset-4 col-md-8"
