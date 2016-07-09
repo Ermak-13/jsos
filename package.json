@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "moment": "^2.13.0",
+    "perfect-scrollbar": "^0.6.11",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
     "sprintf-js": "^1.0.3",

@@ -79,6 +79,7 @@ var _Widget = React.createClass({
         <Widget.Body>
           <HForm.Form>
             <HForm.Field
+              containerStyle={{ marginBottom: 0 }}
               labelText="Filter:"
               labelClassName="control-label col-md-2"
               controlContainerClassName="col-md-10">
@@ -89,7 +90,10 @@ var _Widget = React.createClass({
             </HForm.Field>
           </HForm.Form>
 
-          <table className="table table-hover">
+          <table
+            className="table table-hover"
+            style={{ marginBottom: 0 }}>
+
             <thead>
               <tr>
                 <th>level</th>

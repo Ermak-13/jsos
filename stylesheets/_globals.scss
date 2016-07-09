@@ -8,11 +8,12 @@ $desktop-configure-btn-hover-bg-color: rgba(255, 255, 255, 0.85);
 $widget-bg-color: $desktop-configure-btn-bg-color;
 $widget-hover-bg-color: $desktop-configure-btn-hover-bg-color;
 $widget-border-radius: 5px;
-$border-color: #BBB;
-$widget-header-border: 1px solid $border-color;
-$widget-header-padding: 10px 5px;
+$widget-border-color: #BBB;
+$widget-padding: 0 15px;
+$widget-header-border: 1px solid $widget-border-color;
+$widget-header-padding: 10px 0;
 $widget-icon-margin: 0 2px;
-$widget-body-padding: 10px;
+$widget-body-padding: 10px 0;
 
 $panel-bg-color: $widget-bg-color;
 $panel-hover-bg-color: $widget-hover-bg-color;

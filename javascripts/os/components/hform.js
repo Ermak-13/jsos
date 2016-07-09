@@ -24,6 +24,7 @@ var HFormField = React.createClass({
   getDefaultProps: function () {
     return {
       containerClassName: 'form-group',
+      containerStyle: {},
       labelClassName: 'control-label col-md-4',
       controlContainerClassName: 'col-md-8'
     };
@@ -31,7 +32,10 @@ var HFormField = React.createClass({
 
   render: function () {
     return (
-      <div className={ this.props.containerClassName }>
+      <div
+        className={ this.props.containerClassName }
+        style={ this.props.containerStyle }>
+
         <Label
           className={ this.props.labelClassName }
           text={ this.props.labelText }

@@ -3,6 +3,7 @@
 .widget {
   background-color: $widget-bg-color;
   border-radius: $widget-border-radius;
+  padding: $widget-padding;
 
   &:hover {
     background-color: $widget-hover-bg-color;
