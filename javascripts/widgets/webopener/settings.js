@@ -6,6 +6,7 @@ var _ = require('underscore'),
 var settings = {
   WIDGET_NAME: 'webopener',
   CONFIGURATOR_REF_NAME: 'configurator',
+  LINK_CREATOR_DIALOG_REF_NAME: 'linkCreatorDialog',
 
   DEFAULT_WIDGET_STYLES: _.extend(
     _.clone(globalSettings.DEFAULT_WIDGET_STYLES),

@@ -8,7 +8,7 @@ var React = require('react'),
 
 var DefaultDialog = React.createClass({
   handleClickCloseBtn: function () {
-    this.refs.dialog.close();
+    this.close();
   },
 
   open: function () {

@@ -8,7 +8,8 @@ var React = require('react'),
     Configurator = OS.Configurator,
     Link = OS.Link,
 
-    settings = require('./settings');
+    settings = require('./settings'),
+    LinkCreatorDialog = require('./link_creator_dialog');
 
 var _Widget = React.createClass({
   mixins: [Mixins.WidgetHelper],
@@ -16,7 +17,8 @@ var _Widget = React.createClass({
   getDefaultProps: function () {
     return {
       name: settings.WIDGET_NAME,
-      configuratorRefName: settings.CONFIGURATOR_REF_NAME
+      configuratorRefName: settings.CONFIGURATOR_REF_NAME,
+      linkCreatorDialogRefName: settings.LINK_CREATOR_DIALOG_REF_NAME
     };
   },
 
@@ -29,6 +31,14 @@ var _Widget = React.createClass({
       iconStyles: settings.DEFAULT_ICON_STYLES,
       textStyles: settings.DEFAULT_TEXT_STYLES
     };
+  },
+
+  openLinkCreator: function () {
+    var ref = this.refs[
+      this.props.linkCreatorDialogRefName
+    ];
+
+    ref.open();
   },
 
   setSettings: function (settings) {
@@ -64,6 +74,10 @@ var _Widget = React.createClass({
           settings={ this.getSettings() }
           onSubmit={ this.handleConfigure }
         />
+
+        <LinkCreatorDialog
+          ref={ this.props.linkCreatorDialogRefName }
+        />
       </Widget.Widget>
     );
   },
@@ -90,17 +104,18 @@ var _Widget = React.createClass({
 
   getLinkCreatorBtnHTML: function () {
     return (
-      <div style={ this.state.linkStyles }>
-        <Link>
-          <span
-            style={ this.state.iconStyles }
-            className="fa fa-plus-square-o" />
+      <Link
+        style={ this.state.linkStyles }
+        onClick={ this.openLinkCreator }>
 
-          <span style={ this.state.textStyles }>
-            add link
-          </span>
-        </Link>
-      </div>
+        <span
+          style={ this.state.iconStyles }
+          className="fa fa-plus-square-o" />
+
+        <span style={ this.state.textStyles }>
+          add link
+        </span>
+      </Link>
     );
   }
 });
