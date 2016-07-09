@@ -15,7 +15,7 @@ var settings = {
     }
   ),
 
-  DEFAULT_WEBPAGE_STYLES: {
+  DEFAULT_WEBSITE_STYLES: {
     width: '120px',
     textAlign: 'center',
     float: 'left',
@@ -24,7 +24,13 @@ var settings = {
   },
 
   DEFAULT_ICON_STYLES: {
-    width: '100px'
+    width: '100px',
+    fontSize: '100px',
+    color: '#333'
+  },
+
+  DEFAULT_TEXT_STYLES: {
+    color: '#333'
   }
 };
 

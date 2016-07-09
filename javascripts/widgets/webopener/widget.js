@@ -6,6 +6,7 @@ var React = require('react'),
     Mixins = OS.Mixins,
     Widget = OS.Widget,
     Configurator = OS.Configurator,
+    Link = OS.Link,
 
     settings = require('./settings');
 
@@ -21,9 +22,12 @@ var _Widget = React.createClass({
 
   getInitialState: function () {
     return {
+      websites: [],
+
       widgetStyles: settings.DEFAULT_WIDGET_STYLES,
-      webpageStyles: settings.DEFAULT_WEBPAGE_STYLES,
-      iconStyles: settings.DEFAULT_ICON_STYLES
+      websiteStyles: settings.DEFAULT_WEBSITE_STYLES,
+      iconStyles: settings.DEFAULT_ICON_STYLES,
+      textStyles: settings.DEFAULT_TEXT_STYLES
     };
   },
 
@@ -49,7 +53,9 @@ var _Widget = React.createClass({
         />
 
         <Widget.Body>
-          { this.getWebpagesHTML() }
+          { this.getWebsitesHTML() }
+
+          { this.getAddWebsiteBtnHTML() }
         </Widget.Body>
 
         <Configurator.Default
@@ -62,24 +68,42 @@ var _Widget = React.createClass({
     );
   },
 
-  getWebpagesHTML: function () {
-    var webpagesHTML = _.map([0,1,2,3,4], function () {
+  getWebsitesHTML: function () {
+    var websitesHTML = _.map([0,1,2,3,4], function () {
       return (
-        <div style={ this.state.webpageStyles }>
-          <img
-            style={ this.state.iconStyles }
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/VK.com-logo.svg/2000px-VK.com-logo.svg.png"
-          />
+        <div style={ this.state.websiteStyles }>
+          <Link>
+            <img
+              style={ this.state.iconStyles }
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/VK.com-logo.svg/2000px-VK.com-logo.svg.png"
+            />
 
-          <span>
-            vk.com
-          </span>
+            <span style={ this.state.textStyles }>
+              vk.com
+            </span>
+          </Link>
         </div>
       );
 
     }.bind(this));
 
-    return webpagesHTML;
+    return websitesHTML;
+  },
+
+  getAddWebsiteBtnHTML: function () {
+    return (
+      <div style={ this.state.websiteStyles }>
+        <Link>
+          <span
+            style={ this.state.iconStyles }
+            className="fa fa-plus-square-o" />
+
+          <span style={ this.state.textStyles }>
+            add website
+          </span>
+        </Link>
+      </div>
+    );
   }
 });
 
