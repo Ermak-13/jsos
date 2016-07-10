@@ -100,9 +100,10 @@ var _Widget = React.createClass({
   },
 
   getLinksHTML: function () {
-    var linksHTML = _.map(this.state.links, function (link) {
+    var linksHTML = _.map(this.state.links, function (link, i) {
       return (
         <Link
+          key={ i }
           href={ link.url }
           style={ this.state.linkStyles }>
 
