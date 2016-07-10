@@ -42,22 +42,31 @@ var _Widget = React.createClass({
   },
 
   createLink: function (link) {
-    var links = this.state.links;
-    links.push(link);
+    var settings = this.getSettings(),
+        links =  settings.links;
 
-    this.setState({ links: links });
+    links.push(link);
+    settings.links = links;
+
+    this.setSettings(settings);
   },
 
   setSettings: function (settings) {
     this.setState({
+      links: settings.links,
       widgetStyles: settings.widgetStyles
-    });
+    }, this.save);
   },
 
   getSettings: function () {
     return {
+      links: _.clone(this.state.links),
       widgetStyles: _.clone(this.state.widgetStyles)
     };
+  },
+
+  componentWillMount: function () {
+    this.load();
   },
 
   render: function () {
