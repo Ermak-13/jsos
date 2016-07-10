@@ -3,12 +3,18 @@ var React = require('react');
 var Link = React.createClass({
   handleClick: function (e) {
     e.preventDefault();
-    this.props.onClick();
+
+    var onClick = this.props.onClick || this.defaultOnClick;
+    onClick();
+  },
+
+  defaultOnClick: function () {
+    window.location.href = this.props.href;
   },
 
   render: function () {
     return (
-      <a href="#"
+      <a href={ this.props.href }
         style={ this.props.style }
         className={ this.props.className }
 

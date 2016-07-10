@@ -41,6 +41,13 @@ var _Widget = React.createClass({
     ref.open();
   },
 
+  createLink: function (link) {
+    var links = this.state.links;
+    links.push(link);
+
+    this.setState({ links: links });
+  },
+
   setSettings: function (settings) {
     this.setState({
       widgetStyles: settings.widgetStyles
@@ -77,22 +84,26 @@ var _Widget = React.createClass({
 
         <LinkCreatorDialog
           ref={ this.props.linkCreatorDialogRefName }
+          onSubmit={ this.createLink }
         />
       </Widget.Widget>
     );
   },
 
   getLinksHTML: function () {
-    var linksHTML = _.map([0,1,2,3,4], function () {
+    var linksHTML = _.map(this.state.links, function (link) {
       return (
-        <Link style={ this.state.linkStyles }>
+        <Link
+          href={ link.url }
+          style={ this.state.linkStyles }>
+
           <img
             style={ this.state.iconStyles }
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/VK.com-logo.svg/2000px-VK.com-logo.svg.png"
+            src={ link.iconUrl }
           />
 
           <span style={ this.state.textStyles }>
-            vk.com
+            { link.text }
           </span>
         </Link>
       );
