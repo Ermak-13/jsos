@@ -41,16 +41,32 @@ var _Widget = React.createClass({
     ref.open();
   },
 
+  createLink: function (link) {
+    var settings = this.getSettings(),
+        links =  settings.links;
+
+    links.push(link);
+    settings.links = links;
+
+    this.setSettings(settings);
+  },
+
   setSettings: function (settings) {
     this.setState({
+      links: settings.links,
       widgetStyles: settings.widgetStyles
-    });
+    }, this.save);
   },
 
   getSettings: function () {
     return {
+      links: _.clone(this.state.links),
       widgetStyles: _.clone(this.state.widgetStyles)
     };
+  },
+
+  componentWillMount: function () {
+    this.load();
   },
 
   render: function () {
@@ -77,22 +93,27 @@ var _Widget = React.createClass({
 
         <LinkCreatorDialog
           ref={ this.props.linkCreatorDialogRefName }
+          onSubmit={ this.createLink }
         />
       </Widget.Widget>
     );
   },
 
   getLinksHTML: function () {
-    var linksHTML = _.map([0,1,2,3,4], function () {
+    var linksHTML = _.map(this.state.links, function (link, i) {
       return (
-        <Link style={ this.state.linkStyles }>
+        <Link
+          key={ i }
+          href={ link.url }
+          style={ this.state.linkStyles }>
+
           <img
             style={ this.state.iconStyles }
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/VK.com-logo.svg/2000px-VK.com-logo.svg.png"
+            src={ link.iconUrl }
           />
 
           <span style={ this.state.textStyles }>
-            vk.com
+            { link.text }
           </span>
         </Link>
       );

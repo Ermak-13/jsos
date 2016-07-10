@@ -4,7 +4,8 @@ var Input = React.createClass({
   getDefaultProps: function () {
     return {
       type: 'text',
-      className: 'form-control'
+      className: 'form-control',
+      onChange: function () {}
     };
   },
 
@@ -16,7 +17,11 @@ var Input = React.createClass({
 
   handleChange: function (e) {
     var value = e.target.value;
-    this.setState({ value: value });
+    this.setState({
+      value: value
+    }, function () {
+      this.props.onChange(value);
+    }.bind(this));
   },
 
   getDefaultValue: function () {
