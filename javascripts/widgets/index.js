@@ -1,11 +1,11 @@
 var Widgets = {
   Panel: require('./panel'),
-  Logger: require('./logger'),
 
+  Webopener: require('./webopener'),
   Calendar: require('./calendar'),
   Clock: require('./clock'),
   Timer: require('./timer'),
-  Webopener: require('./webopener')
+  Logger: require('./logger')
 };
 
 module.exports = Widgets;
