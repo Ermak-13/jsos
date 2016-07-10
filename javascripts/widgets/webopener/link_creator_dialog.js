@@ -6,6 +6,12 @@ var React = require('react'),
     Input = OS.Input;
 
 var LinkCreatorDialog = React.createClass({
+  getInitialState: function () {
+    return {
+      linkText: null
+    };
+  },
+
   handleSubmit: function (e) {
     e.preventDefault();
 
@@ -17,6 +23,16 @@ var LinkCreatorDialog = React.createClass({
 
     this.close();
     this.props.onSubmit(link);
+  },
+
+  handleChangeLinkUrl: function (url) {
+    var parsedUrl = OS.parseURL(url);
+    if (parsedUrl) {
+      var linkText = parsedUrl.hostname;
+      this.setState({
+        linkText: linkText
+      });
+    }
   },
 
   open: function () {
@@ -37,7 +53,9 @@ var LinkCreatorDialog = React.createClass({
           <HForm.Field
             labelText="link url:">
             <Input
-              ref="linkUrl" />
+              ref="linkUrl"
+              onChange={ this.handleChangeLinkUrl }
+            />
           </HForm.Field>
 
           <HForm.Field
@@ -51,6 +69,7 @@ var LinkCreatorDialog = React.createClass({
             labelText="text:">
             <Input
               ref="text"
+              value={ this.state.linkText }
             />
           </HForm.Field>
 
