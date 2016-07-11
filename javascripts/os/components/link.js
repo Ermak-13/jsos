@@ -9,7 +9,9 @@ var Link = React.createClass({
   },
 
   defaultOnClick: function () {
-    window.location.href = this.props.href;
+    if (this.props.href) {
+      window.location.href = this.props.href;
+    }
   },
 
   render: function () {

@@ -8,7 +8,8 @@ var Widget = {
   DefaultIconsContainer: require('./default_icons_container'),
 
   CloseBtn: require('./close_btn'),
-  ConfigureBtn: require('./configure_btn')
+  ConfigureBtn: require('./configure_btn'),
+  PositionBtn: require('./position_btn')
 };
 
 module.exports = Widget;
