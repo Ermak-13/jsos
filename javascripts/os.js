@@ -13,6 +13,7 @@ var OS = {
 
   Link: require('./os/components/link'),
   HForm: require('./os/components/hform'),
+  IForm: require('./os/components/iform'),
   Input: require('./os/components/input'),
   Select: require('./os/components/select'),
   Option: require('./os/components/option'),

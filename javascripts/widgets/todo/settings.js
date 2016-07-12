@@ -10,6 +10,8 @@ var settings = {
   DEFAULT_WIDGET_STYLES: _.extend(
     _.clone(globalSettings.DEFAULT_WIDGET_STYLES),
     {
+      width: '450px',
+      height: '300px'
     }
   )
 };

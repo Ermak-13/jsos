@@ -4,6 +4,10 @@ var React = require('react'),
 
     OS = require('os'),
     Mixins = OS.Mixins,
+    IForm = OS.IForm,
+    HForm = OS.HForm,
+    Input = OS.Input,
+    Input = OS.Input,
     Widget = OS.Widget,
     Configurator = OS.Configurator,
 
@@ -47,7 +51,31 @@ var _Widget = React.createClass({
         />
 
         <Widget.Body>
-          Hello World
+          <HForm.Form>
+            <div className="form-group">
+              <div className="col-md-9">
+                <Input
+                />
+              </div>
+
+              <div className="col-md-3">
+                <Input
+                  type="submit"
+                  style={{ width: '100%' }}
+                  className="btn btn-primary"
+                  value="Create"
+                />
+              </div>
+            </div>
+          </HForm.Form>
+
+          <table className="table">
+            <tbody>
+              { this.getTodoHTML() }
+              { this.getTodoHTML() }
+              { this.getTodoHTML() }
+            </tbody>
+          </table>
         </Widget.Body>
 
         <Configurator.Default
@@ -57,6 +85,26 @@ var _Widget = React.createClass({
           onSubmit={ this.handleConfigure }
         />
       </Widget.Widget>
+    );
+  },
+
+  getTodoHTML: function () {
+    return (
+      <tr>
+        <td>
+          <form className="form-inline">
+            <div className="checkbox">
+              <label>
+                <input type="checkbox" />
+              </label>
+            </div>
+          </form>
+        </td>
+
+        <td></td>
+        <td>03/07</td>
+        <td>Необходимо сделать todo</td>
+      </tr>
     );
   }
 });
