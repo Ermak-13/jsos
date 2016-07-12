@@ -22,6 +22,11 @@ var WidgetHelper = {
     this.setSettings(settings);
   },
 
+  init: function () {
+    this.load();
+    AppDispatcher.initWidget(this);
+  },
+
   load: function () {
     storage.get(
       this.getStorageKey(),

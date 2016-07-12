@@ -58,6 +58,10 @@ var _Widget = React.createClass({
     };
   },
 
+  componentWillMount: function () {
+    this.init();
+  },
+
   render: function () {
     return (
       <Widget.Widget widgetStyles={ this.state.widgetStyles }>

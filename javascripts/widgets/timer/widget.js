@@ -122,7 +122,7 @@ var _Widget = React.createClass({
   },
 
   componentWillMount: function () {
-    this.load();
+    this.init();
   },
 
   render: function () {

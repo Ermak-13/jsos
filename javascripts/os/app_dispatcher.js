@@ -10,6 +10,10 @@ var AppDispatcher = function () {
     _this.trigger(Events.saveDesktop);
   };
 
+  this.initWidget = function (widget) {
+    _this.trigger(Events.initWidget, widget);
+  };
+
   this.addWidget = function (WidgetClass) {
     _this.trigger(Events.addWidget, WidgetClass);
   };

@@ -4,6 +4,7 @@ var Events = {
   saveDesktop: 'save-desktop',
   log: 'log',
 
+  initWidget: 'init-widget',
   addWidget: 'add-widget',
   removeWidget: 'remove-widget'
 };
