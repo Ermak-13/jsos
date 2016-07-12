@@ -25,8 +25,25 @@ var _Widget = React.createClass({
 
   getInitialState: function () {
     return {
+      todoList: [],
       widgetStyles: settings.DEFAULT_WIDGET_STYLES
     };
+  },
+
+  createTodo: function (e) {
+    e.preventDefault();
+
+    var todo = {
+          title: this.refs.title.getValue()
+        },
+        todoList = this.state.todoList;
+
+    todoList.push(todo);
+    this.setState({
+      todoList: todoList
+    }, function () {
+      this.refs.title.clear();
+    }.bind(this));
   },
 
   setSettings: function (settings) {
@@ -51,10 +68,12 @@ var _Widget = React.createClass({
         />
 
         <Widget.Body>
-          <HForm.Form>
+          <HForm.Form onSubmit={ this.createTodo }>
             <div className="form-group">
               <div className="col-md-9">
                 <Input
+                  ref="title"
+                  placeholder="Title"
                 />
               </div>
 
@@ -71,9 +90,7 @@ var _Widget = React.createClass({
 
           <table className="table">
             <tbody>
-              { this.getTodoHTML() }
-              { this.getTodoHTML() }
-              { this.getTodoHTML() }
+              { this.getTodoListHTML() }
             </tbody>
           </table>
         </Widget.Body>
@@ -88,9 +105,17 @@ var _Widget = React.createClass({
     );
   },
 
-  getTodoHTML: function () {
+  getTodoListHTML: function () {
+    var todoList = _.clone(this.state.todoList);
+
+    return _.map(todoList, function (todo, i) {
+      return this.getTodoHTML(todo, i);
+    }.bind(this));
+  },
+
+  getTodoHTML: function (todo, key) {
     return (
-      <tr>
+      <tr key={ key }>
         <td>
           <form className="form-inline">
             <div className="checkbox">
@@ -101,10 +126,35 @@ var _Widget = React.createClass({
           </form>
         </td>
 
-        <td></td>
-        <td>03/07</td>
-        <td>Необходимо сделать todo</td>
+        <td>{ this.getPriorityHTML(todo) }</td>
+        <td>{ todo.date || '-' }</td>
+        <td>{ todo.title }</td>
       </tr>
+    );
+  },
+
+  getPriorityHTML: function (todo) {
+    priority = todo.priority || 'none';
+
+    var color = {
+      none: '#FFF',
+      veryLow: '#D6C394',
+      low: '#ffd35d',
+      medium: '#ff6f49',
+      high: '#cb4e2d',
+      veryHigh: '#821000'
+    }[priority];
+
+    var styles = {
+      backgroundColor: color,
+      width: '15px',
+      height: '15px',
+      borderRadius: '8px'
+    };
+
+    return (
+      <div style={ styles }>
+      </div>
     );
   }
 });

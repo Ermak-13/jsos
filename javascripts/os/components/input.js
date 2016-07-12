@@ -24,6 +24,10 @@ var Input = React.createClass({
     }.bind(this));
   },
 
+  clear: function () {
+    this.setState({ value: this.getDefaultValue() });
+  },
+
   getDefaultValue: function () {
     return this.props.value || this.props.defaultValue || '';
   },
@@ -45,6 +49,7 @@ var Input = React.createClass({
         name={ this.props.name }
         className={ this.props.className }
         style={ this.props.style }
+        placeholder={ this.props.placeholder }
 
         value={ this.state.value }
         onChange={ this.handleChange }
