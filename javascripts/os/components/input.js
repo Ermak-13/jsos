@@ -47,6 +47,7 @@ var Input = React.createClass({
       <input
         type={ this.props.type }
         name={ this.props.name }
+        disabled={ this.props.disabled }
         className={ this.props.className }
         style={ this.props.style }
         placeholder={ this.props.placeholder }
