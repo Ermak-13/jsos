@@ -26,6 +26,8 @@ var _Widget = React.createClass({
       format: settings.DEFAULT_FORMAT,
       updatedInterval: settings.DEFAULT_UPDATED_INTERVAL,
 
+      size: settings.DEFAULT_SIZE,
+      position: settings.DEFAULT_POSITION,
       widgetStyles: settings.DEFAULT_WIDGET_STYLES,
       timeStyles: settings.DEFAULT_TIME_STYLES
     };
@@ -35,7 +37,9 @@ var _Widget = React.createClass({
     this.setState({
       format: settings.format,
       updatedInterval: settings.updatedInterval,
-      widgetStyles: settings.widgetStyles,
+
+      size: settings.size,
+      position: settings.position,
       timeStyles: settings.timeStyles
     }, function () {
       this.refreshInterval();
@@ -47,7 +51,9 @@ var _Widget = React.createClass({
     return {
       format: this.state.format,
       updatedInterval: this.state.updatedInterval,
-      widgetStyles: _.clone(this.state.widgetStyles),
+
+      size: _.clone(this.state.size),
+      position: _.clone(this.state.position),
       timeStyles: _.clone(this.state.timeStyles)
     };
   },
@@ -95,7 +101,7 @@ var _Widget = React.createClass({
 
   render: function () {
     return (
-      <Widget.Widget widgetStyles={ this.state.widgetStyles }>
+      <Widget.Widget widgetStyles={ this.getWidgetStyles() }>
         <Widget.DefaultIconsContainer
           onClickCloseBtn={ this.close }
           onClickConfigureBtn={ this.openConfigurator }

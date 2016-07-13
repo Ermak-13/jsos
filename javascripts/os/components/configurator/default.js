@@ -2,7 +2,7 @@ var React = require('react'),
     _ = require('underscore'),
 
     Mixins = require('../../mixins'),
-    WidgetStylesForm = require('../widget_styles_form'),
+    PositionAndSizeForm = require('../position_and_size_form'),
     DefaultDialog = require('./default_dialog');
 
 var Default = React.createClass({
@@ -26,9 +26,9 @@ var Default = React.createClass({
         ref={ this.props.refName }
         name={ this.props.name }>
 
-        <WidgetStylesForm
+        <PositionAndSizeForm
           onSubmit={ this.handleSubmit }
-          settings={ this.props.settings.widgetStyles }
+          settings={ this.props.settings }
         />
       </DefaultDialog>
     );

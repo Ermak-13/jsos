@@ -11,6 +11,7 @@ var OS = {
   Dialog: require('./os/components/dialog'),
   Configurator: require('./os/components/configurator'),
   WidgetStylesForm: require('./os/components/widget_styles_form'),
+  PositionAndSizeForm: require('./os/components/position_and_size_form'),
 
   Link: require('./os/components/link'),
   HForm: require('./os/components/hform'),

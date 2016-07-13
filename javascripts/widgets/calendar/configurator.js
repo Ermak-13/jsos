@@ -2,7 +2,7 @@ var React = require('react'),
 
     OS = require('os'),
     Configurator = OS.Configurator,
-    WidgetStylesForm = OS.WidgetStylesForm,
+    PositionAndSizeForm = OS.PositionAndSizeForm,
     Mixins = OS.Mixins,
 
     settings = require('./settings'),
@@ -29,10 +29,7 @@ var _Configurator = React.createClass({
         this.props.onSubmit(settings);
       }.bind(this),
 
-      widgetStyles: function (widgetStyles) {
-        var settings = _.clone(this.props.settings);
-        settings.widgetStyles = widgetStyles;
-
+      positionAndSize: function (settings) {
         this.props.onSubmit(settings);
       }.bind(this)
     };
@@ -56,13 +53,13 @@ var _Configurator = React.createClass({
         }.bind(this) ()
       },
 
-      widgetStyles: {
-        navText: 'Widget Styles',
+      positionAndSize: {
+        navText: 'Position And Size',
         content: function () {
           return (
-            <WidgetStylesForm
-              onSubmit={ this.getSubmitHandler('widgetStyles') }
-              settings={ settings.widgetStyles }
+            <PositionAndSizeForm
+              onSubmit={ this.getSubmitHandler('positionAndSize') }
+              settings={ settings }
             />
           );
         }.bind(this) ()
