@@ -50,7 +50,7 @@ var _Widget = React.createClass({
       startedMoment: startedMoment,
       intervalId: intervalId,
       isPlaying: true
-    }, this.save);
+    }, this.saveSettings);
   },
 
   handleStop: function (e) {

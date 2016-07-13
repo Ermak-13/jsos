@@ -112,7 +112,7 @@ var _Widget = React.createClass({
       bottom: settings.bottom,
       vertical: settings.vertical,
       horizontal: settings.horizontal
-    }, this.save);
+    }, this.saveSettings);
   },
 
   getSettings: function () {

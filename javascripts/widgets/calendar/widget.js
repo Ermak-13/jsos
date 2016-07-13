@@ -40,7 +40,7 @@ var _Widget = React.createClass({
       calendarStyles: settings.calendarStyles,
       monthStyles: settings.monthStyles,
       dayStyles: settings.dayStyles
-    }, this.save);
+    }, this.saveSettings);
   },
 
   getSettings: function () {

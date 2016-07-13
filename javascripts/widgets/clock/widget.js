@@ -43,7 +43,7 @@ var _Widget = React.createClass({
       timeStyles: settings.timeStyles
     }, function () {
       this.refreshInterval();
-      this.save();
+      this.saveSettings();
     });
   },
 
