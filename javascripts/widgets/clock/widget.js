@@ -103,6 +103,7 @@ var _Widget = React.createClass({
     return (
       <Widget.Widget widgetStyles={ this.getWidgetStyles() }>
         <Widget.DefaultIconsContainer
+          onMouseDownPositionBtn={ this.handleStartMoving }
           onClickCloseBtn={ this.close }
           onClickConfigureBtn={ this.openConfigurator }
         />

@@ -16,10 +16,12 @@ var Link = React.createClass({
 
   render: function () {
     return (
-      <a href={ this.props.href }
+      <a href={ this.props.href || '#' }
         style={ this.props.style }
         className={ this.props.className }
 
+        onMouseDown={ this.props.onMouseDown }
+        onMouseUp={ this.props.onMouseUp }
         onClick={ this.handleClick}>
 
         { this.props.children }

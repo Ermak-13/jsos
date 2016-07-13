@@ -8,6 +8,8 @@ var DefaultHeader = React.createClass({
     return (
       <Header>
         <DefaultIconsContainer
+          onMouseDownPositionBtn={ this.props.onMouseDownPositionBtn }
+
           onClickCloseBtn={ this.props.onClickCloseBtn }
           onClickConfigureBtn={ this.props.onClickConfigureBtn }
         />

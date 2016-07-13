@@ -6,7 +6,7 @@ var PositionBtn = React.createClass({
     return (
       <Link
         className="icon"
-        onClick={ this.props.onClick }>
+        onMouseDown={ this.props.onMouseDown }>
 
         <span className="fa fa-arrows" />
       </Link>

@@ -9,7 +9,9 @@ var DefaultIconsContainer = React.createClass({
   render: function () {
     return (
       <IconsContainer>
-        <PositionBtn />
+        <PositionBtn
+          onMouseDown={ this.props.onMouseDownPositionBtn }
+        />
         <ConfigureBtn onClick={ this.props.onClickConfigureBtn } />
         <CloseBtn onClick={ this.props.onClickCloseBtn } />
       </IconsContainer>
