@@ -85,7 +85,7 @@ var WidgetHelper = {
   },
 
   close: function () {
-    storage.remove(this.getStorageKey());
+    storage.remove(this.getSettingsStorageKey());
     AppDispatcher.removeWidget(this.props.widgetId);
   },
 
@@ -106,8 +106,46 @@ var WidgetHelper = {
   },
 
   load: function () {
+    this.loadData();
+    this.loadSettings();
+  },
+
+  save: function () {
+    this.saveData();
+    this.saveSettings();
+  },
+
+  loadData: function () {
     storage.get(
-      this.getStorageKey(),
+      this.getDataStorageKey(),
+      function (data) {
+        if (data) {
+          var setData = this.setData  || function () {};
+          setData(data);
+        }
+      }.bind(this)
+    );
+  },
+
+  saveData: function () {
+    var getData = this.getData || function () {};
+
+    storage.set(
+      this.getDataStorageKey(),
+      getData()
+    );
+  },
+
+  getDataStorageKey: function () {
+    return sprintf(
+      globalSettings.WIDGET_DATA_STORAGE_KEY,
+      { name: this.props.widgetName }
+    );
+  },
+
+  loadSettings: function () {
+    storage.get(
+      this.getSettingsStorageKey(),
       function (settings) {
         if (settings) {
           this.setSettings(settings);
@@ -116,14 +154,14 @@ var WidgetHelper = {
     );
   },
 
-  save: function () {
+  saveSettings: function () {
     storage.set(
-      this.getStorageKey(),
+      this.getSettingsStorageKey(),
       this.getSettings()
     );
   },
 
-  getStorageKey: function () {
+  getSettingsStorageKey: function () {
     if (this.props.storageKey) {
       return this.props.storageKey;
     } else {

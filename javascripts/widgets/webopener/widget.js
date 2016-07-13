@@ -43,13 +43,22 @@ var _Widget = React.createClass({
   },
 
   createLink: function (link) {
-    var settings = this.getSettings(),
-        links =  settings.links;
-
+    var links = this.state.links;
     links.push(link);
-    settings.links = links;
 
-    this.setSettings(settings);
+    this.setData({ links: links });
+  },
+
+  setData: function (data) {
+    this.setState({
+      links: data.links
+    }, this.saveData);
+  },
+
+  getData: function () {
+    return {
+      links: _.clone(this.state.links)
+    };
   },
 
   setSettings: function (settings) {
@@ -57,7 +66,7 @@ var _Widget = React.createClass({
       links: settings.links,
       size: settings.size,
       position: settings.position
-    }, this.save);
+    }, this.saveSettings);
   },
 
   getSettings: function () {

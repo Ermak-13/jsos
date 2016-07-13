@@ -29,7 +29,9 @@ var settings = {
 
   DESKTOP_STORAGE_KEY: 'desktop',
   DESKTOP_WIDGETS_STORAGE_KEY: 'widgets',
-  WIDGET_STORAGE_KEY: 'widget-%(id)s',
+
+  WIDGET_DATA_STORAGE_KEY: 'widget-%(name)s-data',
+  WIDGET_STORAGE_KEY: 'widget-%(id)s-settings',
 
   DESKTOP_NAME: 'desktop',
   DESKTOP_CONFIGURATOR_REF_NAME: 'configurator',
