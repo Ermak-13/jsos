@@ -9,13 +9,11 @@ var settings = {
 
   DEFAULT_FILTER_LEVEL: 'all',
 
-  DEFAULT_WIDGET_STYLES: _.extend(
-    _.clone(globalSettings.DEFAULT_WIDGET_STYLES),
-    {
+  DEFAULT_SIZE: {
       width: '350px',
       height: '300px'
-    }
-  )
+  },
+  DEFAULT_POSITION: globalSettings.DEFAULT_POSITION
 };
 
 module.exports = settings;

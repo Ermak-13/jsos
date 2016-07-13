@@ -14,9 +14,7 @@ var Default = React.createClass({
     };
   },
 
-  handleSubmit: function (widgetStyles) {
-    var settings = _.clone(this.props.settings);
-    settings.widgetStyles = widgetStyles;
+  handleSubmit: function (settings) {
     this.props.onSubmit(settings);
   },
 

@@ -113,6 +113,7 @@ var PositionAndSizeForm = React.createClass({
           <div className="input-group">
             <Input
               ref="left"
+              placeholder="left"
               disabled={ this.state.xSide !== 'left' }
               value={ this.state.left }
               onChange={ this.handleChangeXY.bind(this, 'left') }
@@ -126,6 +127,7 @@ var PositionAndSizeForm = React.createClass({
 
             <Input
               ref="right"
+              placeholder="right"
               disabled={ this.state.xSide !== 'right' }
               value={ this.state.right }
               onChange={ this.handleChangeXY.bind(this, 'right') }
@@ -139,6 +141,7 @@ var PositionAndSizeForm = React.createClass({
           <div className="input-group">
             <Input
               ref="top"
+              placeholder="top"
               disabled={ this.state.ySide !== 'top' }
               value={ this.state.top }
               onChange={ this.handleChangeXY.bind(this, 'top') }
@@ -152,6 +155,7 @@ var PositionAndSizeForm = React.createClass({
 
             <Input
               ref="bottom"
+              placeholder="bottom"
               disabled={ this.state.ySide !== 'bottom' }
               value={ this.state.bottom }
               onChange={ this.handleChangeXY.bind(this, 'bottom') }
