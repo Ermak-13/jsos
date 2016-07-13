@@ -8,13 +8,11 @@ var settings = {
   CONFIGURATOR_REF_NAME: 'configurator',
   LINK_CREATOR_DIALOG_REF_NAME: 'linkCreatorDialog',
 
-  DEFAULT_WIDGET_STYLES: _.extend(
-    _.clone(globalSettings.DEFAULT_WIDGET_STYLES),
-    {
-      width: '550px',
-      height: '360px'
-    }
-  ),
+  DEFAULT_SIZE: {
+    width: '550px',
+    height: '360px'
+  },
+  DEFAULT_POSITION: globalSettings.DEFAULT_POSITION,
 
   DEFAULT_LINK_STYLES: {
     display: 'block',
