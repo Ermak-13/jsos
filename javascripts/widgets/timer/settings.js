@@ -8,13 +8,11 @@ var settings = {
   CONFIGURATOR_REF_NAME: 'configurator',
   DEFAULT_UPDATED_INTERVAL: 100,
 
-  DEFAULT_WIDGET_STYLES: _.extend(
-    _.clone(globalSettings.DEFAULT_WIDGET_STYLES),
-    {
-      width: '250px',
-      height: '180px'
-    }
-  ),
+  DEFAULT_SIZE: {
+    width: '250px',
+    height: '180px'
+  },
+  DEFAULT_POSITION: globalSettings.DEFAULT_POSITION,
 
   DEFAULT_TIMER_STYLES: {
     fontSize: '18px'
