@@ -41,11 +41,22 @@ var _Widget = React.createClass({
         todoList = this.state.todoList;
 
     todoList.push(todo);
-    this.setState({
+    this.setData({
       todoList: todoList
-    }, function () {
-      this.refs.title.clear();
-    }.bind(this));
+    });
+    this.refs.title.clear();
+  },
+
+  setData: function (data) {
+    this.setState({
+      todoList: data.todoList
+    }, this.saveData);
+  },
+
+  getData: function () {
+    return {
+      todoList: _.clone(this.state.todoList)
+    };
   },
 
   setSettings: function (settings) {
