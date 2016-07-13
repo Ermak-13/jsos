@@ -10,13 +10,11 @@ var settings = {
   DEFAULT_FORMAT: 'HH:mm',
   DEFAULT_UPDATED_INTERVAL: 60 * 1000,
 
-  DEFAULT_WIDGET_STYLES: _.extend(
-    _.clone(globalSettings.DEFAULT_WIDGET_STYLES),
-    {
-      width: '150px',
-      height: '100px'
-    }
-  ),
+  DEFAULT_SIZE: {
+    width: '150px',
+    height: '100px'
+  },
+  DEFAULT_POSITION: globalSettings.DEFAULT_POSITION,
 
   DEFAULT_TIME_STYLES: {
     height: '80px',

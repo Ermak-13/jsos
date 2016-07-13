@@ -1,6 +1,11 @@
 var _ = require('underscore');
 
 var settings = {
+  DESKTOP_SIZE: {
+    width: '300px',
+    height: '200px',
+  },
+
   DEFAULT_POSITION: {
     xSide: 'left',
     left: '70px',
@@ -9,9 +14,9 @@ var settings = {
   },
 
   DEFAULT_WIDGET_STYLES: {
-    position: 'absolute',
     width: '300px',
     height: '200px',
+    position: 'absolute',
     top: '10px',
     left: '70px'
   },
