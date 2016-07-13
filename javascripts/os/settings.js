@@ -1,9 +1,13 @@
 var _ = require('underscore');
 
-var DESKTOP_CONFIGURE_BTN_STYLES = {
-};
-
 var settings = {
+  DEFAULT_POSITION: {
+    xSide: 'left',
+    left: '70px',
+    ySide: 'top',
+    top: '10px'
+  },
+
   DEFAULT_WIDGET_STYLES: {
     position: 'absolute',
     width: '300px',

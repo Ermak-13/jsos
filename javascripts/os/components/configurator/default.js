@@ -28,7 +28,7 @@ var Default = React.createClass({
 
         <WidgetStylesForm
           onSubmit={ this.handleSubmit }
-          settings={ this.props.settings.widgetStyles }
+          settings={ this.props.settings }
         />
       </DefaultDialog>
     );

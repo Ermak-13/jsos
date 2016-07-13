@@ -23,7 +23,9 @@ var _Widget = React.createClass({
       _moment: moment(),
       updatedInterval: settings.DEFAULT_UPDATED_INTERVAL,
 
-      widgetStyles: settings.DEFAULT_WIDGET_STYLES,
+      size: settings.DEFAULT_SIZE,
+      position: settings.DEFAULT_POSITION,
+
       calendarStyles: settings.DEFAULT_CALENDAR_STYLES,
       monthStyles: settings.DEFAULT_MONTH_STYLES,
       dayStyles: settings.DEFAULT_DAY_STYLES
@@ -32,7 +34,9 @@ var _Widget = React.createClass({
 
   setSettings: function (settings) {
     this.setState({
-      widgetStyles: settings.widgetStyles,
+      size: settings.size,
+      position: settings.position,
+
       calendarStyles: settings.calendarStyles,
       monthStyles: settings.monthStyles,
       dayStyles: settings.dayStyles
@@ -41,7 +45,9 @@ var _Widget = React.createClass({
 
   getSettings: function () {
     return {
-      widgetStyles: _.clone(this.state.widgetStyles),
+      size: _.clone(this.state.size),
+      position: _.clone(this.state.position),
+
       calendarStyles: _.clone(this.state.calendarStyles),
       monthStyles: _.clone(this.state.monthStyles),
       dayStyles: _.clone(this.state.dayStyles)
@@ -72,7 +78,7 @@ var _Widget = React.createClass({
 
   render: function () {
     return (
-      <Widget.Widget widgetStyles={ this.state.widgetStyles }>
+      <Widget.Widget widgetStyles={ this.getWidgetStyles() }>
         <Widget.DefaultIconsContainer
           onClickCloseBtn={ this.close }
           onClickConfigureBtn={ this.openConfigurator }

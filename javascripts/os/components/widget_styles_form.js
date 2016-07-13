@@ -8,30 +8,40 @@ var React = require('react'),
 var WidgetStylesForm = React.createClass({
   getInitialState: function () {
     var settings = this.props.settings,
-        xSide = (settings.left) ? 'left' : 'right',
-        ySide = (settings.top) ? 'top' : 'bottom';
+        position = settings.position;
 
     return {
-      xSide: xSide,
-      left: settings.left,
-      right: settings.right,
-      ySide: ySide,
-      top: settings.top,
-      bottom: settings.bottom
+      xSide: position.xSide,
+      left: position.left,
+      right: position.right,
+      ySide: position.ySide,
+      top: position.top,
+      bottom: position.bottom
     };
   },
 
   handleSubmit: function (e) {
     e.preventDefault();
+
+    var xSide = this.state.xSide,
+        ySide = this.state.ySide,
+
+        position = {
+          xSide: this.state.xSide,
+          ySide: this.state.ySide
+        };
+
+    position[xSide] = this.state[xSide];
+    position[ySide] = this.state[ySide];
+
     var settings = _.extend(
       this.props.settings,
       {
-        width: this.refs.width.getValue(),
-        height: this.refs.height.getValue(),
-        left: this.state.left,
-        top: this.state.top,
-        right: this.state.right,
-        bottom: this.state.bottom
+        size: {
+          width: this.refs.width.getValue(),
+          height: this.refs.height.getValue()
+        },
+        position: position
       }
     );
 
@@ -53,7 +63,7 @@ var WidgetStylesForm = React.createClass({
         state = this.state;
 
     state.xSide = nextXSide;
-    state[xSide] = null;
+    state[xSide] = '';
     state[nextXSide] = xValue;
 
     this.setState(state);
@@ -67,14 +77,15 @@ var WidgetStylesForm = React.createClass({
         state = this.state;
 
     state.ySide = nextYSide;
-    state[ySide] = null;
+    state[ySide] = '';
     state[nextYSide] = yValue;
 
     this.setState(state);
   },
 
   render: function () {
-    var settings = this.props.settings;
+    var settings = this.props.settings,
+        size = settings.size;
 
     return (
       <HForm.Form onSubmit={ this.handleSubmit }>
@@ -83,7 +94,7 @@ var WidgetStylesForm = React.createClass({
 
           <Input
             ref="width"
-            value={ settings.width }
+            value={ size.width }
           />
         </HForm.Field>
 
@@ -92,7 +103,7 @@ var WidgetStylesForm = React.createClass({
 
           <Input
             ref="height"
-            value={ settings.height }
+            value={ size.height }
           />
         </HForm.Field>
 

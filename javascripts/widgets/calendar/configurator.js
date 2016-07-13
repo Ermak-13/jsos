@@ -62,7 +62,7 @@ var _Configurator = React.createClass({
           return (
             <WidgetStylesForm
               onSubmit={ this.getSubmitHandler('widgetStyles') }
-              settings={ settings.widgetStyles }
+              settings={ settings }
             />
           );
         }.bind(this) ()
