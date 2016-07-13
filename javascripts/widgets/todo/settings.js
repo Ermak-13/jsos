@@ -7,13 +7,11 @@ var settings = {
   WIDGET_NAME: 'todo',
   CONFIGURATOR_REF_NAME: 'configurator',
 
-  DEFAULT_WIDGET_STYLES: _.extend(
-    _.clone(globalSettings.DEFAULT_WIDGET_STYLES),
-    {
-      width: '450px',
-      height: '300px'
-    }
-  )
+  DEFAULT_SIZE: {
+    width: '450px',
+    height: '300px'
+  },
+  DEFAULT_POSITION: globalSettings.DEFAULT_POSITION
 };
 
 module.exports = settings;
