@@ -37,6 +37,7 @@ var Textarea = React.createClass({
       <textarea
         name={ this.props.name }
         className={ this.props.className }
+        style={ this.props.style }
 
         value={ this.state.value }
         onChange={ this.handleChange }

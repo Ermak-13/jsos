@@ -5,7 +5,8 @@ var Widgets = {
   Calendar: require('./calendar'),
   Clock: require('./clock'),
   Timer: require('./timer'),
-  Logger: require('./logger')
+  Logger: require('./logger'),
+  Sticker: require('./sticker')
 };
 
 module.exports = Widgets;
