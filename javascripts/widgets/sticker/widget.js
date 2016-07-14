@@ -22,6 +22,28 @@ var _Widget = React.createClass({
     };
   },
 
+  setSettings: function (settings) {
+    this.setState({
+      size: settings.size,
+      position: settings.position,
+      widgetStyles: settings.widgetStyles,
+      textareaStyles: settings.textareaStyles
+    }, this.saveSettings);
+  },
+
+  getSettings: function () {
+    return {
+      size: _.clone(this.state.size),
+      position: _.clone(this.state.position),
+      widgetStyles: _.clone(this.state.widgetStyles),
+      textareaStyles: _.clone(this.state.textareaStyles)
+    };
+  },
+
+  componentWillMount: function () {
+    this.load();
+  },
+
   render: function () {
     return (
       <Widget.Widget widgetStyles={ this.getWidgetStyles() }>
