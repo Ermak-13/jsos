@@ -15,7 +15,11 @@ var Textarea = React.createClass({
 
   handleChange: function (e) {
     var value = e.target.value;
-    this.setState({ value: value });
+    this.setState({
+      value: value
+    }, function () {
+      this.props.onChange(value);
+    }.bind(this));
   },
 
   getDefaultValue: function () {

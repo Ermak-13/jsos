@@ -22,6 +22,8 @@ var _Widget = React.createClass({
 
   getInitialState: function () {
     return {
+      value: '',
+
       size: settings.DEFAULT_SIZE,
       position: settings.DEFAULT_POSITION,
       widgetStyles: settings.DEFAULT_WIDGET_STYLES,
@@ -30,8 +32,16 @@ var _Widget = React.createClass({
     };
   },
 
+  handleChange: function (value) {
+    this.setState({
+      value: value
+    }, this.saveSettings);
+  },
+
   setSettings: function (settings) {
     this.setState({
+      value: settings.value,
+
       size: settings.size,
       position: settings.position,
       widgetStyles: settings.widgetStyles,
@@ -41,6 +51,8 @@ var _Widget = React.createClass({
 
   getSettings: function () {
     return {
+      value: this.state.value,
+
       size: _.clone(this.state.size),
       position: _.clone(this.state.position),
       widgetStyles: _.clone(this.state.widgetStyles),
@@ -65,6 +77,8 @@ var _Widget = React.createClass({
             <IForm.Field
               labelText="message">
               <Textarea
+                value={ this.state.value }
+                onChange={ this.handleChange }
                 style={ this.state.textareaStyles }
               />
             </IForm.Field>
