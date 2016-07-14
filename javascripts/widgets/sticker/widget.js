@@ -7,10 +7,18 @@ var React = require('react'),
     IForm = OS.IForm,
     Textarea = OS.Textarea,
 
+    Configurator = require('./configurator'),
     settings = require('./settings');
 
 var _Widget = React.createClass({
   mixins: [Mixins.WidgetHelper],
+
+  getDefaultProps: function () {
+    return {
+      name: settings.WIDGET_NAME,
+      configuratorRefName: settings.CONFIGURATOR_REF_NAME
+    };
+  },
 
   getInitialState: function () {
     return {
@@ -61,6 +69,13 @@ var _Widget = React.createClass({
               />
             </IForm.Field>
           </IForm.Form>
+
+          <Configurator
+            ref={ this.props.configuratorRefName }
+            name={ this.props.name }
+            settings={ this.getSettings() }
+            onSubmit={ this.handleConfigure }
+          />
       </Widget.Widget>
     );
   }
