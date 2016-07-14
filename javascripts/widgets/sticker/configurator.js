@@ -6,6 +6,7 @@ var React = require('react'),
     Configurator = OS.Configurator,
     PositionAndSizeForm = OS.PositionAndSizeForm,
 
+    StickerConfigsForm = require('./sticker_configs_form'),
     settings = require('./settings');
 
 var _Configurator = React.createClass({
@@ -45,7 +46,10 @@ var _Configurator = React.createClass({
         navText: 'Sticker Configs',
         content: function () {
           return (
-            <div></div>
+            <StickerConfigsForm
+              onSubmit={ this.getSubmitHandler('stickerConfigs') }
+              settings={ settings }
+            />
           );
         }.bind(this) ()
       },

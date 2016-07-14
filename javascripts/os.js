@@ -19,6 +19,7 @@ var OS = {
   Select: require('./os/components/select'),
   Option: require('./os/components/option'),
   Textarea: require('./os/components/textarea'),
+  ColorInput: require('./os/components/color_input'),
   Submit: require('./os/components/submit'),
 
   log: require('./os/actions/log'),

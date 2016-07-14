@@ -14,7 +14,7 @@ var settings = {
   DEFAULT_POSITION: globalSettings.DEFAULT_POSITION,
 
   DEFAULT_WIDGET_STYLES: {
-    backgroundColor: '#FFF',
+    background: '#FFF',
     borderRadius: 0
   },
 
