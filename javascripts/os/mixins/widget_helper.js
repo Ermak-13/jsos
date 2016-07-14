@@ -1,4 +1,5 @@
-var sprintf = require('sprintf-js').sprintf,
+var _ = require('underscore'),
+    sprintf = require('sprintf-js').sprintf,
 
     globalSettings = require('../settings'),
     AppDispatcher = require('../app_dispatcher'),
@@ -10,11 +11,13 @@ var WidgetHelper = {
     var size = this.state.size,
         position = this.state.position,
 
-        styles = {
-          position: 'absolute',
-          width: size.width,
-          height: size.height
-        },
+        defaultStyles = _.clone(this.state.widgetStyles || {}),
+        styles = _.extend(
+          defaultStyles, {
+            position: 'absolute',
+            width: size.width,
+            height: size.height
+        }),
 
         xSide = position.xSide,
         ySide = position.ySide;

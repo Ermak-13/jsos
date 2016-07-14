@@ -16,12 +16,9 @@ var _Widget = React.createClass({
     return {
       size: settings.DEFAULT_SIZE,
       position: settings.DEFAULT_POSITION,
+      widgetStyles: settings.DEFAULT_WIDGET_STYLES,
 
-      textareaStyles: {
-        width: '100%',
-        height: settings.DEFAULT_SIZE.height,
-        border: 'none'
-      }
+      textareaStyles: settings.DEFAULT_TEXTAREA_STYLES
     };
   },
 
