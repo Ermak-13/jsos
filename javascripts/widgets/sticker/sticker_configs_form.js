@@ -8,7 +8,9 @@ var React = require('react'),
     ColorInput = OS.ColorInput;
 
 var StickerConfigsForm = React.createClass({
-  handleSubmit: function () {
+  handleSubmit: function (e) {
+    e.preventDefault();
+
     var settings = _.clone(this.props.settings),
         widgetStyles = _.clone(settings.widgetStyles);
 
