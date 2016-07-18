@@ -22,6 +22,7 @@ var OS = {
   ColorInput: require('./os/components/color_input'),
   Submit: require('./os/components/submit'),
 
+  reload: require('./os/actions/reload'),
   log: require('./os/actions/log'),
   request: require('./os/actions/request'),
   download: require('./os/actions/download'),
