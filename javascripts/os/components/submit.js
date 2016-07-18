@@ -15,6 +15,7 @@ var Submit = React.createClass({
       <Input
         type="submit"
         className={ this.props.className }
+        style={ this.props.style }
         value={ this.props.value }
       />
     );

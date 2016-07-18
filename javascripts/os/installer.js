@@ -25,6 +25,14 @@ var Installer = function () {
       storage.set(settings.SCRIPTS_STORAGE_KEY, _this.list);
     });
   });
+
+  this.updated = function (callback) {
+    AppDispatcher.bind(Events.installScript, callback);
+  }
+
+  this.scripts = function () {
+    return _this.list;
+  };
 };
 
-module.exports = Installer;
+module.exports = new Installer();
