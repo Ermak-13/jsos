@@ -6,7 +6,7 @@
     "newtab": "newtab.html"
   },
   "manifest_version": 2,
-  "content_security_policy": "script-src 'self' https://raw.githubusercontent.com http://localhost:9999; object-src 'self'",
+  "content_security_policy": "script-src 'self' https://rawgit.com https://cdn.rawgit.com; object-src 'self'",
   "permissions": [
     "storage"
   ]

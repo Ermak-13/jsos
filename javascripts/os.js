@@ -26,6 +26,10 @@ var OS = {
   log: require('./os/actions/log'),
   request: require('./os/actions/request'),
   download: require('./os/actions/download'),
+
+  addScript: require('./os/actions/script').add,
+  installScript: require('./os/actions/script').install,
+
   addWidget: require('./os/actions/add_widget'),
   removeWidget: require('./os/actions/remove_widget'),
   saveDesktop: require('./os/actions/save_desktop'),

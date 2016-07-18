@@ -6,8 +6,16 @@ var MicroEvent = require('microevent'),
 var AppDispatcher = function () {
   var _this = this;
 
+  this.log = function (level, message) {
+    _this.trigger(Events.log, level, message);
+  };
+
   this.saveDesktop = function () {
     _this.trigger(Events.saveDesktop);
+  };
+
+  this.installScript = function (url) {
+    _this.trigger(Events.installScript);
   };
 
   this.initWidget = function (widget) {
@@ -20,10 +28,6 @@ var AppDispatcher = function () {
 
   this.removeWidget = function (widgetId) {
     _this.trigger(Events.removeWidget, widgetId);
-  };
-
-  this.log = function (level, message) {
-    _this.trigger(Events.log, level, message);
   };
 };
 MicroEvent.mixin(AppDispatcher);
