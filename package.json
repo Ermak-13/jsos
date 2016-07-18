@@ -1,5 +1,6 @@
 {
-  "name": "newtab",
+  "name": "jsos",
+  "license": "GPL-3.0+",
   "version": "0.1.0",
   "devDependencies": {
     "browserify": "^13.0.1",
@@ -18,5 +19,9 @@
     "sprintf-js": "^1.0.3",
     "underscore": "^1.8.3",
     "underscore.string": "^3.3.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Ermak-13/JSOS.git"
   }
 }
