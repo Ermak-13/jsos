@@ -4,15 +4,25 @@ var _ = require('underscore'),
     globalSettings = require('../settings'),
     AppDispatcher = require('../app_dispatcher'),
     Events = require('../events'),
-    storage = require('../storage');
+    storage = require('../storage'),
+
+    log = require('../actions/log');
 
 var WidgetHelper = {
   getWidgetStyles: function () {
     var size = this.state.size,
         position = this.state.position,
+        defaultStyles = _.clone(this.state.widgetStyles || {});
 
-        defaultStyles = _.clone(this.state.widgetStyles || {}),
-        styles = _.extend(
+    if (_.isEmpty(size)) {
+      log('error', sprintf('widget - %s size is empty.', this.props.widgetName));
+    }
+
+    if (_.isEmpty(position)) {
+      log('error', sprintf('widget - %s position is empty.', this.props.widgetName));
+    }
+
+    var styles = _.extend(
           defaultStyles, {
             position: 'absolute',
             width: size.width,
