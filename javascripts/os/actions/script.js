@@ -24,8 +24,11 @@ var addScript = function (options) {
 var installScript = function (url) {
   log('info', sprintf('install script %s', url));
 
-  addScript({ src: url });
-  AppDispatcher.installScript(url);
+  var obj = {
+    src: url
+  };
+
+  AppDispatcher.installScript(obj);
 };
 
 module.exports = {

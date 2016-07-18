@@ -14,8 +14,8 @@ var AppDispatcher = function () {
     _this.trigger(Events.saveDesktop);
   };
 
-  this.installScript = function (url) {
-    _this.trigger(Events.installScript);
+  this.installScript = function (obj) {
+    _this.trigger(Events.installScript, obj);
   };
 
   this.initWidget = function (widget) {
