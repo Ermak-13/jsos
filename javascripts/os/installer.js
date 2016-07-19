@@ -38,6 +38,14 @@ var Installer = function () {
     });
   };
 
+  this.remove = function (script) {
+    _this.list = _.without(_this.list, script);
+
+    storage.set(settings.SCRIPTS_STORAGE_KEY, _this.list, function () {
+      AppDispatcher.updatedInstaller(_this.list);
+    });
+  };
+
   this.scripts = function () {
     return _this.list;
   };

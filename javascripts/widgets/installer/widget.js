@@ -41,7 +41,8 @@ var _Widget = React.createClass({
     }
   },
 
-  handleRemoveScript: function () {
+  handleRemoveScript: function (script) {
+    OS.Installer.remove(script);
   },
 
   getSettings: function () {
@@ -121,7 +122,7 @@ var _Widget = React.createClass({
           <td>
             <Link
               className="btn btn-danger btn-sm"
-              onClick={ this.handleRemoveScript.bind(this) }>
+              onClick={ this.handleRemoveScript.bind(this, script) }>
               delete
             </Link>
           </td>
