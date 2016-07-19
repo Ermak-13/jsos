@@ -13,7 +13,4 @@ var installScript = function (url) {
   AppDispatcher.installScript(obj);
 };
 
-module.exports = {
-  install: installScript,
-  add: addScript
-};
+module.exports = installScript;

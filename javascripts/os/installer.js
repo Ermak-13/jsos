@@ -1,4 +1,5 @@
 var _ = require('underscore'),
+    sprintf = require('sprintf-js').sprintf,
 
     settings = require('./settings'),
     AppDispatcher = require('./app_dispatcher'),
@@ -74,4 +75,23 @@ var Installer = function () {
   log('info', 'Finish initializing Installer.');
 };
 
-module.exports = new Installer();
+var Singleton = (function () {
+  var installer;
+
+  function createInstance () {
+    var installer = new Installer();
+    return installer;
+  }
+
+  return {
+    getInstance: function () {
+      if (!installer) {
+        installer = createInstance();
+      }
+
+      return installer;
+    }
+  };
+}) ();
+
+module.exports = Singleton.getInstance();

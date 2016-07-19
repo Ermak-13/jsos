@@ -28,8 +28,7 @@ var OS = {
   download: require('./os/actions/download'),
 
   Installer: require('./os/installer'),
-  addScript: require('./os/actions/script').add,
-  installScript: require('./os/actions/script').install,
+  installScript: require('./os/actions/install_script'),
 
   addWidget: require('./os/actions/add_widget'),
   removeWidget: require('./os/actions/remove_widget'),
