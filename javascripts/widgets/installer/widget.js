@@ -31,6 +31,19 @@ var _Widget = React.createClass({
     };
   },
 
+  handleAddScript: function (e) {
+    e.preventDefault();
+
+    var url = this.refs.installUrl.getValue();
+    if (url) {
+      this.refs.installUrl.clear();
+      OS.installScript(url);
+    }
+  },
+
+  handleRemoveScript: function () {
+  },
+
   getSettings: function () {
     return {
       size: _.clone(this.state.size),
@@ -57,7 +70,7 @@ var _Widget = React.createClass({
         />
 
         <Widget.Body>
-          <HForm.Form>
+          <HForm.Form onSubmit={ this.handleAddScript }>
             <div className="form-group" style={{ marginBottom: 0 }}>
               <div className="col-md-9">
                 <Input
@@ -79,13 +92,6 @@ var _Widget = React.createClass({
             className="table table-hover"
             style={{ marginBottom: 0 }}>
 
-            <thead>
-              <tr>
-                <th>github url</th>
-                <th></th>
-              </tr>
-            </thead>
-
             <tbody>
               { this.getScriptsTrHTML() }
             </tbody>
@@ -103,9 +109,9 @@ var _Widget = React.createClass({
   },
 
   getScriptsTrHTML: function () {
-    var scriptsTrHTML = _.map(this.state.scripts, function (script) {
+    var scriptsTrHTML = _.map(this.state.scripts, function (script, i) {
       return (
-        <tr>
+        <tr key={ i }>
           <td>
             <Link
               href={ script.src }>
@@ -113,13 +119,15 @@ var _Widget = React.createClass({
             </Link>
           </td>
           <td>
-            <Link className="btn btn-danger btn-sm">
+            <Link
+              className="btn btn-danger btn-sm"
+              onClick={ this.handleRemoveScript.bind(this) }>
               delete
             </Link>
           </td>
         </tr>
       );
-    });
+    }.bind(this));
 
     return scriptsTrHTML;
   }

@@ -5,7 +5,7 @@ var sprintf = require('sprintf-js').sprintf,
 
 var addScript = function (options) {
   options = options || {};
-  log('info', sprintf('add script %s', options));
+  log('info', sprintf('add script %s', JSON.stringify(options)));
 
   var script = document.createElement('script');
   script.setAttribute('type', 'text/javascript');

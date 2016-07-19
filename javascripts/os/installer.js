@@ -25,16 +25,17 @@ var Installer = function () {
 
     AppDispatcher.bind(Events.installScript, function (script) {
       _this.add(script);
-      storage.set(settings.SCRIPTS_STORAGE_KEY, _this.list);
     });
   });
   log('info', 'Installer - finish loading scripts.');
 
   this.add = function (script) {
     _this.list.push(script);
-    addScript(script);
 
-    AppDispatcher.updatedInstaller(_this.list);
+    storage.set(settings.SCRIPTS_STORAGE_KEY, _this.list, function () {
+      addScript(script);
+      AppDispatcher.updatedInstaller(_this.list);
+    });
   };
 
   this.scripts = function () {

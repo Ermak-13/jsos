@@ -2,11 +2,11 @@ var sprintf = require('sprintf-js').sprintf,
     log = require('./actions/log');
 
 var storage = {
-  set: function (key, value) {
-    var record = {},
-        callback = function () {
-          log('info', sprintf('OS storage - set %s.', key));
-        };
+  set: function (key, value, callback) {
+    var record = {};
+    callback = callback || function () {
+      log('info', sprintf('OS storage - set %s.', key));
+    };
 
     record[key] = value;
     chrome.storage.local.set(record, callback);

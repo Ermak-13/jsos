@@ -22,7 +22,7 @@ var Link = React.createClass({
 
         onMouseDown={ this.props.onMouseDown }
         onMouseUp={ this.props.onMouseUp }
-        onClick={ this.handleClick}>
+        onClick={ this.handleClick }>
 
         { this.props.children }
       </a>
