@@ -87,13 +87,6 @@ var _Widget = React.createClass({
     });
   },
 
-  setSettings: function (settings) {
-    this.setState({
-      size: settings.size,
-      position: settings.position
-    }, this.save);
-  },
-
   getSettings: function () {
     return {
       size: _.clone(this.state.size),

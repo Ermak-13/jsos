@@ -46,12 +46,8 @@ var _Widget = React.createClass({
     var links = this.state.links;
     links.push(link);
 
-    this.setData({ links: links });
-  },
-
-  setData: function (data) {
-    this.setState({
-      links: data.links
+    this._setData({
+      links: links
     }, this.saveData);
   },
 
@@ -59,14 +55,6 @@ var _Widget = React.createClass({
     return {
       links: _.clone(this.state.links)
     };
-  },
-
-  setSettings: function (settings) {
-    this.setState({
-      links: settings.links,
-      size: settings.size,
-      position: settings.position
-    }, this.saveSettings);
   },
 
   getSettings: function () {

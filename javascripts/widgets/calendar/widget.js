@@ -32,17 +32,6 @@ var _Widget = React.createClass({
     };
   },
 
-  setSettings: function (settings) {
-    this.setState({
-      size: settings.size,
-      position: settings.position,
-
-      calendarStyles: settings.calendarStyles,
-      monthStyles: settings.monthStyles,
-      dayStyles: settings.dayStyles
-    }, this.saveSettings);
-  },
-
   getSettings: function () {
     return {
       size: _.clone(this.state.size),

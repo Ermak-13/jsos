@@ -104,17 +104,6 @@ var _Widget = React.createClass({
     return key;
   },
 
-  setSettings: function (settings) {
-    this.setState({
-      left: settings.left,
-      top: settings.top,
-      right: settings.right,
-      bottom: settings.bottom,
-      vertical: settings.vertical,
-      horizontal: settings.horizontal
-    }, this.saveSettings);
-  },
-
   getSettings: function () {
     return {
       left: this.state.left,

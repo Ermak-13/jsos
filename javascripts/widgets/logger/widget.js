@@ -41,13 +41,6 @@ var _Widget = React.createClass({
     this.setState({ filterLevel: level });
   },
 
-  setSettings: function (settings) {
-    this.setState({
-      size: settings.size,
-      position: settings.position,
-    }, this.saveSettings);
-  },
-
   getSettings: function () {
     return {
       size: _.clone(this.state.size),

@@ -33,17 +33,10 @@ var _Widget = React.createClass({
     };
   },
 
-  setSettings: function (settings) {
-    this.setState({
-      format: settings.format,
-      updatedInterval: settings.updatedInterval,
-
-      size: settings.size,
-      position: settings.position,
-      timeStyles: settings.timeStyles
-    }, function () {
+  setSettings: function (settings, callback) {
+    this._setSettings(settings, function () {
       this.refreshInterval();
-      this.saveSettings();
+      callback();
     });
   },
 

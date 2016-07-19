@@ -110,7 +110,7 @@ var WidgetHelper = {
   },
 
   handleConfigure: function (settings) {
-    this.setSettings(settings);
+    this.setSettings(settings, this.saveSettings);
   },
 
   init: function () {
@@ -133,11 +133,15 @@ var WidgetHelper = {
       this.getDataStorageKey(),
       function (data) {
         if (data) {
-          var setData = this.setData  || function () {};
+          var setData = this.setData  || this._setData;
           setData(data);
         }
       }.bind(this)
     );
+  },
+
+  _setData: function (data, callback) {
+    this.setState(data, callback);
   },
 
   saveData: function () {
@@ -160,11 +164,17 @@ var WidgetHelper = {
     storage.get(
       this.getSettingsStorageKey(),
       function (settings) {
+        var setSettings = this.setSettings || this._setSettings;
+
         if (settings) {
-          this.setSettings(settings);
+          setSettings(settings);
         }
       }.bind(this)
     );
+  },
+
+  _setSettings: function (settings, callback) {
+    this.setState(settings, callback);
   },
 
   saveSettings: function () {

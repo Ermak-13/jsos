@@ -38,17 +38,6 @@ var _Widget = React.createClass({
     }, this.saveSettings);
   },
 
-  setSettings: function (settings) {
-    this.setState({
-      value: settings.value,
-
-      size: settings.size,
-      position: settings.position,
-      widgetStyles: settings.widgetStyles,
-      textareaStyles: settings.textareaStyles
-    }, this.saveSettings);
-  },
-
   getSettings: function () {
     return {
       value: this.state.value,
