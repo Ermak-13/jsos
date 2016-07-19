@@ -38,5 +38,9 @@ var OS = {
   addWidget: require('./os/actions/add_widget'),
   removeWidget: require('./os/actions/remove_widget'),
   saveDesktop: require('./os/actions/save_desktop'),
-  parseURL: require('./os/actions/parse_url')
+
+  isURL: require('./os/actions/is_url'),
+  isUrl: require('./os/actions/is_url'),
+  parseURL: require('./os/actions/parse_url'),
+  parseUrl: require('./os/actions/parse_url')
 };

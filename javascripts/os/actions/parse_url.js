@@ -1,6 +1,7 @@
+var isUrl = require('./is_url');
+
 var parseUrl = function (url) {
-  var urlTester = /^(http|https):\/\/\S+\.\S+/i;
-  if (!urlTester.test(url)) {
+  if (!isUrl(url)) {
     return;
   }
 
