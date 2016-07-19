@@ -25,7 +25,7 @@ var _Widget = React.createClass({
 
   getInitialState: function () {
     return {
-      scripts: OS.Installer.scripts(),
+      scripts: OS.Scripts.all(),
       size: settings.DEFAULT_SIZE,
       position: settings.DEFAULT_POSITION
     };
@@ -42,7 +42,7 @@ var _Widget = React.createClass({
   },
 
   handleRemoveScript: function (script) {
-    OS.Installer.remove(script);
+    OS.Scripts.remove(script);
   },
 
   getSettings: function () {
@@ -53,7 +53,7 @@ var _Widget = React.createClass({
   },
 
   componentDidMount: function () {
-    OS.Installer.updated(function (scripts) {
+    OS.Scripts.updated(function (scripts) {
       this.setState({
         scripts: scripts
       });

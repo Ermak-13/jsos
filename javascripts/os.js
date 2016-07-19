@@ -27,7 +27,7 @@ var OS = {
   request: require('./os/actions/request'),
   download: require('./os/actions/download'),
 
-  Installer: require('./os/installer'),
+  Scripts: require('./os/scripts'),
   installScript: require('./os/actions/install_script'),
   uninstallScript: require('./os/actions/uninstall_script'),
 

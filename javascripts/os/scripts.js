@@ -26,33 +26,37 @@ var addScript = function (options) {
   document.body.appendChild(script);
 };
 
-var Installer = function () {
-  log('info', 'Start initializing Installer.');
+var Scripts = function () {
+  log('info', 'Start initializing Scripts.');
 
   this.list = [];
   var _this = this;
 
-  log('info', 'Installer - start loading scripts.');
+  log('info', 'Scripts - start loadin.');
   storage.get(settings.SCRIPTS_STORAGE_KEY, function (scripts) {
     _this.list = scripts || [];
 
     _.each(_this.list, function (script) {
       addScript(script);
     });
-    AppDispatcher.updatedInstaller(_this.list);
+    AppDispatcher.updatedScripts(_this.list);
 
     AppDispatcher.bind(Events.installScript, function (script) {
       _this.add(script);
     });
   });
-  log('info', 'Installer - finish loading scripts.');
+  log('info', 'Scripts - finish loading.');
+
+  this.all = function () {
+    return _this.list;
+  };
 
   this.add = function (script) {
     _this.list.push(script);
 
     storage.set(settings.SCRIPTS_STORAGE_KEY, _this.list, function () {
       addScript(script);
-      AppDispatcher.updatedInstaller(_this.list);
+      AppDispatcher.updatedScripts(_this.list);
     });
   };
 
@@ -60,36 +64,32 @@ var Installer = function () {
     _this.list = _.without(_this.list, script);
 
     storage.set(settings.SCRIPTS_STORAGE_KEY, _this.list, function () {
-      AppDispatcher.updatedInstaller(_this.list);
+      AppDispatcher.updatedScripts(_this.list);
     });
   };
 
-  this.scripts = function () {
-    return _this.list;
-  };
-
   this.updated = function (callback) {
-    AppDispatcher.bind(Events.updatedInstaller, callback);
+    AppDispatcher.bind(Events.updatedScripts, callback);
   };
 
-  log('info', 'Finish initializing Installer.');
+  log('info', 'Finish initializing Scripts.');
 };
 
 var Singleton = (function () {
-  var installer;
+  var instance;
 
   function createInstance () {
-    var installer = new Installer();
-    return installer;
+    var instance = new Scripts();
+    return instance;
   }
 
   return {
     getInstance: function () {
-      if (!installer) {
-        installer = createInstance();
+      if (!instance) {
+        instance = createInstance();
       }
 
-      return installer;
+      return instance;
     }
   };
 }) ();

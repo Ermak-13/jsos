@@ -1,18 +1,18 @@
 var _ = require('underscore'),
     sprintf = require('sprintf-js').sprintf,
 
-    Installer = require('../installer'),
+    Scripts = require('../scripts'),
     log = require('./log');
 
 var uninstallScript = function (url) {
   log('info', sprintf('uninstall script %s', url));
 
-  var scripts = Installer.scripts(),
+  var scripts = Scripts.all(),
       script = _.find(scripts, function (script) {
         return script.src === url;
       });
 
-  Installer.remove(script);
+  Scripts.remove(script);
 };
 
 module.exports = uninstallScript;

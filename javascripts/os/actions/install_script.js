@@ -1,6 +1,6 @@
 var sprintf = require('sprintf-js').sprintf,
 
-    Installer = require('../installer'),
+    Scripts = require('../scripts'),
     log = require('./log');
 
 var installScript = function (url) {
@@ -9,7 +9,7 @@ var installScript = function (url) {
   var script = {
     src: url
   };
-  Installer.add(script);
+  Scripts.add(script);
 };
 
 module.exports = installScript;
