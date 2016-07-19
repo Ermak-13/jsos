@@ -35,13 +35,6 @@ var Desktop = React.createClass({
     };
   },
 
-  setSettings: function (settings) {
-    this.setState({
-      desktopStyles: settings.desktopStyles,
-      configureBtnStyles: settings.configureBtnStyles
-    }, this.save);
-  },
-
   getSettings: function () {
     return {
       desktopStyles: _.clone(this.state.desktopStyles),

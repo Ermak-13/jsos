@@ -36,6 +36,8 @@ var _Widget = React.createClass({
   setSettings: function (settings, callback) {
     this._setSettings(settings, function () {
       this.refreshInterval();
+
+      callback = callback || function () {};
       callback();
     });
   },
