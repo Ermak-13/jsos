@@ -3,24 +3,6 @@ var sprintf = require('sprintf-js').sprintf,
 
     log = require('./log');
 
-var addScript = function (options) {
-  options = options || {};
-  log('info', sprintf('add script %s', JSON.stringify(options)));
-
-  var script = document.createElement('script');
-  script.setAttribute('type', 'text/javascript');
-
-  if (options.src) {
-    script.setAttribute('src', options.src);
-  }
-
-  if (options.text) {
-    log('error', 'chrome forbids script inline.');
-  }
-
-  document.body.appendChild(script);
-};
-
 var installScript = function (url) {
   log('info', sprintf('install script %s', url));
 

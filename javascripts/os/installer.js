@@ -5,8 +5,25 @@ var _ = require('underscore'),
     Events = require('./events'),
     storage = require('./storage'),
 
-    log = require('./actions/log'),
-    addScript = require('./actions/script').add;
+    log = require('./actions/log');
+
+var addScript = function (options) {
+  options = options || {};
+  log('info', sprintf('add script %s', JSON.stringify(options)));
+
+  var script = document.createElement('script');
+  script.setAttribute('type', 'text/javascript');
+
+  if (options.src) {
+    script.setAttribute('src', options.src);
+  }
+
+  if (options.text) {
+    log('error', 'chrome forbids script inline.');
+  }
+
+  document.body.appendChild(script);
+};
 
 var Installer = function () {
   log('info', 'Start initializing Installer.');
