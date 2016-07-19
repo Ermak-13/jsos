@@ -18,6 +18,10 @@ var AppDispatcher = function () {
     _this.trigger(Events.installScript, obj);
   };
 
+  this.updatedInstaller = function (scripts) {
+    _this.trigger(Events.updatedInstaller, scripts);
+  };
+
   this.initWidget = function (widget) {
     _this.trigger(Events.initWidget, widget);
   };

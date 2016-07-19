@@ -38,6 +38,14 @@ var _Widget = React.createClass({
     };
   },
 
+  componentDidMount: function () {
+    OS.Installer.updated(function (scripts) {
+      this.setState({
+        scripts: scripts
+      });
+    }.bind(this));
+  },
+
   render: function () {
     return (
       <Widget.Widget widgetStyles={ this.getWidgetStyles() }>

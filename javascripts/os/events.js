@@ -5,6 +5,8 @@ var Events = {
   saveDesktop: 'save-desktop',
 
   installScript: 'install-script',
+  updatedInstaller: 'updated-installer',
+
   initWidget: 'init-widget',
   addWidget: 'add-widget',
   removeWidget: 'remove-widget'

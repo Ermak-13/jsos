@@ -5,34 +5,47 @@ var _ = require('underscore'),
     Events = require('./events'),
     storage = require('./storage'),
 
+    log = require('./actions/log'),
     addScript = require('./actions/script').add;
 
 var Installer = function () {
-  this.list = [];
+  log('info', 'Start initializing Installer.');
 
+  this.list = [];
   var _this = this;
+
+  log('info', 'Installer - start loading scripts.');
   storage.get(settings.SCRIPTS_STORAGE_KEY, function (scripts) {
     _this.list = scripts || [];
 
-    _.each(_this.list, function (obj) {
-      addScript(obj);
+    _.each(_this.list, function (script) {
+      addScript(script);
     });
+    AppDispatcher.updatedInstaller(_this.list);
 
-    AppDispatcher.bind(Events.installScript, function (obj) {
-      _this.list.push(obj);
-
-      addScript(obj);
+    AppDispatcher.bind(Events.installScript, function (script) {
+      _this.add(script);
       storage.set(settings.SCRIPTS_STORAGE_KEY, _this.list);
     });
   });
+  log('info', 'Installer - finish loading scripts.');
 
-  this.updated = function (callback) {
-    AppDispatcher.bind(Events.installScript, callback);
-  }
+  this.add = function (script) {
+    _this.list.push(script);
+    addScript(script);
+
+    AppDispatcher.updatedInstaller(_this.list);
+  };
 
   this.scripts = function () {
     return _this.list;
   };
+
+  this.updated = function (callback) {
+    AppDispatcher.bind(Events.updatedInstaller, callback);
+  };
+
+  log('info', 'Finish initializing Installer.');
 };
 
 module.exports = new Installer();
