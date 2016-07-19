@@ -14,10 +14,6 @@ var AppDispatcher = function () {
     _this.trigger(Events.saveDesktop);
   };
 
-  this.installScript = function (obj) {
-    _this.trigger(Events.installScript, obj);
-  };
-
   this.updatedInstaller = function (scripts) {
     _this.trigger(Events.updatedInstaller, scripts);
   };

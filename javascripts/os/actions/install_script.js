@@ -1,16 +1,16 @@
 var sprintf = require('sprintf-js').sprintf,
     AppDispatcher = require('../app_dispatcher'),
+    Installer = require('../installer'),
 
     log = require('./log');
 
 var installScript = function (url) {
   log('info', sprintf('install script %s', url));
 
-  var obj = {
+  var script = {
     src: url
   };
-
-  AppDispatcher.installScript(obj);
+  Installer.add(script);
 };
 
 module.exports = installScript;
