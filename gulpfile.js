@@ -6,7 +6,7 @@ var gulp = require('gulp'),
 
 gulp.task('default', ['dev']);
 gulp.task('dev', ['watch', 'js', 'sass']);
-gulp.task('release', ['js']);
+gulp.task('release', ['js', 'sass', 'build']);
 
 gulp.task('js', function () {
   gulp.src('./javascripts/index.js')
@@ -41,4 +41,27 @@ gulp.task('sass', function () {
 gulp.task('watch', function () {
   gulp.watch('./javascripts/**/*.js', ['js']);
   gulp.watch('./stylesheets/**/*.scss', ['sass']);
+});
+
+gulp.task('build', function () {
+  gulp.src('./bootstrap-3.3.6/**/*')
+    .pipe(gulp.dest('./release/bootstrap-3.3.6'));
+
+  gulp.src('./font-awesome-4.6.3/**/*')
+    .pipe(gulp.dest('./release/font-awesome-4.6.3'));
+
+  gulp.src('./images/**/*')
+    .pipe(gulp.dest('./release/images'));
+
+  var files = [
+    './COPYING',
+    './jsos.css',
+    './jsos.js',
+    './manifest.json',
+    './newtab.html',
+    './README.md'
+  ];
+
+  gulp.src(files)
+    .pipe(gulp.dest('./release'));
 });

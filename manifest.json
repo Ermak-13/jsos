@@ -1,5 +1,5 @@
 {
-  "name": "NewTab",
+  "name": "JSOS",
   "description": "Override the new tab page",
   "version": "0.1",
   "chrome_url_overrides": {
