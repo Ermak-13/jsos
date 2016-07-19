@@ -54,15 +54,15 @@ var _Widget = React.createClass({
       );
     });
 
-    _.each(global.Widgets, function (Widget, widgetName) {
-      if (widgetName !== 'Panel') {
-        var ShortcutClass = Widget.Shortcut || DefaultShortcut;
+    _.each(OS.Modules.all(), function (module, name) {
+      if (name !== 'Panel') {
+        var Shortcut = module.Shortcut || DefaultShortcut;
         shortcuts.push(
-          React.createElement(ShortcutClass, {
+          React.createElement(Shortcut, {
             key: shortcuts.length,
             className: 'shortcut',
             onClick: function () {
-              OS.addWidget(widgetName);
+              OS.addWidget(name);
             }
           })
         );

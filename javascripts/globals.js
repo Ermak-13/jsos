@@ -5,8 +5,8 @@ var modules = {
   moment: require('moment'),
 
   OS: require('os'),
-  Desktop: require('./desktop'),
-  Widgets: require('./widgets')
+  OSModules: require('./widgets'),
+  Desktop: require('./desktop')
 };
 
 for (var key in modules) {

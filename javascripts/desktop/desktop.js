@@ -89,13 +89,13 @@ var Desktop = React.createClass({
     }, AppDispatcher.saveDesktop);
   },
 
-  _createWidget: function (widgetName, nextWidgetId) {
-    var WidgetClass = global.Widgets[widgetName].Widget;
+  _createWidget: function (name, nextWidgetId) {
+    var WidgetClass = OS.Modules.getWidget(name);
     return React.createElement(
       WidgetClass,
       {
         key: nextWidgetId,
-        widgetName: widgetName,
+        widgetName: name,
         widgetId: nextWidgetId
       }
     );

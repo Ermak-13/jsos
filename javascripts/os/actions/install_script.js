@@ -4,7 +4,7 @@ var sprintf = require('sprintf-js').sprintf,
     log = require('./log');
 
 var installScript = function (url) {
-  log('info', sprintf('install script %s', url));
+  log('info', sprintf('install script %s.', url));
 
   var script = {
     src: url

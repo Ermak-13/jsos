@@ -1,3 +1,6 @@
+var _ = require('underscore'),
+    OS = require('os');
+
 var Widgets = {
   Panel: require('./panel'),
 
@@ -9,5 +12,9 @@ var Widgets = {
   Timer: require('./timer'),
   Sticker: require('./sticker')
 };
+
+_.each(Widgets, function (module, name) {
+  OS.installModule(name, module);
+});
 
 module.exports = Widgets;

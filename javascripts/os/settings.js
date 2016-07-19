@@ -30,6 +30,7 @@ var settings = {
   DESKTOP_STORAGE_KEY: 'desktop',
   DESKTOP_WIDGETS_STORAGE_KEY: 'widgets',
 
+  MODULES_STORAGE_KEY: 'modules',
   SCRIPTS_STORAGE_KEY: 'scripts',
 
   WIDGET_DATA_STORAGE_KEY: 'widget-%(name)s-data',

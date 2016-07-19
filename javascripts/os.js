@@ -28,8 +28,12 @@ var OS = {
   download: require('./os/actions/download'),
 
   Scripts: require('./os/scripts'),
+  Modules: require('./os/modules'),
+
   installScript: require('./os/actions/install_script'),
   uninstallScript: require('./os/actions/uninstall_script'),
+
+  installModule: require('./os/actions/install_module'),
 
   addWidget: require('./os/actions/add_widget'),
   removeWidget: require('./os/actions/remove_widget'),

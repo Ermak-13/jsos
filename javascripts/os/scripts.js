@@ -32,7 +32,7 @@ var Scripts = function () {
   this.list = [];
   var _this = this;
 
-  log('info', 'Scripts - start loadin.');
+  log('info', 'Scripts - start loading.');
   storage.get(settings.SCRIPTS_STORAGE_KEY, function (scripts) {
     _this.list = scripts || [];
 
