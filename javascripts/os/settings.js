@@ -1,6 +1,8 @@
 var _ = require('underscore');
 
 var settings = {
+  STORAGE_TYPE: 'chrome.local',
+
   DESKTOP_SIZE: {
     width: '300px',
     height: '200px',
