@@ -35,6 +35,10 @@ var Modules = function (onReadyCallback) {
   AppDispatcher.bind(Events.installModule, function (name, module) {
     _this.add(name, module);
   });
+
+  AppDispatcher.bind(Events.uninstallModule, function (name) {
+    _this.remove(name);
+  });
   onReadyCallback();
 
   log('info', 'Finish initializing Modules.');

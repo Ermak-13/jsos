@@ -30,16 +30,19 @@ var Scripts = function (onReadyCallback) {
   log('info', 'Start initializing Scripts.');
 
   this.list = [];
-  var _this = this;
-
 
   this.all = function () {
-    return _this.list;
+    return this.list;
+  };
+
+  this.get = function (index) {
+    return this.all()[index];
   };
 
   this.add = function (script) {
-    _this.list.push(script);
+    this.list.push(script);
 
+    var _this = this;
     storage.set(settings.SCRIPTS_STORAGE_KEY, _this.list, function () {
       addScript(script);
       AppDispatcher.updatedScripts(_this.list);
@@ -47,8 +50,9 @@ var Scripts = function (onReadyCallback) {
   };
 
   this.remove = function (script) {
-    _this.list = _.without(_this.list, script);
+    this.list = _.without(this.list, script);
 
+    var _this = this;
     storage.set(settings.SCRIPTS_STORAGE_KEY, _this.list, function () {
       AppDispatcher.updatedScripts(_this.list);
     });
@@ -58,6 +62,7 @@ var Scripts = function (onReadyCallback) {
     AppDispatcher.bind(Events.updatedScripts, callback);
   };
 
+  var _this = this;
   storage.get(settings.SCRIPTS_STORAGE_KEY, function (scripts) {
     _this.list = scripts || [];
 

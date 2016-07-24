@@ -4,6 +4,8 @@ var Events = {
   log: 'log',
 
   installModule: 'install-module',
+  uninstallModule: 'uninstall-module',
+
   installScript: 'install-script',
   uninstallScript: 'uninstall-script',
   updatedScripts: 'updated-scripts',

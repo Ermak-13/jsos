@@ -28,10 +28,11 @@ var OS = {
   request: require('./os/actions/request'),
   download: require('./os/actions/download'),
 
+  installModule: require('./os/actions/install_module'),
+  uninstallModule: require('./os/actions/uninstall_module'),
+
   installScript: require('./os/actions/install_script'),
   uninstallScript: require('./os/actions/uninstall_script'),
-
-  installModule: require('./os/actions/install_module'),
 
   addWidget: require('./os/actions/add_widget'),
   removeWidget: require('./os/actions/remove_widget'),
