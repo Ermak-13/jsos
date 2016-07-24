@@ -3,7 +3,8 @@ require('./globals');
 
 var loader = new OS.Loader();
 loader.load(function () {
-  var Modules = require('./widgets');
+  var Modules = require('./modules');
+
   _.each(Modules, function (module, name) {
     OS.installModule(name, module);
   });
