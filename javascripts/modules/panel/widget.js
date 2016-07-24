@@ -34,11 +34,11 @@ var _Widget = React.createClass({
       vertical: true,
       horizontal: false,
 
-      shortcuts: this.getDefaultShortcuts()
+      shortcuts: this.getShortcuts()
     };
   },
 
-  getDefaultShortcuts: function () {
+  getShortcuts: function () {
     var shortcuts = [];
 
     _.each([
@@ -117,6 +117,12 @@ var _Widget = React.createClass({
 
   componentWillMount: function () {
     this.init();
+
+    global.Modules.updated(function (modules) {
+      this.setState({
+        shortcuts: this.getShortcuts()
+      });
+    }.bind(this));
   },
 
   render: function () {
