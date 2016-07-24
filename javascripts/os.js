@@ -1,4 +1,5 @@
 var OS = {
+  Loader: require('./os/logger'),
   AppDispatcher: require('./os/app_dispatcher'),
   Events: require('./os/events'),
   settings: require('./os/settings'),

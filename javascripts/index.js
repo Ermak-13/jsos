@@ -1,8 +1,9 @@
 require('./globals');
 
-new OS.Logger();
-
-ReactDOM.render(
-  <Desktop />,
-  document.getElementById('desktop-container')
-);
+var loader = new OS.Loader();
+loader.load(function () {
+  ReactDOM.render(
+    <Desktop />,
+    document.getElementById('desktop-container')
+  );
+});
