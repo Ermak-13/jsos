@@ -4,11 +4,11 @@ var Logger = require('./logger'),
 
 var Loader = function () {
   this.load = function (callback) {
-    new Logger();
-
-    global.Modules = new Modules(function () {
-      global.Scripts = new Scripts(function () {
-        callback();
+    global.Logger = new Logger(function () {
+      global.Modules = new Modules(function () {
+        global.Scripts = new Scripts(function () {
+          callback();
+        });
       });
     });
   };
