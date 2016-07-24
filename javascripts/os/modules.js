@@ -1,6 +1,4 @@
-var settings = require('./settings'),
-    storage = require('./storage'),
-    AppDispatcher = require('./app_dispatcher'),
+var AppDispatcher = require('./app_dispatcher'),
     Events = require('./events'),
     log = require('./actions/log');
 
@@ -8,19 +6,6 @@ var Modules = function (onReadyCallback) {
   log('info', 'Start initializing Modules.');
 
   this.modules = {};
-  var _this = this;
-
-  log('info', 'Modules - start loading.');
-  storage.get(settings.MODULES_STORAGE_KEY, function (modules) {
-    _this.modules = modules || _this.modules;
-
-    AppDispatcher.bind(Events.installModule, function (name, module) {
-      _this.add(name, module);
-    });
-
-    onReadyCallback();
-  });
-  log('info', 'Modules - finish loading.');
 
   this.all = function () {
     return this.modules;
@@ -45,6 +30,12 @@ var Modules = function (onReadyCallback) {
   this.getShortcut = function (name) {
     return this.get(name).Shortcut;
   };
+
+  var _this = this;
+  AppDispatcher.bind(Events.installModule, function (name, module) {
+    _this.add(name, module);
+  });
+  onReadyCallback();
 
   log('info', 'Finish initializing Modules.');
 };
