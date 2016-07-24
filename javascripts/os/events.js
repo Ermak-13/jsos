@@ -2,11 +2,13 @@ var sprintf = require('underscore.string/sprintf');
 
 var Events = {
   log: 'log',
-  saveDesktop: 'save-desktop',
 
   installModule: 'install-module',
+  installScript: 'install-script',
+  uninstallScript: 'uninstall-script',
   updatedScripts: 'updated-scripts',
 
+  saveDesktop: 'save-desktop',
   initWidget: 'init-widget',
   addWidget: 'add-widget',
   removeWidget: 'remove-widget'
