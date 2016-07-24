@@ -38,7 +38,8 @@ var chromeLocalStorage = {
 
 var localStorage = {
   set: function (key, value, callback) {
-    localStorage.setItem(key, value);
+    value = JSON.stringify(value);
+    window.localStorage.setItem(key, value);
 
     callback = callback || function () {
       log('info', sprintf('OS storage - set %s.', key));
@@ -47,19 +48,20 @@ var localStorage = {
   },
 
   get: function (key, callback) {
-    var value = localStorage.getItem(key);
+    var value = window.localStorage.getItem(key);
+    value = JSON.parse(value);
 
     callback(value);
     log('info', sprintf('OS storage - get %s.', key));
   },
 
   remove: function (key) {
-    localStorage.removeItem(key);
+    window.localStorage.removeItem(key);
     log('info', sprintf('OS storage - remove %s.', key));
   },
 
   clear: function () {
-    localStorage.clear();
+    window.localStorage.clear();
     log('info', 'OS storage - clear.');
   }
 };
