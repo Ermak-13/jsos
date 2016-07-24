@@ -17,10 +17,12 @@ var Modules = function (onReadyCallback) {
 
   this.add = function (name, module) {
     this.modules[name] = module;
+    AppDispatcher.updatedModules(this.modules);
   };
 
   this.remove = function (name) {
     delete this.modules[name];
+    AppDispatcher.updatedModules(this.modules);
   };
 
   this.getWidget = function (name) {
@@ -29,6 +31,10 @@ var Modules = function (onReadyCallback) {
 
   this.getShortcut = function (name) {
     return this.get(name).Shortcut;
+  };
+
+  this.updated = function (callback) {
+    AppDispatcher.bind(Events.updatedModules, callback);
   };
 
   var _this = this;

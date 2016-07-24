@@ -5,6 +5,7 @@ var Events = {
 
   installModule: 'install-module',
   uninstallModule: 'uninstall-module',
+  updatedModules: 'updated-modules',
 
   installScript: 'install-script',
   uninstallScript: 'uninstall-script',

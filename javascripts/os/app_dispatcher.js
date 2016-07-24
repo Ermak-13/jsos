@@ -22,6 +22,10 @@ var AppDispatcher = function () {
     _this.trigger(Events.uninstallModule, name);
   };
 
+  this.updatedModules = function (modules) {
+    _this.trigger(Events.updatedModules, modules);
+  };
+
   this.installScript = function (script) {
     _this.trigger(Events.installScript, script);
   };
