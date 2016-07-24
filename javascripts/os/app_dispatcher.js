@@ -14,6 +14,10 @@ var AppDispatcher = function () {
     _this.trigger(Events.saveDesktop);
   };
 
+  this.installModule = function (name, module) {
+    _this.trigger(Events.installModule, name, module);
+  };
+
   this.updatedScripts = function (scripts) {
     _this.trigger(Events.updatedScripts, scripts);
   };

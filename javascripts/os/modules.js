@@ -1,5 +1,7 @@
 var settings = require('./settings'),
     storage = require('./storage'),
+    AppDispatcher = require('./app_dispatcher'),
+    Events = require('./events'),
     log = require('./actions/log');
 
 var Modules = function () {
@@ -11,6 +13,10 @@ var Modules = function () {
   log('info', 'Modules - start loading.');
   storage.get(settings.MODULES_STORAGE_KEY, function (modules) {
     _this.modules = modules || _this.modules;
+
+    AppDispatcher.bind(Events.installModule, function (name, module) {
+      _this.add(name, module);
+    });
   });
   log('info', 'Modules - finish loading.');
 

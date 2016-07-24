@@ -1,6 +1,6 @@
 var sprintf = require('sprintf-js').sprintf,
 
-    Modules = require('../modules'),
+    AppDispatcher = require('../app_dispatcher'),
     isUrl = require('./is_url'),
     log = require('./log');
 
@@ -26,7 +26,7 @@ var _installModuleByUrl = function (name, url) {
 
 var _installModule = function (name, module) {
   log('info', sprintf('install module %s.', name));
-  Modules.add(name, module);
+  AppDispatcher.installModule(name, module);
 };
 
 module.exports = installModule;

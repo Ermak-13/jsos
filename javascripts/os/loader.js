@@ -1,4 +1,5 @@
-var Logger = require('./logger');
+var Logger = require('./logger'),
+    Modules = require('./modules');
 
 var Loader = function () {
   this.load = function (callback) {
