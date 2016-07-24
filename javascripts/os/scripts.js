@@ -26,7 +26,7 @@ var addScript = function (options) {
   document.body.appendChild(script);
 };
 
-var Scripts = function () {
+var Scripts = function (onReadyCallback) {
   log('info', 'Start initializing Scripts.');
 
   this.list = [];
@@ -73,6 +73,8 @@ var Scripts = function () {
     AppDispatcher.bind(Events.uninstallScript, function (script) {
       _this.remove(script);
     });
+
+    onReadyCallback();
   });
 
   log('info', 'Finish initializing Scripts.');

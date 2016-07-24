@@ -7,8 +7,9 @@ var Loader = function () {
     new Logger();
 
     global.Modules = new Modules(function () {
-      global.Scripts = new Scripts();
-      callback();
+      global.Scripts = new Scripts(function () {
+        callback();
+      });
     });
   };
 };
