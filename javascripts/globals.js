@@ -5,7 +5,6 @@ var modules = {
   moment: require('moment'),
 
   OS: require('os'),
-  OSModules: require('./widgets'),
   Desktop: require('./desktop')
 };
 

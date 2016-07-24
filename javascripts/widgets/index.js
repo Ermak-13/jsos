@@ -13,8 +13,4 @@ var Widgets = {
   Sticker: require('./sticker')
 };
 
-_.each(Widgets, function (module, name) {
-  OS.installModule(name, module);
-});
-
 module.exports = Widgets;

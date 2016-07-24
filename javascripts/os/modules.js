@@ -4,7 +4,7 @@ var settings = require('./settings'),
     Events = require('./events'),
     log = require('./actions/log');
 
-var Modules = function () {
+var Modules = function (onReadyCallback) {
   log('info', 'Start initializing Modules.');
 
   this.modules = {};
@@ -17,6 +17,8 @@ var Modules = function () {
     AppDispatcher.bind(Events.installModule, function (name, module) {
       _this.add(name, module);
     });
+
+    onReadyCallback();
   });
   log('info', 'Modules - finish loading.');
 
