@@ -4,6 +4,7 @@ var Logger = require('./logger'),
 var Loader = function () {
   this.load = function (callback) {
     new Logger();
+    global.Modules = new Modules();
 
     callback();
   };

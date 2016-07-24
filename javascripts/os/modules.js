@@ -47,23 +47,4 @@ var Modules = function () {
   log('info', 'Finish initializing Modules.');
 };
 
-var Singleton = (function () {
-  var instance;
-
-  function createInstance () {
-    var instance = new Modules();
-    return instance;
-  }
-
-  return {
-    getInstance: function () {
-      if (!instance) {
-        instance = createInstance();
-      }
-
-      return instance;
-    }
-  };
-}) ();
-
-module.exports = Singleton.getInstance();
+module.exports = Modules;

@@ -54,7 +54,7 @@ var _Widget = React.createClass({
       );
     });
 
-    _.each(OS.Modules.all(), function (module, name) {
+    _.each(global.Modules.all(), function (module, name) {
       if (name !== 'Panel') {
         var Shortcut = module.Shortcut || DefaultShortcut;
         shortcuts.push(
