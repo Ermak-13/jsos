@@ -1,51 +1,20 @@
-var _ = require('underscore');
+var _ = require('underscore'),
+    defaultSettings = require('./default_settings');
 
-var settings = {
-  STORAGE_TYPE: 'chrome.local',
+var Settings = function (settings) {
+  this.settings = _.extend(
+    _.clone(defaultSettings),
+    settings
+  );
 
-  DESKTOP_SIZE: {
-    width: '300px',
-    height: '200px',
-  },
+  this.get = function (key) {
+    key = key.toUpperCase();
+    return this.settings[key];
+  };
 
-  DEFAULT_POSITION: {
-    xSide: 'left',
-    left: '70px',
-    ySide: 'top',
-    top: '10px'
-  },
-
-  DEFAULT_WIDGET_STYLES: {
-    width: '300px',
-    height: '200px',
-    position: 'absolute',
-    top: '10px',
-    left: '70px'
-  },
-
-  NAV_ACTIVE_TAB_CLASS_NAME: 'active',
-  NAV_INACTIVE_TAB_CLASS_NAME: '',
-  NAV_CLASS_NAME: 'nav nav-tabs mini-nav',
-
-  DEFAULT_SETTINGS_DIALOG_NAME: 'default',
-
-  DESKTOP_STORAGE_KEY: 'desktop',
-  WIDGETS_STORAGE_KEY: 'widgets',
-  SCRIPTS_STORAGE_KEY: 'scripts',
-
-  WIDGET_DATA_STORAGE_KEY: 'widget-%(name)s-data',
-  WIDGET_STORAGE_KEY: 'widget-%(id)s-settings',
-
-  DESKTOP_NAME: 'desktop',
-  DESKTOP_CONFIGURATOR_REF_NAME: 'configurator',
-  DESKTOP_STYLES: {
-    background: "url('images/minion-hitman-rain-fog-dark.jpg') no-repeat center fixed",
-  },
-
-  DESKTOP_CONFIGURE_BTN_STYLES: {
-    right: '10px',
-    bottom: '10px'
-  }
+  this.set = function (key, value) {
+    this.settings[key] = value;
+  };
 };
 
-module.exports = settings;
+module.exports = Settings;

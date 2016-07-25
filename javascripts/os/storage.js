@@ -1,5 +1,5 @@
 var sprintf = require('sprintf-js').sprintf,
-    globalSettings = require('./settings'),
+    globalSettings = require('./default_settings'),
     log = require('./actions/log');
 
 var chromeLocalStorage = {

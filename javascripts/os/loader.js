@@ -1,4 +1,4 @@
-var Settings = require('./_settings'),
+var Settings = require('./settings'),
     Logger = require('./logger'),
     Modules = require('./modules'),
     Scripts = require('./scripts'),
