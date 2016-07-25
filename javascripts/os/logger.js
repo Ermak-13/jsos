@@ -4,7 +4,7 @@ var sprintf = require('sprintf-js').sprintf,
     AppDispatcher = require('./app_dispatcher'),
     Events = require('./events');
 
-var Logger = function (onReadyCallback) {
+var Logger = function () {
   this.logs = [];
 
   this.all = function () {
@@ -34,8 +34,6 @@ var Logger = function (onReadyCallback) {
       )
     );
   });
-
-  onReadyCallback();
 };
 
 module.exports = Logger;
