@@ -1,6 +1,6 @@
 var Settings = require('./settings'),
     Logger = require('./logger'),
-    Storage = require('./_storage'),
+    Storage = require('./storage'),
     Modules = require('./modules'),
     Scripts = require('./scripts'),
     Widgets = require('./widgets');

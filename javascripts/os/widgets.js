@@ -1,5 +1,4 @@
 var _ = require('underscore'),
-    storage = require('./storage'),
     AppDispatcher = require('./app_dispatcher'),
     Events = require('./events'),
 
@@ -34,7 +33,7 @@ var Widgets = function (onReadyCallback) {
     this.widgets.push(widget);
 
     var _this = this;
-    storage.set(global.Settings.get('widgets_storage_key'), this.widgets, function () {
+    global.Storage.set(global.Settings.get('widgets_storage_key'), this.widgets, function () {
       AppDispatcher.updatedWidgets(_this.widgets);
     });
   };
@@ -46,7 +45,7 @@ var Widgets = function (onReadyCallback) {
 
     this.widgets = widgets;
     var _this = this;
-    storage.set(global.Settings.get('widgets_storage_key'), this.widgets, function () {
+    global.Storage.set(global.Settings.get('widgets_storage_key'), this.widgets, function () {
       AppDispatcher.updatedWidgets(_this.widgets);
     });
   };
@@ -64,7 +63,7 @@ var Widgets = function (onReadyCallback) {
   };
 
   var _this = this;
-  storage.get(global.Settings.get('widgets_storage_key'), function (widgets) {
+  global.Storage.get(global.Settings.get('widgets_storage_key'), function (widgets) {
     _this.widgets = widgets || _this.widgets;
 
     var ids = _.map(_this.widgets, function (widget) {

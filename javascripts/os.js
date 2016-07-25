@@ -4,7 +4,6 @@ var OS = {
   Events: require('./os/events'),
   settings: require('./os/default_settings'),
   Logger: require('./os/logger'),
-  storage: require('./os/storage'),
 
   Mixins: require('./os/mixins'),
   Widget: require('./os/components/widget'),

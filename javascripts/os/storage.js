@@ -66,13 +66,27 @@ var localStorage = {
   }
 };
 
-var storage = (function (key) {
-  var storages = {
+var Storage = function (type) {
+  var storage = {
     'chrome.local': chromeLocalStorage,
     'localStorage': localStorage
+  }[type];
+
+  this.set = function (key, value, callback) {
+    storage.set(key, value, callback);
   };
 
-  return storages[key];
-}) (globalSettings.STORAGE_TYPE);
+  this.get = function (key, callback) {
+    storage.get(key, callback);
+  };
 
-module.exports = storage;
+  this.remove = function (key) {
+    storage.remove(key);
+  };
+
+  this.clear = function () {
+    storage.clear();
+  };
+};
+
+module.exports = Storage;

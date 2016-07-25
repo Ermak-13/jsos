@@ -3,7 +3,6 @@ var _ = require('underscore'),
 
     AppDispatcher = require('../app_dispatcher'),
     Events = require('../events'),
-    storage = require('../storage'),
 
     log = require('../actions/log');
 
@@ -97,7 +96,7 @@ var WidgetHelper = {
   },
 
   close: function () {
-    storage.remove(this.getSettingsStorageKey());
+    global.Storage.remove(this.getSettingsStorageKey());
     AppDispatcher.removeWidget(this.props.widgetId);
   },
 
@@ -128,7 +127,7 @@ var WidgetHelper = {
   },
 
   loadData: function () {
-    storage.get(
+    global.Storage.get(
       this.getDataStorageKey(),
       function (data) {
         if (data) {
@@ -146,7 +145,7 @@ var WidgetHelper = {
   saveData: function () {
     var getData = this.getData || function () {};
 
-    storage.set(
+    global.Storage.set(
       this.getDataStorageKey(),
       getData()
     );
@@ -160,7 +159,7 @@ var WidgetHelper = {
   },
 
   loadSettings: function () {
-    storage.get(
+    global.Storage.get(
       this.getSettingsStorageKey(),
       function (settings) {
         var setSettings = this.setSettings || this._setSettings;
@@ -177,7 +176,7 @@ var WidgetHelper = {
   },
 
   saveSettings: function () {
-    storage.set(
+    global.Storage.set(
       this.getSettingsStorageKey(),
       this.getSettings()
     );

@@ -4,7 +4,6 @@ var _ = require('underscore'),
     settings = require('./settings'),
     AppDispatcher = require('./app_dispatcher'),
     Events = require('./events'),
-    storage = require('./storage'),
 
     log = require('./actions/log');
 
@@ -43,7 +42,7 @@ var Scripts = function (onReadyCallback) {
     this.list.push(script);
 
     var _this = this;
-    storage.set(settings.SCRIPTS_STORAGE_KEY, _this.list, function () {
+    global.Storage.set(settings.SCRIPTS_STORAGE_KEY, _this.list, function () {
       addScript(script);
       AppDispatcher.updatedScripts(_this.list);
     });
@@ -53,7 +52,7 @@ var Scripts = function (onReadyCallback) {
     this.list = _.without(this.list, script);
 
     var _this = this;
-    storage.set(settings.SCRIPTS_STORAGE_KEY, _this.list, function () {
+    global.Storage.set(settings.SCRIPTS_STORAGE_KEY, _this.list, function () {
       AppDispatcher.updatedScripts(_this.list);
     });
   };
@@ -63,7 +62,7 @@ var Scripts = function (onReadyCallback) {
   };
 
   var _this = this;
-  storage.get(settings.SCRIPTS_STORAGE_KEY, function (scripts) {
+  global.Storage.get(settings.SCRIPTS_STORAGE_KEY, function (scripts) {
     _this.list = scripts || [];
 
     _.each(_this.list, function (script) {
