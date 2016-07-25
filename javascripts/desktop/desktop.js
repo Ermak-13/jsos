@@ -2,7 +2,6 @@ var React = require('react'),
     _ = require('underscore'),
 
     OS = require('os'),
-    globalSettings = OS.settings,
     Mixins = OS.Mixins,
 
     Configurator = require('./configurator'),
@@ -13,9 +12,9 @@ var Desktop = React.createClass({
 
   getDefaultProps: function () {
     return {
-      name: globalSettings.DESKTOP_NAME,
-      storageKey: globalSettings.DESKTOP_STORAGE_KEY,
-      configuratorRefName: globalSettings.DESKTOP_CONFIGURATOR_REF_NAME
+      name: global.Settings.get('desktop_name'),
+      storageKey: global.Settings.get('desktop_storage_key'),
+      configuratorRefName: global.Settings.get('desktop_configurator_ref_name')
     };
   },
 
@@ -23,8 +22,8 @@ var Desktop = React.createClass({
     return {
       widgets: global.Widgets.all(),
 
-      desktopStyles: globalSettings.DESKTOP_STYLES,
-      configureBtnStyles: globalSettings.DESKTOP_CONFIGURE_BTN_STYLES
+      desktopStyles: global.Settings.get('desktop_styles'),
+      configureBtnStyles: global.Settings.get('desktop_configure_btn_styles')
     };
   },
 

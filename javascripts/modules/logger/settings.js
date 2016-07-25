@@ -1,8 +1,3 @@
-var _ = require('underscore'),
-
-    OS = require('os'),
-    globalSettings = OS.settings;
-
 var settings = {
   WIDGET_NAME: 'logger',
   CONFIGURATOR_REF_NAME: 'configurator',
@@ -13,7 +8,7 @@ var settings = {
       width: '350px',
       height: '300px'
   },
-  DEFAULT_POSITION: globalSettings.DEFAULT_POSITION
+  DEFAULT_POSITION: global.Settings.get('default_position')
 };
 
 module.exports = settings;

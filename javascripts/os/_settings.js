@@ -1,7 +1,7 @@
 var _ = require('underscore'),
     defaultSettings = require('./settings');
 
-var Settings = function (settings, onReadyCallback) {
+var Settings = function (settings) {
   this.settings = _.extend(
     _.clone(defaultSettings),
     settings
@@ -15,8 +15,6 @@ var Settings = function (settings, onReadyCallback) {
   this.set = function (key, value) {
     this.settings[key] = value;
   };
-
-  onReadyCallback();
 };
 
 module.exports = Settings;

@@ -1,7 +1,6 @@
 var _ = require('underscore'),
     sprintf = require('sprintf-js').sprintf,
 
-    globalSettings = require('../settings'),
     AppDispatcher = require('../app_dispatcher'),
     Events = require('../events'),
     storage = require('../storage'),
@@ -155,7 +154,7 @@ var WidgetHelper = {
 
   getDataStorageKey: function () {
     return sprintf(
-      globalSettings.WIDGET_DATA_STORAGE_KEY,
+      global.Settings.get('widget_data_storage_key'),
       { name: this.props.widgetName }
     );
   },
@@ -194,7 +193,7 @@ var WidgetHelper = {
 
   _getDefaultStorageKey: function () {
     return sprintf(
-      globalSettings.WIDGET_STORAGE_KEY,
+      global.Settings.get('widget_storage_key'),
       { id: this.props.widgetId }
     );
   }

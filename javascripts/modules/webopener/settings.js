@@ -1,8 +1,3 @@
-var _ = require('underscore'),
-
-    OS = require('os'),
-    globalSettings = OS.settings;
-
 var settings = {
   WIDGET_NAME: 'webopener',
   CONFIGURATOR_REF_NAME: 'configurator',
@@ -12,7 +7,7 @@ var settings = {
     width: '550px',
     height: '360px'
   },
-  DEFAULT_POSITION: globalSettings.DEFAULT_POSITION,
+  DEFAULT_POSITION: global.Settings.get('default_position'),
 
   DEFAULT_LINK_STYLES: {
     display: 'block',

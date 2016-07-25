@@ -4,8 +4,7 @@ var modules = {
   _: require('underscore'),
   moment: require('moment'),
 
-  OS: require('os'),
-  Desktop: require('./desktop')
+  OS: require('os')
 };
 
 for (var key in modules) {

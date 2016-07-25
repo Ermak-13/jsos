@@ -3,7 +3,6 @@ var React = require('react'),
     sprintf = require('sprintf-js').sprintf,
 
     OS = require('os'),
-    globalSettings = OS.settings,
     AppDispatcher = OS.AppDispatcher,
     Events = OS.Events,
 

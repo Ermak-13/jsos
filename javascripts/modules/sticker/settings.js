@@ -1,6 +1,3 @@
-var OS = require('os'),
-    globalSettings = OS.settings;
-
 var DEFAULT_HEIGHT = '180px';
 
 var settings = {
@@ -11,7 +8,7 @@ var settings = {
     width: '180px',
     height: DEFAULT_HEIGHT
   },
-  DEFAULT_POSITION: globalSettings.DEFAULT_POSITION,
+  DEFAULT_POSITION: global.Settings.get('default_position'),
 
   DEFAULT_WIDGET_STYLES: {
     background: '#FFF',

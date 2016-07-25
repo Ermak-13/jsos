@@ -1,8 +1,3 @@
-var _ = require('underscore'),
-
-    OS = require('os'),
-    globalSettings = OS.settings;
-
 var settings = {
   WIDGET_NAME: 'clock',
   CONFIGURATOR_REF_NAME: 'configurator',
@@ -14,7 +9,7 @@ var settings = {
     width: '150px',
     height: '100px'
   },
-  DEFAULT_POSITION: globalSettings.DEFAULT_POSITION,
+  DEFAULT_POSITION: global.Settings.get('default_position'),
 
   DEFAULT_TIME_STYLES: {
     height: '80px',
