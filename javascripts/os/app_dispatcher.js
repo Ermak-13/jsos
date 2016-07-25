@@ -42,12 +42,16 @@ var AppDispatcher = function () {
     _this.trigger(Events.initWidget, widget);
   };
 
-  this.addWidget = function (WidgetClass) {
-    _this.trigger(Events.addWidget, WidgetClass);
+  this.addWidget = function (name) {
+    _this.trigger(Events.addWidget, name);
   };
 
   this.removeWidget = function (widgetId) {
     _this.trigger(Events.removeWidget, widgetId);
+  };
+
+  this.updatedWidgets = function (widgets) {
+    _this.trigger(Events.updatedWidgets, widgets);
   };
 };
 MicroEvent.mixin(AppDispatcher);

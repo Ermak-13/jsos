@@ -30,8 +30,7 @@ var settings = {
   DEFAULT_SETTINGS_DIALOG_NAME: 'default',
 
   DESKTOP_STORAGE_KEY: 'desktop',
-  DESKTOP_WIDGETS_STORAGE_KEY: 'widgets',
-
+  WIDGETS_STORAGE_KEY: 'widgets',
   SCRIPTS_STORAGE_KEY: 'scripts',
 
   WIDGET_DATA_STORAGE_KEY: 'widget-%(name)s-data',

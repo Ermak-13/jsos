@@ -5,7 +5,6 @@ var OS = {
   settings: require('./os/settings'),
   Logger: require('./os/logger'),
   storage: require('./os/storage'),
-  widgets: require('./os/widgets'),
 
   Mixins: require('./os/mixins'),
   Widget: require('./os/components/widget'),

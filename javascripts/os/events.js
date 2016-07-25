@@ -11,10 +11,12 @@ var Events = {
   uninstallScript: 'uninstall-script',
   updatedScripts: 'updated-scripts',
 
-  saveDesktop: 'save-desktop',
-  initWidget: 'init-widget',
   addWidget: 'add-widget',
-  removeWidget: 'remove-widget'
+  initWidget: 'init-widget',
+  removeWidget: 'remove-widget',
+  updatedWidgets: 'updated-widgets',
+
+  saveDesktop: 'save-desktop'
 };
 
 module.exports = Events;
