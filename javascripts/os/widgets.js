@@ -10,10 +10,19 @@ var Widgets = function (onReadyCallback) {
   log('info', 'Start initializing Widgets.');
 
   this.widgets = [];
+  this.instances = [];
   this.nextWidgetId = 0;
 
   this.all = function () {
     return this.widgets;
+  };
+
+  this.get = function (widgetId) {
+    var widget = _.filter(this.widgets, function (widget) {
+      return widget.widgetId === widgetId;
+    });
+
+    return _.first(widget);
   };
 
   this.add = function (name) {
@@ -47,6 +56,14 @@ var Widgets = function (onReadyCallback) {
     AppDispatcher.bind(Events.updatedWidgets, callback);
   };
 
+  this.getInstance = function (widgetId) {
+    var instance = _.filter(this.instances, function (instance) {
+      return instance.props.widgetId === widgetId;
+    });
+
+    return _.first(instance);
+  };
+
   var _this = this;
   storage.get(settings.WIDGETS_STORAGE_KEY, function (widgets) {
     _this.widgets = widgets || _this.widgets;
@@ -66,6 +83,10 @@ var Widgets = function (onReadyCallback) {
 
     AppDispatcher.bind(Events.removeWidget, function (widget) {
       _this.remove(widget);
+    });
+
+    AppDispatcher.bind(Events.initWidget, function (instance) {
+      _this.instances.push(instance);
     });
 
     onReadyCallback();
