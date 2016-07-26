@@ -1,4 +1,5 @@
 var gulp = require('gulp'),
+    webserver = require('gulp-webserver'),
     browserify = require('gulp-browserify'),
     sass = require('gulp-sass'),
     rename = require('gulp-rename'),
@@ -7,6 +8,16 @@ var gulp = require('gulp'),
 gulp.task('default', ['dev']);
 gulp.task('dev', ['watch', 'js', 'sass']);
 gulp.task('release', ['js', 'sass', 'build']);
+gulp.task('server', ['webserver']);
+
+gulp.task('webserver', function () {
+  gulp.src('./')
+    .pipe(webserver({
+      port: 8008,
+      livereload: true,
+      fallback: 'index.html'
+    }));
+});
 
 gulp.task('js', function () {
   gulp.src('./javascripts/index.js')
