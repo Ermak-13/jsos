@@ -76,3 +76,21 @@ gulp.task('build', function () {
   gulp.src(files)
     .pipe(gulp.dest('./release'));
 });
+
+//TODO: move to JSOS Module repository
+gulp.task('module', ['watch-module', 'module-js']);
+gulp.task('watch-module', function () {
+  gulp.watch('./module/**/*.js', ['module-js']);
+});
+
+gulp.task('module-js', function () {
+  gulp.src('./module/index.js')
+    .pipe(browserify({
+      transform: ['reactify'],
+      extensions: ['.js'],
+    }))
+    .on('error', console.log)
+    .pipe(rename('module.js'))
+    .pipe(gulp.dest('.'));
+});
+

@@ -8,8 +8,7 @@ var sprintf = require('sprintf-js').sprintf,
 
 var installScript = function (url) {
   if (!isUrl(url)) {
-    log('error', 'installScript - invalid arguments.');
-    return;
+    log('warning', 'installScript - argument is not url.');
   }
 
   log('info', sprintf('install script %s.', url));
