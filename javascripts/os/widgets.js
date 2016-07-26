@@ -4,7 +4,7 @@ var _ = require('underscore'),
 
     log = require('./actions/log');
 
-var Widgets = function (onReadyCallback) {
+var Widgets = function () {
   log('info', 'Start initializing Widgets.');
 
   this.widgets = [];
@@ -62,33 +62,35 @@ var Widgets = function (onReadyCallback) {
     return _.first(instance);
   };
 
-  var _this = this;
-  global.Storage.get(global.Settings.get('widgets_storage_key'), function (widgets) {
-    _this.widgets = widgets || _this.widgets;
+  this.load = function (onReadyCallback) {
+    var _this = this;
+    global.Storage.get(global.Settings.get('widgets_storage_key'), function (widgets) {
+      _this.widgets = widgets || _this.widgets;
 
-    var ids = _.map(_this.widgets, function (widget) {
-          return widget.widgetId;
-        }),
-        maxWidgetId = _.isEmpty(ids) ? 0 : _.max(ids),
-        nextWidgetId = maxWidgetId + 1;
+      var ids = _.map(_this.widgets, function (widget) {
+            return widget.widgetId;
+          }),
+          maxWidgetId = _.isEmpty(ids) ? 0 : _.max(ids),
+          nextWidgetId = maxWidgetId + 1;
 
-    _this.nextWidgetId = nextWidgetId;
-    AppDispatcher.updatedWidgets(_this.widgets);
+      _this.nextWidgetId = nextWidgetId;
+      AppDispatcher.updatedWidgets(_this.widgets);
 
-    AppDispatcher.bind(Events.addWidget, function (widget) {
-      _this.add(widget);
+      AppDispatcher.bind(Events.addWidget, function (widget) {
+        _this.add(widget);
+      });
+
+      AppDispatcher.bind(Events.removeWidget, function (widget) {
+        _this.remove(widget);
+      });
+
+      AppDispatcher.bind(Events.initWidget, function (instance) {
+        _this.instances.push(instance);
+      });
+
+      onReadyCallback();
     });
-
-    AppDispatcher.bind(Events.removeWidget, function (widget) {
-      _this.remove(widget);
-    });
-
-    AppDispatcher.bind(Events.initWidget, function (instance) {
-      _this.instances.push(instance);
-    });
-
-    onReadyCallback();
-  });
+  };
 
   log('info', 'Finish initializing Widgets.');
 };

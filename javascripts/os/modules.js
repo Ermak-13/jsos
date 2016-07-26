@@ -2,7 +2,7 @@ var AppDispatcher = require('./app_dispatcher'),
     Events = require('./events'),
     log = require('./actions/log');
 
-var Modules = function (onReadyCallback) {
+var Modules = function () {
   log('info', 'Start initializing Modules.');
 
   this.modules = {};
@@ -45,7 +45,6 @@ var Modules = function (onReadyCallback) {
   AppDispatcher.bind(Events.uninstallModule, function (name) {
     _this.remove(name);
   });
-  onReadyCallback();
 
   log('info', 'Finish initializing Modules.');
 };

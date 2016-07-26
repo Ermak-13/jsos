@@ -1,21 +1,26 @@
 var Settings = require('./settings'),
     Logger = require('./logger'),
     Storage = require('./storage'),
+    AppDispatcher = require('./app_dispatcher'),
     Modules = require('./modules'),
     Scripts = require('./scripts'),
     Widgets = require('./widgets');
 
 var Loader = function () {
   this.load = function (callback) {
-    global.Settings = new Settings({});
+    global.Settings = new Settings(global.settings || {});
     global.Logger = new Logger();
-    global.Storage = new Storage('chrome.local');
+    global.Storage = new Storage(global.storageType || 'chrome.local');
+    global.AppDispatcher = AppDispatcher;
 
-    global.Modules = new Modules(function () {
-      global.Scripts = new Scripts(function () {
-        global.Widgets = new Widgets(function () {
-          callback();
-        });
+    global.Modules = new Modules();
+
+    global.Scripts = new Scripts();
+    global.Scripts.load(function () {
+
+      global.Widgets = new Widgets();
+      global.Widgets.load(function () {
+        callback();
       });
     });
   };

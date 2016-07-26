@@ -25,7 +25,7 @@ var addScript = function (options) {
   document.body.appendChild(script);
 };
 
-var Scripts = function (onReadyCallback) {
+var Scripts = function () {
   log('info', 'Start initializing Scripts.');
 
   this.list = [];
@@ -61,25 +61,27 @@ var Scripts = function (onReadyCallback) {
     AppDispatcher.bind(Events.updatedScripts, callback);
   };
 
-  var _this = this;
-  global.Storage.get(settings.SCRIPTS_STORAGE_KEY, function (scripts) {
-    _this.list = scripts || [];
+  this.load = function (onReadyCallback) {
+    var _this = this;
+    global.Storage.get(settings.SCRIPTS_STORAGE_KEY, function (scripts) {
+      _this.list = scripts || [];
 
-    _.each(_this.list, function (script) {
-      addScript(script);
+      _.each(_this.list, function (script) {
+        addScript(script);
+      });
+      AppDispatcher.updatedScripts(_this.list);
+
+      AppDispatcher.bind(Events.installScript, function (script) {
+        _this.add(script);
+      });
+
+      AppDispatcher.bind(Events.uninstallScript, function (script) {
+        _this.remove(script);
+      });
+
+      onReadyCallback();
     });
-    AppDispatcher.updatedScripts(_this.list);
-
-    AppDispatcher.bind(Events.installScript, function (script) {
-      _this.add(script);
-    });
-
-    AppDispatcher.bind(Events.uninstallScript, function (script) {
-      _this.remove(script);
-    });
-
-    onReadyCallback();
-  });
+  };
 
   log('info', 'Finish initializing Scripts.');
 };
