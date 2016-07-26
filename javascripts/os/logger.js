@@ -15,6 +15,10 @@ var Logger = function () {
     return this.all()[index];
   };
 
+  this.updated = function (callback) {
+    AppDispatcher.bind(Events.updatedLogger, callback);
+  };
+
   var _this = this;
   AppDispatcher.bind(Events.log, function (level, message) {
     var createdAt = moment().unix();
@@ -24,6 +28,7 @@ var Logger = function () {
       message: message,
       createdAt: createdAt
     });
+    AppDispatcher.updatedLogger(_this.logs);
 
     console.log(
       sprintf(

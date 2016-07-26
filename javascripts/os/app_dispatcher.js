@@ -10,6 +10,10 @@ var AppDispatcher = function () {
     _this.trigger(Events.log, level, message);
   };
 
+  this.updatedLogger = function (logs) {
+    _this.trigger(Events.updatedLogger, logs);
+  };
+
   this.saveDesktop = function () {
     _this.trigger(Events.saveDesktop);
   };

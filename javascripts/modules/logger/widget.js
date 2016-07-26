@@ -3,9 +3,6 @@ var React = require('react'),
     sprintf = require('sprintf-js').sprintf,
 
     OS = require('os'),
-    AppDispatcher = OS.AppDispatcher,
-    Events = OS.Events,
-
     Mixins = OS.Mixins,
     Widget = OS.Widget,
     Configurator = OS.Configurator,
@@ -28,7 +25,7 @@ var _Widget = React.createClass({
 
   getInitialState: function () {
     return {
-      logs: [],
+      logs: global.Logger.all(),
       filterLevel: settings.DEFAULT_FILTER_LEVEL,
 
       size: settings.DEFAULT_SIZE,
@@ -49,16 +46,8 @@ var _Widget = React.createClass({
 
   componentWillMount: function () {
     this.init();
-  },
 
-  componentDidMount: function () {
-    AppDispatcher.bind(Events.log, function (level, message) {
-      var logs = this.state.logs;
-      logs.push({
-        level: level,
-        message: message
-      });
-
+    global.Logger.updated(function (logs) {
       this.setState({ logs: logs });
     }.bind(this));
   },
