@@ -2,24 +2,22 @@ var Mixins = OS.Mixins,
     Widget = OS.Widget,
     Configurator = OS.Configurator;
 
-// replace TODO by your name, code ...
+var settings = require('./settings');
+
 var _Widget = React.createClass({
   mixins: [Mixins.WidgetHelper],
 
   getDefaultProps: function () {
     return {
-      name: 'TODO',
-      configuratorRefName: 'configurator'
+      name: settings.WIDGET_NAME,
+      configuratorRefName: settings.CONFIGURATOR_REF_NAME
     };
   },
 
   getInitialState: function () {
     return {
-      size: {
-        width: '150px',
-        height: '100px'
-      },
-      position: global.Settings.get('default_position')
+      size: settings.DEFAULT_SIZE,
+      position: settings.DEFAULT_POSITION
     };
   },
 

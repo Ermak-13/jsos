@@ -1,6 +1,7 @@
-var Widget = require('./widget');
+var Widget = require('./widget'),
+    Shortcut = require('./shortcut');
 
-// replace TODO by your module name
 OS.installModule('TODO', {
-  Widget: Widget
+  Widget: Widget,
+  Shortcut: Shortcut
 });

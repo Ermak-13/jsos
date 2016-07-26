@@ -1,35 +1,71 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-var Widget = require('./widget');
+var Widget = require('./widget'),
+    Shortcut = require('./shortcut');
 
-// replace TODO by your module name
 OS.installModule('TODO', {
-  Widget: Widget
+  Widget: Widget,
+  Shortcut: Shortcut
 });
 
 
-},{"./widget":2}],2:[function(require,module,exports){
+},{"./shortcut":3,"./widget":4}],2:[function(require,module,exports){
 (function (global){
+var settings = {
+  WIDGET_NAME: 'TODO',
+  CONFIGURATOR_REF_NAME: 'configurator',
+
+  DEFAULT_SIZE: {
+    width: '150px',
+    height: '100px'
+  },
+
+  DEFAULT_POSITION: global.Settings.get('default_position')
+};
+
+module.exports = settings;
+
+
+}).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{}],3:[function(require,module,exports){
+var Link = OS.Link;
+
+var Shortcut = React.createClass({displayName: "Shortcut",
+  render: function () {
+    return (
+      React.createElement(Link, {
+        className:  this.props.className, 
+        onClick:  this.props.onClick}, 
+
+        React.createElement("span", {className: "fa fa-spinner"})
+      )
+    );
+  }
+});
+
+module.exports = Shortcut;
+
+
+},{}],4:[function(require,module,exports){
 var Mixins = OS.Mixins,
     Widget = OS.Widget,
     Configurator = OS.Configurator;
+
+var settings = require('./settings');
 
 var _Widget = React.createClass({displayName: "_Widget",
   mixins: [Mixins.WidgetHelper],
 
   getDefaultProps: function () {
     return {
-      name: 'TODO',
-      configuratorRefName: 'configurator'
+      name: settings.WIDGET_NAME,
+      configuratorRefName: settings.CONFIGURATOR_REF_NAME
     };
   },
 
   getInitialState: function () {
     return {
-      size: {
-        width: '150px',
-        height: '100px'
-      },
-      position: global.Settings.get('default_position')
+      size: settings.DEFAULT_SIZE,
+      position: settings.DEFAULT_POSITION
     };
   },
 
@@ -71,5 +107,4 @@ var _Widget = React.createClass({displayName: "_Widget",
 module.exports = _Widget;
 
 
-}).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}]},{},[1])
+},{"./settings":2}]},{},[1])
