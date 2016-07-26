@@ -143,7 +143,9 @@ var WidgetHelper = {
   },
 
   saveData: function () {
-    var getData = this.getData || function () {};
+    var getData = this.getData || function () {
+      return {};
+    };
 
     global.Storage.set(
       this.getDataStorageKey(),
