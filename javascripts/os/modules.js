@@ -33,7 +33,7 @@ var Modules = function () {
       return ;
     }
 
-    return Module.Widget;
+    return this.get(name).Widget;
   };
 
   this.getShortcut = function (name) {
