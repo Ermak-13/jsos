@@ -108,7 +108,8 @@ var WidgetHelper = {
   },
 
   handleConfigure: function (settings) {
-    this.setSettings(settings, this.saveSettings);
+    var setSettings = this.setSettings || this._setSettings;
+    setSettings(settings, this.saveSettings);
   },
 
   init: function () {
