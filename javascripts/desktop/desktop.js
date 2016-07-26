@@ -36,14 +36,16 @@ var Desktop = React.createClass({
 
   _createWidget: function (name, nextWidgetId) {
     var WidgetClass = global.Modules.getWidget(name);
-    return React.createElement(
-      WidgetClass,
-      {
-        key: nextWidgetId,
-        widgetName: name,
-        widgetId: nextWidgetId
-      }
-    );
+    if (WidgetClass) {
+      return React.createElement(
+        WidgetClass,
+        {
+          key: nextWidgetId,
+          widgetName: name,
+          widgetId: nextWidgetId
+        }
+      );
+    }
   },
 
   componentWillMount: function () {
@@ -75,9 +77,11 @@ var Desktop = React.createClass({
   },
 
   getWidgetsHTML: function () {
-    return _.map(this.state.widgets, function (widget) {
+    var widgetsHTML = _.map(this.state.widgets, function (widget) {
       return this._createWidget(widget.widgetName, widget.widgetId);
     }.bind(this));
+
+    return _.compact(widgetsHTML);
   }
 });
 

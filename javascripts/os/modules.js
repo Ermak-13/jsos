@@ -1,4 +1,7 @@
-var AppDispatcher = require('./app_dispatcher'),
+var _ = require('underscore'),
+    sprintf = require('sprintf-js').sprintf,
+
+    AppDispatcher = require('./app_dispatcher'),
     Events = require('./events'),
     log = require('./actions/log');
 
@@ -26,11 +29,34 @@ var Modules = function () {
   };
 
   this.getWidget = function (name) {
-    return this.get(name).Widget;
+    if (this.isNotInstalled(name)) {
+      return ;
+    }
+
+    return Module.Widget;
   };
 
   this.getShortcut = function (name) {
+    if (this.isNotInstalled(name)) {
+      return ;
+    }
+
     return this.get(name).Shortcut;
+  };
+
+  this.isInstalled = function (name) {
+    return !this.isNotInstalled(name);
+  };
+
+  this.isNotInstalled = function (name) {
+    var Module = this.get(name);
+
+    if (_.isEmpty(Module)) {
+      log('error', sprintf('Module %s - is not installed.', name));
+      return true;
+    }
+
+    return false;
   };
 
   this.updated = function (callback) {
