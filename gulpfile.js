@@ -13,8 +13,8 @@ gulp.task('server', ['webserver']);
 gulp.task('webserver', function () {
   gulp.src('./')
     .pipe(webserver({
+      host: 'localhost',
       port: 8008,
-      livereload: true,
       fallback: 'index.html'
     }));
 });

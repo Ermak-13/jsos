@@ -1,5 +1,3 @@
-var settings = require('../settings');
-
 var NavHelper = {
   isActive: function (tab) {
     return tab === this.state.tab;
@@ -11,9 +9,9 @@ var NavHelper = {
 
   getNavTabClassName: function (tab) {
     if (this.isActive(tab)) {
-      return settings.NAV_ACTIVE_TAB_CLASS_NAME;
+      return global.Settings.get('nav_active_tab_class_name');
     } else {
-      return settings.NAV_INACTIVE_TAB_CLASS_NAME;
+      return global.Settings.get('nav_inactive_tab_class_name');
     }
   },
 
@@ -29,7 +27,7 @@ var NavHelper = {
     }.bind(this));
 
     return (
-      <ul className={ settings.NAV_CLASS_NAME }>
+      <ul className={ global.Settings.get('nav_class_name') }>
         { liHTML }
       </ul>
     );
