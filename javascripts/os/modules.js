@@ -30,6 +30,7 @@ var Modules = function () {
 
   this.getWidget = function (name) {
     if (this.isNotInstalled(name)) {
+      log('error', sprintf('Module %s - is not installed.', name));
       return ;
     }
 
@@ -38,6 +39,7 @@ var Modules = function () {
 
   this.getShortcut = function (name) {
     if (this.isNotInstalled(name)) {
+      log('error', sprintf('Module %s - is not installed.', name));
       return ;
     }
 
@@ -50,13 +52,7 @@ var Modules = function () {
 
   this.isNotInstalled = function (name) {
     var Module = this.get(name);
-
-    if (_.isEmpty(Module)) {
-      log('error', sprintf('Module %s - is not installed.', name));
-      return true;
-    }
-
-    return false;
+    return _.isEmpty(Module);
   };
 
   this.updated = function (callback) {
