@@ -35,11 +35,6 @@ var settings = {
   DESKTOP_CONFIGURATOR_REF_NAME: 'configurator',
   DESKTOP_STYLES: {
     background: "url('images/default_bg_image.jpg') no-repeat center fixed",
-  },
-
-  DESKTOP_CONFIGURE_BTN_STYLES: {
-    right: '10px',
-    bottom: '10px'
   }
 };
 

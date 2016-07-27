@@ -17,7 +17,7 @@ var Events = {
   removeWidget: 'remove-widget',
   updatedWidgets: 'updated-widgets',
 
-  saveDesktop: 'save-desktop'
+  openDesktopConfigurator: 'open-desktop-configurator'
 };
 
 module.exports = Events;

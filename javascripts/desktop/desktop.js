@@ -3,9 +3,10 @@ var React = require('react'),
 
     OS = require('os'),
     Mixins = OS.Mixins,
+    AppDispatcher = OS.AppDispatcher,
+    Events = OS.Events,
 
-    Configurator = require('./configurator'),
-    ConfigureBtn = require('./configure_btn');
+    Configurator = require('./configurator');
 
 var Desktop = React.createClass({
   mixins: [Mixins.WidgetHelper],
@@ -22,15 +23,13 @@ var Desktop = React.createClass({
     return {
       widgets: global.Widgets.all(),
 
-      desktopStyles: global.Settings.get('desktop_styles'),
-      configureBtnStyles: global.Settings.get('desktop_configure_btn_styles')
+      desktopStyles: global.Settings.get('desktop_styles')
     };
   },
 
   getSettings: function () {
     return {
       desktopStyles: _.clone(this.state.desktopStyles),
-      configureBtnStyles: _.clone(this.state.configureBtnStyles)
     };
   },
 
@@ -56,17 +55,14 @@ var Desktop = React.createClass({
     global.Widgets.updated(function (widgets) {
       this.setState({ widgets: widgets });
     }.bind(this));
+
+    AppDispatcher.bind(Events.openDesktopConfigurator, this.openConfigurator);
   },
 
   render: function () {
     return (
       <div className="desktop" style={ this.state.desktopStyles }>
         { this.getWidgetsHTML() }
-
-        <ConfigureBtn
-          style={ this.state.configureBtnStyles }
-          onClick={ this.openConfigurator }
-        />
 
         <Configurator
           ref={ this.props.configuratorRefName }

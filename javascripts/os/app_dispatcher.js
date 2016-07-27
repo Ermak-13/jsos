@@ -14,8 +14,8 @@ var AppDispatcher = function () {
     _this.trigger(Events.updatedLogger, logs);
   };
 
-  this.saveDesktop = function () {
-    _this.trigger(Events.saveDesktop);
+  this.openDesktopConfigurator = function () {
+    _this.trigger(Events.openDesktopConfigurator);
   };
 
   this.installModule = function (name, module) {

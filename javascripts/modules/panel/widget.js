@@ -10,6 +10,7 @@ var React = require('react'),
 
     settings = require('./settings'),
     Configurator = require('./configurator'),
+    DesktopConfiguratorShortcut = require('./desktop_configurator_shortcut'),
     BookmarksShortcut = require('./bookmarks_shortcut'),
     HistoryShortcut = require('./history_shortcut'),
     DownloadsShortcut = require('./downloads_shortcut'),
@@ -43,6 +44,7 @@ var _Widget = React.createClass({
     var shortcuts = [];
 
     var tooltips = {
+      'DesktopConfiguratorShortcut': 'Desktop Configurator',
       'BookmarksShortcut': 'Chrome Bookmarks',
       'HistoryShortcut': 'Chrome History',
       'DownloadsShortcut': 'Chrome Downloads',
@@ -50,6 +52,7 @@ var _Widget = React.createClass({
     };
 
     _.each([
+      DesktopConfiguratorShortcut,
       BookmarksShortcut,
       HistoryShortcut,
       DownloadsShortcut
