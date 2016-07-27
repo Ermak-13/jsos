@@ -9,7 +9,7 @@ var Settings = function (settings) {
 
   this.get = function (key) {
     key = key.toUpperCase();
-    return this.settings[key];
+    return _.clone(this.settings[key]);
   };
 
   this.set = function (key, value) {
