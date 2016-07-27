@@ -66,6 +66,7 @@ gulp.task('build', function () {
 
   var files = [
     './COPYING',
+    './jquery-2.2.4.min.js',
     './jsos.css',
     './jsos.js',
     './manifest.json',
