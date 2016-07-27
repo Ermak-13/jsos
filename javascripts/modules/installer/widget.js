@@ -52,7 +52,9 @@ var _Widget = React.createClass({
     };
   },
 
-  componentDidMount: function () {
+  componentWillMount: function () {
+    this.init();
+
     Scripts.updated(function (scripts) {
       this.setState({
         scripts: scripts
