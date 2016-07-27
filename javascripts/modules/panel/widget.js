@@ -91,21 +91,27 @@ var _Widget = React.createClass({
   getPrevShortcutsArrow: function () {
     return {
       'left-vertical': settings.VERTICAL_PREV_SHORTCUTS_ARROW_STYLES,
-      'right-vertical': settings.VERTICAL_PREV_SHORTCUTS_ARROW_STYLES
+      'right-vertical': settings.VERTICAL_PREV_SHORTCUTS_ARROW_STYLES,
+      'top-horizontal': settings.HORIZONTAL_PREV_SHORTCUTS_ARROW_STYLES,
+      'bottom-horizontal': settings.HORIZONTAL_PREV_SHORTCUTS_ARROW_STYLES
     }[this.getPanelKey()];
   },
 
   getNextShortcutsArrow: function () {
     return {
       'left-vertical': settings.VERTICAL_NEXT_SHORTCUTS_ARROW_STYLES,
-      'right-vertical': settings.VERTICAL_NEXT_SHORTCUTS_ARROW_STYLES
+      'right-vertical': settings.VERTICAL_NEXT_SHORTCUTS_ARROW_STYLES,
+      'top-horizontal': settings.HORIZONTAL_NEXT_SHORTCUTS_ARROW_STYLES,
+      'bottom-horizontal': settings.HORIZONTAL_NEXT_SHORTCUTS_ARROW_STYLES
     }[this.getPanelKey()];
   },
 
-  getShortcutsContainerWrapper: function () {
+  getShortcutsContainerStyles: function () {
     return {
-      'left-vertical': settings.VERTICAL_SHORTCUTS_CONTAINER_WRAPPER_STYLES,
-      'right-vertical': settings.VERTICAL_SHORTCUTS_CONTAINER_WRAPPER_STYLES
+      'left-vertical': settings.VERTICAL_SHORTCUTS_CONTAINER_STYLES,
+      'right-vertical': settings.VERTICAL_SHORTCUTS_CONTAINER_STYLES,
+      'top-horizontal': settings.HORIZONTAL_SHORTCUTS_CONTAINER_STYLES,
+      'bottom-horizontal': settings.HORIZONTAL_SHORTCUTS_CONTAINER_STYLES
     }[this.getPanelKey()];
   },
 
@@ -148,20 +154,22 @@ var _Widget = React.createClass({
   },
 
   componentDidMount: function () {
-    var input = ReactDOM.findDOMNode(this.refs.panel),
-        $input = $(input);
+    var panel = ReactDOM.findDOMNode(this.refs.panel),
+        $panel = $(panel);
 
-    $input.find('.prev-shortcuts-arrow').on('click', function () {
-      $input.find('.shortcuts-container').animate({
-        'margin-top': '-=90'
-      }, 1000);
-    });
+    $panel.find('.prev-shortcuts-arrow').on('click', function () {
+      $panel.find('.shortcuts-container').animate(
+        settings.PREV_SHORTCUTS_ARROW_ANIMATE_PROPS[this.getPanelKey()],
+        settings.SHORTCUTS_ARROW_ANIMATE_DURATION
+      );
+    }.bind(this));
 
-    $input.find('.next-shortcuts-arrow').on('click', function () {
-      $input.find('.shortcuts-container').animate({
-        'margin-top': '+=90'
-      }, 1000);
-    });
+    $panel.find('.next-shortcuts-arrow').on('click', function () {
+      $panel.find('.shortcuts-container').animate(
+        settings.NEXT_SHORTCUTS_ARROW_ANIMATE_PROPS[this.getPanelKey()],
+        settings.SHORTCUTS_ARROW_ANIMATE_DURATION
+      );
+    }.bind(this));
   },
 
   render: function () {
@@ -176,10 +184,11 @@ var _Widget = React.createClass({
           <div className="arrow-up" />
         </div>
 
-        <div className="shortcuts-container-wrapper"
-          style={ this.getShortcutsContainerWrapper() }>
+        <div className="shortcuts-container-wrapper">
 
-          <div className="shortcuts-container">
+          <div className="shortcuts-container"
+            style={ this.getShortcutsContainerStyles() }>
+
             { this.state.shortcuts }
           </div>
         </div>

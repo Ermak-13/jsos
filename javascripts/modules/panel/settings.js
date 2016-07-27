@@ -29,21 +29,48 @@ var settings = {
   },
 
   VERTICAL_PREV_SHORTCUTS_ARROW_STYLES: {
-    position: 'absolute',
     width: '100%',
     top: 0
   },
 
+  HORIZONTAL_PREV_SHORTCUTS_ARROW_STYLES: {
+    height: '100%',
+    left: 0
+  },
+
   VERTICAL_NEXT_SHORTCUTS_ARROW_STYLES: {
-    position: 'absolute',
     width: '100%',
     bottom: 0
   },
 
-  VERTICAL_SHORTCUTS_CONTAINER_WRAPPER_STYLES: {
-    position: 'absolute',
-    overflow: 'hidden'
-  }
+  HORIZONTAL_NEXT_SHORTCUTS_ARROW_STYLES: {
+    height: '100%',
+    right: 0
+  },
+
+  VERTICAL_SHORTCUTS_CONTAINER_STYLES: {
+    marginLeft: 0
+  },
+
+  HORIZONTAL_SHORTCUTS_CONTAINER_STYLES: {
+    marginTop: 0
+  },
+
+  PREV_SHORTCUTS_ARROW_ANIMATE_PROPS: {
+    'left-vertical': { 'margin-top': '-=90' },
+    'right-vertical': { 'margin-top': '-=90'},
+    'top-horizontal': { 'margin-left': '-=90' },
+    'bottom-horizontal': { 'margin-left': '-=90' }
+  },
+
+  NEXT_SHORTCUTS_ARROW_ANIMATE_PROPS: {
+    'left-vertical': { 'margin-top': '+=90' },
+    'right-vertical': { 'margin-top': '+=90' },
+    'top-horizontal': { 'margin-left': '+=90' },
+    'bottom-horizontal': { 'margin-left': '+=90' }
+  },
+
+  SHORTCUTS_ARROW_ANIMATE_DURATION: 1000
 };
 
 module.exports = settings;

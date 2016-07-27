@@ -12,6 +12,7 @@
 
   .next-shortcuts-arrow,
   .prev-shortcuts-arrow {
+    position: absolute;
     background: $panel-arrow-container-bg-color;
     width: $panel-arrow-container-size;
     height: $panel-arrow-container-size;
@@ -39,11 +40,14 @@
   }
 
   .shortcuts-container-wrapper {
+    position: absolute;
+    overflow: hidden;
     top: $panel-shortcuts-container-wrapper-top;
     bottom: $panel-shortcuts-container-wrapper-bottom;
 
     .shortcuts-container {
       margin-top: $panel-arrow-container-size;
+      margin-left: $panel-arrow-container-size;
     }
   }
 
