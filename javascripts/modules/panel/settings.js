@@ -26,6 +26,23 @@ var settings = {
     width: '100%',
     left: 0,
     bottom: 0
+  },
+
+  VERTICAL_PREV_SHORTCUTS_ARROW_STYLES: {
+    position: 'absolute',
+    width: '100%',
+    top: 0
+  },
+
+  VERTICAL_NEXT_SHORTCUTS_ARROW_STYLES: {
+    position: 'absolute',
+    width: '100%',
+    bottom: 0
+  },
+
+  VERTICAL_SHORTCUTS_CONTAINER_WRAPPER_STYLES: {
+    position: 'absolute',
+    overflow: 'hidden'
   }
 };
 

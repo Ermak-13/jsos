@@ -10,6 +10,43 @@
   border-radius: $panel-border-radius;
   margin: 0;
 
+  .next-shortcuts-arrow,
+  .prev-shortcuts-arrow {
+    background: $panel-arrow-container-bg-color;
+    width: $panel-arrow-container-size;
+    height: $panel-arrow-container-size;
+    cursor: $panel-arrow-container-cursor;
+    text-align: $panel-arrow-container-text-align;
+    z-index: 9999;
+
+    &:hover {
+      background: $panel-arrow-container-hover-bg-color;
+    }
+
+    .arrow-up {
+      display: $panel-arrow-display;
+      border-left: $panel-arrow-size solid transparent;
+      border-right: $panel-arrow-size solid transparent;
+      border-bottom: $panel-arrow-size solid $panel-arrow-color;
+    }
+
+    .arrow-down {
+      display: $panel-arrow-display;
+      border-left: $panel-arrow-size solid transparent;
+      border-right: $panel-arrow-size solid transparent;
+      border-top: $panel-arrow-size solid $panel-arrow-color;
+    }
+  }
+
+  .shortcuts-container-wrapper {
+    top: $panel-shortcuts-container-wrapper-top;
+    bottom: $panel-shortcuts-container-wrapper-bottom;
+
+    .shortcuts-container {
+      margin-top: $panel-arrow-container-size;
+    }
+  }
+
   &:hover {
     background-color: $panel-hover-bg-color;
   }

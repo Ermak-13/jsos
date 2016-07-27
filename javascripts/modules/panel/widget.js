@@ -1,4 +1,5 @@
 var React = require('react'),
+    ReactDOM = require('react-dom'),
     _ = require('underscore'),
     sprintf = require('sprintf-js').sprintf,
 
@@ -87,6 +88,27 @@ var _Widget = React.createClass({
     }[this.getPanelKey()];
   },
 
+  getPrevShortcutsArrow: function () {
+    return {
+      'left-vertical': settings.VERTICAL_PREV_SHORTCUTS_ARROW_STYLES,
+      'right-vertical': settings.VERTICAL_PREV_SHORTCUTS_ARROW_STYLES
+    }[this.getPanelKey()];
+  },
+
+  getNextShortcutsArrow: function () {
+    return {
+      'left-vertical': settings.VERTICAL_NEXT_SHORTCUTS_ARROW_STYLES,
+      'right-vertical': settings.VERTICAL_NEXT_SHORTCUTS_ARROW_STYLES
+    }[this.getPanelKey()];
+  },
+
+  getShortcutsContainerWrapper: function () {
+    return {
+      'left-vertical': settings.VERTICAL_SHORTCUTS_CONTAINER_WRAPPER_STYLES,
+      'right-vertical': settings.VERTICAL_SHORTCUTS_CONTAINER_WRAPPER_STYLES
+    }[this.getPanelKey()];
+  },
+
   getPanelKey: function () {
     var _this = this,
         finder = function (keys) {
@@ -125,10 +147,48 @@ var _Widget = React.createClass({
     }.bind(this));
   },
 
+  componentDidMount: function () {
+    var input = ReactDOM.findDOMNode(this.refs.panel),
+        $input = $(input);
+
+    $input.find('.prev-shortcuts-arrow').on('click', function () {
+      $input.find('.shortcuts-container').animate({
+        'margin-top': '-=90'
+      }, 1000);
+    });
+
+    $input.find('.next-shortcuts-arrow').on('click', function () {
+      $input.find('.shortcuts-container').animate({
+        'margin-top': '+=90'
+      }, 1000);
+    });
+  },
+
   render: function () {
     return (
-      <div className="panel" style={ this.getPanelStyles() }>
-        { this.state.shortcuts }
+      <div className="panel"
+        ref="panel"
+        style={ this.getPanelStyles() }>
+
+        <div className="prev-shortcuts-arrow"
+          style={ this.getPrevShortcutsArrow() }>
+
+          <div className="arrow-up" />
+        </div>
+
+        <div className="shortcuts-container-wrapper"
+          style={ this.getShortcutsContainerWrapper() }>
+
+          <div className="shortcuts-container">
+            { this.state.shortcuts }
+          </div>
+        </div>
+
+        <div className="next-shortcuts-arrow"
+          style={ this.getNextShortcutsArrow() }>
+
+          <div className="arrow-down" />
+        </div>
 
         <Configurator
           ref={ this.props.configuratorRefName }

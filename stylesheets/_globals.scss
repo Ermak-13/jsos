@@ -20,6 +20,17 @@ $panel-hover-bg-color: $widget-hover-bg-color;
 $panel-border: none;
 $panel-border-radius: 0;
 
+$panel-arrow-container-bg-color: rgba(51, 51, 51, 0.85);
+$panel-arrow-container-hover-bg-color: rgba(17, 17, 17, 0.85);
+$panel-arrow-container-size: 25px;
+$panel-arrow-container-cursor: pointer;
+$panel-arrow-container-text-align: center;
+$panel-arrow-display: inline-block;
+$panel-arrow-size: 8px;
+$panel-arrow-color: #FFF;
+$panel-shortcuts-container-wrapper-top: 0;
+$panel-shortcuts-container-wrapper-bottom: 0;
+
 $panel-shortcut-size: 60px;
 $panel-shortcut-font-size: $desktop-configure-btn-size;
 $panel-shortcut-hover-size: $desktop-configure-btn-hover-size;
