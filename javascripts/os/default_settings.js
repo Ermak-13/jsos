@@ -34,7 +34,7 @@ var settings = {
   DESKTOP_NAME: 'desktop',
   DESKTOP_CONFIGURATOR_REF_NAME: 'configurator',
   DESKTOP_STYLES: {
-    background: "url('images/minion-hitman-rain-fog-dark.jpg') no-repeat center fixed",
+    background: "url('images/default_bg_image.jpg') no-repeat center fixed",
   },
 
   DESKTOP_CONFIGURE_BTN_STYLES: {
