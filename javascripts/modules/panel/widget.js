@@ -42,41 +42,75 @@ var _Widget = React.createClass({
   getShortcuts: function () {
     var shortcuts = [];
 
+    var tooltips = {
+      'BookmarksShortcut': 'Chrome Bookmarks',
+      'HistoryShortcut': 'Chrome History',
+      'DownloadsShortcut': 'Chrome Downloads',
+      'ConfigureBtn': 'Panel Configurator'
+    };
+
     _.each([
       BookmarksShortcut,
       HistoryShortcut,
       DownloadsShortcut
-    ], function (ShortcutClass) {
-      shortcuts.push(
-        React.createElement(ShortcutClass, {
+    ], function (ReactClass) {
+      shortcuts.push({
+        ReactClass: ReactClass,
+        props: {
           key: shortcuts.length,
           className: 'shortcut'
-        })
-      );
+        },
+        tooltip: tooltips[ReactClass.displayName]
+      });
     });
 
     _.each(global.Modules.all(), function (module, name) {
       if (name !== 'Panel') {
-        var Shortcut = module.Shortcut || DefaultShortcut;
-        shortcuts.push(
-          React.createElement(Shortcut, {
+        var ReactClass = module.Shortcut || DefaultShortcut;
+        shortcuts.push({
+          ReactClass: ReactClass,
+          props: {
             key: shortcuts.length,
             className: 'shortcut',
             onClick: function () {
               OS.addWidget(name);
             }
-          })
-        );
+          },
+          tooltip: name
+        });
       }
     });
 
-    shortcuts.push(React.createElement(ConfigureBtn, {
-      key: shortcuts.length,
-      className: 'shortcut',
-      onClick: this.openConfigurator
-    }));
+    shortcuts.push({
+      ReactClass: ConfigureBtn,
+      props: {
+        key: shortcuts.length,
+        className: 'shortcut',
+        onClick: this.openConfigurator
+      },
+      tooltip: tooltips[ConfigureBtn.displayName]
+    });
 
     return shortcuts;
+  },
+
+  _createShortcut: function (shortcut, i) {
+    var placement = {
+      'left-vertical': 'right',
+      'right-vertical': 'left',
+      'top-horizontal': 'bottom',
+      'bottom-horizontal': 'top'
+    }[this.getPanelKey()];
+
+    return React.createElement('div', {
+        key: i,
+        className: 'tooltip-container',
+        'data-toogle': 'tooltip',
+        'data-title': shortcut.tooltip,
+        'data-placement': placement,
+        'data-container': 'body'
+      }, React.createElement(shortcut.ReactClass, shortcut.props)
+    );
   },
 
   getPanelStyles: function () {
@@ -170,6 +204,8 @@ var _Widget = React.createClass({
         settings.SHORTCUTS_ARROW_ANIMATE_DURATION
       );
     }.bind(this));
+
+    $panel.find('.tooltip-container').tooltip();
   },
 
   render: function () {
@@ -189,7 +225,7 @@ var _Widget = React.createClass({
           <div className="shortcuts-container"
             style={ this.getShortcutsContainerStyles() }>
 
-            { this.state.shortcuts }
+            { this.getShortcutsHTML() }
           </div>
         </div>
 
@@ -207,6 +243,12 @@ var _Widget = React.createClass({
         />
       </div>
     );
+  },
+
+  getShortcutsHTML: function () {
+    return _.map(this.state.shortcuts, function (shortcut, i) {
+      return this._createShortcut(shortcut, i);
+    }.bind(this));
   }
 });
 
