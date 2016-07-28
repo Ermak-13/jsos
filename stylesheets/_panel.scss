@@ -18,6 +18,8 @@
     height: $panel-arrow-container-size;
     cursor: $panel-arrow-container-cursor;
     text-align: $panel-arrow-container-text-align;
+
+    vertical-align: middle;
     z-index: 9999;
 
     &:hover {
@@ -36,6 +38,25 @@
       border-left: $panel-arrow-size solid transparent;
       border-right: $panel-arrow-size solid transparent;
       border-top: $panel-arrow-size solid $panel-arrow-color;
+    }
+
+    // arrow vertical-align fix
+    .arrow-vafix {
+      line-height: $panel-shortcut-size;
+    }
+
+    .arrow-left {
+      display: $panel-arrow-display;
+      border-right: $panel-arrow-size solid $panel-arrow-color;
+      border-top: $panel-arrow-size solid transparent;
+      border-bottom: $panel-arrow-size solid transparent;
+    }
+
+    .arrow-right {
+      display: $panel-arrow-display;
+      border-left: $panel-arrow-size solid $panel-arrow-color;
+      border-top: $panel-arrow-size solid transparent;
+      border-bottom: $panel-arrow-size solid transparent;
     }
   }
 

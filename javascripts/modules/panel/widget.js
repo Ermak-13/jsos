@@ -217,14 +217,9 @@ var _Widget = React.createClass({
         ref="panel"
         style={ this.getPanelStyles() }>
 
-        <div className="prev-shortcuts-arrow"
-          style={ this.getPrevShortcutsArrow() }>
-
-          <div className="arrow-up" />
-        </div>
+        { this.getPrevShortcutsArrowHTML() }
 
         <div className="shortcuts-container-wrapper">
-
           <div className="shortcuts-container"
             style={ this.getShortcutsContainerStyles() }>
 
@@ -232,11 +227,7 @@ var _Widget = React.createClass({
           </div>
         </div>
 
-        <div className="next-shortcuts-arrow"
-          style={ this.getNextShortcutsArrow() }>
-
-          <div className="arrow-down" />
-        </div>
+        { this.getNextShortcutsArrowHTML() }
 
         <Configurator
           ref={ this.props.configuratorRefName }
@@ -244,6 +235,64 @@ var _Widget = React.createClass({
           settings={ this.getSettings() }
           onSubmit={ this.handleConfigure }
         />
+      </div>
+    );
+  },
+
+  getPrevShortcutsArrowHTML: function () {
+    var vArrow = function () {
+          return (
+            <div className="arrow-up" />
+          );
+        } (),
+        hArrow = function () {
+          return (
+            <div className="arrow-vafix">
+              <div className="arrow-left" />
+            </div>
+          );
+        } (),
+
+        arrow = {
+          'left-vertical': vArrow,
+          'right-vertical': vArrow,
+          'top-horizontal': hArrow,
+          'bottom-horizontal': hArrow
+        }[this.getPanelKey()];
+
+    return (
+      <div className="prev-shortcuts-arrow"
+        style={ this.getPrevShortcutsArrow() }>
+        { arrow }
+      </div>
+    );
+  },
+
+  getNextShortcutsArrowHTML: function () {
+    var vArrow = function () {
+          return (
+            <div className="arrow-down" />
+          );
+        } (),
+        hArrow = function () {
+          return (
+            <div className="arrow-vafix">
+              <div className="arrow-right" />
+            </div>
+          );
+        } (),
+
+        arrow = {
+          'left-vertical': vArrow,
+          'right-vertical': vArrow,
+          'top-horizontal': hArrow,
+          'bottom-horizontal': hArrow
+        }[this.getPanelKey()];
+
+    return (
+      <div className="next-shortcuts-arrow"
+        style={ this.getNextShortcutsArrow() }>
+        { arrow }
       </div>
     );
   },
