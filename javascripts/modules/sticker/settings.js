@@ -11,15 +11,17 @@ var settings = {
   DEFAULT_POSITION: global.Settings.get('default_position'),
 
   DEFAULT_WIDGET_STYLES: {
-    background: '#FFF',
-    borderRadius: 0
+    background: '#F8E71C',
+    borderRadius: 0,
+    padding: 0
   },
 
   DEFAULT_TEXTAREA_STYLES: {
     backgroundColor: 'rgba(255, 255, 255, 0)',
     width: '100%',
     height: DEFAULT_HEIGHT,
-    border: 'none'
+    border: 'none',
+    resize: 'none'
   }
 };
 
