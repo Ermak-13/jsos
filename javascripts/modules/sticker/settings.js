@@ -1,12 +1,10 @@
-var DEFAULT_HEIGHT = '180px';
-
 var settings = {
   WIDGET_NAME: 'sticker',
   CONFIGURATOR_REF_NAME: 'configurator',
 
   DEFAULT_SIZE: {
     width: '180px',
-    height: DEFAULT_HEIGHT
+    height: '180px'
   },
   DEFAULT_POSITION: global.Settings.get('default_position'),
 
@@ -16,10 +14,20 @@ var settings = {
     padding: 0
   },
 
+  FORM_STYLES: {
+    width: '100%',
+    height: '100%'
+  },
+
+  MESSAGE_FIELD_STYLES: {
+    width: '100%',
+    height: '100%'
+  },
+
   DEFAULT_TEXTAREA_STYLES: {
     backgroundColor: 'rgba(255, 255, 255, 0)',
     width: '100%',
-    height: DEFAULT_HEIGHT,
+    height: '100%',
     border: 'none',
     resize: 'none'
   }

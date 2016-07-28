@@ -13,6 +13,7 @@ var Form = React.createClass({
     return (
       <form
         className={ this.props.formClassName }
+        style={ this.props.style }
         onSubmit={ this.props.onSubmit }>
 
         { this.props.children }
@@ -31,7 +32,10 @@ var Field = React.createClass({
 
   render: function () {
     return (
-      <div className={ this.props.containerClassName }>
+      <div
+        className={ this.props.containerClassName }
+        style={ this.props.containerStyle }>
+
         <label className={ this.props.labelClassName }>
           { this.props.labelText }
           </label>

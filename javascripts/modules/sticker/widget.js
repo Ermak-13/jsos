@@ -62,9 +62,13 @@ var _Widget = React.createClass({
           onClickConfigureBtn={ this.openConfigurator }
         />
 
-          <IForm.Form>
+          <IForm.Form
+            style={ settings.FORM_STYLES }>
+
             <IForm.Field
+              containerStyle={ settings.MESSAGE_FIELD_STYLES }
               labelText="message">
+
               <Textarea
                 value={ this.state.value }
                 onChange={ this.handleChange }

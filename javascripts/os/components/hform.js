@@ -12,6 +12,7 @@ var Form = React.createClass({
     return (
       <form
         className={ this.props.formClassName }
+        style={ this.props.style }
         onSubmit={ this.props.onSubmit }>
 
         { this.props.children }
