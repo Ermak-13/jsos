@@ -198,12 +198,19 @@ var _Widget = React.createClass({
     $tooltips.tooltip();
   },
 
+  initCarousel: function ($panel) {
+    var type = _.find(['vertical', 'horizontal'], function (key) {
+      return this.state[key];
+    }.bind(this));
+    carousel($panel, type);
+  },
+
   componentDidUpdate: function () {
     var panel = ReactDOM.findDOMNode(this.refs.panel),
         $panel = $(panel);
 
     this.initTooltips($panel);
-    carousel($panel, this.getPanelKey());
+    this.initCarousel($panel);
   },
 
   componentDidMount: function () {
@@ -211,7 +218,7 @@ var _Widget = React.createClass({
         $panel = $(panel);
 
     this.initTooltips($panel, this.getPanelKey());
-    carousel($panel, this.getPanelKey());
+    this.initCarousel($panel);
   },
 
   render: function () {

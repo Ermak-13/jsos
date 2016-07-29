@@ -1,105 +1,35 @@
-var settings = require('./settings'),
+var sprintf = require('sprintf-js').sprintf,
+    settings = require('./settings');
 
-    convertPX = function (px) {
-      return parseInt(px, 10);
+var carousel =  function ($panel, type) {
+  var $prevArrow = $panel.find('.prev-shortcuts-arrow'),
+      $nextArrow = $panel.find('.next-shortcuts-arrow'),
+      $wrapper = $panel.find('.shortcuts-container-wrapper'),
+      $container = $panel.find('.shortcuts-container');
+
+  var prevArrowHandler = function () {
+    var handlers = {
+      'vertical': vPrevArrowHandler,
+      'horizontal': hPrevArrowHandler
     };
-
-var initCarousel =  function ($panel, type) {
-  $prevArrow = $panel.find('.prev-shortcuts-arrow'),
-  $nextArrow = $panel.find('.next-shortcuts-arrow'),
-  $wrapper = $panel.find('.shortcuts-container-wrapper'),
-  $container = $panel.find('.shortcuts-container'),
-
-  vInitContainer = function () {
-    var $shortcut = $container.find('.shortcut');
-    $container.css({
-      'height': $shortcut.length * convertPX($shortcut.css('height')),
-      'width': '100%'
-    });
-  },
-  vPrevArrowHandler = function () {
-    var distance = (
-      convertPX($container.css('height')) + convertPX($container.css('margin-top')) +
-      convertPX($nextArrow.css('height')) -  convertPX($wrapper.css('height'))
-    );
-
-    if (distance > 0) {
-      distance = _.min([distance, settings.SHORTCUTS_CONTAINER_MOVING_DISTANCE]);
-
-      $container.animate({
-        'margin-top': '-=' + distance
-      }, settings.SHORTCUTS_ARROW_ANIMATE_DURATION);
-    }
-  },
-  vNextArrowHandler = function () {
-    var distance = (
-      convertPX($prevArrow.css('height')) - convertPX($container.css('margin-top'))
-    );
-
-    if (distance > 0) {
-      distance = _.min([distance, settings.SHORTCUTS_CONTAINER_MOVING_DISTANCE]);
-
-      $container.animate({
-        'margin-top': '+=' + distance
-      }, settings.SHORTCUTS_ARROW_ANIMATE_DURATION);
-    }
-  },
-
-  hInitContainer = function () {
-    var $shortcut = $container.find('.shortcut');
-    $container.css({
-      'height': '100%',
-      'width': $shortcut.length * convertPX($shortcut.css('width'))
-    });
-  },
-  hPrevArrowHandler = function () {
-    var distance = (
-      convertPX($container.css('width')) + convertPX($container.css('margin-left')) +
-      convertPX($nextArrow.css('width')) - convertPX($wrapper.css('width'))
-    );
-
-    if (distance > 0) {
-      distance = _.min([distance, settings.SHORTCUTS_ARROW_ANIMATE_DURATION]);
-
-      $container.animate({
-        'margin-left': '-=' + distance,
-      }, settings.SHORTCUTS_ARROW_ANIMATE_DURATION);
-    }
-  },
-  hNextArrowHandler = function () {
-    var distance = (
-      convertPX($prevArrow.css('width')) - convertPX($container.css('margin-left'))
-    );
-
-    if (distance > 0) {
-      distance = _.min([distance, settings.SHORTCUTS_CONTAINER_MOVING_DISTANCE]);
-
-      $container.animate({
-        'margin-left': '+=' + distance
-      }, settings.SHORTCUTS_ARROW_ANIMATE_DURATION);
-    }
+    handlers[type]($wrapper, $container, $prevArrow, $nextArrow);
   };
 
-  var prevArrowHandler = {
-    'left-vertical': vPrevArrowHandler,
-    'right-vertical': vPrevArrowHandler,
-    'top-horizontal': hPrevArrowHandler,
-    'bottom-horizontal': hPrevArrowHandler
-  }[type];
+  var nextArrowHandler = function () {
+    var handlers = {
+      'vertical': vNextArrowHandler,
+      'horizontal': hNextArrowHandler
+    };
+    handlers[type]($wrapper, $container, $prevArrow, $nextArrow);
+  };
 
-  var nextArrowHandler = {
-    'left-vertical': vNextArrowHandler,
-    'right-vertical': vNextArrowHandler,
-    'top-horizontal': hNextArrowHandler,
-    'bottom-horizontal': hNextArrowHandler
-  }[type];
-
-  var initContainer = {
-    'left-vertical': vInitContainer,
-    'right-vertical': vInitContainer,
-    'top-horizontal': hInitContainer,
-    'bottom-horizontal': hInitContainer
-  }[type];
+  var initContainer = function () {
+    var inits = {
+      'vertical': vInitContainer,
+      'horizontal': hInitContainer
+    };
+    inits[type]($container);
+  };
 
   initContainer();
 
@@ -110,4 +40,94 @@ var initCarousel =  function ($panel, type) {
   $nextArrow.on('click', nextArrowHandler);
 };
 
-module.exports = initCarousel;
+
+var vInitContainer = function ($container) {
+      initContainer($container, 'height', { 'width': '100%' });
+    },
+
+    vPrevArrowHandler = function ($wrapper, $container, $prevArrow, $nextArrow) {
+      var distance = (
+        css($container, 'height') + css($container, 'margin-top') +
+        css($nextArrow, 'height') - css($wrapper, 'height')
+      );
+
+      if (distance > 0) {
+        vAnimate($container, distance, -1);
+      }
+    },
+
+    vNextArrowHandler = function ($wrapper, $container, $prevArrow, $nextArrow) {
+      var distance = css($prevArrow, 'height') - css($container, 'margin-top');
+
+      if (distance > 0) {
+        vAnimate($container, distance, 1);
+      }
+
+    },
+
+    hInitContainer = function ($container) {
+      initContainer($container, 'width', { 'height': '100%' });
+    },
+
+    hPrevArrowHandler = function ($wrapper, $container, $prevArrow, $nextArrow) {
+      var distance = (
+        css($container, 'width') + css($container, 'margin-left') +
+        css($nextArrow, 'width') - css($wrapper, 'width')
+      );
+
+      if (distance > 0) {
+        hAnimate($container, distance, -1);
+      }
+    },
+
+    hNextArrowHandler = function ($wrapper, $container, $prevArrow, $nextArrow) {
+      var distance = css($prevArrow, 'width') - css($container, 'margin-left');
+
+      if (distance > 0) {
+        hAnimate($container, distance, 1);
+      }
+    },
+
+    initContainer = function ($container, propName, cssProps) {
+      var $shortcut = $container.find('.shortcut'),
+          propValue = _.reduce($shortcut, function (memo, el) {
+            var $el = $(el);
+            return memo + css($el, propName);
+          }, 0);
+
+      cssProps[propName] = propValue;
+      $container.css(cssProps);
+    },
+
+    vAnimate = function ($container, distance, direction) {
+      animate($container, {
+        'margin-top': prepareDistance(distance, direction)
+      });
+    },
+
+    hAnimate = function ($container, distance, direction) {
+      animate($container, {
+        'margin-left': prepareDistance(distance, direction)
+      });
+    },
+
+    animate = function ($container, animateProps) {
+      $container.animate(animateProps, settings.SHORTCUTS_ARROW_ANIMATE_DURATION);
+    },
+
+    prepareDistance = function (distance, direction) {
+      distance = _.min([distance, settings.SHORTCUTS_CONTAINER_MOVING_DISTANCE]);
+
+      distance = distance * (direction || 1);
+      return sprintf('+=%s', distance);
+    },
+
+    css = function ($obj, prop) {
+      return convertPX($obj.css(prop));
+    },
+
+    convertPX = function (px) {
+      return parseInt(px, 10);
+    };
+
+module.exports = carousel;
