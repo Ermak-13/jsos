@@ -1,11 +1,11 @@
 var sprintf = require('sprintf-js').sprintf,
     settings = require('./settings');
 
-var carousel =  function ($panel, type) {
-  var $prevArrow = $panel.find('.prev-shortcuts-arrow'),
-      $nextArrow = $panel.find('.next-shortcuts-arrow'),
-      $wrapper = $panel.find('.shortcuts-container-wrapper'),
-      $container = $panel.find('.shortcuts-container');
+var carousel =  function ($carousel, type) {
+  var $prevArrow = $carousel.find('.prev-shortcuts-arrow'),
+      $nextArrow = $carousel.find('.next-shortcuts-arrow'),
+      $wrapper = $carousel.find('.shortcuts-container-wrapper'),
+      $container = $carousel.find('.shortcuts-container');
 
   var prevArrowHandler = function () {
     var handlers = {
