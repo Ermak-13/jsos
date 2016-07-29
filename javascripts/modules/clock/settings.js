@@ -12,10 +12,14 @@ var settings = {
   DEFAULT_POSITION: global.Settings.get('default_position'),
 
   DEFAULT_TIME_STYLES: {
-    height: '80px',
-    lineHeight: '80px',
     textAlign: 'center',
-    fontSize: '28px'
+    fontSize: '28px',
+    marginTop: '10px'
+  },
+
+  DEFAULT_LOCATION_STYLES: {
+    textAlign: 'center',
+    fontSize: '16px'
   }
 };
 

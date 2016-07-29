@@ -25,11 +25,13 @@ var _Widget = React.createClass({
       _moment: moment(),
       format: settings.DEFAULT_FORMAT,
       updatedInterval: settings.DEFAULT_UPDATED_INTERVAL,
+      location: null,
 
       size: settings.DEFAULT_SIZE,
       position: settings.DEFAULT_POSITION,
       widgetStyles: settings.DEFAULT_WIDGET_STYLES,
-      timeStyles: settings.DEFAULT_TIME_STYLES
+      timeStyles: settings.DEFAULT_TIME_STYLES,
+      locationStyles: settings.DEFAULT_LOCATION_STYLES
     };
   },
 
@@ -46,10 +48,12 @@ var _Widget = React.createClass({
     return {
       format: this.state.format,
       updatedInterval: this.state.updatedInterval,
+      location: this.state.location,
 
       size: _.clone(this.state.size),
       position: _.clone(this.state.position),
-      timeStyles: _.clone(this.state.timeStyles)
+      timeStyles: _.clone(this.state.timeStyles),
+      locationStyles: _.clone(this.state.locationStyles)
     };
   },
 
@@ -107,6 +111,8 @@ var _Widget = React.createClass({
           <div style={ this.state.timeStyles }>
             { this.getTime() }
           </div>
+
+          { this.getLocationHTML() }
         </Widget.Body>
 
         <Configurator
@@ -117,6 +123,16 @@ var _Widget = React.createClass({
         />
       </Widget.Widget>
     );
+  },
+
+  getLocationHTML: function () {
+    if (this.state.location) {
+      return (
+        <div style={ this.state.locationStyles }>
+          { this.state.location }
+        </div>
+      );
+    }
   }
 });
 

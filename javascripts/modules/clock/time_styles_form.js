@@ -10,8 +10,7 @@ var TimeStylesForm = React.createClass({
     var settings = _.extend(
       _.clone(this.props.settings),
       {
-        height: this.refs.height.getValue(),
-        lineHeight: this.refs.lineHeight.getValue(),
+        marginTop: this.refs.marginTop.getValue(),
         fontSize: this.refs.fontSize.getValue()
       }
     );
@@ -25,20 +24,11 @@ var TimeStylesForm = React.createClass({
     return (
       <HForm.Form onSubmit={ this.handleSubmit }>
         <HForm.Field
-          labelText="height:">
+          labelText="margin top:">
 
           <Input
-            ref="height"
-            value={ settings.height }
-          />
-        </HForm.Field>
-
-        <HForm.Field
-          labelText="line height:">
-
-          <Input
-            ref="lineHeight"
-            value={ settings.lineHeight }
+            ref="marginTop"
+            value={ settings.marginTop }
           />
         </HForm.Field>
 

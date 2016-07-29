@@ -118,7 +118,7 @@ var _Widget = React.createClass({
     }[this.getPanelKey()];
   },
 
-  getPrevShortcutsArrow: function () {
+  getPrevShortcutsArrowStyles: function () {
     return {
       'left-vertical': settings.VERTICAL_PREV_SHORTCUTS_ARROW_STYLES,
       'right-vertical': settings.VERTICAL_PREV_SHORTCUTS_ARROW_STYLES,
@@ -127,7 +127,7 @@ var _Widget = React.createClass({
     }[this.getPanelKey()];
   },
 
-  getNextShortcutsArrow: function () {
+  getNextShortcutsArrowStyles: function () {
     return {
       'left-vertical': settings.VERTICAL_NEXT_SHORTCUTS_ARROW_STYLES,
       'right-vertical': settings.VERTICAL_NEXT_SHORTCUTS_ARROW_STYLES,
@@ -272,7 +272,7 @@ var _Widget = React.createClass({
 
     return (
       <div className="prev-shortcuts-arrow"
-        style={ this.getPrevShortcutsArrow() }>
+        style={ this.getPrevShortcutsArrowStyles() }>
         { arrow }
       </div>
     );
@@ -301,7 +301,7 @@ var _Widget = React.createClass({
 
     return (
       <div className="next-shortcuts-arrow"
-        style={ this.getNextShortcutsArrow() }>
+        style={ this.getNextShortcutsArrowStyles() }>
         { arrow }
       </div>
     );

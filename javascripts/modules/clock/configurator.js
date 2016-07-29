@@ -74,7 +74,7 @@ var _Configurator = React.createClass({
       },
 
       timeStyles: {
-        navText: 'Time Styles',
+        navText: 'Styles',
         content: function () {
           return (
             <TimeStylesForm

@@ -11,7 +11,8 @@ var TimeConfigsForm = React.createClass({
       _.clone(this.props.settings),
       {
         format: this.refs.format.getValue(),
-        updatedInterval: this.refs.updatedInterval.getValue()
+        updatedInterval: this.refs.updatedInterval.getValue(),
+        location: this.refs.location.getValue()
       }
     );
 
@@ -39,6 +40,15 @@ var TimeConfigsForm = React.createClass({
             type="number"
             ref="updatedInterval" 
             value={ settings.updatedInterval }
+          />
+        </HForm.Field>
+
+        <HForm.Field
+          labelText="location label:">
+
+          <Input
+            ref="location"
+            value={ settings.location }
           />
         </HForm.Field>
 
