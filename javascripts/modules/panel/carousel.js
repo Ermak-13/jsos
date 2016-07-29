@@ -1,6 +1,9 @@
 var sprintf = require('sprintf-js').sprintf,
+    $ = require('jquery'),
     settings = require('./settings');
 
+// disabling click handlers when running animation
+// global variable of this file. Yeap, it is not good :(
 var disabled = false;
 
 var carousel =  function ($carousel, type) {
@@ -88,6 +91,8 @@ var vInitContainer = function ($container) {
 
       if (distance > 0) {
         hAnimate($container, distance, -1);
+      } else {
+        disabled = false;
       }
     },
 
@@ -96,6 +101,8 @@ var vInitContainer = function ($container) {
 
       if (distance > 0) {
         hAnimate($container, distance, 1);
+      } else {
+        disabled = false;
       }
     },
 
