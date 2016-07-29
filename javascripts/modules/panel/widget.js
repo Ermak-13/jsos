@@ -99,19 +99,11 @@ var _Widget = React.createClass({
   },
 
   _createShortcut: function (shortcut, i) {
-    var placement = {
-      'left-vertical': 'right',
-      'right-vertical': 'left',
-      'top-horizontal': 'bottom',
-      'bottom-horizontal': 'top'
-    }[this.getPanelKey()];
-
     return React.createElement('div', {
         key: i,
         className: 'tooltip-container',
         'data-toogle': 'tooltip',
         'data-title': shortcut.tooltip,
-        'data-placement': placement,
         'data-container': 'body'
       }, React.createElement(shortcut.ReactClass, shortcut.props)
     );
@@ -193,9 +185,15 @@ var _Widget = React.createClass({
 
   initTooltips: function ($panel) {
     var $tooltips = $panel.find('.tooltip-container');
-
     $tooltips.tooltip('destroy');
-    $tooltips.tooltip();
+
+    var placement = {
+      'left-vertical': 'right',
+      'right-vertical': 'left',
+      'top-horizontal': 'bottom',
+      'bottom-horizontal': 'top'
+    }[this.getPanelKey()];
+    $tooltips.tooltip({ placement: placement });
   },
 
   initCarousel: function ($panel) {
