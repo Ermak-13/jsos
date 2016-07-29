@@ -70,6 +70,7 @@ var settings = {
     'bottom-horizontal': { 'margin-left': '+=90' }
   },
 
+  SHORTCUTS_CONTAINER_MOVING_DISTANCE: 90,  //px
   SHORTCUTS_ARROW_ANIMATE_DURATION: 1000
 };
 

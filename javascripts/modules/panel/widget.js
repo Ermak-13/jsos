@@ -15,7 +15,8 @@ var React = require('react'),
     HistoryShortcut = require('./history_shortcut'),
     DownloadsShortcut = require('./downloads_shortcut'),
     DefaultShortcut = require('./default_shortcut'),
-    ConfigureBtn = require('./configure_btn');
+    ConfigureBtn = require('./configure_btn'),
+    carousel = require('./carousel');
 
 var _Widget = React.createClass({
   mixins: [Mixins.WidgetHelper],
@@ -190,25 +191,27 @@ var _Widget = React.createClass({
     }.bind(this));
   },
 
+  initTooltips: function ($panel) {
+    var $tooltips = $panel.find('.tooltip-container');
+
+    $tooltips.tooltip('destroy');
+    $tooltips.tooltip();
+  },
+
+  componentDidUpdate: function () {
+    var panel = ReactDOM.findDOMNode(this.refs.panel),
+        $panel = $(panel);
+
+    this.initTooltips($panel);
+    carousel($panel, this.getPanelKey());
+  },
+
   componentDidMount: function () {
     var panel = ReactDOM.findDOMNode(this.refs.panel),
         $panel = $(panel);
 
-    $panel.find('.prev-shortcuts-arrow').on('click', function () {
-      $panel.find('.shortcuts-container').animate(
-        settings.PREV_SHORTCUTS_ARROW_ANIMATE_PROPS[this.getPanelKey()],
-        settings.SHORTCUTS_ARROW_ANIMATE_DURATION
-      );
-    }.bind(this));
-
-    $panel.find('.next-shortcuts-arrow').on('click', function () {
-      $panel.find('.shortcuts-container').animate(
-        settings.NEXT_SHORTCUTS_ARROW_ANIMATE_PROPS[this.getPanelKey()],
-        settings.SHORTCUTS_ARROW_ANIMATE_DURATION
-      );
-    }.bind(this));
-
-    $panel.find('.tooltip-container').tooltip();
+    this.initTooltips($panel, this.getPanelKey());
+    carousel($panel, this.getPanelKey());
   },
 
   render: function () {
@@ -224,6 +227,8 @@ var _Widget = React.createClass({
             style={ this.getShortcutsContainerStyles() }>
 
             { this.getShortcutsHTML() }
+
+            <div className="clearfix" />
           </div>
         </div>
 
