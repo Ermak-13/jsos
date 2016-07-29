@@ -1,6 +1,8 @@
 var sprintf = require('sprintf-js').sprintf,
     settings = require('./settings');
 
+var disabled = false;
+
 var carousel =  function ($carousel, type) {
   var $prevArrow = $carousel.find('.prev-shortcuts-arrow'),
       $nextArrow = $carousel.find('.next-shortcuts-arrow'),
@@ -8,6 +10,9 @@ var carousel =  function ($carousel, type) {
       $container = $carousel.find('.shortcuts-container');
 
   var prevArrowHandler = function () {
+    if (disabled) return ;
+    disabled = true;
+
     var handlers = {
       'vertical': vPrevArrowHandler,
       'horizontal': hPrevArrowHandler
@@ -16,6 +21,9 @@ var carousel =  function ($carousel, type) {
   };
 
   var nextArrowHandler = function () {
+    if (disabled) return ;
+    disabled = true;
+
     var handlers = {
       'vertical': vNextArrowHandler,
       'horizontal': hNextArrowHandler
@@ -53,6 +61,8 @@ var vInitContainer = function ($container) {
 
       if (distance > 0) {
         vAnimate($container, distance, -1);
+      } else {
+        disabled = false;
       }
     },
 
@@ -61,8 +71,9 @@ var vInitContainer = function ($container) {
 
       if (distance > 0) {
         vAnimate($container, distance, 1);
+      } else {
+        disabled = false;
       }
-
     },
 
     hInitContainer = function ($container) {
@@ -112,7 +123,11 @@ var vInitContainer = function ($container) {
     },
 
     animate = function ($container, animateProps) {
-      $container.animate(animateProps, settings.SHORTCUTS_ARROW_ANIMATE_DURATION);
+      $container.animate(
+        animateProps,
+        settings.SHORTCUTS_ARROW_ANIMATE_DURATION,
+        function () { disabled = false; }
+      );
     },
 
     prepareDistance = function (distance, direction) {
