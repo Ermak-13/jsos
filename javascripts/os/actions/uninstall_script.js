@@ -5,7 +5,7 @@ var sprintf = require('sprintf-js').sprintf,
     log = require('./log');
 
 var uninstallScript = function (script) {
-  log('info', sprintf('uninstall script %s.', JSON.stringify(script)));
+  log('info', sprintf('uninstallScript %s.', JSON.stringify(script)));
   AppDispatcher.uninstallScript(script);
 };
 

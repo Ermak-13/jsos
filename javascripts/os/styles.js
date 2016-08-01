@@ -61,6 +61,10 @@ var Styles = function () {
       _this.add(style);
     });
 
+    AppDispatcher.bind(Events.uninstallStyle, function (style) {
+      _this.remove(style);
+    });
+
     onReadyCallback();
   };
 
