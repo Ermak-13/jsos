@@ -48,6 +48,10 @@ var AppDispatcher = function () {
     this.trigger(Events.uninstallStyle, style);
   };
 
+  this.updatedStyles = function (styles) {
+    this.trigger(Events.updatedStyles, styles);
+  };
+
   this.initWidget = function (widget) {
     this.trigger(Events.initWidget, widget);
   };

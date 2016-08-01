@@ -42,16 +42,26 @@ var Styles = function () {
     return this.list;
   };
 
+  this.get = function (index) {
+    return this.all()[index];
+  };
+
   this.add = function (style) {
     var _this = this;
 
-    addStyle(_.clone(style), function () {
+    addStyle(_.clone(style), function (style) {
       _this.list.push(style);
+      AppDispatcher.updatedStyles(_this.list);
     });
   };
 
   this.remove = function (style) {
     this.list = _.without(this.list, style);
+    AppDispatcher.updatedStyles(this.list);
+  };
+
+  this.updated = function (callback) {
+    AppDispatcher.bind(Events.updatedStyles, callback);
   };
 
   this.load = function (onReadyCallback) {
