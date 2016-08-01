@@ -20,11 +20,15 @@ var Loader = function () {
     global.Scripts.load(function () {
 
       global.Styles = new Styles();
+      global.Styles.load(function () {
 
-      global.Widgets = new Widgets();
-      global.Widgets.load(function () {
-        callback();
+        global.Widgets = new Widgets();
+        global.Widgets.load(function () {
+          callback();
+        });
+
       });
+
     });
   };
 };

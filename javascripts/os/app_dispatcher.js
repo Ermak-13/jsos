@@ -42,6 +42,10 @@ var AppDispatcher = function () {
     _this.trigger(Events.updatedScripts, scripts);
   };
 
+  this.installStyle = function (style) {
+    _this.trigger(Events.installStyle, style);
+  };
+
   this.initWidget = function (widget) {
     _this.trigger(Events.initWidget, widget);
   };

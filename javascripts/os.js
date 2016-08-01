@@ -32,6 +32,8 @@ var OS = {
   installScript: require('./os/actions/install_script'),
   uninstallScript: require('./os/actions/uninstall_script'),
 
+  installStyle: require('./os/actions/install_style'),
+
   addWidget: require('./os/actions/add_widget'),
   removeWidget: require('./os/actions/remove_widget'),
 

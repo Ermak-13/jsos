@@ -12,6 +12,10 @@ var Events = {
   uninstallScript: 'uninstall-script',
   updatedScripts: 'updated-scripts',
 
+  installStyle: 'install-style',
+  uninstallStyle: 'uninstall-style',
+  updatedStyles: 'updated-styles',
+
   addWidget: 'add-widget',
   initWidget: 'init-widget',
   removeWidget: 'remove-widget',
