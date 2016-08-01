@@ -4,6 +4,7 @@ var Settings = require('./settings'),
     AppDispatcher = require('./app_dispatcher'),
     Modules = require('./modules'),
     Scripts = require('./scripts'),
+    Styles = require('./styles'),
     Widgets = require('./widgets');
 
 var Loader = function () {
@@ -17,6 +18,8 @@ var Loader = function () {
 
     global.Scripts = new Scripts();
     global.Scripts.load(function () {
+
+      global.Styles = new Styles();
 
       global.Widgets = new Widgets();
       global.Widgets.load(function () {

@@ -17,7 +17,7 @@ var download = function (url, callbacks, options) {
         log('info', 'OS download - success');
         callbacks.success(xhr.responseText);
       } else {
-        log('info', sprintf('OS download - error %s', xhr.status));
+        log('info', sprintf('OS download - %s, error %s', url, xhr.status));
         errorCallbak(xhr);
       }
     };
