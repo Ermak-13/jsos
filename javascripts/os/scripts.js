@@ -1,7 +1,6 @@
 var _ = require('underscore'),
     sprintf = require('sprintf-js').sprintf,
 
-    settings = require('./settings'),
     AppDispatcher = require('./app_dispatcher'),
     Events = require('./events'),
 
@@ -42,7 +41,7 @@ var Scripts = function () {
     this.list.push(script);
 
     var _this = this;
-    global.Storage.set(settings.SCRIPTS_STORAGE_KEY, _this.list, function () {
+    global.Storage.set(global.Settings.get('scripts_storage_key'), _this.list, function () {
       addScript(script);
       AppDispatcher.updatedScripts(_this.list);
     });
@@ -52,7 +51,7 @@ var Scripts = function () {
     this.list = _.without(this.list, script);
 
     var _this = this;
-    global.Storage.set(settings.SCRIPTS_STORAGE_KEY, _this.list, function () {
+    global.Storage.set(global.Settings.get('scripts_storage_key'), _this.list, function () {
       AppDispatcher.updatedScripts(_this.list);
     });
   };
@@ -63,8 +62,8 @@ var Scripts = function () {
 
   this.load = function (onReadyCallback) {
     var _this = this;
-    global.Storage.get(settings.SCRIPTS_STORAGE_KEY, function (scripts) {
-      _this.list = scripts || [];
+    global.Storage.get(global.Settings.get('scripts_storage_key'), function (scripts) {
+      _this.list = scripts || _this.list;
 
       _.each(_this.list, function (script) {
         addScript(script);

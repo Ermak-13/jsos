@@ -27,6 +27,7 @@ var settings = {
   DESKTOP_STORAGE_KEY: 'desktop',
   WIDGETS_STORAGE_KEY: 'widgets',
   SCRIPTS_STORAGE_KEY: 'scripts',
+  STYLES_STORAGE_KEY: 'styles',
 
   WIDGET_DATA_STORAGE_KEY: 'widget-%(name)s-data',
   WIDGET_STORAGE_KEY: 'widget-%(id)s-settings',

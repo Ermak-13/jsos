@@ -7,6 +7,8 @@ var _ = require('underscore'),
     log = require('./actions/log');
 
 var addStyle = function (options, callback) {
+  callback = callback || function () {};
+
   var style = document.createElement('style');
   style.setAttribute('type', 'text/css');
 
@@ -51,13 +53,20 @@ var Styles = function () {
 
     addStyle(_.clone(style), function (style) {
       _this.list.push(style);
-      AppDispatcher.updatedStyles(_this.list);
+
+      global.Storage.set(global.Settings.get('styles_storage_key'), _this.list, function () {
+        AppDispatcher.updatedStyles(_this.list);
+      });
     });
   };
 
   this.remove = function (style) {
     this.list = _.without(this.list, style);
-    AppDispatcher.updatedStyles(this.list);
+
+    var _this = this;
+    global.Storage.set(global.Settings.get('styles_storage_key'), this.list, function () {
+      AppDispatcher.updatedStyles(_this.list);
+    });
   };
 
   this.updated = function (callback) {
@@ -67,15 +76,23 @@ var Styles = function () {
   this.load = function (onReadyCallback) {
     var _this = this;
 
-    AppDispatcher.bind(Events.installStyle, function (style) {
-      _this.add(style);
-    });
+    global.Storage.get(global.Settings.get('styles_storage_key'), function (styles) {
+      _this.list = styles || _this.list;
+      _.each(_this.list, function (style) {
+        addStyle(style);
+      });
+      AppDispatcher.updatedStyles(_this.list);
 
-    AppDispatcher.bind(Events.uninstallStyle, function (style) {
-      _this.remove(style);
-    });
+      AppDispatcher.bind(Events.installStyle, function (style) {
+        _this.add(style);
+      });
 
-    onReadyCallback();
+      AppDispatcher.bind(Events.uninstallStyle, function (style) {
+        _this.remove(style);
+      });
+
+      onReadyCallback();
+    });
   };
 
   log('info', 'Finish initializing Styles.');
