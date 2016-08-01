@@ -2,7 +2,7 @@ var modules = {
   React: require('react'),
   ReactDOM: require('react-dom'),
   _: require('underscore'),
-  moment: require('moment'),
+  moment: require('moment-timezone'),
 
   OS: require('os')
 };

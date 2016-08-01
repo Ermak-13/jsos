@@ -12,7 +12,8 @@ var TimeConfigsForm = React.createClass({
       {
         format: this.refs.format.getValue(),
         updatedInterval: this.refs.updatedInterval.getValue(),
-        location: this.refs.location.getValue()
+        location: this.refs.location.getValue(),
+        timezone: this.refs.timezone.getValue()
       }
     );
 
@@ -49,6 +50,15 @@ var TimeConfigsForm = React.createClass({
           <Input
             ref="location"
             value={ settings.location }
+          />
+        </HForm.Field>
+
+        <HForm.Field
+          labelText="timezone:">
+
+          <Input
+            ref="timezone"
+            value={ settings.timezone }
           />
         </HForm.Field>
 

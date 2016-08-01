@@ -1,5 +1,5 @@
 var React = require('react'),
-    moment = require('moment'),
+    moment = require('moment-timezone'),
     _ = require('underscore'), 
     OS = require('os'),
 
@@ -25,7 +25,9 @@ var _Widget = React.createClass({
       _moment: moment(),
       format: settings.DEFAULT_FORMAT,
       updatedInterval: settings.DEFAULT_UPDATED_INTERVAL,
+
       location: null,
+      timezone: moment.tz.guess(),
 
       size: settings.DEFAULT_SIZE,
       position: settings.DEFAULT_POSITION,
@@ -49,6 +51,7 @@ var _Widget = React.createClass({
       format: this.state.format,
       updatedInterval: this.state.updatedInterval,
       location: this.state.location,
+      timezone: this.state.timezone,
 
       size: _.clone(this.state.size),
       position: _.clone(this.state.position),
@@ -58,9 +61,9 @@ var _Widget = React.createClass({
   },
 
   getTime: function () {
-    return this.state._moment.format(
-      this.state.format
-    );
+    return this.state._moment
+           .tz(this.state.timezone)
+           .format(this.state.format);
   },
 
   refreshInterval: function () {
