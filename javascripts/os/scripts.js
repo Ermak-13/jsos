@@ -13,16 +13,19 @@ var addScript = function (options) {
   var script = document.createElement('script');
   script.setAttribute('type', 'text/javascript');
 
-  if (options.src) {
-    script.setAttribute('src', options.src);
-  }
-
   if (options.text) {
     log('warning', sprintf('addScript - eval %s', options.text));
     eval(options.text);
+
+    return ;
   }
 
-  document.body.appendChild(script);
+  if (options.url) {
+    script.setAttribute('src', options.url);
+    document.body.appendChild(script);
+
+    return ;
+  }
 };
 
 var Scripts = function () {

@@ -4,17 +4,37 @@ var sprintf = require('sprintf-js').sprintf,
     Events = require('../events'),
 
     isUrl = require('./is_url'),
+    download = require('./download'),
     log = require('./log');
 
 var installScript = function (url) {
-  if (!isUrl(url)) {
-    log('warning', 'installScript - argument is not url.');
-  }
-
   log('info', sprintf('install script %s.', url));
+
+  if (isUrl(url) && global.Settings.get('scripts_is_downloadable')) {
+    installDownloadableScript(url);
+  } else {
+    installRemoteScript(url);
+  }
+};
+
+var installDownloadableScript = function (url) {
+  download(url, {
+    success: function (text) {
+      var script = {
+        url: url,
+        text: text
+      };
+
+      AppDispatcher.installScript(script);
+    }
+  });
+};
+
+var installRemoteScript = function (url) {
   var script = {
-    src: url
+    url: url
   };
+
   AppDispatcher.installScript(script);
 };
 

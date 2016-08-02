@@ -6,33 +6,18 @@ var _ = require('underscore'),
     download = require('./actions/download'),
     log = require('./actions/log');
 
-var addStyle = function (options, callback) {
-  callback = callback || function () {};
-
+var addStyle = function (options) {
   var style = document.createElement('style');
   style.setAttribute('type', 'text/css');
 
-  if (options.content) {
-    style.innerHTML = options.content;
+  if (options.text) {
+    style.innerHTML = options.text;
     document.body.appendChild(style);
 
-    callback(options);
     return ;
   }
 
-  if (options.url) {
-    download(options.url, {
-      success: function (content) {
-        style.innerHTML = content;
-        options.content = content;
-
-        document.body.appendChild(style);
-        callback(options);
-      }
-    });
-
-    return ;
-  }
+  return ;
 };
 
 var Styles = function () {
@@ -49,14 +34,12 @@ var Styles = function () {
   };
 
   this.add = function (style) {
+    this.list.push(style);
+    addStyle(style);
+
     var _this = this;
-
-    addStyle(_.clone(style), function (style) {
-      _this.list.push(style);
-
-      global.Storage.set(global.Settings.get('styles_storage_key'), _this.list, function () {
-        AppDispatcher.updatedStyles(_this.list);
-      });
+    global.Storage.set(global.Settings.get('styles_storage_key'), this.list, function () {
+      AppDispatcher.updatedStyles(_this.list);
     });
   };
 
@@ -75,7 +58,6 @@ var Styles = function () {
 
   this.load = function (onReadyCallback) {
     var _this = this;
-
     global.Storage.get(global.Settings.get('styles_storage_key'), function (styles) {
       _this.list = styles || _this.list;
       _.each(_this.list, function (style) {

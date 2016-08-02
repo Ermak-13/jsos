@@ -3,6 +3,14 @@ var _ = require('underscore');
 var settings = {
   STORAGE_TYPE: 'chrome.local',
 
+  DESKTOP_STORAGE_KEY: 'desktop',
+  WIDGETS_STORAGE_KEY: 'widgets',
+  SCRIPTS_STORAGE_KEY: 'scripts',
+  STYLES_STORAGE_KEY: 'styles',
+
+  SCRIPTS_IS_DOWNLOADABLE: true,
+  STYLES_IS_DOWNLOADABLE: true,
+
   DEFAULT_POSITION: {
     xSide: 'left',
     left: '70px',
@@ -23,11 +31,6 @@ var settings = {
   NAV_CLASS_NAME: 'nav nav-tabs mini-nav',
 
   DEFAULT_SETTINGS_DIALOG_NAME: 'default',
-
-  DESKTOP_STORAGE_KEY: 'desktop',
-  WIDGETS_STORAGE_KEY: 'widgets',
-  SCRIPTS_STORAGE_KEY: 'scripts',
-  STYLES_STORAGE_KEY: 'styles',
 
   WIDGET_DATA_STORAGE_KEY: 'widget-%(name)s-data',
   WIDGET_STORAGE_KEY: 'widget-%(id)s-settings',
