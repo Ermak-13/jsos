@@ -79,7 +79,7 @@ var WidgetHelper = {
   },
 
   getPositionByDelta: function (delta) {
-    var position = this.state.position,
+    var position = _.clone(this.state.position),
         xSide = position.xSide,
         ySide = position.ySide,
 
