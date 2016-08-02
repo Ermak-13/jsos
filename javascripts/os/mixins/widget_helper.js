@@ -117,6 +117,14 @@ var WidgetHelper = {
     AppDispatcher.initWidget(this);
   },
 
+  getName: function () {
+    return this.props.name || this.props.widgetName || '';
+  },
+
+  getConfiguratorRefName: function () {
+    return this.props.configuratorRefName || 'configurator';
+  },
+
   load: function () {
     this.loadData();
     this.loadSettings();

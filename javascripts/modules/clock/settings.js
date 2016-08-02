@@ -1,7 +1,4 @@
 var settings = {
-  WIDGET_NAME: 'clock',
-  CONFIGURATOR_REF_NAME: 'configurator',
-
   DEFAULT_FORMAT: 'HH:mm',
   DEFAULT_UPDATED_INTERVAL: 60 * 1000,
 

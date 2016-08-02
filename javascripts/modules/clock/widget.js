@@ -13,13 +13,6 @@ var React = require('react'),
 var _Widget = React.createClass({
   mixins: [Mixins.WidgetHelper],
 
-  getDefaultProps: function () {
-    return {
-      name: settings.WIDGET_NAME,
-      configuratorRefName: settings.CONFIGURATOR_REF_NAME
-    };
-  },
-
   getInitialState: function () {
     return {
       _moment: moment(),
@@ -119,8 +112,8 @@ var _Widget = React.createClass({
         </Widget.Body>
 
         <Configurator
-          ref={ this.props.configuratorRefName }
-          name={ this.props.name }
+          ref={ this.getConfiguratorRefName() }
+          name={ this.getName() }
           settings={ this.getSettings() }
           onSubmit={ this.handleConfigure }
         />
