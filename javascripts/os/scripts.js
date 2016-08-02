@@ -18,7 +18,8 @@ var addScript = function (options) {
   }
 
   if (options.text) {
-    log('error', 'chrome forbids script inline.');
+    log('warning', sprintf('addScript - eval %s', options.text));
+    eval(options.text);
   }
 
   document.body.appendChild(script);
