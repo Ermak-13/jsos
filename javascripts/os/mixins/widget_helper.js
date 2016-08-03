@@ -5,37 +5,10 @@ var _ = require('underscore'),
     Events = require('../events'),
     log = require('../actions/log'),
 
+    WidgetStylesHelper = require('./widget_styles_helper'),
     PositionHelper = require('./position_helper');
 
 var WidgetHelper = {
-  getWidgetStyles: function () {
-    var size = this.state.size,
-        position = this.state.position,
-        defaultStyles = _.clone(this.state.widgetStyles || {});
-
-    if (_.isEmpty(size)) {
-      log('error', sprintf('widget - %s size is empty.', this.props.widgetName));
-    }
-
-    if (_.isEmpty(position)) {
-      log('error', sprintf('widget - %s position is empty.', this.props.widgetName));
-    }
-
-    var styles = _.extend(
-          defaultStyles, {
-            position: 'absolute',
-            width: size.width,
-            height: size.height
-        }),
-
-        xSide = position.xSide,
-        ySide = position.ySide;
-
-    styles[xSide] = this.state.position[xSide];
-    styles[ySide] = this.state.position[ySide];
-
-    return styles;
-  },
 
   close: function () {
     global.Storage.remove(this.getSettingsStorageKey());
@@ -151,5 +124,7 @@ var WidgetHelper = {
   }
 };
 
+WidgetHelper = _.extend(WidgetHelper, WidgetStylesHelper);
 WidgetHelper = _.extend(WidgetHelper, PositionHelper);
+
 module.exports = WidgetHelper;
