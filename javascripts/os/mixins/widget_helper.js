@@ -7,7 +7,8 @@ var _ = require('underscore'),
 
     WidgetStylesHelper = require('./widget_styles_helper'),
     PositionHelper = require('./position_helper'),
-    SettingsManager = require('./settings_manager');
+    SettingsManager = require('./settings_manager'),
+    DataManager = require('./data_manager');
 
 var WidgetHelper = {
 
@@ -49,45 +50,12 @@ var WidgetHelper = {
   save: function () {
     this.saveData();
     this.saveSettings();
-  },
-
-  loadData: function () {
-    global.Storage.get(
-      this.getDataStorageKey(),
-      function (data) {
-        if (data) {
-          var setData = this.setData  || this._setData;
-          setData(data);
-        }
-      }.bind(this)
-    );
-  },
-
-  _setData: function (data, callback) {
-    this.setState(data, callback);
-  },
-
-  saveData: function () {
-    var getData = this.getData || function () {
-      return {};
-    };
-
-    global.Storage.set(
-      this.getDataStorageKey(),
-      getData()
-    );
-  },
-
-  getDataStorageKey: function () {
-    return sprintf(
-      global.Settings.get('widget_data_storage_key'),
-      { name: this.props.widgetName }
-    );
   }
 };
 
 WidgetHelper = _.extend(WidgetHelper, WidgetStylesHelper);
 WidgetHelper = _.extend(WidgetHelper, PositionHelper);
 WidgetHelper = _.extend(WidgetHelper, SettingsManager);
+WidgetHelper = _.extend(WidgetHelper, DataManager);
 
 module.exports = WidgetHelper;
