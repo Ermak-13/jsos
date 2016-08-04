@@ -37,7 +37,7 @@ var PositionHelper = {
     this.setState({
       startMovingX: null,
       startMovingY: null
-    }, this.save);
+    }, this.saveSettings);
 
     document.removeEventListener('mousemove', this.handleMoving);
     document.removeEventListener('mouseup', this.handleStopMoving);
