@@ -6,7 +6,8 @@ var _ = require('underscore'),
     log = require('../actions/log'),
 
     WidgetStylesHelper = require('./widget_styles_helper'),
-    PositionHelper = require('./position_helper');
+    PositionHelper = require('./position_helper'),
+    SettingsManager = require('./settings_manager');
 
 var WidgetHelper = {
 
@@ -82,49 +83,11 @@ var WidgetHelper = {
       global.Settings.get('widget_data_storage_key'),
       { name: this.props.widgetName }
     );
-  },
-
-  loadSettings: function () {
-    global.Storage.get(
-      this.getSettingsStorageKey(),
-      function (settings) {
-        var setSettings = this.setSettings || this._setSettings;
-
-        if (settings) {
-          setSettings(settings);
-        }
-      }.bind(this)
-    );
-  },
-
-  _setSettings: function (settings, callback) {
-    this.setState(settings, callback);
-  },
-
-  saveSettings: function () {
-    global.Storage.set(
-      this.getSettingsStorageKey(),
-      this.getSettings()
-    );
-  },
-
-  getSettingsStorageKey: function () {
-    if (this.props.storageKey) {
-      return this.props.storageKey;
-    } else {
-      return this._getDefaultStorageKey();
-    }
-  },
-
-  _getDefaultStorageKey: function () {
-    return sprintf(
-      global.Settings.get('widget_storage_key'),
-      { id: this.props.widgetId }
-    );
   }
 };
 
 WidgetHelper = _.extend(WidgetHelper, WidgetStylesHelper);
 WidgetHelper = _.extend(WidgetHelper, PositionHelper);
+WidgetHelper = _.extend(WidgetHelper, SettingsManager);
 
 module.exports = WidgetHelper;
