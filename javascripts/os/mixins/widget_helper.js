@@ -33,7 +33,7 @@ var WidgetHelper = {
   },
 
   getName: function () {
-    return this.props.name || this.props.widgetName || '';
+    return this.props.name || this.props.widgetName;
   }
 };
 
