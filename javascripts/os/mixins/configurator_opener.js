@@ -1,6 +1,6 @@
 var ConfiguratorOpener = {
   openConfigurator: function () {
-    var refName = this.props.configuratorRefName,
+    var refName = this.getConfiguratorRefName(),
         ref = this.refs[refName];
 
     ref.open();
