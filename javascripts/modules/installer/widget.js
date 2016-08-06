@@ -15,13 +15,6 @@ var React = require('react'),
 
 var _Widget = React.createClass({
   mixins: [Mixins.WidgetHelper],
-  
-  getDefaultProps: function () {
-    return {
-      name: settings.WIDGET_NAME,
-      configuratorRefName: settings.CONFIGURATOR_REF_NAME
-    };
-  },
 
   getInitialState: function () {
     return {
@@ -66,10 +59,10 @@ var _Widget = React.createClass({
     return (
       <Widget.Widget widgetStyles={ this.getWidgetStyles() }>
         <Widget.DefaultHeader
-          title={ s.capitalize(this.props.name) }
+          title={ s.capitalize(this.props.widgetName) }
           onMouseDownPositionBtn={ this.handleStartMoving }
           onClickCloseBtn={ this.close }
-          onClickConfigureBtn={ this.openConfigurator }
+          onClickConfigureBtn={ this._openConfigurator }
         />
 
         <Widget.Body>
@@ -100,13 +93,6 @@ var _Widget = React.createClass({
             </tbody>
           </table>
         </Widget.Body>
-
-        <Configurator.Default
-          ref={ this.props.configuratorRefName }
-          name={ this.props.name }
-          settings={ this.getSettings() }
-          onSubmit={ this.handleConfigure }
-        />
       </Widget.Widget>
     );
   },
