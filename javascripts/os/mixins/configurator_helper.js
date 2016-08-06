@@ -14,7 +14,9 @@ var ConfiguratorHelper = {
   },
 
   getRefName: function () {
-    return this.props.refName || 'configurator';
+    return this.props.refName || global.Settings.get(
+      'default_configurator_ref_name'
+    );
   }
 };
 

@@ -1,7 +1,5 @@
 var MicroEvent = require('microevent'),
-    Events = require('./events'),
-    settings = require('./settings'),
-    DEFAULT_SETTINGS_DIALOG_NAME = settings.DEFAULT_SETTINGS_DIALOG_NAME;
+    Events = require('./events');
 
 var AppDispatcher = function () {
   this.log = function (level, message) {

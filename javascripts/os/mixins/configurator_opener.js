@@ -12,7 +12,9 @@ var ConfiguratorOpener = {
   },
 
   getConfiguratorRefName: function () {
-    return this.props.configuratorRefName || 'configurator';
+    return this.props.configuratorRefName || global.Settings.get(
+      'default_configurator_ref_name'
+    );
   }
 };
 

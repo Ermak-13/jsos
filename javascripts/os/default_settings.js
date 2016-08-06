@@ -26,12 +26,8 @@ var settings = {
     left: '70px'
   },
 
-  NAV_ACTIVE_TAB_CLASS_NAME: 'active',
-  NAV_INACTIVE_TAB_CLASS_NAME: '',
-  NAV_CLASS_NAME: 'nav nav-tabs mini-nav',
-
   DEFAULT_SETTINGS_DIALOG_NAME: 'default',
-
+  DEFAULT_CONFIGURATOR_REF_NAME: 'configurator',
   WIDGET_DATA_STORAGE_KEY: 'widget-%(name)s-data',
   WIDGET_STORAGE_KEY: 'widget-%(id)s-settings',
 
@@ -39,7 +35,11 @@ var settings = {
   DESKTOP_CONFIGURATOR_REF_NAME: 'configurator',
   DESKTOP_STYLES: {
     background: "url('images/default_bg_image.jpg') no-repeat center fixed",
-  }
+  },
+
+  NAV_ACTIVE_TAB_CLASS_NAME: 'active',
+  NAV_INACTIVE_TAB_CLASS_NAME: '',
+  NAV_CLASS_NAME: 'nav nav-tabs mini-nav'
 };
 
 module.exports = settings;
