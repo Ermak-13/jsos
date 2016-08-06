@@ -12,12 +12,6 @@ var React = require('react'),
 var _Configurator = React.createClass({
   mixins: [Mixins.ConfiguratorHelper, Mixins.NavHelper],
 
-  getDefaultProps: function () {
-    return {
-      refName: settings.CONFIGURATOR_REF_NAME
-    };
-  },
-
   getInitialState: function () {
     var settings = this.props.settings;
 
@@ -81,7 +75,7 @@ var _Configurator = React.createClass({
 
     return (
       <Configurator.DefaultDialog
-        ref={ this.props.refName }
+        ref={ this.getRefName() }
         name={ this.props.name }>
 
         <HForm.Form onSubmit={ this.handleSubmit }>
