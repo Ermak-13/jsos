@@ -11,6 +11,8 @@ var settings = {
   SCRIPTS_IS_DOWNLOADABLE: true,
   STYLES_IS_DOWNLOADABLE: true,
 
+  CONFIGURATOR_CONTAINER_ID: 'configurator-container',
+
   DEFAULT_POSITION: {
     xSide: 'left',
     left: '70px',

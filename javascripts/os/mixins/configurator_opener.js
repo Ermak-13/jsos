@@ -9,9 +9,10 @@ var ConfiguratorOpener = {
     if (this.handleCloseConfigurator) return this.handleCloseConfigurator();
 
     this.configurator = null;
-    ReactDOM.unmountComponentAtNode(
-      document.getElementById('configurator-container')
-    );
+
+    var id = global.Settings.get('configurator_container_id'),
+        element = document.getElementById(id);
+    ReactDOM.unmountComponentAtNode(element);
   },
 
   _handleConfigure: function (settings) {
@@ -24,9 +25,11 @@ var ConfiguratorOpener = {
   _getConfigurator: function () {
     if (this.getConfigurator) return this.getConfigurator();
 
+    var id = global.Settings.get('configurator_container_id'),
+        element = document.getElementById(id);
+
     this.configurator = this.configurator || global.ReactDOM.render(
-      this._createConfigurator(),
-      document.getElementById('configurator-container')
+      this._createConfigurator(), element
     );
 
     return this.configurator;
