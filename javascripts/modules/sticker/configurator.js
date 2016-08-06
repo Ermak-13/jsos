@@ -12,12 +12,6 @@ var React = require('react'),
 var _Configurator = React.createClass({
   mixins: [Mixins.ConfiguratorHelper, Mixins.NavHelper],
 
-  getDefaultProps: function () {
-    return {
-      refName: settings.CONFIGURATOR_REF_NAME
-    };
-  },
-
   getSubmitHandler: function (tab) {
     var handlers = {
       stickerConfigs: function (settings) {
@@ -71,7 +65,7 @@ var _Configurator = React.createClass({
   render: function () {
     return (
       <Configurator.DefaultDialog
-        ref={ this.props.refName }
+        ref={ this.getRefName() }
         name={ this.props.name }>
 
         { this.getNavHTML() }

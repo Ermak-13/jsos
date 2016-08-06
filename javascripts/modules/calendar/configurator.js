@@ -11,12 +11,6 @@ var React = require('react'),
 var _Configurator = React.createClass({
   mixins: [Mixins.NavHelper, Mixins.ConfiguratorHelper],
 
-  getDefaultProps: function () {
-    return {
-      refName: settings.CONFIGURATOR_REF_NAME
-    };
-  },
-
   getInitialState: function () {
     return {
       tab: 'calendarConfigs'
@@ -70,7 +64,7 @@ var _Configurator = React.createClass({
   render: function () {
     return (
       <Configurator.DefaultDialog
-        ref={ this.props.refName }
+        ref={ this.getRefName() }
         name={ this.props.name }>
 
         { this.getNavHTML() }

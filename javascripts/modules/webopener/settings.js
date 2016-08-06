@@ -1,6 +1,4 @@
 var settings = {
-  WIDGET_NAME: 'webopener',
-  CONFIGURATOR_REF_NAME: 'configurator',
   LINK_CREATOR_DIALOG_REF_NAME: 'linkCreatorDialog',
 
   DEFAULT_SIZE: {

@@ -21,13 +21,6 @@ var React = require('react'),
 var _Widget = React.createClass({
   mixins: [Mixins.WidgetHelper],
 
-  getDefaultProps: function () {
-    return {
-      name: settings.WIDGET_NAME,
-      configuratorRefName: settings.CONFIGURATOR_REF_NAME
-    };
-  },
-
   getInitialState: function () {
     return {
       left: true,
@@ -90,7 +83,7 @@ var _Widget = React.createClass({
       props: {
         key: shortcuts.length,
         className: 'shortcut',
-        onClick: this.openConfigurator
+        onClick: this._openConfigurator
       },
       tooltip: tooltips[ConfigureBtn.displayName]
     });
@@ -239,13 +232,17 @@ var _Widget = React.createClass({
 
         { this.getNextShortcutsArrowHTML() }
 
-        <Configurator
-          ref={ this.props.configuratorRefName }
-          name={ this.props.name }
-          settings={ this.getSettings() }
-          onSubmit={ this.handleConfigure }
-        />
       </div>
+    );
+  },
+
+  createConfigurator: function () {
+    return (
+      <Configurator
+        name={ this.getName() }
+        settings={ this.getSettings() }
+        onSubmit={ this._handleConfigure }
+      />
     );
   },
 

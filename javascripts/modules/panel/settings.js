@@ -1,9 +1,6 @@
 var _ = require('underscore');
 
 var settings = {
-  WIDGET_NAME: 'panel',
-  CONFIGURATOR_REF_NAME: 'configurator',
-
   LEFT_VERTICAL_PANEL_STYLES: {
     height: '100%',
     top: 0,

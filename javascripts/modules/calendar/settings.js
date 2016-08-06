@@ -1,7 +1,4 @@
 var settings = {
-  WIDGET_NAME: 'calendar',
-  CONFIGURATOR_REF_NAME: 'configurator',
-
   DEFAULT_UPDATED_INTERVAL: 60 * 1000,
 
   DEFAULT_SIZE: {

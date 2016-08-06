@@ -11,13 +11,6 @@ var React = require('react'),
 var _Widget = React.createClass({
   mixins: [Mixins.WidgetHelper],
 
-  getDefaultProps: function () {
-    return {
-      name: settings.WIDGET_NAME,
-      configuratorRefName: settings.CONFIGURATOR_REF_NAME
-    };
-  },
-
   getInitialState: function () {
     return {
       _moment: moment(),
@@ -71,7 +64,7 @@ var _Widget = React.createClass({
         <Widget.DefaultIconsContainer
           onMouseDownPositionBtn={ this.handleStartMoving }
           onClickCloseBtn={ this.close }
-          onClickConfigureBtn={ this.openConfigurator }
+          onClickConfigureBtn={ this._openConfigurator }
         />
 
         <Widget.Body>
@@ -85,14 +78,17 @@ var _Widget = React.createClass({
             </div>
           </div>
         </Widget.Body>
-
-        <Configurator
-          ref={ this.props.configuratorRefName }
-          name={ this.props.name }
-          settings={ this.getSettings() }
-          onSubmit={ this.handleConfigure }
-        />
       </Widget.Widget>
+    );
+  },
+
+  createConfigurator: function () {
+    return (
+      <Configurator
+        name={ this.getName() }
+        settings={ this.getSettings() }
+        onSubmit={ this._handleConfigure }
+      />
     );
   }
 });

@@ -1,7 +1,4 @@
 var settings = {
-  WIDGET_NAME: 'logger',
-  CONFIGURATOR_REF_NAME: 'configurator',
-
   DEFAULT_FILTER_LEVEL: 'all',
 
   DEFAULT_SIZE: {
