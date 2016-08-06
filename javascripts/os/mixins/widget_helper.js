@@ -3,7 +3,6 @@ var _ = require('underscore'),
 
     AppDispatcher = require('../app_dispatcher'),
     Events = require('../events'),
-    log = require('../actions/log'),
 
     WidgetStylesHelper = require('./widget_styles_helper'),
     PositionHelper = require('./position_helper'),

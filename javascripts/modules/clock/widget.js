@@ -100,7 +100,7 @@ var _Widget = React.createClass({
         <Widget.DefaultIconsContainer
           onMouseDownPositionBtn={ this.handleStartMoving }
           onClickCloseBtn={ this.close }
-          onClickConfigureBtn={ this.openConfigurator }
+          onClickConfigureBtn={ this._openConfigurator }
         />
 
         <Widget.Body>
@@ -111,13 +111,17 @@ var _Widget = React.createClass({
           { this.getLocationHTML() }
         </Widget.Body>
 
-        <Configurator
-          ref={ this.getConfiguratorRefName() }
-          name={ this.getName() }
-          settings={ this.getSettings() }
-          onSubmit={ this.handleConfigure }
-        />
       </Widget.Widget>
+    );
+  },
+
+  createConfigurator: function () {
+    return (
+      <Configurator
+        name={ this.getName() }
+        settings={ this.getSettings() }
+        onSubmit={ this._handleConfigure }
+      />
     );
   },
 

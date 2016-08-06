@@ -7,16 +7,25 @@ var React = require('react'),
     Body = require('./body');
 
 var DefaultDialog = React.createClass({
+  getDefaultProps: function () {
+    return {
+      onOpen: function () {},
+      onClose: function () {}
+    };
+  },
+
   handleClickCloseBtn: function () {
     this.close();
   },
 
   open: function () {
     this.refs.dialog.open();
+    this.props.onOpen();
   },
 
   close: function () {
     this.refs.dialog.close();
+    this.props.onClose();
   },
 
   getTitle: function () {
