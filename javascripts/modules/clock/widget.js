@@ -120,7 +120,7 @@ var _Widget = React.createClass({
       <Configurator
         name={ this.getName() }
         settings={ this.getSettings() }
-        onSubmit={ this._handleConfigure }
+        onSubmit={ this.handleConfigure }
       />
     );
   },

@@ -44,8 +44,8 @@ var ConfiguratorOpener = {
       {
         name: this.getName(),
         settings: this.getSettings(),
-        onClose: this._handleCloseConfigurator,
-        onSubmit: this._handleConfigure
+        onClose: this.handleCloseConfigurator,
+        onSubmit: this.handleConfigure
       }
     );
   }
