@@ -14,8 +14,7 @@ var Desktop = React.createClass({
   getDefaultProps: function () {
     return {
       name: global.Settings.get('desktop_name'),
-      storageKey: global.Settings.get('desktop_storage_key'),
-      configuratorRefName: global.Settings.get('desktop_configurator_ref_name')
+      storageKey: global.Settings.get('desktop_storage_key')
     };
   },
 
@@ -63,14 +62,17 @@ var Desktop = React.createClass({
     return (
       <div className="desktop" style={ this.state.desktopStyles }>
         { this.getWidgetsHTML() }
-
-        <Configurator
-          ref={ this.props.configuratorRefName }
-          name={ this.props.name }
-          settings={ this.getSettings() }
-          onSubmit={ this.handleConfigure }
-        />
       </div>
+    );
+  },
+
+  _createConfigurator: function () {
+    return (
+      <Configurator
+        name={ this.getName() }
+        settings={ this.getSettings() }
+        onSubmit={ this.handleConfigure }
+      />
     );
   },
 
