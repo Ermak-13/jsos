@@ -18,8 +18,7 @@ var ConfiguratorOpener = {
   handleConfigure: function (settings) {
     if (this._handleConfigure) return this._handleConfigure(settings);
 
-    var setSettings = this.setSettings || this._setSettings;
-    setSettings(settings, this.saveSettings);
+    this.setSettings(settings, this.saveSettings);
   },
 
   getConfigurator: function () {

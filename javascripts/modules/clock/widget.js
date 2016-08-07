@@ -30,15 +30,6 @@ var _Widget = React.createClass({
     };
   },
 
-  _setSettings: function (settings, callback) {
-    this.setState(settings, function () {
-      this.refreshInterval();
-
-      callback = callback || function () {};
-      callback();
-    });
-  },
-
   _getSettings: function () {
     return {
       format: this.state.format,
@@ -123,6 +114,13 @@ var _Widget = React.createClass({
         onSubmit={ this.handleConfigure }
       />
     );
+  },
+
+  _handleConfigure: function (settings) {
+    this.setSettings(settings, function () {
+      this.refreshInterval();
+      this.saveSettings();
+    }.bind(this));
   },
 
   getLocationHTML: function () {
