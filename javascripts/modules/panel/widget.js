@@ -155,7 +155,7 @@ var _Widget = React.createClass({
     return key;
   },
 
-  getSettings: function () {
+  _getSettings: function () {
     return {
       left: this.state.left,
       top: this.state.top,

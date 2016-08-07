@@ -37,7 +37,7 @@ var _Widget = React.createClass({
     OS.uninstallScript(script);
   },
 
-  getSettings: function () {
+  _getSettings: function () {
     return {
       size: _.clone(this.state.size),
       position: _.clone(this.state.position)

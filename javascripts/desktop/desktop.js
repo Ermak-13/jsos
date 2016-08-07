@@ -26,7 +26,7 @@ var Desktop = React.createClass({
     };
   },
 
-  getSettings: function () {
+  _getSettings: function () {
     return {
       desktopStyles: _.clone(this.state.desktopStyles),
     };

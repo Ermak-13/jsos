@@ -1,40 +1,45 @@
-var sprintf = require('sprintf-js').sprintf;
+var _ = require('underscore'),
+    sprintf = require('sprintf-js').sprintf;
 
 var SettingsManager = {
   loadSettings: function () {
+    if (this._loadSettings) return this._loadSettings();
+
     global.Storage.get(
       this.getSettingsStorageKey(),
       function (settings) {
-        var setSettings = this.setSettings || this._setSettings;
-
         if (settings) {
-          setSettings(settings);
+          this.setSettings(settings);
         }
       }.bind(this)
     );
   },
 
   saveSettings: function () {
+    if (this._saveSettings) return this._saveSettings();
+
     global.Storage.set(
       this.getSettingsStorageKey(),
       this.getSettings()
     );
   },
 
-  _setSettings: function (settings, callback) {
+  getSettings: function () {
+    if (this._getSettings) return this._getSettings();
+
+    return _.clone(this.state);
+  },
+
+  setSettings: function (settings, callback) {
+    if (this._setSettings) return this._setSettings(settings, callback);
+
     this.setState(settings, callback);
   },
 
   getSettingsStorageKey: function () {
-    if (this.props.storageKey) {
-      return this.props.storageKey;
-    } else {
-      return this._getSettingsStorageKey();
-    }
-  },
+    if (this._getSettingsStorageKey) return this._getSettingsStorageKey();
 
-  _getSettingsStorageKey: function () {
-    return sprintf(
+    return this.props.storageKey || this.props.settingsStorageKey || sprintf(
       global.Settings.get('widget_storage_key'),
       { id: this.props.widgetId }
     );

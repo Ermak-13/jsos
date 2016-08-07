@@ -31,7 +31,7 @@ var _Widget = React.createClass({
     }, this.saveSettings);
   },
 
-  getSettings: function () {
+  _getSettings: function () {
     return {
       value: this.state.value,
 
