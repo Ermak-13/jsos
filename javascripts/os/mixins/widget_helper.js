@@ -12,26 +12,36 @@ var _ = require('underscore'),
 
 var WidgetHelper = {
   init: function () {
+    if (this._init) return this._init();
+
     this.load();
     AppDispatcher.initWidget(this);
   },
 
   load: function () {
+    if (this._load) return this._load();
+
     this.loadData();
     this.loadSettings();
   },
 
   save: function () {
+    if (this._save) return this._save();
+
     this.saveData();
     this.saveSettings();
   },
 
   close: function () {
+    if (this._close) return this._close();
+
     global.Storage.remove(this.getSettingsStorageKey());
     AppDispatcher.removeWidget(this.props.widgetId);
   },
 
   getName: function () {
+    if (this._getName) return this._getName();
+
     return this.props.name || this.props.widgetName;
   }
 };
