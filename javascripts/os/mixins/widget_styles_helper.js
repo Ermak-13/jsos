@@ -5,6 +5,8 @@ var _ = require('underscore'),
 
 var WidgetStylesHelper = {
   getWidgetStyles: function () {
+    if (this._getWidgetStyles) return this._getWidgetStyles();
+
     var size = this.state.size,
         position = this.state.position,
         defaultStyles = _.clone(this.state.widgetStyles || {});
