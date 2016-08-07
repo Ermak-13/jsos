@@ -84,7 +84,7 @@ var _Widget = React.createClass({
     });
   },
 
-  getSettings: function () {
+  _getSettings: function () {
     return {
       size: _.clone(this.state.size),
       position: _.clone(this.state.position)
@@ -125,7 +125,7 @@ var _Widget = React.createClass({
           title={ s.capitalize(this.getName()) }
           onMouseDownPositionBtn={ this.handleStartMoving }
           onClickCloseBtn={ this.close }
-          onClickConfigureBtn={ this._openConfigurator }
+          onClickConfigureBtn={ this.openConfigurator }
         />
 
         <Widget.Body>

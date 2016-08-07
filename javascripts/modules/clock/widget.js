@@ -30,16 +30,7 @@ var _Widget = React.createClass({
     };
   },
 
-  setSettings: function (settings, callback) {
-    this._setSettings(settings, function () {
-      this.refreshInterval();
-
-      callback = callback || function () {};
-      callback();
-    });
-  },
-
-  getSettings: function () {
+  _getSettings: function () {
     return {
       format: this.state.format,
       updatedInterval: this.state.updatedInterval,
@@ -100,7 +91,7 @@ var _Widget = React.createClass({
         <Widget.DefaultIconsContainer
           onMouseDownPositionBtn={ this.handleStartMoving }
           onClickCloseBtn={ this.close }
-          onClickConfigureBtn={ this._openConfigurator }
+          onClickConfigureBtn={ this.openConfigurator }
         />
 
         <Widget.Body>
@@ -115,14 +106,21 @@ var _Widget = React.createClass({
     );
   },
 
-  createConfigurator: function () {
+  _createConfigurator: function () {
     return (
       <Configurator
         name={ this.getName() }
         settings={ this.getSettings() }
-        onSubmit={ this._handleConfigure }
+        onSubmit={ this.handleConfigure }
       />
     );
+  },
+
+  _handleConfigure: function (settings) {
+    this.setSettings(settings, function () {
+      this.refreshInterval();
+      this.saveSettings();
+    }.bind(this));
   },
 
   getLocationHTML: function () {

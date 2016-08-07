@@ -10,12 +10,6 @@ var React = require('react'),
 var _Configurator = React.createClass({
   mixins: [Mixins.ConfiguratorHelper],
 
-  getDefaultProps: function () {
-    return {
-      refName: 'configurator'
-    };
-  },
-
   handleSubmit: function (e) {
     e.preventDefault();
 
@@ -47,7 +41,7 @@ var _Configurator = React.createClass({
 
     return (
       <Configurator.DefaultDialog
-        ref={ this.props.refName }
+        ref={ this.getRefName() }
         name={ this.props.name }>
 
         <HForm.Form onSubmit={ this.handleSubmit }>

@@ -29,7 +29,7 @@ var _Widget = React.createClass({
     this.setState({ filterLevel: level });
   },
 
-  getSettings: function () {
+  _getSettings: function () {
     return {
       size: _.clone(this.state.size),
       position: _.clone(this.state.position)
@@ -51,7 +51,7 @@ var _Widget = React.createClass({
           title={ s.capitalize(this.props.widgetName) }
           onMouseDownPositionBtn={ this.handleStartMoving }
           onClickCloseBtn={ this.close }
-          onClickConfigureBtn={ this._openConfigurator }
+          onClickConfigureBtn={ this.openConfigurator }
         />
 
         <Widget.Body>

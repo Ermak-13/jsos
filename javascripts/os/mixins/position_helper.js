@@ -2,12 +2,16 @@ var _ = require('underscore');
 
 var PositionHelper = {
   move: function (delta) {
+    if (this._move) return this._move(delta);
+
     this.setState({
       position: this.getPositionByDelta(delta)
     });
   },
 
   handleStartMoving: function (e) {
+    if (this._handleStartMoving) return this._handleStartMoving(e);
+
     e.preventDefault();
 
     this.setState({
@@ -15,11 +19,13 @@ var PositionHelper = {
       startMovingY: e.pageY
     });
 
-    document.addEventListener('mouseup', this.handleStopMoving);
     document.addEventListener('mousemove', this.handleMoving);
+    document.addEventListener('mouseup', this.handleStopMoving);
   },
 
   handleMoving: function (e) {
+    if (this._handleMoving) return this._handleMoving(e);
+
     var startMovingX = this.state.startMovingX,
         startMovingY = this.state.startMovingY;
 
@@ -34,6 +40,8 @@ var PositionHelper = {
   },
 
   handleStopMoving: function (e) {
+    if (this._handleStopMoving) return this._handleStopMoving(e);
+
     this.setState({
       startMovingX: null,
       startMovingY: null
@@ -44,6 +52,8 @@ var PositionHelper = {
   },
 
   getPositionByDelta: function (delta) {
+    if (this._getPositionByDelta) return this._getPositionByDelta(delta);
+
     var position = _.clone(this.state.position),
         xSide = position.xSide,
         ySide = position.ySide,
