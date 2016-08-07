@@ -61,7 +61,7 @@ var _Widget = React.createClass({
           title={ s.capitalize(this.props.widgetName) }
           onMouseDownPositionBtn={ this.handleStartMoving }
           onClickCloseBtn={ this.close }
-          onClickConfigureBtn={ this._openConfigurator }
+          onClickConfigureBtn={ this.openConfigurator }
         />
 
         <Widget.Body>

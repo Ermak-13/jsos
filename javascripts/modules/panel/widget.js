@@ -83,7 +83,7 @@ var _Widget = React.createClass({
       props: {
         key: shortcuts.length,
         className: 'shortcut',
-        onClick: this._openConfigurator
+        onClick: this.openConfigurator
       },
       tooltip: tooltips[ConfigureBtn.displayName]
     });
@@ -236,7 +236,7 @@ var _Widget = React.createClass({
     );
   },
 
-  createConfigurator: function () {
+  _createConfigurator: function () {
     return (
       <Configurator
         name={ this.getName() }

@@ -52,7 +52,7 @@ var _Widget = React.createClass({
         <Widget.DefaultIconsContainer
           onMouseDownPositionBtn={ this.handleStartMoving }
           onClickCloseBtn={ this.close }
-          onClickConfigureBtn={ this._openConfigurator }
+          onClickConfigureBtn={ this.openConfigurator }
         />
 
           <IForm.Form
@@ -74,7 +74,7 @@ var _Widget = React.createClass({
     );
   },
 
-  createConfigurator: function () {
+  _createConfigurator: function () {
     return (
       <Configurator
         name={ this.getName() }

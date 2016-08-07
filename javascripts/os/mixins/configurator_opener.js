@@ -1,12 +1,12 @@
 var ConfiguratorOpener = {
-  _openConfigurator: function () {
-    if (this.openConfigurator) return this.openConfigurator();
+  openConfigurator: function () {
+    if (this._openConfigurator) return this._openConfigurator();
 
-    this._getConfigurator().open();
+    this.getConfigurator().open();
   },
 
-  _handleCloseConfigurator: function () {
-    if (this.handleCloseConfigurator) return this.handleCloseConfigurator();
+  handleCloseConfigurator: function () {
+    if (this._handleCloseConfigurator) return this._handleCloseConfigurator();
 
     this.configurator = null;
 
@@ -15,29 +15,29 @@ var ConfiguratorOpener = {
     ReactDOM.unmountComponentAtNode(element);
   },
 
-  _handleConfigure: function (settings) {
-    if (this.handleConfigure) return this.handleConfigure(settings);
+  handleConfigure: function (settings) {
+    if (this._handleConfigure) return this._handleConfigure(settings);
 
     var setSettings = this.setSettings || this._setSettings;
     setSettings(settings, this.saveSettings);
   },
 
-  _getConfigurator: function () {
-    if (this.getConfigurator) return this.getConfigurator();
+  getConfigurator: function () {
+    if (this._getConfigurator) return this._getConfigurator();
 
     var id = global.Settings.get('configurator_container_id'),
         element = document.getElementById(id);
 
     this.configurator = this.configurator || global.ReactDOM.render(
-      this._createConfigurator(), element
+      this.createConfigurator(), element
     );
 
     return this.configurator;
   },
 
-  _createConfigurator: function () {
-    if (this.createConfigurator) return this.createConfigurator();
-    if (this.getConfiguratorHTML) return this.getConfiguratorHTML();
+  createConfigurator: function () {
+    if (this._createConfigurator) return this._createConfigurator();
+    if (this._getConfiguratorHTML) return this._getConfiguratorHTML();
 
     return React.createElement(
       global.OS.Configurator.Default,
