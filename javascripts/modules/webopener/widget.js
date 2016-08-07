@@ -44,12 +44,12 @@ var _Widget = React.createClass({
     var links = this.state.links;
     links.push(link);
 
-    this._setData({
+    this.setData({
       links: links
     }, this.saveData);
   },
 
-  getData: function () {
+  _getData: function () {
     return {
       links: _.clone(this.state.links)
     };
