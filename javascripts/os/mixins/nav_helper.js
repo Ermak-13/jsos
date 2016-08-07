@@ -1,21 +1,13 @@
 var NavHelper = {
-  isActive: function (tab) {
-    return tab === this.state.tab;
-  },
-
   handleNavTab: function (tab) {
+    if (this._handleNavTab) return this._handleNavTab(tab);
+
     this.setState({ tab: tab });
   },
 
-  getNavTabClassName: function (tab) {
-    if (this.isActive(tab)) {
-      return global.Settings.get('nav_active_tab_class_name');
-    } else {
-      return global.Settings.get('nav_inactive_tab_class_name');
-    }
-  },
-
   getNavHTML: function () {
+    if (this._getNavHTML) return this._getNavHTML();
+
     var liHTML = _.map(this.getTabs(), function (options, tab) {
       return (
         <li key={ tab } className={ this.getNavTabClassName(tab) }>
@@ -34,7 +26,25 @@ var NavHelper = {
   },
 
   getContentHTML: function () {
+    if (this._getContentHTML) return this._getContentHTML();
+
     return this.getTabs()[this.state.tab].content;
+  },
+
+  getNavTabClassName: function (tab) {
+    if (this._getNavTabClassName) return this._getNavTabClassName(tab);
+
+    if (this.isActive(tab)) {
+      return global.Settings.get('nav_active_tab_class_name');
+    } else {
+      return global.Settings.get('nav_inactive_tab_class_name');
+    }
+  },
+
+  isActive: function (tab) {
+    if (this._isActive) return this._isActive(tab);
+
+    return tab === this.state.tab;
   }
 };
 
