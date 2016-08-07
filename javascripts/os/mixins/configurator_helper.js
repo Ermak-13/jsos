@@ -1,5 +1,7 @@
 var ConfiguratorHelper = {
   open: function () {
+    if (this._open) return this._open();
+
     var refName = this.getRefName(),
         ref = this.refs[refName];
 
@@ -7,6 +9,8 @@ var ConfiguratorHelper = {
   },
 
   close: function () {
+    if (this._close) return this._close();
+
     var refName = this.props.refName,
         ref = this.refs[refName];
 
@@ -14,6 +18,8 @@ var ConfiguratorHelper = {
   },
 
   getRefName: function () {
+    if (this._getRefName) return this._getRefName();
+
     return this.props.refName || global.Settings.get(
       'default_configurator_ref_name'
     );
