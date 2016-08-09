@@ -19,7 +19,7 @@ var _Widget = React.createClass({
       format: settings.DEFAULT_FORMAT,
       updatedInterval: settings.DEFAULT_UPDATED_INTERVAL,
 
-      location: null,
+      location: moment.tz.guess(),
       timezone: moment.tz.guess(),
 
       size: settings.DEFAULT_SIZE,
