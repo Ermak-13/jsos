@@ -176,6 +176,10 @@ var _Widget = React.createClass({
     }.bind(this));
   },
 
+  _load: function (onLoad) {
+    this.loadSettings(onLoad);
+  },
+
   initTooltips: function ($panel) {
     var $tooltips = $panel.find('.tooltip-container');
     $tooltips.tooltip('destroy');

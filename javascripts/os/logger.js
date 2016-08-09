@@ -21,7 +21,7 @@ var Logger = function () {
 
   var _this = this;
   AppDispatcher.bind(Events.log, function (level, message) {
-    var createdAt = moment().unix();
+    var createdAt = moment().valueOf() / 1000;
 
     _this.logs.push({
       level: level,

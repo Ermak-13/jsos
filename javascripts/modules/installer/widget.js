@@ -54,6 +54,10 @@ var _Widget = React.createClass({
     }.bind(this));
   },
 
+  _load: function (onLoad) {
+    this.loadSettings(onLoad);
+  },
+
   render: function () {
     return (
       <Widget.Widget widgetStyles={ this.getWidgetStyles() }>
