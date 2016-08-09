@@ -87,6 +87,7 @@ var _Widget = React.createClass({
       <Configurator
         name={ this.getName() }
         settings={ this.getSettings() }
+        onClose={ this.handleCloseConfigurator }
         onSubmit={ this.handleConfigure }
       />
     );

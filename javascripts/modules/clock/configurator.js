@@ -85,7 +85,8 @@ var _Configurator = React.createClass({
     return (
       <Configurator.DefaultDialog
         ref={ this.getRefName() }
-        name={ this.props.name }>
+        name={ this.props.name }
+        onClose={ this.props.onClose }>
 
         { this.getNavHTML() }
 

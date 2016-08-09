@@ -22,7 +22,8 @@ var Default = React.createClass({
     return (
       <DefaultDialog
         ref={ this.props.refName }
-        name={ this.props.name }>
+        name={ this.props.name }
+        onClose={ this.props.onClose}>
 
         <PositionAndSizeForm
           onSubmit={ this.handleSubmit }
