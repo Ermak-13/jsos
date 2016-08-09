@@ -2,14 +2,17 @@ var _ = require('underscore'),
     sprintf = require('sprintf-js').sprintf;
 
 var SettingsManager = {
-  loadSettings: function () {
-    if (this._loadSettings) return this._loadSettings();
+  loadSettings: function (onLoad) {
+    if (this._loadSettings) return this._loadSettings(onLoad);
 
+    onLoad = onLoad || function () {};
     global.Storage.get(
       this.getSettingsStorageKey(),
       function (settings) {
         if (settings) {
-          this.setSettings(settings);
+          this.setSettings(settings, onLoad);
+        } else {
+          onLoad();
         }
       }.bind(this)
     );

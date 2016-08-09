@@ -1,14 +1,17 @@
 var sprintf = require('sprintf-js').sprintf;
 
 var DataManager = {
-  loadData: function () {
-    if (this._loadData) return this._loadData();
+  loadData: function (onLoad) {
+    if (this._loadData) return this._loadData(onLoad);
 
+    onLoad = onLoad || function () {};
     global.Storage.get(
       this.getDataStorageKey(),
       function (data) {
         if (data) {
-          this.setData(data);
+          this.setData(data, onLoad);
+        } else {
+          onLoad();
         }
       }.bind(this)
     );

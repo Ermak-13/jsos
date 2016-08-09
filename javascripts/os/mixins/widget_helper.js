@@ -11,18 +11,23 @@ var _ = require('underscore'),
     ConfiguratorOpener = require('./configurator_opener');
 
 var WidgetHelper = {
-  init: function () {
+  init: function (onLoad) {
     if (this._init) return this._init();
 
-    this.load();
-    AppDispatcher.initWidget(this);
+    this.load(function () {
+      if (this.onLoad) onLoad();
+      global.OS.log('info', sprintf('Widget %s - initalized.', this.getName()));
+
+      AppDispatcher.initWidget(this);
+    }.bind(this));
   },
 
-  load: function () {
-    if (this._load) return this._load();
+  load: function (onLoad) {
+    if (this._load) return this._load(onLoad);
 
-    this.loadData();
-    this.loadSettings();
+    this.loadData(function () {
+      this.loadSettings(onLoad);
+    }.bind(this));
   },
 
   save: function () {

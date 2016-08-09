@@ -15,8 +15,8 @@ var chromeLocalStorage = {
 
   get: function (key, callback) {
     var wrappedCallback = function (result) {
-      callback(result[key]);
       log('info', sprintf('OS storage - get %s.', key));
+      callback(result[key]);
     };
 
     chrome.storage.local.get(key, wrappedCallback);
