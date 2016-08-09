@@ -3,6 +3,7 @@ var gulp = require('gulp'),
     browserify = require('gulp-browserify'),
     sass = require('gulp-sass'),
     rename = require('gulp-rename'),
+    minify = require('gulp-minify'),
     jshint = require('gulp-jshint');
 
 gulp.task('default', ['dev']);
@@ -64,11 +65,18 @@ gulp.task('build', function () {
   gulp.src('./images/**/*')
     .pipe(gulp.dest('./release/images'));
 
+  gulp.src('./jsos.js')
+    .pipe(minify({
+      ext: {
+        min: '.min.js'
+      }
+    }))
+    .pipe(gulp.dest('./release'));
+
   var files = [
     './COPYING',
     './jquery-2.2.4.min.js',
     './jsos.css',
-    './jsos.js',
     './manifest.json',
     './newtab.html',
     './README.md'
