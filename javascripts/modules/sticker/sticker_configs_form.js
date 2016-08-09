@@ -12,10 +12,15 @@ var StickerConfigsForm = React.createClass({
     e.preventDefault();
 
     var settings = _.clone(this.props.settings),
-        widgetStyles = _.clone(settings.widgetStyles);
+        widgetStyles = _.clone(settings.widgetStyles),
+        textareaStyles = _.clone(settings.textareaStyles);
 
     widgetStyles.background = this.refs.background.getValue();
+    widgetStyles.transform = this.refs.transform.getValue();
+    textareaStyles.fontSize = this.refs.fontSize.getValue();
+
     settings.widgetStyles = widgetStyles;
+    settings.textareaStyles = textareaStyles;
 
     this.props.onSubmit(settings);
   },
@@ -25,6 +30,24 @@ var StickerConfigsForm = React.createClass({
 
     return (
       <HForm.Form onSubmit={ this.handleSubmit }>
+        <HForm.Field
+          labelText="font size:">
+
+          <Input
+            ref="fontSize"
+            value={ settings.textareaStyles.fontSize }
+          />
+        </HForm.Field>
+
+        <HForm.Field
+          labelText="angle:">
+
+          <Input
+            ref="transform"
+            value={ settings.widgetStyles.transform }
+          />
+        </HForm.Field>
+
         <HForm.Field
           labelText="background:">
 

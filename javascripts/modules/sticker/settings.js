@@ -11,7 +11,8 @@ var settings = {
   DEFAULT_WIDGET_STYLES: {
     background: '#F8E71C',
     borderRadius: 0,
-    padding: 0
+    padding: 0,
+    transform: 'rotate(0deg)'
   },
 
   FORM_STYLES: {
@@ -29,7 +30,8 @@ var settings = {
     width: '100%',
     height: '100%',
     border: 'none',
-    resize: 'none'
+    resize: 'none',
+    fontSize: '14px'
   }
 };
 

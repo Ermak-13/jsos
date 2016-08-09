@@ -15,7 +15,7 @@ var ConfiguratorOpener = {
     var id = global.Settings.get('configurator_container_id'),
         element = document.getElementById(id);
 
-    global.OS.log('info', sprintf('Widget %s - unmount configurator', this.getName()));
+    global.OS.log('info', sprintf('Widget %s - unmount configurator.', this.getName()));
     ReactDOM.unmountComponentAtNode(element);
   },
 
@@ -34,7 +34,7 @@ var ConfiguratorOpener = {
     this.configurator = this.configurator || global.ReactDOM.render(
       this.createConfigurator(), element
     );
-    global.OS.log('info', sprintf('Widget %s - getConfigurator', this.getName()));
+    global.OS.log('info', sprintf('Widget %s - getConfigurator.', this.getName()));
 
     return this.configurator;
   },
