@@ -1,5 +1,5 @@
 var React = require('react'),
-    s = require('underscore.string'),
+    sprintf = require('sprintf-js').sprintf,
 
     OS = require('os'),
     Mixins = OS.Mixins,
@@ -96,7 +96,7 @@ var _Configurator = React.createClass({
 
           <HForm.Submit
             submitContainerClassName="col-md-8 col-md-offset-2"
-            value="Save"
+            value={ global.I18n.t('configurator.submit.value') }
           />
         </HForm.Form>
 
@@ -117,7 +117,7 @@ var _Configurator = React.createClass({
             value={ checked ? 'on' : 'off' }
             onChange={ onChange }
           />
-          { s.capitalize(key) }
+          { global.I18n.t(sprintf('panel.configurator.%s.label', key)) }
         </label>
       </div>
     );

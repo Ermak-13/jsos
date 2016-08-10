@@ -38,11 +38,11 @@ var _Widget = React.createClass({
     var shortcuts = [];
 
     var tooltips = {
-      'DesktopConfiguratorShortcut': 'Desktop Configurator',
-      'BookmarksShortcut': 'Chrome Bookmarks',
-      'HistoryShortcut': 'Chrome History',
-      'DownloadsShortcut': 'Chrome Downloads',
-      'ConfigureBtn': 'Panel Configurator'
+      'DesktopConfiguratorShortcut': global.I18n.t('panel.desktop_configurator_shortcut.tooltip'),
+      'BookmarksShortcut': global.I18n.t('panel.bookmarks_shortcut.tooltip'),
+      'HistoryShortcut': global.I18n.t('panel.history_shortcut.tooltip'),
+      'DownloadsShortcut': global.I18n.t('panel.downloads_shortcut.tooltip'),
+      'ConfigureBtn': global.I18n.t('panel.configure_btn.tooltip')
     };
 
     _.each([
