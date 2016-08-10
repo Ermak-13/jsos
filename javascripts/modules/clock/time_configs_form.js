@@ -26,7 +26,7 @@ var TimeConfigsForm = React.createClass({
     return (
       <HForm.Form onSubmit={ this.handleSubmit }>
         <HForm.Field
-          labelText="format:">
+          labelText={ global.I18n.t('clock.format.label') }>
 
           <Input
             ref="format"
@@ -35,7 +35,7 @@ var TimeConfigsForm = React.createClass({
         </HForm.Field>
 
         <HForm.Field
-          labelText="updated interval:">
+          labelText={ global.I18n.t('clock.updated_interval.label') }>
 
           <Input
             type="number"
@@ -45,7 +45,7 @@ var TimeConfigsForm = React.createClass({
         </HForm.Field>
 
         <HForm.Field
-          labelText="location label:">
+          labelText={ global.I18n.t('clock.location.label') }>
 
           <Input
             ref="location"
@@ -54,7 +54,7 @@ var TimeConfigsForm = React.createClass({
         </HForm.Field>
 
         <HForm.Field
-          labelText="timezone:">
+          labelText={ global.I18n.t('clock.timezone.label') }>
 
           <Input
             ref="timezone"
@@ -62,7 +62,7 @@ var TimeConfigsForm = React.createClass({
           />
         </HForm.Field>
 
-        <HForm.Submit value="Save" />
+        <HForm.Submit value={ global.I18n.t('configurator.submit.value') } />
       </HForm.Form>
     );
   }

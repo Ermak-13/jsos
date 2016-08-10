@@ -44,7 +44,7 @@ var _Configurator = React.createClass({
 
     return {
       timeConfigs: {
-        navText: 'Time Configs',
+        navText: global.I18n.t('clock.time_configs.nav_text'),
         content: function () {
           return (
             <TimeConfigsForm
@@ -56,7 +56,7 @@ var _Configurator = React.createClass({
       },
 
       positionAndSize: {
-        navText: 'Position And Size',
+        navText: global.I18n.t('position_and_size_form.nav_text'),
         content: function () {
           return (
             <PositionAndSizeForm
@@ -68,7 +68,7 @@ var _Configurator = React.createClass({
       },
 
       timeStyles: {
-        navText: 'Styles',
+        navText: global.I18n.t('clock.styles.nav_text'),
         content: function () {
           return (
             <TimeStylesForm

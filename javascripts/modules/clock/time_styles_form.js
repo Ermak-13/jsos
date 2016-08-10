@@ -24,7 +24,7 @@ var TimeStylesForm = React.createClass({
     return (
       <HForm.Form onSubmit={ this.handleSubmit }>
         <HForm.Field
-          labelText="margin top:">
+          labelText={ global.I18n.t('clock.margin_top.label') }>
 
           <Input
             ref="marginTop"
@@ -33,7 +33,7 @@ var TimeStylesForm = React.createClass({
         </HForm.Field>
 
         <HForm.Field
-          labelText="font size:">
+          labelText={ global.I18n.t('clock.font_size.label') }>
 
           <Input
             ref="fontSize"
@@ -41,7 +41,7 @@ var TimeStylesForm = React.createClass({
           />
         </HForm.Field>
 
-        <HForm.Submit value="Save" />
+        <HForm.Submit value={ global.I18n.t('configurator.submit.value') } />
       </HForm.Form>
     );
   }
