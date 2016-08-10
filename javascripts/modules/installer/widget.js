@@ -73,7 +73,7 @@ var _Widget = React.createClass({
             <div className="form-group" style={{ marginBottom: 0 }}>
               <div className="col-md-9">
                 <Input
-                  placeholder="raw github url"
+                  placeholder={ global.I18n.t('installer.url.placeholder') }
                   ref="installUrl"
                 />
               </div>
@@ -81,7 +81,7 @@ var _Widget = React.createClass({
               <div className="col-md-3">
                 <Submit
                   style={{ width: '100%' }}
-                  value="install"
+                  value={ global.I18n.t('installer.submit.value') }
                 />
               </div>
             </div>
