@@ -62,7 +62,7 @@ var _Widget = React.createClass({
           <HForm.Form>
             <HForm.Field
               containerStyle={{ marginBottom: 0 }}
-              labelText="Filter:"
+              labelText={ global.I18n.t('logger.filter.label') }
               labelClassName="control-label col-md-2"
               controlContainerClassName="col-md-10">
 
@@ -78,8 +78,8 @@ var _Widget = React.createClass({
 
             <thead>
               <tr>
-                <th>level</th>
-                <th>message</th>
+                <th>{ global.I18n.t('logger.level.th') }</th>
+                <th>{ global.I18n.t('logger.message.th') }</th>
               </tr>
             </thead>
 
