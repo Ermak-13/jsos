@@ -5,8 +5,7 @@ var Input = require('./input');
 var Submit = React.createClass({
   getDefaultProps: function () {
     return {
-      className: 'btn btn-primary',
-      value: 'Отправить'
+      className: 'btn btn-primary'
     };
   },
 

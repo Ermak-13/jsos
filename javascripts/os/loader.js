@@ -4,6 +4,7 @@ var Settings = require('./settings'),
     AppDispatcher = require('./app_dispatcher'),
     Events = require('./events'),
     I18n = require('./i18n'),
+    i18nDict = require('./locales'),
     Modules = require('./modules'),
     Scripts = require('./scripts'),
     Styles = require('./styles'),
@@ -19,6 +20,8 @@ var Loader = function () {
     global.Events = Events;
 
     global.I18n = new I18n();
+    global.I18n.registryDict(i18nDict);
+
     global.Modules = new Modules();
 
     global.Scripts = new Scripts();

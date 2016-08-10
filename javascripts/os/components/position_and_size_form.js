@@ -90,7 +90,7 @@ var PositionAndSizeForm = React.createClass({
     return (
       <HForm.Form onSubmit={ this.handleSubmit }>
         <HForm.Field
-          labelText="width:">
+          labelText={ global.I18n.t('position_and_size_form.width.label') }>
 
           <Input
             ref="width"
@@ -99,7 +99,7 @@ var PositionAndSizeForm = React.createClass({
         </HForm.Field>
 
         <HForm.Field
-          labelText="height:">
+          labelText={ global.I18n.t('position_and_size_form.height.label') }>
 
           <Input
             ref="height"
@@ -108,12 +108,12 @@ var PositionAndSizeForm = React.createClass({
         </HForm.Field>
 
         <HForm.Field
-          labelText="x:">
+          labelText={ global.I18n.t('position_and_size_form.x.label') }>
 
           <div className="input-group">
             <Input
               ref="left"
-              placeholder="left"
+              placeholder={ global.I18n.t('position_and_size_form.left.placeholder') }
               disabled={ this.state.xSide !== 'left' }
               value={ this.state.left }
               onChange={ this.handleChangeXY.bind(this, 'left') }
@@ -127,7 +127,7 @@ var PositionAndSizeForm = React.createClass({
 
             <Input
               ref="right"
-              placeholder="right"
+              placeholder={ global.I18n.t('position_and_size_form.right.placeholder') }
               disabled={ this.state.xSide !== 'right' }
               value={ this.state.right }
               onChange={ this.handleChangeXY.bind(this, 'right') }
@@ -136,12 +136,12 @@ var PositionAndSizeForm = React.createClass({
         </HForm.Field>
 
         <HForm.Field
-          labelText="y:">
+          labelText={ global.I18n.t('position_and_size_form.y.label') }>
 
           <div className="input-group">
             <Input
               ref="top"
-              placeholder="top"
+              placeholder={ global.I18n.t('position_and_size_form.top.placeholder') }
               disabled={ this.state.ySide !== 'top' }
               value={ this.state.top }
               onChange={ this.handleChangeXY.bind(this, 'top') }
@@ -155,7 +155,7 @@ var PositionAndSizeForm = React.createClass({
 
             <Input
               ref="bottom"
-              placeholder="bottom"
+              placeholder={ global.I18n.t('position_and_size_form.bottom.placeholder') }
               disabled={ this.state.ySide !== 'bottom' }
               value={ this.state.bottom }
               onChange={ this.handleChangeXY.bind(this, 'bottom') }
@@ -163,7 +163,7 @@ var PositionAndSizeForm = React.createClass({
           </div>
         </HForm.Field>
 
-        <HForm.Submit value="Save"/>
+        <HForm.Submit value={ global.I18n.t('configurator.submit.value') } />
       </HForm.Form>
     );
   }

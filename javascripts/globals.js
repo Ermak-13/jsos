@@ -2,6 +2,7 @@ var modules = {
   React: require('react'),
   ReactDOM: require('react-dom'),
   _: require('underscore'),
+  sprintf: require('sprintf-js').sprintf,
   moment: require('moment-timezone'),
 
   OS: require('os')

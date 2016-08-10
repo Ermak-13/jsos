@@ -33,7 +33,7 @@ var I18n = function () {
 
   this.setLang = function (lang) {
     this.lang = lang;
-    global.OS.log(sprintf('I18n lang %s is activated.', lang));
+    global.OS.log('info', sprintf('I18n lang %s is activated.', lang));
   };
 
   this.getDict = function () {

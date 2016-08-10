@@ -29,9 +29,8 @@ var DefaultDialog = React.createClass({
   },
 
   getTitle: function () {
-    return this.props.title || sprintf(
-      '%s - Settings',
-      s.capitalize(this.props.name)
+    return this.props.title || global.I18n.t('configurator.dialog.title',
+      { widgetName: s.capitalize(this.props.name) }
     );
   },
 
