@@ -2,6 +2,7 @@ var _ = require('underscore');
 
 var settings = {
   STORAGE_TYPE: 'chrome.local',
+  DEFAULT_LANG: 'en',
 
   DESKTOP_STORAGE_KEY: 'desktop',
   WIDGETS_STORAGE_KEY: 'widgets',
