@@ -36,7 +36,7 @@ var _Configurator = React.createClass({
 
     return {
       calendarConfigs: {
-        navText: 'Calendar Configs',
+        navText: global.I18n.t('calendar.calendar_configs.nav_text'),
         content: function () {
           return (
             <CalendarConfigsForm
@@ -48,7 +48,7 @@ var _Configurator = React.createClass({
       },
 
       positionAndSize: {
-        navText: 'Position And Size',
+        navText: global.I18n.t('position_and_size_form.nav_text'),
         content: function () {
           return (
             <PositionAndSizeForm

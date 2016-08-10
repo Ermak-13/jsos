@@ -1,6 +1,8 @@
 var en = {
   'configurator.dialog.title': '%(widgetName)s - Settings',
   'configurator.submit.value': 'Save',
+
+  'position_and_size_form.nav_text': 'Position and Size',
   'position_and_size_form.width.label': 'width:',
   'position_and_size_form.height.label': 'height:',
   'position_and_size_form.x.label': 'x:',

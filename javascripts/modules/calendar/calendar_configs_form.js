@@ -37,7 +37,7 @@ var CalendarConfigsForm = React.createClass({
     return (
       <HForm.Form onSubmit={ this.handleSubmit }>
         <HForm.Field
-          labelText="day font size:">
+          labelText={ global.I18n.t('calendar.day_font_size.label') }>
           <Input
             ref="dayFontSize"
             value={ settings.dayStyles.fontSize }
@@ -45,14 +45,14 @@ var CalendarConfigsForm = React.createClass({
         </HForm.Field>
 
         <HForm.Field
-          labelText="month font size:">
+          labelText={ global.I18n.t('calendar.month_font_size.label') }>
           <Input
             ref="monthFontSize"
             value={ settings.monthStyles.fontSize }
           />
         </HForm.Field>
 
-        <HForm.Submit value="Save" />
+        <HForm.Submit value={ global.I18n.t('configurator.submit.value') } />
       </HForm.Form>
     );
   }
