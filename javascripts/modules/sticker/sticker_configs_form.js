@@ -31,7 +31,7 @@ var StickerConfigsForm = React.createClass({
     return (
       <HForm.Form onSubmit={ this.handleSubmit }>
         <HForm.Field
-          labelText="font size:">
+          labelText={ global.I18n.t('sticker.font_size.label') }>
 
           <Input
             ref="fontSize"
@@ -40,7 +40,7 @@ var StickerConfigsForm = React.createClass({
         </HForm.Field>
 
         <HForm.Field
-          labelText="angle:">
+          labelText={ global.I18n.t('sticker.angle.label') }>
 
           <Input
             ref="transform"
@@ -49,7 +49,7 @@ var StickerConfigsForm = React.createClass({
         </HForm.Field>
 
         <HForm.Field
-          labelText="background:">
+          labelText={ global.I18n.t('sticker.background.label') }>
 
           <ColorInput
             ref="background"
@@ -57,7 +57,7 @@ var StickerConfigsForm = React.createClass({
           />
         </HForm.Field>
 
-        <HForm.Submit value="Save" />
+        <HForm.Submit value={ global.I18n.t('configurator.submit.value') } />
       </HForm.Form>
     );
   }

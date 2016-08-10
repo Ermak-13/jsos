@@ -37,7 +37,7 @@ var _Configurator = React.createClass({
 
     return {
       stickerConfigs: {
-        navText: 'Sticker Configs',
+        navText: global.I18n.t('sticker.sticker_configs.nav_text'),
         content: function () {
           return (
             <StickerConfigsForm
@@ -49,7 +49,7 @@ var _Configurator = React.createClass({
       },
 
       positionAndSize: {
-        navText: 'Position and Size',
+        navText: global.I18n.t('position_and_size_form.nav_text'),
         content: function () {
           return (
             <PositionAndSizeForm
