@@ -47,14 +47,14 @@ var _Configurator = React.createClass({
 
         <HForm.Form onSubmit={ this.handleSubmit }>
           <HForm.Field
-            labelText="background:">
+            labelText={ global.I18n.t('desktop.background.label') }>
             <Textarea
               ref="background"
               value={ settings.desktopStyles.background }
             />
           </HForm.Field>
 
-          <HForm.Submit value="Save" />
+          <HForm.Submit value={ global.I18n.t('configurator.submit.value') } />
         </HForm.Form>
 
       </Configurator.DefaultDialog>
