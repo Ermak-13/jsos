@@ -125,7 +125,7 @@ var _Widget = React.createClass({
           className="fa fa-plus-square-o" />
 
         <span style={ this.state.textStyles }>
-          add link
+          { global.I18n.t('webopener.link_creator.btn') }
         </span>
       </Link>
     );

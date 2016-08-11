@@ -47,11 +47,11 @@ var LinkCreatorDialog = React.createClass({
     return (
       <Dialog
         ref="dialog"
-        title="Link Creator - Webopener">
+        title={ global.I18n.t('webopener.link_creator.title') }>
 
         <HForm.Form onSubmit={ this.handleSubmit }>
           <HForm.Field
-            labelText="link url:">
+            labelText={ global.I18n.t('webopener.link_url.label') }>
             <Input
               ref="linkUrl"
               onChange={ this.handleChangeLinkUrl }
@@ -59,21 +59,21 @@ var LinkCreatorDialog = React.createClass({
           </HForm.Field>
 
           <HForm.Field
-            labelText="icon url:">
+            labelText={ global.I18n.t('webopener.icon_url.label') }>
             <Input
               ref="iconUrl"
             />
           </HForm.Field>
 
           <HForm.Field
-            labelText="text:">
+            labelText={ global.I18n.t('webopener.link_text.label') }>
             <Input
               ref="text"
               value={ this.state.linkText }
             />
           </HForm.Field>
 
-          <HForm.Submit value="Add" />
+          <HForm.Submit value={ global.I18n.t('webopener.link_creator.submit.value') } />
         </HForm.Form>
       </Dialog>
     );
