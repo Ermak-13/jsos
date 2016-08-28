@@ -11,7 +11,7 @@ var ConfiguratorHelper = {
   close: function () {
     if (this._close) return this._close();
 
-    var refName = this.props.refName,
+    var refName = this.getRefName(),
         ref = this.refs[refName];
 
     ref.close();
