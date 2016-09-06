@@ -106,8 +106,8 @@ var _Widget = React.createClass({
         <tr key={ i }>
           <td>
             <Link
-              href={ script.src }>
-              { script.src }
+              href={ script.url }>
+              { script.url }
             </Link>
           </td>
           <td>
