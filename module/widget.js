@@ -7,13 +7,6 @@ var settings = require('./settings');
 var _Widget = React.createClass({
   mixins: [Mixins.WidgetHelper],
 
-  getDefaultProps: function () {
-    return {
-      name: settings.WIDGET_NAME,
-      configuratorRefName: settings.CONFIGURATOR_REF_NAME
-    };
-  },
-
   getInitialState: function () {
     return {
       size: settings.DEFAULT_SIZE,
@@ -21,7 +14,7 @@ var _Widget = React.createClass({
     };
   },
 
-  getSettings: function () {
+  _getSettings: function () {
     return {
       size: _.clone(this.state.size),
       position: _.clone(this.state.position)
@@ -44,16 +37,9 @@ var _Widget = React.createClass({
         <Widget.Body>
           <p className="lead">TODO</p>
         </Widget.Body>
-
-        <Configurator.Default
-          ref={ this.props.configuratorRefName }
-          name={ this.props.name }
-          settings={ this.getSettings() }
-          onSubmit={ this.handleConfigure }
-        />
       </Widget.Widget>
     );
-  }
+  },
 });
 
 module.exports = _Widget;

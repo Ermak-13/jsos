@@ -11,9 +11,6 @@ OS.installModule('TODO', {
 },{"./shortcut":3,"./widget":4}],2:[function(require,module,exports){
 (function (global){
 var settings = {
-  WIDGET_NAME: 'TODO',
-  CONFIGURATOR_REF_NAME: 'configurator',
-
   DEFAULT_SIZE: {
     width: '150px',
     height: '100px'
@@ -55,13 +52,6 @@ var settings = require('./settings');
 var _Widget = React.createClass({displayName: "_Widget",
   mixins: [Mixins.WidgetHelper],
 
-  getDefaultProps: function () {
-    return {
-      name: settings.WIDGET_NAME,
-      configuratorRefName: settings.CONFIGURATOR_REF_NAME
-    };
-  },
-
   getInitialState: function () {
     return {
       size: settings.DEFAULT_SIZE,
@@ -69,7 +59,7 @@ var _Widget = React.createClass({displayName: "_Widget",
     };
   },
 
-  getSettings: function () {
+  _getSettings: function () {
     return {
       size: _.clone(this.state.size),
       position: _.clone(this.state.position)
@@ -91,17 +81,10 @@ var _Widget = React.createClass({displayName: "_Widget",
 
         React.createElement(Widget.Body, null, 
           React.createElement("p", {className: "lead"}, "TODO")
-        ), 
-
-        React.createElement(Configurator.Default, {
-          ref:  this.props.configuratorRefName, 
-          name:  this.props.name, 
-          settings:  this.getSettings(), 
-          onSubmit:  this.handleConfigure}
         )
       )
     );
-  }
+  },
 });
 
 module.exports = _Widget;
