@@ -1,3 +1,13 @@
+// NavHelper is react mixin. It contains useful methods for navigation tabs
+//
+// Methods:
+// getNavHTML - return navigation header
+// getContentHTML - return content
+//
+// Requirement [or you should implement]:
+// getTabs - return dict of navigation tabs.
+// { navText: '', content: '' }
+
 var NavHelper = {
   handleNavTab: function (tab) {
     if (this._handleNavTab) return this._handleNavTab(tab);
