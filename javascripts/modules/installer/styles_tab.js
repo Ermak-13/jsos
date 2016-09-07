@@ -4,25 +4,25 @@ var React = require('react'),
     Form = require('./form'),
     Container = require('./container');
 
-var ScriptsTab = React.createClass({
-  getInitialState: function () {
+var StylesTab = React.createClass({
+  getInitialState: function() {
     return {
-      scripts: global.Scripts.all()
+      styles: global.Styles.all()
     };
   },
 
   add: function (url) {
-    OS.installScript(url);
+    OS.installStyle(url);
   },
 
-  remove: function (script) {
-    OS.uninstallScript(script);
+  remove: function (style) {
+    OS.uninstallStyle(style);
   },
 
   componentWillMount: function () {
-    global.Scripts.updated(function (scripts) {
+    global.Styles.updated(function (styles) {
       this.setState({
-        scripts: scripts
+        styles: styles
       });
     }.bind(this));
   },
@@ -31,14 +31,14 @@ var ScriptsTab = React.createClass({
     return (
       <div>
         <p className="text-justify" style={{ fontSize: '14px' }}
-          dangerouslySetInnerHTML={{ __html: I18n.t('installer.scripts.text') }} />
+          dangerouslySetInnerHTML={{ __html: I18n.t('installer.styles.text') }} />
 
         <Form
           onSubmit={ this.add }
         />
 
         <Container
-          collection={ this.state.scripts }
+          collection={ this.state.styles }
           onClickRemoveBtn={ this.remove }
         />
       </div>
@@ -46,4 +46,4 @@ var ScriptsTab = React.createClass({
   }
 });
 
-module.exports = ScriptsTab;
+module.exports = StylesTab;

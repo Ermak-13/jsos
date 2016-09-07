@@ -4,9 +4,10 @@
 // getNavHTML - return navigation header
 // getContentHTML - return content
 //
-// Requirement [or you should implement]:
+// Requirement:
+// getInitialState - default tab
 // getTabs - return dict of navigation tabs.
-// { navText: '', content: '' }
+// { <tabName>: { navText: '', content: '' }, ...}
 
 var NavHelper = {
   handleNavTab: function (tab) {

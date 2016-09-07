@@ -7,36 +7,43 @@ var React = require('react'),
     Widget = OS.Widget,
 
     settings = require('./settings'),
-    ScriptsTab = require('./scripts_tab');
+    ScriptsTab = require('./scripts_tab'),
+    StylesTab = require('./styles_tab');
 
 var _Widget = React.createClass({
-  mixins: [Mixins.WidgetHelper],
+  mixins: [Mixins.WidgetHelper, Mixins.NavHelper],
 
   getInitialState: function () {
     return {
+      tab: 'scripts',
+
       size: settings.DEFAULT_SIZE,
       position: settings.DEFAULT_POSITION
     };
   },
 
-  handleAddScript: function (e) {
-    e.preventDefault();
-
-    var url = this.refs.installUrl.getValue();
-    if (url) {
-      this.refs.installUrl.clear();
-      OS.installScript(url);
-    }
-  },
-
-  handleRemoveScript: function (script) {
-    OS.uninstallScript(script);
-  },
 
   _getSettings: function () {
     return {
       size: _.clone(this.state.size),
       position: _.clone(this.state.position)
+    };
+  },
+
+  getTabs: function () {
+    var scripts = React.createElement(ScriptsTab, {}),
+        styles = React.createElement(StylesTab, {});
+
+    return {
+      scripts: {
+        navText: 'Scripts',
+        content: scripts
+      },
+
+      styles: {
+        navText: 'Styles',
+        content: styles
+      }
     };
   },
 
@@ -59,7 +66,11 @@ var _Widget = React.createClass({
         />
 
         <Widget.Body>
-          <ScriptsTab />
+          { this.getNavHTML() }
+
+          <div style={{ marginTop: '20px' }}>
+            { this.getContentHTML() }
+            </div>
         </Widget.Body>
       </Widget.Widget>
     );
