@@ -3,8 +3,7 @@ var gulp = require('gulp'),
     browserify = require('gulp-browserify'),
     sass = require('gulp-sass'),
     rename = require('gulp-rename'),
-    minify = require('gulp-minify'),
-    jshint = require('gulp-jshint');
+    minify = require('gulp-minify');
 
 gulp.task('default', ['dev']);
 gulp.task('dev', ['watch', 'js', 'sass']);

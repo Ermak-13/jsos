@@ -1,7 +1,24 @@
 {
-  "name": "jsos",
+  "name": "jsos-env",
+  "version": "0.1.1",
   "license": "GPL-3.0+",
-  "version": "0.1.0",
+
+  "description": "Javascript Operation System [JSOS]",
+  "keywords": ["chrome", "newtab", "new tab", "jsos", "jsos-env", "js os"],
+  "bugs": {
+    "url": "https://github.com/Ermak-13/jsos/issues"
+  },
+  "authors": {
+    "name": "Maksim Yermalovich",
+    "email": "yermalovich.m@gmail.com"
+  },
+  "files": [
+    "jsos.js",
+    "package.json",
+    "README.md",
+    "COPYING"
+  ],
+  "main": "jsos.js",
   "devDependencies": {
     "browserify": "^13.0.1",
     "gulp": "^3.9.1",

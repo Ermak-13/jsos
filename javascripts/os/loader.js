@@ -12,10 +12,10 @@ var Settings = require('./settings'),
 
 var Loader = function () {
   this.load = function (callback) {
-    global.Settings = new Settings(global.settings || {});
     global.Logger = new Logger();
     global.Storage = new Storage(global.storageType || 'chrome.local');
 
+    global.Settings = new Settings(global.settings || {});
     global.AppDispatcher = AppDispatcher;
     global.Events = Events;
 
