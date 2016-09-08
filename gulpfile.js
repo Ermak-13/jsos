@@ -15,7 +15,7 @@ gulp.task('webserver', function () {
   gulp.src('./')
     .pipe(webserver({
       host: 'localhost',
-      port: 8008,
+      port: 9990,
       fallback: 'index.html'
     }));
 });
@@ -85,21 +85,3 @@ gulp.task('build', function () {
   gulp.src(files)
     .pipe(gulp.dest('./release'));
 });
-
-//TODO: move to JSOS Module repository
-gulp.task('module', ['watch-module', 'module-js']);
-gulp.task('watch-module', function () {
-  gulp.watch('./module/**/*.js', ['module-js']);
-});
-
-gulp.task('module-js', function () {
-  gulp.src('./module/index.js')
-    .pipe(browserify({
-      transform: ['reactify'],
-      extensions: ['.js'],
-    }))
-    .on('error', console.log)
-    .pipe(rename('module.js'))
-    .pipe(gulp.dest('.'));
-});
-
