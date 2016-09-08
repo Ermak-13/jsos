@@ -12,12 +12,6 @@
     "name": "Maksim Yermalovich",
     "email": "yermalovich.m@gmail.com"
   },
-  "files": [
-    "jsos.js",
-    "package.json",
-    "README.md",
-    "COPYING"
-  ],
   "main": "jsos.js",
   "devDependencies": {
     "browserify": "^13.0.1",
@@ -43,6 +37,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:Ermak-13/JSOS.git"
+    "url": "git@github.com:Ermak-13/jsos.git"
   }
 }
