@@ -1,13 +1,21 @@
-#JSOS
+# JSOS
 
+**Javascript Operation System.**
 It is chrome extension which override new tab page.
+And make it like as normal operation system with
+modules (applications), panel, desktop, settings & etc.
+
+## Contribute
+* Developing new JSOS Module - https://github.com/Ermak-13/jsos-module.
+* Creating new JSOS Theme - https://github.com/Ermak-13/jsos-theme.
+* And you always can suggest ideas, code or smth else ;)
 
 ## Gulp Commands
-* ```gulp default``` - gulp dev
-* ```gulp dev``` - watch, build js & sass files
+* `gulp default` - gulp dev
+* `gulp dev` - watch, build js & sass files
 (javascripts & stylesheets directories)
-* ```gulp release``` - build chrome extension (release directory)
-* ```gulp server``` - run webserver on **localhost:8008**
+* `gulp release` - build chrome extension (release directory)
+* `gulp server` - run webserver on **localhost:8008**
 (**NOTE:** using index.html instead of newtab.html)
 
 ## License
