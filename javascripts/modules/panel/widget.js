@@ -1,6 +1,7 @@
 var React = require('react'),
     ReactDOM = require('react-dom'),
     _ = require('underscore'),
+    s = require('underscore.string'),
     sprintf = require('sprintf-js').sprintf,
 
     OS = require('os'),
@@ -73,7 +74,7 @@ var _Widget = React.createClass({
               OS.addWidget(name);
             }
           },
-          tooltip: name
+          tooltip: s.humanize(name)
         });
       }
     });

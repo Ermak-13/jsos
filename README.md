@@ -15,7 +15,7 @@ modules (applications), panel, desktop, settings & etc.
 * `gulp dev` - watch, build js & sass files
 (javascripts & stylesheets directories)
 * `gulp release` - build chrome extension (release directory)
-* `gulp server` - run webserver on **localhost:8008**
+* `gulp server` - run webserver on **localhost:9990**
 (**NOTE:** using index.html instead of newtab.html)
 
 ## License

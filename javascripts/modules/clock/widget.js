@@ -1,8 +1,8 @@
 var React = require('react'),
     moment = require('moment-timezone'),
     _ = require('underscore'), 
-    OS = require('os'),
 
+    OS = require('os'),
     Widget = OS.Widget,
     Mixins = OS.Mixins,
     AppDispatcher= OS.AppDispatcher,

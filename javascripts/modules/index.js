@@ -10,7 +10,8 @@ var Widgets = {
   Calendar: require('./calendar'),
   Clock: require('./clock'),
   Timer: require('./timer'),
-  Sticker: require('./sticker')
+  Sticker: require('./sticker'),
+  AboutJSOS: require('./about')
 };
 
 module.exports = Widgets;
