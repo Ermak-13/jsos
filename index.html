@@ -15,12 +15,15 @@
         <div id="configurator-container"></div>
     </body>
 
-    <script type="text/javascript">
-        window.settings = {};
-        window.storageType = 'localStorage';
-    </script>
-
     <script type="text/javascript" src="jquery-2.2.4.min.js"></script>
     <script type="text/javascript" src="bootstrap-3.3.6/js/bootstrap.min.js"></script>
+
     <script type="text/javascript" src="jsos.js"></script>
+    <script type="text/javascript">
+        OS.init({
+            containerId: 'desktop-container',
+            storageType: 'localStorage',
+            settings: {}
+        });
+    </script>
 </html>

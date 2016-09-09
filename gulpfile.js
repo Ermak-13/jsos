@@ -55,6 +55,8 @@ gulp.task('watch', function () {
 });
 
 gulp.task('build', function () {
+  process.env.NODE_ENV = 'production';
+
   gulp.src('./bootstrap-3.3.6/**/*')
     .pipe(gulp.dest('./release/bootstrap-3.3.6'));
 
@@ -75,6 +77,7 @@ gulp.task('build', function () {
   var files = [
     './COPYING',
     './jquery-2.2.4.min.js',
+    './newtab.js',
     './jsos.css',
     './manifest.json',
     './newtab.html',

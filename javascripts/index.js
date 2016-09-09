@@ -1,17 +1,19 @@
 var _ = require('underscore');
 require('./globals');
 
-var loader = new OS.Loader();
-loader.load(function () {
-  var Modules = require('./modules'),
-      Desktop = require('./desktop');
+OS.init = function (options) {
+  var loader = new OS.Loader(options);
+  loader.load(function () {
+    var Modules = require('./modules'),
+    Desktop = require('./desktop');
 
-  _.each(Modules, function (module, name) {
-    OS.installModule(name, module);
+    _.each(Modules, function (module, name) {
+      OS.installModule(name, module);
+    });
+
+    ReactDOM.render(
+      React.createElement(Desktop, {}),
+      document.getElementById(options.containerId)
+    );
   });
-
-  ReactDOM.render(
-    <Desktop />,
-    document.getElementById('desktop-container')
-  );
-});
+};

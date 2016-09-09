@@ -10,12 +10,14 @@ var Settings = require('./settings'),
     Styles = require('./styles'),
     Widgets = require('./widgets');
 
-var Loader = function () {
+var Loader = function (options) {
+  options = options || {};
+
   this.load = function (callback) {
     global.Logger = new Logger();
-    global.Storage = new Storage(global.storageType || 'chrome.local');
+    global.Storage = new Storage(options.storageType || 'chrome.local');
 
-    global.Settings = new Settings(global.settings || {});
+    global.Settings = new Settings(options.settings || {});
     global.AppDispatcher = AppDispatcher;
     global.Events = Events;
 
