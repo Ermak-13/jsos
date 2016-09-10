@@ -10,33 +10,43 @@ var Settings = require('./settings'),
     Styles = require('./styles'),
     Widgets = require('./widgets');
 
+var DEFAULT_STORAGE_TYPE = 'chrome.local',
+    SETTINGS_STORAGE_KEY = 'settings';
+
 var Loader = function (options) {
   options = options || {};
 
   this.load = function (callback) {
     global.Logger = new Logger();
-    global.Storage = new Storage(options.storageType || 'chrome.local');
+    global.Storage = new Storage(options.storageType || DEFAULT_STORAGE_TYPE);
 
-    global.Settings = new Settings(options.settings || {});
     global.AppDispatcher = AppDispatcher;
     global.Events = Events;
 
-    global.I18n = new I18n();
-    global.I18n.registryDict(i18nDict);
+    global.Storage.get(SETTINGS_STORAGE_KEY, function (settings) {
+      global.Settings = new Settings(settings || options.settings || {});
 
-    global.Modules = new Modules();
+      AppDispatcher.bind(Events.updatedSettings, function (settings) {
+        global.Storage.set(SETTINGS_STORAGE_KEY, settings);
+      });
 
-    global.Scripts = new Scripts();
-    global.Scripts.load(function () {
+      global.I18n = new I18n();
+      global.I18n.init({
+        lang: global.Settings.get('lang'),
+        dictionary: i18nDict
+      });
 
-      global.Styles = new Styles();
-      global.Styles.load(function () {
+      global.Modules = new Modules();
+      global.Scripts = new Scripts();
 
-        global.Widgets = new Widgets();
-        global.Widgets.load(function () {
-          callback();
+      global.Scripts.load(function () {
+        global.Styles = new Styles();
+        global.Styles.load(function () {
+          global.Widgets = new Widgets();
+          global.Widgets.load(function () {
+            callback();
+          });
         });
-
       });
 
     });

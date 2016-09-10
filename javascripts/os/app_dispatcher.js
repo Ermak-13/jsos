@@ -10,6 +10,10 @@ var AppDispatcher = function () {
     this.trigger(Events.updatedLogger, logs);
   };
 
+  this.updatedSettings = function (settings) {
+    this.trigger(Events.updatedSettings, settings);
+  };
+
   this.openDesktopConfigurator = function () {
     this.trigger(Events.openDesktopConfigurator);
   };

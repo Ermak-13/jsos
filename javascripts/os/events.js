@@ -3,6 +3,7 @@ var sprintf = require('underscore.string/sprintf');
 var Events = {
   log: 'log',
   updatedLogger: 'updated-logger',
+  updatedSettings: 'updated-settings',
 
   installModule: 'install-module',
   uninstallModule: 'uninstall-module',

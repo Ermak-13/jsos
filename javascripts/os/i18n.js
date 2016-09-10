@@ -2,14 +2,12 @@ var _ = require('underscore'),
     sprintf = require('sprintf-js').sprintf;
 
 var I18n = function () {
-  this.lang = global.Settings.get('default_lang');
-  this.dictionary = {
-    en: {
-      'welcome_to_my_world': 'Welcome to My World'
-    },
-    ru: {
-      'welcome_to_my_world': 'Добро пожаловать в мой мир'
-    }
+  this.lang = 'en';
+  this.dictionary = {};
+
+  this.init = function (options) {
+    this.lang = options.lang;
+    this.dictionary = options.dictionary;
   };
 
   this.t = function (key, args) {
