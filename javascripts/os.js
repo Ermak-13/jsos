@@ -2,7 +2,7 @@ var OS = {
   Loader: require('./os/loader'),
   AppDispatcher: require('./os/app_dispatcher'),
   Events: require('./os/events'),
-  settings: require('./os/default_settings'),
+  defaultSettings: require('./os/default_settings'),
   Logger: require('./os/logger'),
 
   Mixins: require('./os/mixins'),

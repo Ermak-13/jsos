@@ -8,7 +8,8 @@ var Settings = require('./settings'),
     Modules = require('./modules'),
     Scripts = require('./scripts'),
     Styles = require('./styles'),
-    Widgets = require('./widgets');
+    Widgets = require('./widgets'),
+    Migrations = require('./migrations');
 
 var DEFAULT_STORAGE_TYPE = 'chrome.local',
     SETTINGS_STORAGE_KEY = 'settings';
@@ -44,6 +45,9 @@ var Loader = function (options) {
         global.Styles.load(function () {
           global.Widgets = new Widgets();
           global.Widgets.load(function () {
+            global.Migrations = new Migrations();
+            global.Migrations.run();
+
             callback();
           });
         });
