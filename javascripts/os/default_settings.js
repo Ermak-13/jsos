@@ -39,7 +39,7 @@ var settings = {
   DESKTOP_NAME: 'desktop',
   DESKTOP_CONFIGURATOR_REF_NAME: 'configurator',
   DESKTOP_STYLES: {
-    background: "linear-gradient(to bottom left, #C4D9EC, #0D61B7)"
+    background: "linear-gradient(to top left, #C4D9EC, #0D61B7)"
   },
 
   NAV_ACTIVE_TAB_CLASS_NAME: 'active',
