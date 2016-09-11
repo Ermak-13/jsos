@@ -2,7 +2,8 @@ var _ = require('underscore');
 
 var MIGRATIONS_STORAGE_KEY = 'migrations',
     migrations = {
-      '1473602087': require('./1473602087_add_panel')
+      '1473602087': require('./1473602087_add_panel'),
+      '1473611718': require('./1473611718_open_about_jsos')
     };
 
 var Migrations = function () {
