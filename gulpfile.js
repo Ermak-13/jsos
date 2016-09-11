@@ -7,7 +7,7 @@ var gulp = require('gulp'),
 
 gulp.task('default', ['dev']);
 gulp.task('dev', ['watch', 'js', 'sass']);
-gulp.task('release', ['js', 'sass', 'build']);
+gulp.task('release', ['prod-env', 'js', 'sass', 'build']);
 gulp.task('server', ['webserver']);
 
 gulp.task('webserver', function () {
@@ -54,9 +54,11 @@ gulp.task('watch', function () {
   gulp.watch('./stylesheets/**/*.scss', ['sass']);
 });
 
-gulp.task('build', function () {
+gulp.task('prod-env', function () {
   process.env.NODE_ENV = 'production';
+});
 
+gulp.task('build', function () {
   gulp.src('./bootstrap-3.3.6/**/*')
     .pipe(gulp.dest('./release/bootstrap-3.3.6'));
 

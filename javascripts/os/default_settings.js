@@ -39,7 +39,7 @@ var settings = {
   DESKTOP_NAME: 'desktop',
   DESKTOP_CONFIGURATOR_REF_NAME: 'configurator',
   DESKTOP_STYLES: {
-    background: "url('images/default_bg_image.jpg') no-repeat center fixed",
+    background: "linear-gradient(to bottom left, #C4D9EC, #0D61B7)"
   },
 
   NAV_ACTIVE_TAB_CLASS_NAME: 'active',
