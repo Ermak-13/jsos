@@ -11,7 +11,7 @@ var Settings = require('./settings'),
     Widgets = require('./widgets'),
     Migrations = require('./migrations');
 
-var DEFAULT_STORAGE_TYPE = 'chrome.local',
+var DEFAULT_STORAGE_TYPE = 'chrome.storage.sync',
     SETTINGS_STORAGE_KEY = 'settings';
 
 var Loader = function (options) {
