@@ -236,7 +236,6 @@ var _Widget = React.createClass({
         </div>
 
         { this.getNextShortcutsArrowHTML() }
-
       </div>
     );
   },
