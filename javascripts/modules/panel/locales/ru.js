@@ -7,6 +7,8 @@ var ru = {
 
   'panel.configurator.left.label': 'Слева',
   'panel.configurator.right.label': 'Справа',
+  'panel.configurator.top.label': 'Сверху',
+  'panel.configurator.bottom.label': 'Снизу',
   'panel.configurator.vertical.label': 'Вертикальная',
   'panel.configurator.horizontal.label': 'Горизонтальная'
 };

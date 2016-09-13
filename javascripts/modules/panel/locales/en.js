@@ -7,6 +7,8 @@ var en = {
 
   'panel.configurator.left.label': 'Left',
   'panel.configurator.right.label': 'Right',
+  'panel.configurator.top.label': 'Top',
+  'panel.configurator.bottom.label': 'Bottom',
   'panel.configurator.vertical.label': 'Vertical',
   'panel.configurator.horizontal.label': 'Horizontal'
 };
