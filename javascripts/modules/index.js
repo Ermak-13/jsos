@@ -6,7 +6,6 @@ var Widgets = {
 
   Logger: require('./logger'),
   Installer: require('./installer'),
-  Sticker: require('./sticker'),
   AboutJSOS: require('./about')
 };
 
