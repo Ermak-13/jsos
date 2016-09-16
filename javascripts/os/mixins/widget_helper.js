@@ -15,7 +15,7 @@ var WidgetHelper = {
     if (this._init) return this._init();
 
     this.load(function () {
-      if (this.onLoad) onLoad();
+      if (onLoad) onLoad();
       global.OS.log('info', sprintf('Widget %s - initalized.', this.getName()));
 
       AppDispatcher.initWidget(this);

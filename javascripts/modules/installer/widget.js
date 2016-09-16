@@ -36,12 +36,12 @@ var _Widget = React.createClass({
 
     return {
       scripts: {
-        navText: 'Scripts',
+        navText: I18n.t('installer.scripts.nav_text'),
         content: scripts
       },
 
       styles: {
-        navText: 'Styles',
+        navText: I18n.t('installer.styles.nav_text'),
         content: styles
       }
     };
