@@ -37,7 +37,8 @@ var Select = React.createClass({
       <select
         className={ this.props.className }
         value={ this.state.value }
-        onChange={ this.handleChange }>
+        onChange={ this.handleChange }
+        style={ this.props.style }>
 
         { this.props.children }
       </select>
