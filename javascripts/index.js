@@ -15,5 +15,7 @@ OS.init = function (options) {
       React.createElement(Desktop, {}),
       document.getElementById(options.containerId)
     );
+
+    if (options.onload) options.onload();
   });
 };
