@@ -16,6 +16,8 @@ OS.init = function (options) {
       document.getElementById(options.containerId)
     );
 
-    if (options.onload) options.onload();
+    if (_.isFunction(options.onload)) {
+      options.onload();
+    }
   });
 };
