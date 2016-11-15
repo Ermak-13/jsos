@@ -6,7 +6,7 @@ var gulp = require('gulp'),
     minify = require('gulp-minify');
 
 gulp.task('default', ['dev']);
-gulp.task('dev', ['watch', 'js', 'sass']);
+gulp.task('dev', ['watch', 'js', 'js-bg', 'sass']);
 gulp.task('release', ['prod-env', 'js', 'sass', 'build']);
 gulp.task('server', ['webserver']);
 
@@ -37,6 +37,15 @@ gulp.task('js', function () {
     }))
     .on('error', console.log)
     .pipe(rename('jsos.js'))
+    .pipe(gulp.dest('.'));
+});
+
+gulp.task('js-bg', function () {
+  gulp.src('./javascripts/background.js')
+    .pipe(browserify({
+      extensions: ['.js'],
+    }))
+    .on('error', console.log)
     .pipe(gulp.dest('.'));
 });
 
@@ -81,6 +90,7 @@ gulp.task('build', function () {
     './jquery-2.2.4.min.js',
     './newtab.js',
     './jsos.css',
+    './background.js',
     './manifest.json',
     './newtab.html',
     './README.md'
